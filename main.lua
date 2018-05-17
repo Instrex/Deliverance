@@ -9,10 +9,9 @@ local breathofdevil = Isaac.GetItemIdByName("Breath of the Devil")
 local secondChance = Isaac.GetItemIdByName("Second Chance")
 local sailorhat = Isaac.GetItemIdByName("Sailor's Hat")
 local dheart = Isaac.GetItemIdByName("D<3")
-local tech3k = Isaac.GetItemIdByName("Technology 3000")
 local sistersheart = Isaac.GetItemIdByName("Sister's Heart")
 local sage = Isaac.GetItemIdByName("Sage")
-local fadedsage = Isaac.GetItemIdByName("Faded Sage")
+local specialdelivery = Isaac.GetItemIdByName("Special Delivery")
 
 local apple1 = Isaac.GetItemIdByName("The Apple")
 local apple2 = Isaac.GetItemIdByName("Bitten Apple")
@@ -32,6 +31,10 @@ local beamo = Isaac.GetEntityTypeByName("Beamo")
 --                   Familiars
 local sisheart = Isaac.GetEntityVariantByName("Sister's Heart")
 local sagesoul = Isaac.GetEntityVariantByName("Sage Soul")
+
+--                   Projectiles
+local specialDel_target = Isaac.GetEntityTypeByName("Special Delivery Target")
+local specialDel  = Isaac.GetEntityTypeByName("Special Delivery")
 
 --                  Cards
 local card_mannaz = Isaac.GetCardIdByName("Mannaz")
@@ -975,6 +978,7 @@ end
 
 function mod:InitPlayerVars(player)
   mod:Load()
+  Isaac.GetPlayer(0):CheckFamiliar(sagesoul, sagesCount, RNG())
 end
 
 function mod:NullVariables()
@@ -1019,7 +1023,7 @@ function mod:Load()
     darkStage = loadData.darkStage
     publicStage = mod.Data.publicStage
     sagesCount = mod.Data.sagesCount
-    mod:Save()
+    Isaac.GetPlayer(0):CheckFamiliar(sagesoul, sagesCount, RNG())
   end
 end
 
@@ -1038,7 +1042,9 @@ function mod:UpdatePublicStage()
   local stg = Game():GetLevel():GetAbsoluteStage()
   if stg > publicStage then
     publicStage = stg
-    mod:OnNewStage(stg)
+    if publicStage ~= 0 then
+      mod:OnNewStage(stg)
+    end
   end
 end
 
@@ -1266,32 +1272,6 @@ end
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.dHeartReroll, dheart)
 
 -------------------------------------------------------------------------------------------
---  Technology 3000
--------------------------------------------------------------------------------------------
-function mod:ApplyTech3kCostume(player, flag)
-    if player:HasCollectible(tech3k) then
-      if flag == CacheFlag.CACHE_TEARCOLOR then
-        player:AddNullCostume(costumes.tech3k_costume)
-      end
-    end
-end
-
-function mod:UpdateTech3k()
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(tech3k) then
-    if player:GetMovementInput().X ~= 0 or player:GetMovementInput().Y ~= 0  then
-      if math.random(0, 10-(math.min(player.Luck, 5))) == 1 then
-        local direction = Vector(player.Velocity.X, player.Velocity.Y):Rotated(180)
-        player:FireTechLaser(player.Position, LaserOffset.LASER_TECH1_OFFSET , direction, false, false)
-      end
-    end
-  end
-end
-
-mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.ApplyTech3kCostume)
-mod:AddCallback(ModCallbacks.MC_POST_UPDATE, mod.UpdateTech3k)
-
--------------------------------------------------------------------------------------------
 --  FAMILIAR FUNCTIONS
 -------------------------------------------------------------------------------------------
 
@@ -1368,11 +1348,13 @@ function mod:SistersHeartBehaviour(sh)
     if sprite:IsEventTriggered("IntenseShoot") then
       if data.Offset == nil then data.Offset = 0 end
 
-      sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTEST, 1, 0, false, 1)
-      Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(7, 0):Rotated(10 * data.Offset), nil)
-      Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(-7, 0):Rotated(10 * data.Offset), nil)
-      Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(0, 7):Rotated(10 * data.Offset), nil)
-      Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(0, -7):Rotated(10 * data.Offset), nil)
+      if player:GetHearts() <= 1 or data.Offset % 2 == 0 then
+        sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTEST, 1, 0, false, 1)
+        Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(7, 0):Rotated(10 * data.Offset), nil)
+        Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(-7, 0):Rotated(10 * data.Offset), nil)
+        Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(0, 7):Rotated(10 * data.Offset), nil)
+        Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(0, -7):Rotated(10 * data.Offset), nil)
+      end
       data.Offset = data.Offset + 1
     end
   else
@@ -1429,7 +1411,17 @@ function mod:SageSoulBehaviour(sh)
       if player:GetFireDirection() ~= Direction.NO_DIRECTION then
         sprite:Play("Shoot")
         if sprite:IsEventTriggered("Shoot") then
-          proj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 0, sh.Position + Vector(0, 12), player:GetAimDirection()*8, nil):ToTear()
+          local vel = Vector(1, 0)
+          if Input.IsMouseBtnPressed(0) then vel = (Input.GetMousePosition(true) - sh.Position):Normalized()*8
+          elseif player:GetFireDirection() ~= Direction.NO_DIRECTION then vel = player:GetAimDirection()*8
+          end
+
+          if player:HasCollectible(CollectibleType.COLLECTIBLE_20_20) then
+            Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 0, sh.Position + Vector(-2, 4), vel, nil):ToTear()
+            Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 0, sh.Position + Vector(2, 4), vel, nil):ToTear()
+          else
+            proj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 0, sh.Position + Vector(0, 12), vel, nil):ToTear()
+          end
         end
       else
         sprite:Play("Idle")
@@ -1448,26 +1440,87 @@ function mod:UseSage()
   local player = Isaac.GetPlayer(0)
   for _, entity in pairs(Isaac.GetRoomEntities()) do
     if entity:IsVulnerableEnemy() then
-      entity:TakeDamage(10, 0, EntityRef(nil), 0)
-      sagesCount = math.min(sagesCount + 1, 6)
+      if sagesCount < 6 then
+        entity:TakeDamage(10, 0, EntityRef(nil), 0)
+      else entity:TakeDamage(40, 0, EntityRef(nil), 0) end
     end
   end
+  sagesCount = math.min(sagesCount + 1, 6)
   player:CheckFamiliar(sagesoul, sagesCount, RNG())
   mod:Save()
-  player:RemoveCollectible(sage)
-  player:AddCollectible(fadedsage, 0, false)
   player:EvaluateItems()
 end
 
 function mod:SageFloor()
   sagesCount = 0
   local player = Isaac.GetPlayer(0)
-  if Isaac.GetPlayer(0):HasCollectible(fadedsage) then
-    player:RemoveCollectible(fadedsage)
-    player:AddCollectible(sage, 0, false)
-  end
   player:CheckFamiliar(sagesoul, sagesCount, RNG())
+  proj = Isaac.Spawn(1000, 15, 0, player.Position, Vector(0, 0), player)
+  proj.Color = Color( 0, 0, 0,   1,   90, 0, 90)
   mod:Save()
 end
 
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.UseSage, sage)
+
+-------------------------------------------------------------------------------------------
+--  Special Delivery
+-------------------------------------------------------------------------------------------
+
+-- ~  TARGET
+
+function mod:UpdateSpecDeliveryTarget(s)
+  local sprite = s:GetSprite()
+  local data = s:GetData()
+  local player = Isaac.GetPlayer(0)
+
+  if data.time == nil then data.time = 0 end
+
+  if data.time ~= -1 then data.time = data.time + 1
+    if data.time < 30  then sprite:Play("Idle")
+    elseif data.time < 60 then sprite:Play("Explode")
+    elseif data.time == 60 then sprite:Play("Die") data.time = -1 end
+  end
+
+  if sprite:IsFinished("Die") then s:Remove() Isaac.Spawn(specialDel, 0, 0, s.Position, Vector(0, 0), nil) player:AnimateCollectible(specialdelivery, "HideItem", "Idle") end
+
+  if Input.IsMouseBtnPressed(0) then s.Velocity = (Input.GetMousePosition(true) - s.Position) / 6
+  elseif player:GetFireDirection() ~= Direction.NO_DIRECTION then s.Velocity = player:GetAimDirection()*10
+  else s.Velocity = Vector(0,0) end
+end
+
+function mod:SpecDeliveryBehaviour(s)
+  local sprite = s:GetSprite()
+  local player = Isaac.GetPlayer(0)
+  local data = s:GetData()
+  local sfxManager = SFXManager()
+
+  if data.init == nil then data.init = 1 sprite:Play("Main") end
+
+  if sprite:IsEventTriggered("Land") then
+    sfxManager:Play(SoundEffect.SOUND_CHEST_DROP, 1, 0, false, 1)
+  end
+
+  if sprite:IsEventTriggered("Explode") then
+    Isaac.Explode(s.Position, player, 180)
+    local rand = math.random(0, 3)
+
+    if rand == 0 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COIN, math.random(0, 2), s.Position, Vector(0,0), nil) end
+    if rand == 1 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, math.random(0, 2), s.Position, Vector(0,0), nil) end
+    if rand == 2 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_KEY, 1, s.Position, Vector(0,0), nil) end
+    if rand == 3 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_HEART, math.random(0, 11), s.Position, Vector(0,0), nil) end
+  end
+
+  if sprite:IsEventTriggered("Die") then
+    s:Remove()
+  end
+end
+
+function mod:UseSpecDelivery()
+  local player = Isaac.GetPlayer(0)
+  Isaac.Spawn(specialDel_target, 0, 0, player.Position, Vector(0, 0), nil)
+  player:AnimateCollectible(specialdelivery, "LiftItem", "Idle")
+end
+
+mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.UseSpecDelivery, specialdelivery)
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.UpdateSpecDeliveryTarget, specialDel_target)
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.SpecDeliveryBehaviour, specialDel)

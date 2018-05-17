@@ -7,6 +7,7 @@
 	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -15,10 +16,13 @@
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Breath of Devil" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Faded Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="goldenChest" >
+      <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="shop">
       <Item Name="The Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="devil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -28,6 +32,41 @@
     <Pool Name="angel">
       <Item Name="Second Chance" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Faded Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+
+    <!-- Greed Itempools -->
+    <Pool Name="greedTreasure">
+	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="greedShop">
+	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="The Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="greedDevil">
+      <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Breath of Devil" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="greedAngel">
+      <Item Name="Second Chance" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="secret">
+	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="greedCurse">
+      <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Breath of Devil" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="greedGoldenChest" >
+      <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
 </ItemPools>

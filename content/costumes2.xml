@@ -1,4 +1,3 @@
 <costumes anm2root="gfx/costumes/">
      <costume anm2path="animation_costume_sailorhat.anm2" priority="98" type="none" />
-     <costume anm2path="animation_costume_tech3000.anm2" priority="98" type="none" />
 </costumes>
