@@ -1,0 +1,33 @@
+<ItemPools>
+    <Pool Name="secret">
+	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="treasure">
+	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="keyMaster">
+      <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="curse">
+      <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Breath of Devil" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Faded Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="shop">
+      <Item Name="The Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="devil">
+      <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Breath of Devil" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="angel">
+      <Item Name="Second Chance" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Faded Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+</ItemPools>
