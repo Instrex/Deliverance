@@ -403,8 +403,6 @@ function mod:update(cracker)
     local data = cracker:GetData()
     if not data.initialized then
 
-data.targetVel = Vector(0, 0)
-
 data.died = false
 
 data.initialized = true
@@ -412,24 +410,18 @@ data.initialized = true
     end
 
     if(cracker.State == NpcState.STATE_INIT) then
-cracker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
+        cracker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
         cracker.State = NpcState.STATE_MOVE;
     end
     if(cracker.State == NpcState.STATE_MOVE) then
 
-if math.random(1, 30) == 1 then
+      cracker.Velocity = (cracker:GetPlayerTarget().Position - cracker.Position):Normalized()*3
 
-data.targetVel = (Isaac.GetRandomPosition() - cracker.Position):Normalized()*3
-
-end
-
-cracker.Velocity = cracker.Velocity * 0.7 + data.targetVel * 0.3
-
-cracker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
+      cracker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
 
         randomAttack = math.random(1,100);
 
-        if(randomAttack < 2) then
+        if randomAttack < 2 or cracker:CollidesWithGrid() then
             sfxManager = SFXManager();
             sfxManager:Play(SoundEffect.SOUND_MEAT_JUMPS , 1.2, 0, false, 1)
             cracker.State = NpcState.STATE_ATTACK;
@@ -541,7 +533,8 @@ data.targetVel = (Isaac.GetRandomPosition() - jester.Position):Normalized()*2
 
 end
 
-jester.Velocity = jester.Velocity * 0.7 + data.targetVel * 0.3
+--jester.Velocity = jester.Velocity * 0.7 + data.targetVel * 0.3
+jester.Pathfinder:MoveRandomly(false)
 
 
 jester:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
@@ -663,7 +656,8 @@ data.targetVel = (Isaac.GetRandomPosition() - joker.Position):Normalized()*2
 
 end
 
-joker.Velocity = joker.Velocity * 0.7 + data.targetVel * 0.3
+joker.Pathfinder:MoveRandomly(false)
+--joker.Velocity = joker.Velocity * 0.7 + data.targetVel * 0.3
 
 
 joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
@@ -820,7 +814,7 @@ function mod:update(beamo)
 
         sprite:Play("Idle");
 
-        beamo.Velocity = (player.Position - beamo.Position):Normalized()*0
+        beamo.Velocity = Vector(0, 0)
         beamo.StateFrame = beamo.StateFrame + 1;
         randomAttack = math.random(1,6);
         if (beamo.StateFrame == 10) then
@@ -846,7 +840,12 @@ function mod:update(beamo)
             beamo.State = NpcState.STATE_MOVE;
             beamo.StateFrame = 0;
         end
-        beamo.Velocity = (player.Position - beamo.Position):Normalized()*4
+
+        if beamo:CollidesWithGrid() then
+          beamo.Pathfinder:FindGridPath(beamo:GetPlayerTarget().Position, 0.8, 0, true)
+        else
+          beamo.Velocity = (player.Position - beamo.Position):Normalized()*3
+        end
 
         if sprite:IsEventTriggered("MeatSound1") then
             sfxManager = SFXManager();
