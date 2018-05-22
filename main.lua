@@ -33,8 +33,8 @@ local sisheart = Isaac.GetEntityVariantByName("Sister's Heart")
 local sagesoul = Isaac.GetEntityVariantByName("Sage Soul")
 
 --                   Projectiles
-local specialDel_target = Isaac.GetEntityTypeByName("Special Delivery Target")
-local specialDel  = Isaac.GetEntityTypeByName("Special Delivery")
+local specialDel_target = Isaac.GetEntityVariantByName("Special Delivery Target")
+local specialDel  = Isaac.GetEntityVariantByName("Special Delivery")
 
 --                  Cards
 local card_mannaz = Isaac.GetCardIdByName("Mannaz")
@@ -1451,12 +1451,13 @@ function mod:UseSage()
 end
 
 function mod:SageFloor()
-  sagesCount = 0
-  local player = Isaac.GetPlayer(0)
-  player:CheckFamiliar(sagesoul, sagesCount, RNG())
-  proj = Isaac.Spawn(1000, 15, 0, player.Position, Vector(0, 0), player)
-  proj.Color = Color( 0, 0, 0,   1,   90, 0, 90)
-  mod:Save()
+  if sagesCount > 0 then
+    sagesCount = 0
+    local player = Isaac.GetPlayer(0)
+    player:CheckFamiliar(sagesoul, sagesCount, RNG())
+    proj = Isaac.Spawn(1000, 15, 0, player.Position, Vector(0, 0), player)
+    proj.Color = Color( 0, 0, 0,   1,   255, 0, 255)
+  end
 end
 
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.UseSage, sage)
@@ -1480,7 +1481,7 @@ function mod:UpdateSpecDeliveryTarget(s)
     elseif data.time == 60 then sprite:Play("Die") data.time = -1 end
   end
 
-  if sprite:IsFinished("Die") then s:Remove() Isaac.Spawn(specialDel, 0, 0, s.Position, Vector(0, 0), nil) player:AnimateCollectible(specialdelivery, "HideItem", "Idle") end
+  if sprite:IsFinished("Die") then s:Remove() Isaac.Spawn(1000, specialDel, 0, s.Position, Vector(0, 0), nil) player:AnimateCollectible(specialdelivery, "HideItem", "Idle") end
 
   if Input.IsMouseBtnPressed(0) then s.Velocity = (Input.GetMousePosition(true) - s.Position) / 6
   elseif player:GetFireDirection() ~= Direction.NO_DIRECTION then s.Velocity = player:GetAimDirection()*10
@@ -1516,10 +1517,10 @@ end
 
 function mod:UseSpecDelivery()
   local player = Isaac.GetPlayer(0)
-  Isaac.Spawn(specialDel_target, 0, 0, player.Position, Vector(0, 0), nil)
+  Isaac.Spawn(1000, specialDel_target, 0, player.Position, Vector(0, 0), nil)
   player:AnimateCollectible(specialdelivery, "LiftItem", "Idle")
 end
 
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.UseSpecDelivery, specialdelivery)
-mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.UpdateSpecDeliveryTarget, specialDel_target)
-mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.SpecDeliveryBehaviour, specialDel)
+mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE , mod.UpdateSpecDeliveryTarget, specialDel_target)
+mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE , mod.SpecDeliveryBehaviour, specialDel)
