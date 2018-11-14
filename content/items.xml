@@ -21,4 +21,5 @@
   <trinket name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
   <trinket name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
   <trinket name="Dark Lock" description="Unlock your dark future..." gfx="trinket_darklock.png" />
+  <trinket name="Krampus' Horn" description="Feed your anger like fire" gfx="trinket_krampus_horn.png" />
 </items>
