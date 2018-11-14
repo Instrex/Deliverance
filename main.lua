@@ -24,6 +24,7 @@ local soultemesisPill = Isaac.GetPillEffectByName("Dissociative Reaction")
 --                  Monsters
 local raga = Isaac.GetEntityTypeByName("Raga")
 local cracker = Isaac.GetEntityTypeByName("Cracker")
+local glutty = Isaac.GetEntityTypeByName("Nutcracker")
 local jester = Isaac.GetEntityTypeByName("Jester")
 local joker = Isaac.GetEntityTypeByName("Joker")
 local beamo = Isaac.GetEntityTypeByName("Beamo")
@@ -62,15 +63,13 @@ function mod:triggerCapBrooch()
     player:AnimateCollectible(capbrooch, "LiftItem", "Idle")
     holding_capbrooch = true
     if roll == 1 then
-        sfxManager = SFXManager();
-        sfxManager:Play(SoundEffect.SOUND_SUMMONSOUND  , 0.8, 0, false, 1)
+        SFXManager():Play(SoundEffect.SOUND_SUMMONSOUND  , 0.8, 0, false, 1)
         chest=Isaac.Spawn(5, 60, 0, position, Vector(0, 0), player);
         local spr = chest:GetSprite()
         spr:ReplaceSpritesheet(0,"gfx/items/pick ups/cbrooch_chests.png")
         spr:LoadGraphics()
     else
-        sfxManager = SFXManager();
-        sfxManager:Play(SoundEffect.SOUND_SUMMONSOUND  , 0.8, 0, false, 1)
+        SFXManager():Play(SoundEffect.SOUND_SUMMONSOUND  , 0.8, 0, false, 1)
         chest=Isaac.Spawn(5, 50, 0, position, Vector(0, 0), player);
         local spr = chest:GetSprite()
         spr:ReplaceSpritesheet(0,"gfx/items/pick ups/cbrooch_chests.png")
@@ -100,8 +99,7 @@ function mod:lifeTapUse()
   local EntityPlayer = Isaac.GetPlayer(0)
   if EntityPlayer:GetMaxHearts() >= 2 then
     EntityPlayer:AddMaxHearts(-2, false)
-    sfxManager = SFXManager();
-    sfxManager:Play(SoundEffect.SOUND_MAW_OF_VOID , 0.8, 0, false, 1)
+    SFXManager():Play(SoundEffect.SOUND_MAW_OF_VOID , 0.8, 0, false, 1)
     EntityPlayer:AnimateSad()
     LifeTapCount = LifeTapCount + 1;
   end
@@ -170,8 +168,7 @@ function mod:useSistersKey()
     or entity.Variant == PickupVariant.PICKUP_SPIKEDCHEST or entity.Variant == PickupVariant.PICKUP_ETERNALCHEST
     or entity.Variant == PickupVariant.PICKUP_REDCHEST or entity.Variant == PickupVariant.PICKUP_BOMBCHEST
     and entity.SubType ~= ChestSubType.CHEST_CLOSED then
-      sfxManager = SFXManager();
-      sfxManager:Play(SoundEffect.SOUND_ULTRA_GREED_COIN_DESTROY, 0.8, 0, false, 1)
+      SFXManager():Play(SoundEffect.SOUND_ULTRA_GREED_COIN_DESTROY, 0.8, 0, false, 1)
       entity:ToPickup():TryOpenChest()
     end
   end
@@ -307,8 +304,7 @@ function mod:update(raga)
         randomAttack = math.random(1,30);
 
         if(randomAttack < 2) then
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_MONSTER_GRUNT_0 , 1.2, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_MONSTER_GRUNT_0 , 1.2, 0, false, 1)
             raga.State = NpcState.STATE_ATTACK;
             raga.StateFrame = 0;
         end
@@ -331,8 +327,7 @@ function mod:update(raga)
         if(randomAttack > 3) then
             raga.State = NpcState.STATE_ATTACK3;
             raga.StateFrame = 0;
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_RAGMAN_1 , 1, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_RAGMAN_1 , 1, 0, false, 1)
             proj1 = Isaac.Spawn(EntityType.ENTITY_PROJECTILE, 6, 0, raga.Position, Vector(7.5,7.5), nil);
             proj1:ToProjectile():AddProjectileFlags(ProjectileFlags.SMART)
             proj1:ToProjectile():AddHeight(-20)
@@ -357,8 +352,7 @@ function mod:update(raga)
             angle = math.random(1,359);
             mag = math.random(5,10);
 
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_MONSTER_YELL_A , 0.8, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_MONSTER_YELL_A , 0.8, 0, false, 1)
             Isaac.Spawn(222, 0, 0, raga.Position, Vector.FromAngle(angle):__mul(mag), nil);
         end
 
@@ -383,8 +377,8 @@ function mod:update(raga)
     end
 
         if(raga:IsDead()) then
-        proj = Isaac.Spawn(1000, 77, 0, raga.Position, Vector(0, 0), player)
-        proj.Color = Color( 0, 0, 0,   1,   90, 0, 90)
+          proj = Isaac.Spawn(1000, 77, 0, raga.Position, Vector(0, 0), player)
+          proj.Color = Color( 0, 0, 0,   1,   90, 0, 90)
         end
 
 end
@@ -439,8 +433,7 @@ data.initialized = true
         randomAttack = math.random(1,30);
 
         if randomAttack < 2 or cracker:CollidesWithGrid() then
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_MEAT_JUMPS , 1.2, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_MEAT_JUMPS , 1.2, 0, false, 1)
             cracker.State = NpcState.STATE_ATTACK;
             cracker.StateFrame = 0;
         end
@@ -452,12 +445,17 @@ data.initialized = true
 
         cracker.Velocity = (player.Position - cracker.Position):Normalized()*7.5
 
+        local grindex = game:GetRoom():GetGridIndex(cracker.Position + cracker.Velocity)
+        local grid = game:GetRoom():GetGridEntity(grindex)
+        if grid and grid.Desc.Type~=GridEntityType.GRID_DECORATION and grid.Desc.Type~=GridEntityType.GRID_SPIKES and grid.Desc.Type~=GridEntityType.GRID_SPIKES_ONOFF and grid.Desc.Type~=GridEntityType.GRID_SPIKES_ONOFF and grid.Desc.Type~=GridEntityType.GRID_SPIDERWEB and grid.Desc.Type~=GridEntityType.GRID_PRESSURE_PLATE then
+            game:GetRoom():DestroyGrid(grindex, true)
+        end
+
         if(sprite:IsFinished("Jump")) then
 
             cracker.State = NpcState.STATE_ATTACK2;
             cracker.StateFrame = 0;
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_POT_BREAK , 1, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_POT_BREAK , 1, 0, false, 1)
             Isaac.Spawn(9, 0, 0, cracker.Position, Vector(0, 7.5), player)
             Isaac.Spawn(9, 0, 0, cracker.Position, Vector(7.5, 0), player)
             Isaac.Spawn(9, 0, 0, cracker.Position, Vector(0, -7.5), player)
@@ -490,7 +488,7 @@ data.initialized = true
     end
 
         if(cracker:IsDead()) then
-        Isaac.Spawn(1000, 77, 0, cracker.Position, Vector(0, 0), player)
+          Isaac.Spawn(1000, 77, 0, cracker.Position, Vector(0, 0), player)
         end
 end
 
@@ -518,6 +516,76 @@ end
 mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.hosttocracker, 247)
 
 ------------------------------------------
+-- Monster: Glutty -------------------------
+------------------------------------------
+
+function mod:update(glutty)
+    local player = Isaac.GetPlayer(0);
+    local sprite = glutty:GetSprite();
+
+    if(glutty.State == NpcState.STATE_INIT) then
+        glutty.State = NpcState.STATE_MOVE;
+    end
+
+    if(glutty.State == NpcState.STATE_MOVE) then 
+        glutty:AnimWalkFrame("WalkHori", "WalkVert", 0.1) 
+        glutty.Pathfinder:FindGridPath(player.Position, 0.8, 1, false) 
+        glutty.StateFrame = glutty.StateFrame + 1 
+        if glutty.StateFrame>=35 then 
+           if (glutty.Position:Distance(player.Position) <= 150) then
+              glutty.State = NpcState.STATE_ATTACK; 
+           end
+        end 
+    end 
+
+    if(glutty.State == NpcState.STATE_ATTACK) then 
+
+        glutty:AnimWalkFrame("WalkHoriRage", "WalkHoriRage", 0.1)
+        glutty.Velocity = (player.Position - glutty.Position):Normalized()*7 
+        if(sprite:IsFinished("WalkHoriRage")) then
+            glutty.State = NpcState.STATE_MOVE; 
+            glutty.StateFrame = -25; 
+        end 
+
+        if sprite:IsEventTriggered("Shake") then 
+            Game():ShakeScreen(4) SFXManager():Play(SoundEffect.SOUND_POT_BREAK , 0.5, 0, false, 2) 
+        end 
+
+        local grindex = game:GetRoom():GetGridIndex(glutty.Position + glutty.Velocity)
+        local grid = game:GetRoom():GetGridEntity(grindex)
+        if grid and grid.Desc.Type~=GridEntityType.GRID_DECORATION and grid.Desc.Type~=GridEntityType.GRID_SPIKES and grid.Desc.Type~=GridEntityType.GRID_SPIKES_ONOFF and grid.Desc.Type~=GridEntityType.GRID_SPIKES_ONOFF and grid.Desc.Type~=GridEntityType.GRID_SPIDERWEB and grid.Desc.Type~=GridEntityType.GRID_PRESSURE_PLATE then
+            game:GetRoom():DestroyGrid(grindex, true)
+        end
+    end
+
+    if(glutty:IsDead()) then 
+      if math.random(1, 3) == 1 then 
+        Game():Spawn(11, 0, glutty.Position, Vector(0,0), glutty, 0, 1):ToNPC()
+      else
+        Game():Spawn(11, 1, glutty.Position, Vector(0,0), glutty, 0, 1):ToNPC() 
+      end 
+    end
+end
+
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.update, glutty)
+
+function mod:gapertoglutty(entity) 
+   local game = Game() 
+   local player = Isaac.GetPlayer(0) 
+   if entity.FrameCount <= 5 then 
+      if (math.random(1,8) == 1) then 
+         enemy = entity:ToNPC() 
+         if enemy then 
+            Isaac.Spawn(glutty,0,0,enemy.Position, Vector(0,0), player); 
+            player.Remove(enemy,enemy.Position, Vector(0,0), player); 
+         end 
+      end 
+   end 
+end 
+
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.gapertoglutty, 10)
+
+------------------------------------------
 -- Monster: Jester -------------------------
 ------------------------------------------
 
@@ -525,20 +593,16 @@ function mod:update(jester)
 
     local player = Isaac.GetPlayer(0);
     local randomAttack=0;
-    sprite = jester:GetSprite();
+    local sprite = jester:GetSprite();
     local data = jester:GetData()
     if not data.initialized then
-
-data.targetVel = Vector(0, 0)
-
-data.died = false
-
-data.initialized = true
-
+      data.targetVel = Vector(0, 0)
+      data.died = false
+      data.initialized = true 
     end
 
     if(jester.State == NpcState.STATE_INIT) then
-jester:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
+        jester:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
         jester.State = NpcState.STATE_MOVE;
     end
 
@@ -553,8 +617,7 @@ jester:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
         end
 
         if(jester.StateFrame == 50) then
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_FAT_GRUNT , 1.2, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_FAT_GRUNT , 1.2, 0, false, 1)
             jester.State = NpcState.STATE_ATTACK;
             jester.StateFrame = 0;
             randomAttack=0
@@ -564,26 +627,18 @@ jester:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
 
     if(jester.State == NpcState.STATE_ATTACK) then
         sprite:Play("Charge");
-
-    jester.Velocity = (player.Position - jester.Position):Normalized()*0
+        jester.Velocity = (player.Position - jester.Position):Normalized()*0
 
         if(sprite:IsFinished("Charge")) then
 
             jester.State = NpcState.STATE_ATTACK2;
             jester.StateFrame = 0;
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_1 , 1, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_1 , 1, 0, false, 1)
             local urod = Game():Spawn(227, 0, jester.Position, Vector(0,0), jester, 0, 1):ToNPC()
-
-
             jester:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
-
             urod.HitPoints = 3
-
             urod.State = 0
-
             urod:SetSize(9, Vector(1,1), 12)
-
             urod.Scale = 0.75
             Isaac.Spawn(1000, 15, 0, jester.Position+Vector(0, 15), Vector(0, 0), nil)
             Game():ShakeScreen(3)
@@ -607,10 +662,9 @@ jester:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
     end
 
         if math.random(1, 25) == 1 then
-
-        if(jester:IsDead()) then
-        proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, card_mannaz, jester.Position, Vector(0, 0), player)
-        end
+          if(jester:IsDead()) then
+            proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, card_mannaz, jester.Position, Vector(0, 0), player)
+          end
         end
 end
 
@@ -623,8 +677,7 @@ function mod:hosttojester(entity)
         local current_floor = level:GetStage()
         local player = Isaac.GetPlayer(0)
         if entity.FrameCount <= 5 then
-            local chance = math.random(1,5)
-            if (chance == 1 and current_floor == LevelStage.STAGE3_1 or current_floor == LevelStage.STAGE3_2) then
+            if (math.random(1,5) == 1 and current_floor == LevelStage.STAGE3_1 or current_floor == LevelStage.STAGE3_2) then
                 enemy = entity:ToNPC()
                 if enemy then
                     Isaac.Spawn(jester,0,0,enemy.Position, Vector(0,0), player);  
@@ -648,17 +701,13 @@ function mod:update(joker)
     sprite = joker:GetSprite();
     local data = joker:GetData()
     if not data.initialized then
-
-data.targetVel = Vector(0, 0)
-
-data.died = false
-
-data.initialized = true
-
+      data.targetVel = Vector(0, 0)
+      data.died = false
+      data.initialized = true
     end
 
     if(joker.State == NpcState.STATE_INIT) then
-joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
+        joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
         joker.State = NpcState.STATE_MOVE;
     end
 
@@ -666,8 +715,7 @@ joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
 
     joker.Pathfinder:FindGridPath(player.Position, 0.88, 1, false)
 
-
-joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
+    joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
 
         if (joker.Position:Distance(player.Position) <= 250) then
           joker.StateFrame = joker.StateFrame + 1
@@ -675,8 +723,7 @@ joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
 
         randomAttack = math.random(1,6);
         if(joker.StateFrame == 75) then
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_FAT_GRUNT , 1.2, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_FAT_GRUNT , 1.2, 0, false, 1)
 
         if(randomAttack < 3) then
             joker.State = NpcState.STATE_ATTACK;
@@ -692,27 +739,21 @@ joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
     end
 
     if(joker.State == NpcState.STATE_ATTACK) then
+        
         sprite:Play("Charge");
-
-    joker.Velocity = (player.Position - joker.Position):Normalized()*0
+        joker.Velocity = (player.Position - joker.Position):Normalized()*0
 
         if(sprite:IsFinished("Charge")) then
 
             joker.State = NpcState.STATE_ATTACK2;
             joker.StateFrame = 0;
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_1 , 1, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_1 , 1, 0, false, 1)
             local urod = Game():Spawn(277, 0, joker.Position, Vector(0,0), joker, 0, 1):ToNPC()
 
-
             joker:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
-
             urod.HitPoints = 3
-
             urod.State = 0
-
             urod:SetSize(9, Vector(1,1), 12)
-
             urod.Scale = 0.75
             Isaac.Spawn(1000, 15, 0, joker.Position+Vector(0, 15), Vector(0, 0), nil)
             Game():ShakeScreen(3)
@@ -745,8 +786,7 @@ joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
 
             joker.State = NpcState.STATE_ATTACK4;
             joker.StateFrame = 0;
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_2 , 1, 0, false, 1)
+            SFXManager():Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_2 , 1, 0, false, 1)
 
             local brimstone_laser = EntityLaser.ShootAngle(1, joker.Position, 45, 15, Vector(0,-20), joker)
 
@@ -781,11 +821,11 @@ joker:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
     end
 
         if(joker:IsDead()) then
-        Isaac.Explode(joker.Position, joker, 1.0)
+           Isaac.Explode(joker.Position, joker, 1.0)
 
-        if math.random(1, 12) == 1 then
-        proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, card_mannaz, joker.Position, Vector(0, 0), player)
-        end
+           if math.random(1, 12) == 1 then
+             proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, card_mannaz, joker.Position, Vector(0, 0), player)
+           end
         end
 end
 
@@ -798,8 +838,7 @@ function mod:hosttojoker(entity)
         local current_floor = level:GetStage()
         local player = Isaac.GetPlayer(0)
         if entity.FrameCount <= 5 then
-            local chance = math.random(1,5)
-            if (chance == 1 and current_floor == LevelStage.STAGE5_1 or current_floor == LevelStage.STAGE5_2) then
+            if math.random(1,5) == 1 and (current_floor == LevelStage.STAGE5_1 or current_floor == LevelStage.STAGE5_2) then
                 enemy = entity:ToNPC()
                 if enemy then
                     Isaac.Spawn(joker,0,0,enemy.Position, Vector(0,0), player);  
@@ -818,9 +857,28 @@ mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.hosttojoker, 27)
 function mod:update(beamo)
     local player = Isaac.GetPlayer(0)
     local sprite = beamo:GetSprite()
+    local current_floor = level:GetStage()
+    local brim_type=1;
+
+    if (current_floor == LevelStage.STAGE5 or current_floor == LevelStage.STAGE5_GREED) then
+      if level:GetStageType() == StageType.STAGETYPE_WOTL then
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/dreamo.png")
+        sprite:LoadGraphics()
+        brim_type=3
+      else
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/brimo.png")
+        sprite:LoadGraphics()
+        brim_type=1
+      end
+    else
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/beamo.png")
+        sprite:LoadGraphics()
+        brim_type=1
+    end
 
     if(beamo.State == NpcState.STATE_INIT) then
         sprite:Play("Move");
+
         beamo.State = NpcState.STATE_MOVE;
     end
 
@@ -831,9 +889,9 @@ function mod:update(beamo)
    
         if (beamo.StateFrame == 15) then
             if math.random(1, 3) == 1 then
-              sfxManager:Play(SoundEffect.SOUND_RAGMAN_1, 1.2, 0, false, 1)
+              SFXManager():Play(SoundEffect.SOUND_RAGMAN_1, 1.2, 0, false, 1)
             else
-              sfxManager:Play(SoundEffect.SOUND_RAGMAN_2, 1.2, 0, false, 1)
+              SFXManager():Play(SoundEffect.SOUND_RAGMAN_2, 1.2, 0, false, 1)
             end
         end
 
@@ -865,9 +923,8 @@ function mod:update(beamo)
 
         if sprite:IsEventTriggered("BrimLeft")
         then
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
-            local brimstone_laser = EntityLaser.ShootAngle(1, beamo.Position, 180, 15, Vector(-25,-9), beamo)
+            SFXManager():Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
+            local brimstone_laser = EntityLaser.ShootAngle(brim_type, beamo.Position, 180, 15, Vector(-25,-9), beamo)
 
             brimstone_laser.DepthOffset = 200
             beamo.Velocity = Vector(25,0)
@@ -888,9 +945,8 @@ function mod:update(beamo)
 
         if sprite:IsEventTriggered("BrimRight")
         then
-            sfxManager = SFXManager();
-            sfxManager:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
-            local brimstone_laser = EntityLaser.ShootAngle(1, beamo.Position, 0, 15, Vector(22,-9), beamo)
+            SFXManager():Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
+            local brimstone_laser = EntityLaser.ShootAngle(brim_type, beamo.Position, 0, 15, Vector(22,-9), beamo)
 
             brimstone_laser.DepthOffset = 200
             beamo.Velocity = Vector(-25,0)
@@ -900,8 +956,12 @@ function mod:update(beamo)
 
     end
 
+
     if(beamo:IsDead()) then
-       Isaac.Spawn(1000, 77, 0, beamo.Position, Vector(0, 0), player)
+        proj = Isaac.Spawn(1000, 77, 0, beamo.Position, Vector(0, 0), player)
+        if current_floor == LevelStage.STAGE5 and level:GetStageType() == StageType.STAGETYPE_WOTL then
+          proj.Color = Color( 0, 0, 0,   1,   150, 150, 150)
+        end
     end
 
 end
@@ -915,8 +975,7 @@ function mod:redghosttobeamo(entity)
         local current_floor = level:GetStage()
         local player = Isaac.GetPlayer(0)
         if entity.FrameCount <= 5 then
-            local chance = math.random(1,5)
-            if chance == 1 then
+            if math.random(1,5) == 1 then
                 enemy = entity:ToNPC()
                 if enemy then
                     Isaac.Spawn(beamo,0,0,enemy.Position, Vector(0,0), player);  
@@ -1134,8 +1193,6 @@ function mod:SecondChanceUpdate()
           entity:AddConfusion(EntityRef(nil), 60, false)
         end
       end
-
-
     end
   end
 end
@@ -1161,27 +1218,17 @@ function mod:SpawnCreepOnHit(npc)
   if npc:IsVulnerableEnemy() and player:HasCollectible(sailorhat) then
       local roll = math.random(1, 6-(math.min(player.Luck, 4)))
       if roll == 2 then
-      Isaac.Spawn(1000, 54, 0, npc.Position, Vector(0, 0), player)
-      Isaac.Spawn(1000, 54, 0, npc.Position+Vector(20, 0), Vector(0, 0), player)
-      Isaac.Spawn(1000, 54, 0, npc.Position+Vector(-20, 0), Vector(0, 0), player)
-      Isaac.Spawn(1000, 54, 0, npc.Position+Vector(0, 20), Vector(0, 0), player)
-      Isaac.Spawn(1000, 54, 0, npc.Position+Vector(0, -20), Vector(0, 0), player)
+        local creep = Isaac.Spawn(1000, 54, 0, npc.Position, Vector(0, 0), player)
       end
   end
 end
-
-
 
 function mod:SpawnCreepOnPlayer()
     local player = Isaac.GetPlayer(0)
 
     if player:HasCollectible(sailorhat) then
 
-      Isaac.Spawn(1000, 54, 0, player.Position, Vector(0, 0), player)
-      Isaac.Spawn(1000, 54, 0, player.Position+Vector(20, 0), Vector(0, 0), player)
-      Isaac.Spawn(1000, 54, 0, player.Position+Vector(-20, 0), Vector(0, 0), player)
-      Isaac.Spawn(1000, 54, 0, player.Position+Vector(0, 20), Vector(0, 0), player)
-      Isaac.Spawn(1000, 54, 0, player.Position+Vector(0, -20), Vector(0, 0), player)
+        local creep = Isaac.Spawn(1000, 54, 0, player.Position, Vector(0, 0), player)
 
     end
 end
@@ -1355,14 +1402,12 @@ function mod:SistersHeartBehaviour(sh)
   local player = Isaac.GetPlayer(0)
   local data = sh:GetData()
 
-  local sfx = SFXManager()
-
     if player:GetFireDirection() == Direction.NO_DIRECTION then
       sprite:Play("Shoot")
     else sprite:Play("Intense") end
    
     if sprite:IsEventTriggered("Shoot") and mod:CheckRoomEnemies() >= 1 then
-      sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTER, 1, 0, false, 1)
+      SFXManager():Play(SoundEffect.SOUND_HEARTBEAT_FASTER, 1, 0, false, 1)
       proj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, sh.Position + Vector(0, 15), Vector(-3,0):Rotated(math.random(0, 360)), nil):ToTear()
     end
 
@@ -1370,7 +1415,7 @@ function mod:SistersHeartBehaviour(sh)
       if data.Offset == nil then data.Offset = 0 end
 
       if player:GetHearts() <= 1 or data.Offset % 2 == 0 then
-        sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTEST, 1, 0, false, 1)
+        SFXManager():Play(SoundEffect.SOUND_HEARTBEAT_FASTEST, 1, 0, false, 1)
         Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(7, 0):Rotated(10 * data.Offset), nil)
         Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(-7, 0):Rotated(10 * data.Offset), nil)
         Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, sh.Position + Vector(0, 15), Vector(0, 7):Rotated(10 * data.Offset), nil)
@@ -1416,7 +1461,6 @@ function mod:SageSoulBehaviour(sh)
   local player = Isaac.GetPlayer(0)
   local data = sh:GetData()
 
-  local sfx = SFXManager()
   --if sprite:IsFinished("Appear") then
   --  data.appeared = 1
   --end
@@ -1511,12 +1555,11 @@ function mod:SpecDeliveryBehaviour(s)
   local sprite = s:GetSprite()
   local player = Isaac.GetPlayer(0)
   local data = s:GetData()
-  local sfxManager = SFXManager()
 
   if data.init == nil then data.init = 1 sprite:Play("Main") end
 
   if sprite:IsEventTriggered("Land") then
-    sfxManager:Play(SoundEffect.SOUND_CHEST_DROP, 1, 0, false, 1)
+    SFXManager():Play(SoundEffect.SOUND_CHEST_DROP, 1, 0, false, 1)
   end
 
   if sprite:IsEventTriggered("Explode") then
