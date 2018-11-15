@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="Unknown" CreatedOn="15.11.2018 13:26:16" Version="11" Fps="30"/>
+	<Info CreatedBy="Unknown" CreatedOn="15.11.2018 18:28:41" Version="12" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="projectiles\proj_special_delivery.png" Id="0"/>
@@ -17,7 +17,7 @@
 		</Events>
 	</Content>
 	<Animations DefaultAnimation="Main">
-		<Animation Name="Main" FrameNum="69" Loop="true">
+		<Animation Name="Main" FrameNum="65" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -44,15 +44,15 @@
 					<Frame XPosition="0" YPosition="-90" XPivot="16" YPivot="16" XCrop="92" YCrop="-1" Width="32" Height="32" XScale="80" YScale="150" Delay="4" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 					<Frame XPosition="0" YPosition="-60" XPivot="16" YPivot="16" XCrop="92" YCrop="-1" Width="32" Height="32" XScale="70" YScale="150" Delay="2" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 					<Frame XPosition="0" YPosition="-30" XPivot="16" YPivot="16" XCrop="92" YCrop="-1" Width="32" Height="32" XScale="90" YScale="120" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
-					<Frame XPosition="0" YPosition="-9" XPivot="16" YPivot="16" XCrop="92" YCrop="-1" Width="32" Height="32" XScale="120" YScale="80" Delay="10" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="-9" XPivot="16" YPivot="16" XCrop="92" YCrop="-1" Width="32" Height="32" XScale="120" YScale="80" Delay="6" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 					<Frame XPosition="0" YPosition="-2" XPivot="16" YPivot="16" XCrop="92" YCrop="-1" Width="32" Height="32" XScale="170" YScale="30" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="255" GreenOffset="255" BlueOffset="150" Rotation="0" Interpolated="true"/>
 				</LayerAnimation>
 			</LayerAnimations>
 			<NullAnimations/>
 			<Triggers>
 				<Trigger EventId="1" AtFrame="58"/>
-				<Trigger EventId="0" AtFrame="67"/>
-				<Trigger EventId="2" AtFrame="68"/>
+				<Trigger EventId="0" AtFrame="63"/>
+				<Trigger EventId="2" AtFrame="64"/>
 			</Triggers>
 		</Animation>
 	</Animations>
