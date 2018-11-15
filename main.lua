@@ -7,11 +7,13 @@ content = {
 
   items = {
     sisKey                = require 'scripts.items.sistersKey',
-    capBrooch             = require 'scripts.items.captainsBrooch'
+    capBrooch             = require 'scripts.items.captainsBrooch',
+    theApple              = require 'scripts.items.theApple'
   },
 
   trinkets = {
     uncertainty           = require 'scripts.trinkets.uncertainty',
+    appleCore             = require 'scripts.trinkets.appleCore',
     krampusHorn           = require 'scripts.trinkets.krampusHorn'
   },
 

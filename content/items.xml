@@ -7,10 +7,7 @@
 
   <active name="Sage" description="Descending souls" gfx="collectibles_sage.png" maxcharges="6"/>
 
-  <active name="The Apple" description="Tasty!" gfx="collectibles_apple_1.png" maxcharges="x"/>
-  <active name="Bitten Apple" description="Still tasty!" gfx="collectibles_apple_2.png" maxcharges="x"/>
-  <active name="Half of the Apple" description="Tasty but not much of it left..." gfx="collectibles_apple_3.png" maxcharges="x"/>
-  <active name="A bit of Apple" description="This is the end..." gfx="collectibles_apple_4.png" maxcharges="x"/>
+  <active name="The Apple" description="Tasty!" gfx="collectibles_apple.png" maxcharges="x"/>
 
   <passive name="Breath of the Devil" description="Evil at a solid cost" gfx="collectibles_breathofdevil.png" />
   <passive name="Second Chance" description="Your LAST chance..." gfx="collectibles_secondchance.png" />
@@ -22,4 +19,5 @@
   <trinket name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
   <trinket name="Dark Lock" description="Unlock your dark future..." gfx="trinket_darklock.png" />
   <trinket name="Krampus' Horn" description="Feed your anger like fire" gfx="trinket_krampus_horn.png" />
+  <trinket name="Apple Core" description="Someone eating, but someone already ate.." gfx="trinket_appleCore.png" />
 </items>
