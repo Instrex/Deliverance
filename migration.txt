@@ -8,15 +8,15 @@ TODO (Items):
   Sister's Heart
   Sage
   Special Delivery
-  Apple
+> Apple
 
 TODO (Trinkets):
 > Uncertainty
   Discount Brochure
-  Dark Lock
+> Dark Lock
 
 TODO (Monsters):
-  Raga
+> Raga
   Beamo
   Glutty
   Jester

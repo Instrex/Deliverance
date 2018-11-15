@@ -6,7 +6,7 @@ function this.trigger(id)
   if player:HasTrinket(this.id) then
     if utils.chance(8) then
       SFXManager():Play(SoundEffect.SOUND_1UP , 0.8, 0, false, 0.8)
-      player:UsePill(PillEffect.PILLEFFECT_FULL_HEALTH, -1)
+      player:AddHearts(20)
       player:TryRemoveTrinket(this.id)
     end
   end

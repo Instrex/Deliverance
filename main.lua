@@ -6,15 +6,18 @@ utils = require('scripts.utils')
 content = {
 
   items = {
-    sisKey                = require 'scripts.items.sistersKey',
-    capBrooch             = require 'scripts.items.captainsBrooch',
-    theApple              = require 'scripts.items.theApple'
+    sistersKey                = require 'scripts.items.sistersKey',
+    sistersHeart              = require 'scripts.items.familiars.sistersHeart',
+    capBrooch                 = require 'scripts.items.captainsBrooch',
+    theApple                  = require 'scripts.items.theApple',
+    sailorHat                 = require 'scripts.items.sailorHat'
   },
 
   trinkets = {
     uncertainty           = require 'scripts.trinkets.uncertainty',
     appleCore             = require 'scripts.trinkets.appleCore',
-    krampusHorn           = require 'scripts.trinkets.krampusHorn'
+    krampusHorn           = require 'scripts.trinkets.krampusHorn',
+    darkLock              = require 'scripts.trinkets.darkLock'
   },
 
   entities = {
