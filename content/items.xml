@@ -1,13 +1,14 @@
-<items gfxroot="gfx/items/" version="1">
+﻿<items gfxroot="gfx/items/" version="1">
   <active name="Captain's Brooch" description="Calls down a chest nearby" gfx="collectibles_capbrooch.png" maxcharges="6"  />
   <!-- active name="Life Tap" description="Your soul is Mine..." gfx="collectibles_lifetap.png" maxcharges="x" cache="speed damage shotspeed range"/ -->
   <active name="Sister's Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
   <active name="D<3" description="Reroll your life" gfx="collectibles_dheart.png" maxcharges="4"/>
   <active name="Special Delivery" description="Re-supply!" gfx="collectibles_special_delivery.png" maxcharges="4"/>
+  <active name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="x"/>
+  <active name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
+  <active name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="4"/>
 
   <active name="Sage" description="Descending souls" gfx="collectibles_sage.png" maxcharges="6"/>
-
-  <active name="The Apple" description="Tasty!" gfx="collectibles_apple.png" maxcharges="x"/>
 
   <passive name="Breath of the Devil" description="Evil at a solid cost" gfx="collectibles_breathofdevil.png" />
   <passive name="Second Chance" description="Your LAST chance..." gfx="collectibles_secondchance.png" />

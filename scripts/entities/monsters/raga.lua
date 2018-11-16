@@ -77,7 +77,7 @@ function this:behaviour(npc)
 end
 
 function this:transformation(npc)
-  if utils.chancep(25) then
+  if utils.chancep(20) then
     npc:Morph(this.id, 0, 0, 0)
   end
 end

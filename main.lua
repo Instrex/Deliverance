@@ -10,6 +10,8 @@ content = {
     sistersHeart              = require 'scripts.items.familiars.sistersHeart',
     capBrooch                 = require 'scripts.items.captainsBrooch',
     theApple                  = require 'scripts.items.theApple',
+    lighter                   = require 'scripts.items.lighter',
+    shrinkRay                 = require 'scripts.items.shrinkRay',
     sailorHat                 = require 'scripts.items.sailorHat'
   },
 
@@ -21,7 +23,8 @@ content = {
   },
 
   entities = {
-    raga                  = require 'scripts.entities.monsters.raga'
+    raga                  = require 'scripts.entities.monsters.raga',
+    glutty                = require 'scripts.entities.monsters.glutty'
   },
 
   costumes = {

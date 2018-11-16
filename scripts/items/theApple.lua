@@ -1,5 +1,5 @@
 local this = {}
-this.id = Isaac.GetItemIdByName("The Apple")
+this.id = Isaac.GetItemIdByName("Golden Apple")
 
 function this.use()
   local player = Isaac.GetPlayer(0)
