@@ -56,6 +56,7 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, this.behaviour, this.id)
   mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, this.awake, this.id)
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
+  mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, this.cache)
 end
 
 return this
