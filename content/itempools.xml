@@ -1,13 +1,14 @@
 <ItemPools>
     <Pool Name="secret">
-	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Lighter" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="treasure">
-	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-       <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Shrink Ray" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -23,6 +24,7 @@
     <Pool Name="shop">
       <Item Name="The Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Lighter" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="devil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
