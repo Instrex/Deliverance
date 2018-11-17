@@ -48,12 +48,13 @@ function this:trigger(pickup, col)
       else
         -- Expode with 5% chance --
         if utils.chancep(5) then
-          pickup:Kill()
-          Isaac.Explode(pickup.Position, pickup, 1.0)
+          --pickup:Kill()
+          --Isaac.Explode(pickup.Position, pickup, 1.0)
+          game:StartRoomTransition(level:QueryRoomTypeIndex(RoomType.ROOM_BOSS, false, RNG()), Direction.NO_DIRECTION, "3")
 
         -- Spawn many troll bombs with 5% chance --
         elseif utils.chancep(5) then
-          for i = 0, math.random(2, 8), 1 do
+          for i = 0, math.random(2, 6), 1 do
             Isaac.Spawn(4, 3, 0, pickup.Position, Vector.FromAngle(math.random(0, 360)) * math.random(1, 10), nil)
           end
 

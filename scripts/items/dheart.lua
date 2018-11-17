@@ -9,6 +9,7 @@ function this.use()
       pickup:Morph(5, 10, 0, true)
     end
   end
+  return true
 end
 
 function this.Init()

@@ -38,7 +38,7 @@ function this:behaviour(npc)
         npc.State = NpcState.STATE_ATTACK2;
         sfx:Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_1 , 1, 0, false, 1.12)
         local urod = Game():Spawn(277, 0, npc.Position, Vector(0,0), npc, 0, 1):ToNPC()
-           urod.HitPoints = 5
+           urod.HitPoints = 4
            urod.State = 0
            urod:SetSize(9, Vector(1,1), 12)
            urod.Scale = 0.75
