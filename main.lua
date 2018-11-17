@@ -8,6 +8,7 @@ content = {
   items = {
     sistersKey                = require 'scripts.items.sistersKey',
     sistersHeart              = require 'scripts.items.familiars.sistersHeart',
+    specialDelivery           = require 'scripts.items.specialDelivery',
     capBrooch                 = require 'scripts.items.captainsBrooch',
     theApple                  = require 'scripts.items.theApple',
     lighter                   = require 'scripts.items.lighter',
@@ -25,7 +26,11 @@ content = {
 
   entities = {
     raga                      = require 'scripts.entities.monsters.raga',
-    nutcracker                = require 'scripts.entities.monsters.nutcracker'
+    nutcracker                = require 'scripts.entities.monsters.nutcracker',
+    jester                    = require 'scripts.entities.monsters.jester',
+    joker                     = require 'scripts.entities.monsters.joker',
+    beamo                     = require 'scripts.entities.monsters.beamo',
+    cracker                   = require 'scripts.entities.monsters.cracker'
   },
 
   costumes = {
