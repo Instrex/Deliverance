@@ -39,16 +39,17 @@ function this:behaviour(npc)
     end
 
     if sprite:IsEventTriggered("Shake") then
-        Game():ShakeScreen(4) sfx:Play(SoundEffect.SOUND_POT_BREAK , 0.5, 0, false, 2)
+        Game():ShakeScreen(4)
+        sfx:Play(SoundEffect.SOUND_POT_BREAK, 0.5, 0, false, 2)
 
-        for e, food in pairs(Isaac.FindInRadius(npc.Position, 30, EntityPartition.ENEMY)) do 
-           if food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 then 
-               food:TakeDamage(10, 0, EntityRef(nil), 0) 
+        for e, food in pairs(Isaac.FindInRadius(npc.Position, 30, EntityPartition.ENEMY)) do
+           if food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 then
+               food:TakeDamage(10, 0, EntityRef(nil), 0)
                npc.HitPoints = npc.MaxHitPoints
                sprite:ReplaceSpritesheet(1,"gfx/monsters/gluttyb.png")
                sprite:LoadGraphics()
-           end 
-        end 
+           end
+        end
     end
 
     local grindex = game:GetRoom():GetGridIndex(npc.Position + npc.Velocity)
@@ -66,13 +67,8 @@ function this:transformation(npc)
 end
 
 function this:die(npc)
-  local type=0
-  if utils.chancep(50) then type = 0 else type = 1 end
-  local ent = Game():Spawn(11, 0, npc.Position, Vector(0,0), npc, 0, 1):ToNPC()
-
- 
-  ent:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
-
+  game:Spawn(11, utils.choose(0, 1), npc.Position, Vector(0,0), npc, 0, 1)
+    :ToNPC():ClearEntityFlags(EntityFlag.FLAG_APPEAR)
 end
 
 function this.Init()

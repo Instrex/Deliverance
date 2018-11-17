@@ -18,7 +18,7 @@ end
 -- Usage
 -- utils.chancep(20) will return true with 20% probability
 function Utils.chancep(percentage)
-  return math.random(0, 100) < percentage
+  return math.random(0, 100) <= percentage
 end
 
 -- Usage

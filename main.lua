@@ -12,26 +12,26 @@ content = {
     theApple                  = require 'scripts.items.theApple',
     lighter                   = require 'scripts.items.lighter',
     shrinkRay                 = require 'scripts.items.shrinkRay',
-    sailorHat                 = require 'scripts.items.sailorHat'
+    sailorHat                 = require 'scripts.items.sailorHat',
+    dheart                    = require 'scripts.items.dheart'
   },
 
   trinkets = {
-    uncertainty           = require 'scripts.trinkets.uncertainty',
-    appleCore             = require 'scripts.trinkets.appleCore',
-    krampusHorn           = require 'scripts.trinkets.krampusHorn',
-    darkLock              = require 'scripts.trinkets.darkLock'
+    uncertainty               = require 'scripts.trinkets.uncertainty',
+    appleCore                 = require 'scripts.trinkets.appleCore',
+    krampusHorn               = require 'scripts.trinkets.krampusHorn',
+    darkLock                  = require 'scripts.trinkets.darkLock'
   },
 
   entities = {
-    raga                  = require 'scripts.entities.monsters.raga',
-    glutty                = require 'scripts.entities.monsters.glutty'
+    raga                      = require 'scripts.entities.monsters.raga',
+    nutcracker                = require 'scripts.entities.monsters.nutcracker'
   },
 
   costumes = {
     noAutoload = true,
     sailorHat = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_sailorhat.anm2")
   }
-
 }
 
 -- Content Initialization --
