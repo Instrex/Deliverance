@@ -14,7 +14,8 @@ content = {
     lighter                   = require 'scripts.items.lighter',
     shrinkRay                 = require 'scripts.items.shrinkRay',
     sailorHat                 = require 'scripts.items.sailorHat',
-    dheart                    = require 'scripts.items.dheart'
+    dheart                    = require 'scripts.items.dheart',
+    saltySoup                 = require 'scripts.items.saltySoup'
   },
 
   trinkets = {
@@ -35,7 +36,8 @@ content = {
 
   costumes = {
     noAutoload = true,
-    sailorHat = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_sailorhat.anm2")
+    sailorHat = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_sailorhat.anm2"),
+    saltySoup = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_saltySoup.anm2")
   }
 }
 

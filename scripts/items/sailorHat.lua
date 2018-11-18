@@ -3,9 +3,8 @@ this.id = Isaac.GetItemIdByName("Sailor Hat")
 
 function this:cache(player, flag)
   if player:HasCollectible(this.id) then
-    if flag == CacheFlag.CACHE_TEARCOLOR then
-      player:AddNullCostume(content.costumes.sailorHat)
-    elseif flag == CacheFlag.CACHE_SPEED then
+    player:AddNullCostume(content.costumes.sailorHat)
+    if flag == CacheFlag.CACHE_SPEED then
      player.MoveSpeed = player.MoveSpeed + 0.2
     end
   end

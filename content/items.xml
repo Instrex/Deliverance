@@ -13,6 +13,7 @@
   <passive name="Breath of the Devil" description="Evil at a solid cost" gfx="collectibles_breathofdevil.png" />
   <passive name="Second Chance" description="Your LAST chance..." gfx="collectibles_secondchance.png" />
   <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed tearcolor"/>
+  <passive name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay"/>
 
   <familiar name="Sister's Heart" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
 

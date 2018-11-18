@@ -1,11 +1,11 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="15.05.2018 15:57:31" Version="108" Fps="30"/>
+	<Info CreatedBy="robot" CreatedOn="18.11.2018 13:26:52" Version="109" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="sheet_costume_sailorhat.png" Id="0"/>
 		</Spritesheets>
 		<Layers>
-			<Layer Name="head0" Id="0" SpritesheetId="0"/>
+			<Layer Name="head4" Id="0" SpritesheetId="0"/>
 		</Layers>
 		<Nulls/>
 		<Events/>

@@ -26,6 +26,9 @@
       <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Lighter" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
+    <Pool Name="boss">
+      <Item Name="Salty Soup" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
     <Pool Name="devil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
