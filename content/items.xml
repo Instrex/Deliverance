@@ -7,6 +7,7 @@
   <active name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="x"/>
   <active name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
   <active name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="4"/>
+  <active name="Bloody Stream" description="Paint the room red" gfx="collectibles_bloody_stream.png" maxcharges="4"/>
 
   <active name="Sage" description="Descending souls" gfx="collectibles_sage.png" maxcharges="6"/>
 

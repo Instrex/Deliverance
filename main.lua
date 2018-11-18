@@ -15,7 +15,8 @@ content = {
     shrinkRay                 = require 'scripts.items.shrinkRay',
     sailorHat                 = require 'scripts.items.sailorHat',
     dheart                    = require 'scripts.items.dheart',
-    saltySoup                 = require 'scripts.items.saltySoup'
+    saltySoup                 = require 'scripts.items.saltySoup',
+    bloodyStream              = require 'scripts.items.bloodyStream'
   },
 
   trinkets = {
