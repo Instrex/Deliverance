@@ -25,10 +25,12 @@ function this:update(npc)
     data.time = data.time + 6
     npc.Position = game:GetRoom():GetClampedPosition(player.Position + Vector(data.time * 1.5, 0):Rotated(data.id * 45 + data.time), 1)
 
+    -- Spawn creep with 50% chance --
     if utils.chancep(50) then
       Isaac.Spawn(1000, 46, 0, npc.Position, Vector(0, 0), nil):ToEffect().Scale = 1.5
     end
 
+    -- Animate beam sprite --
     if sprite:IsFinished("Start") then
       sprite:Play("Loop")
     end
@@ -37,12 +39,21 @@ function this:update(npc)
       npc:Remove()
     end
 
+    -- Destroy on time --
     if data.time >= 240 then
       sprite:Play("End")
     end
 
+    -- Deal damage --
     for e, enemies in pairs(Isaac.FindInRadius(npc.Position, 45, EntityPartition.ENEMY)) do
       enemies:TakeDamage(10, 0, EntityRef(nil), 0)
+    end
+
+    -- Break anything in it's path --
+    local room = game:GetRoom()
+    local grid = room:GetGridEntityFromPos(npc.Position)
+    if grid then
+      grid:Destroy(false)
     end
   end
 end

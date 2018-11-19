@@ -1,6 +1,24 @@
 mod = RegisterMod("Kal-Mem", 1)
 game = Game()
+
 utils = require('scripts.utils')
+
+-- Mod data --
+data = {
+
+  -- Remains even after restart --
+  persistent = {
+
+  },
+
+  -- Being cleared after restart --
+  temporary = {
+
+  }
+}
+
+dataHandler = require('scripts.dataHandler')
+dataHandler.init()
 
 -- Register mod content here --
 content = {
@@ -18,7 +36,8 @@ content = {
     saltySoup                 = require 'scripts.items.saltySoup',
     gasoline                  = require 'scripts.items.gasoline',
     luckySaucer               = require 'scripts.items.luckySaucer',
-    bloodyStream              = require 'scripts.items.bloodyStream'
+    bloodyStream              = require 'scripts.items.bloodyStream',
+    breathOfDevil             = require 'scripts.items.breathOfDevil'
   },
 
   trinkets = {
