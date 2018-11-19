@@ -2,6 +2,13 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Gasoline")
 this.variant = Isaac.GetEntityVariantByName("Gasoline Fire")
 
+function this:cache(player, flag)
+  local player = Isaac.GetPlayer(0)
+  if player:HasCollectible(this.id) then
+    player:AddNullCostume(content.costumes.gasoline)
+  end
+end
+
 function this:onHitNPC(npc)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
@@ -35,6 +42,9 @@ function this:updateFire(npc)
 end
 
 function this.Init()
+  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
+    
+    
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH , this.onHitNPC)
   mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateFire)
 end
