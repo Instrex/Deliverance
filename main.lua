@@ -16,6 +16,7 @@ content = {
     sailorHat                 = require 'scripts.items.sailorHat',
     dheart                    = require 'scripts.items.dheart',
     saltySoup                 = require 'scripts.items.saltySoup',
+    gasoline                  = require 'scripts.items.gasoline',
     bloodyStream              = require 'scripts.items.bloodyStream'
   },
 

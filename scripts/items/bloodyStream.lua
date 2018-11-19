@@ -5,6 +5,7 @@ this.variant = Isaac.GetEntityVariantByName("Bloody Stream")
 function this.use()
   this.time = 0
   game:ShakeScreen(60)
+  SFXManager():Play(SoundEffect.SOUND_SATAN_RISE_UP , 0.8, 0, false, 1.1)
   for i = 0, 8 do
     local stream = Isaac.Spawn(1000, this.variant, 0, Isaac.GetPlayer(0).Position, Vector(0, 0), nil)
     local data = stream:GetData()
@@ -12,6 +13,7 @@ function this.use()
     data.time = 0
     stream:GetSprite():Play("Start")
   end
+  return true
 end
 
 function this:update(npc)
@@ -37,6 +39,10 @@ function this:update(npc)
 
     if data.time >= 240 then
       sprite:Play("End")
+    end
+
+    for e, enemies in pairs(Isaac.FindInRadius(npc.Position, 45, EntityPartition.ENEMY)) do
+      enemies:TakeDamage(10, 0, EntityRef(nil), 0)
     end
   end
 end

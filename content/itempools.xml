@@ -9,6 +9,7 @@
        <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Shrink Ray" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Gasoline" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -32,7 +33,7 @@
     <Pool Name="devil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Breath of Devil" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Bloody Stream" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="angel">
       <Item Name="Second Chance" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -56,7 +57,7 @@
     <Pool Name="greedDevil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Breath of Devil" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Bloody Stream" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedAngel">
       <Item Name="Second Chance" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

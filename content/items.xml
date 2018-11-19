@@ -7,16 +7,17 @@
   <active name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="x"/>
   <active name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
   <active name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="4"/>
-  <active name="Bloody Stream" description="Paint the room red" gfx="collectibles_bloody_stream.png" maxcharges="4"/>
+  <active name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
 
   <active name="Sage" description="Descending souls" gfx="collectibles_sage.png" maxcharges="6"/>
 
   <passive name="Breath of the Devil" description="Evil at a solid cost" gfx="collectibles_breathofdevil.png" />
   <passive name="Second Chance" description="Your LAST chance..." gfx="collectibles_secondchance.png" />
-  <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed tearcolor"/>
+  <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed"/>
+  <passive name="Gasoline" description="Killing enemies burns the ground" gfx="collectibles_gasoline.png" />
   <passive name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay"/>
 
-  <familiar name="Sister's Heart" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
+  <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
 
   <trinket name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
   <trinket name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
