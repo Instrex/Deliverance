@@ -17,6 +17,7 @@ content = {
     dheart                    = require 'scripts.items.dheart',
     saltySoup                 = require 'scripts.items.saltySoup',
     gasoline                  = require 'scripts.items.gasoline',
+    luckySaucer               = require 'scripts.items.luckySaucer',
     bloodyStream              = require 'scripts.items.bloodyStream'
   },
 
@@ -40,7 +41,8 @@ content = {
     noAutoload = true,
     sailorHat = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_sailorhat.anm2"),
     saltySoup = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_saltySoup.anm2"),
-    gasoline = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_gasoline.anm2")
+    gasoline = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_gasoline.anm2"),
+    luckySaucer = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_luckySaucer.anm2")
   }
 }
 

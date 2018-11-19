@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Sailor Hat")
 
 function this:cache(player, flag)
+  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
     player:AddNullCostume(content.costumes.sailorHat)
     if flag == CacheFlag.CACHE_SPEED then

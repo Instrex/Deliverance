@@ -28,6 +28,7 @@
     </Pool>
     <Pool Name="boss">
       <Item Name="Salty Soup" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Lucky Saucer" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="devil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -53,6 +54,8 @@
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="The Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Salty Soup" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Lucky Saucer" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedDevil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
