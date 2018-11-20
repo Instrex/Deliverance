@@ -11,6 +11,7 @@ function this.load()
 
   this.loaded = true
 
+  if not data.temporary then data.temporary = {} end
   setmetatable(data.temporary, { __newindex = function(t, k, v) rawset(t, k, v) this.unsaved = true end })
 end
 

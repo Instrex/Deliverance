@@ -1,6 +1,5 @@
 ﻿<items gfxroot="gfx/items/" version="1">
   <active name="Captain's Brooch" description="Calls down a chest nearby" gfx="collectibles_capbrooch.png" maxcharges="6"  />
-  <!-- active name="Life Tap" description="Your soul is Mine..." gfx="collectibles_lifetap.png" maxcharges="x" cache="speed damage shotspeed range"/ -->
   <active name="Sister's Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
   <active name="D<3" description="Life will change!" gfx="collectibles_dheart.png" maxcharges="4"/>
   <active name="Special Delivery" description="Re-supply!" gfx="collectibles_special_delivery.png" maxcharges="4"/>

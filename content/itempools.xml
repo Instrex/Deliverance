@@ -1,7 +1,6 @@
 <ItemPools>
     <Pool Name="secret">
        <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-       <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Lighter" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="treasure">
@@ -59,7 +58,6 @@
     </Pool>
     <Pool Name="greedDevil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bloody Stream" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Gasoline" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
