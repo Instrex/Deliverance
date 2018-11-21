@@ -23,6 +23,14 @@
         <gibs amount="20" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 
+    <entity id="746" variant="4000" anm2path="peabody.anm2" baseHP="20" boss="0" champion="0" collisionDamage="1" collisionMass="75" collisionRadius="9" friction="1" name="Peabody" numGridCollisionPoints="0" shadowSize="18" stageHP="0">
+        <gibs amount="20" blood="1" bone="1" eye="1" gut="0" large="0" />
+    </entity>
+
+    <entity id="746" variant="4001" anm2path="peabody.anm2" baseHP="20" boss="0" champion="0" collisionDamage="1" collisionMass="75" collisionRadius="9" friction="1" name="Peabody" numGridCollisionPoints="0" shadowSize="18" stageHP="0">
+        <gibs amount="20" blood="1" bone="1" eye="1" gut="0" large="0" />
+    </entity>
+
     <!-- Familiars -->
     <entity id="3" variant="4000" anm2path="familiar_sistersheart.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Sister's Heart" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />

@@ -86,11 +86,11 @@ function this:behaviour(npc)
   end
 end
 
-function this:transformation(npc)
-  if utils.chancep(16) then
-    npc:Morph(this.id, 0, 0, 0)
-  end
-end
+--function this:transformation(npc)
+--  if utils.chancep(16) then
+--    npc:Morph(this.id, 0, 0, 0)
+--  end
+--end
 
 function this:die(npc)
   blood = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), target)
@@ -101,7 +101,7 @@ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 285)
+--mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 285)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
 end
 

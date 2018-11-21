@@ -56,11 +56,11 @@ function this:behaviour(npc)
   end
 end
 
-function this:transformation(npc)
-  if utils.chancep(15) then
-    npc:Morph(this.id, 0, 0, 0)
-  end
-end
+--function this:transformation(npc)
+--  if utils.chancep(15) then
+--    npc:Morph(this.id, 0, 0, 0)
+--  end
+--end
 
 function this:die(npc)
   if utils.chancep(20) then
@@ -70,7 +70,7 @@ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
+--  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
 end
 

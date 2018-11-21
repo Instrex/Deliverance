@@ -53,7 +53,10 @@ content = {
     jester                    = require 'scripts.entities.monsters.jester',
     joker                     = require 'scripts.entities.monsters.joker',
     beamo                     = require 'scripts.entities.monsters.beamo',
-    cracker                   = require 'scripts.entities.monsters.cracker'
+    cracker                   = require 'scripts.entities.monsters.cracker',
+    peabody                   = require 'scripts.entities.monsters.peabody',
+
+    variants                  = require 'scripts.entities.monsters.variants.variants'
   },
 
   costumes = {

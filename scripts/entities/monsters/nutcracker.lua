@@ -73,21 +73,20 @@ function this:behaviour(npc)
   end
 end
 
-function this:transformation(npc)
-  if utils.chancep(20) then
-    npc:Morph(this.id, 0, 0, 0)
-  end
-end
+--function this:transformation(npc)
+--  if utils.chancep(20) then
+--    npc:Morph(this.id, 0, 0, 0)
+--  end
+--end
 
 function this:die(npc)
-  Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player)
   game:Spawn(11, utils.choose(0, 1), npc.Position, Vector(0,0), npc, 0, 1)
     :ToNPC():ClearEntityFlags(EntityFlag.FLAG_APPEAR)
 end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 16)
+--  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 16)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
 end
 

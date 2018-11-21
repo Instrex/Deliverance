@@ -64,18 +64,10 @@ function this:behaviour(npc)
         npc.State = NpcState.STATE_ATTACK4;
         sfx:Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_2 , 1, 0, false, 1)
 
-        local brimstone_laser = EntityLaser.ShootAngle(1, npc.Position, 45, 15, Vector(0,-20), npc)
-        brimstone_laser.DepthOffset = 200
-
-        local brimstone_laser2 = EntityLaser.ShootAngle(1, npc.Position, 135, 15, Vector(0,-20), npc)
-        brimstone_laser2.DepthOffset = 200
-
-        local brimstone_laser3 = EntityLaser.ShootAngle(1, npc.Position, 225, 15, Vector(0,-20), npc)
-        brimstone_laser3.DepthOffset = 200
-
-        local brimstone_laser4 = EntityLaser.ShootAngle(1, npc.Position, 315, 15, Vector(0,-20), npc)
-        brimstone_laser4.DepthOffset = 200
-
+        for i=1, 4 do
+          local brimstone_laser = EntityLaser.ShootAngle(1, npc.Position, 45+i*90, 15, Vector(0,-20), npc)
+          brimstone_laser.DepthOffset = 200
+        end
     end
 
   -- After brimstone shot --
@@ -88,11 +80,11 @@ function this:behaviour(npc)
   end
 end
 
-function this:transformation(npc)
-  if utils.chancep(15) then
-    npc:Morph(this.id, 0, 0, 0)
-  end
-end
+--function this:transformation(npc)
+--  if utils.chancep(15) then
+--    npc:Morph(this.id, 0, 0, 0)
+--  end
+--end
 
 function this:die(npc)
   Isaac.Explode(npc.Position, npc, 1.0)
@@ -103,7 +95,7 @@ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
+--  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
 end
 
