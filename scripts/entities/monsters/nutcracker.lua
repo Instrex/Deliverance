@@ -8,30 +8,29 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
 
+  if npc.State ~= NpcState.STATE_INIT then
+    if data.timer<4 then data.timer = data.timer + 1 else data.timer=0 data.playertarget=target.Position end
+  end
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_MOVE
     npc.StateFrame = Utils.choose(-10, -5, 0)
+    data.timer = 0 data.playertarget=target.Position
 
   -- Move and wait for player to get closer --
   elseif npc.State == NpcState.STATE_MOVE then
     
---  if npc.StateFrame>=0 then
-      if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
-        npc.Pathfinder:FindGridPath(target.Position, 0.6, 2, false)
-      else
-        npc.Pathfinder:MoveRandomly(false)
-      end
-      npc:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
---  else
---    sprite:Play("StandingStill")
---    npc.Velocity=Vector(0,0) 
---  end
+    if room:CheckLine(npc.Position,data.playertarget,0,1,false,false) then
+      npc.Pathfinder:FindGridPath(data.playertarget, 0.6, 2, false)
+    else
+      npc.Pathfinder:MoveRandomly(false)
+    end
+    npc:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
 
     npc.StateFrame = npc.StateFrame + 1
 
     if npc.StateFrame>=35 then
-      if npc.Position:Distance(target.Position) <= 275 then
+      if npc.Position:Distance(data.playertarget) <= 275 then
          sfx:Play(SoundEffect.SOUND_BOSS_LITE_ROAR, 1.2, 0, false, 1)
          npc.State = NpcState.STATE_ATTACK
       end
@@ -40,7 +39,8 @@ function this:behaviour(npc)
   -- Chases the player and destroys objects on the way --
   elseif npc.State == NpcState.STATE_ATTACK then
     npc:AnimWalkFrame("WalkHoriRage", "WalkHoriRage", 0.1)
-    npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 6.5
+    npc.Velocity = utils.vecToPos(data.playertarget, npc.Position) * 7
+
 
     if sprite:IsFinished("WalkHoriRage") then
        npc.State = NpcState.STATE_MOVE;

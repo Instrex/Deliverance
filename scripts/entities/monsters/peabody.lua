@@ -8,7 +8,7 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
 
-  npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/6)
+  npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/5)
 
   if npc.Variant == 4000 then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody.png")
@@ -42,9 +42,10 @@ function this:behaviour(npc)
 
     if utils.chancep(50) and npc.StateFrame<30 then
       local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, Vector(0,0), nil)
-      RCreep.SpriteScale = Vector(0.75,0.75)
+      RCreep.SpriteScale = Vector(0.75,0.75) 
       RCreep:Update()
     end
+
 
     if sprite:IsEventTriggered("Smack") then
     npc.StateFrame = npc.StateFrame - 10
