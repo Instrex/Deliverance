@@ -47,6 +47,11 @@ content = {
     darkLock                  = require 'scripts.trinkets.darkLock'
   },
 
+  entityVariants = {
+    dorkyHaunt                = require 'scripts.entities.monsters.variants.dorkyHaunt',
+    dukie                     = require 'scripts.entities.monsters.variants.dukie'
+  },
+
   entities = {
     raga                      = require 'scripts.entities.monsters.raga',
     nutcracker                = require 'scripts.entities.monsters.nutcracker',
@@ -54,9 +59,7 @@ content = {
     joker                     = require 'scripts.entities.monsters.joker',
     beamo                     = require 'scripts.entities.monsters.beamo',
     cracker                   = require 'scripts.entities.monsters.cracker',
-    peabody                   = require 'scripts.entities.monsters.peabody',
-
-    variants                  = require 'scripts.entities.monsters.variants.variants'
+    peabody                   = require 'scripts.entities.monsters.peabody'
   },
 
   costumes = {

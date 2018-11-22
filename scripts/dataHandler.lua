@@ -11,8 +11,22 @@ function this.load()
 
   this.loaded = true
 
-  if not data.temporary then data.temporary = {} end
-  setmetatable(data.temporary, { __newindex = function(t, k, v) rawset(t, k, v) this.unsaved = true end })
+  if not data.temporary then
+    data.temporary = {}
+  end
+
+  local meta = {
+    __newindex = function(t, k, v)
+      rawset(t, k, v)
+      if type(v) == 'table' then
+        setmetatable(t[k], meta)
+      end
+
+      this.unsaved = true
+    end
+  }
+
+  setmetatable(data.temporary, meta)
 end
 
 function this.directSave()
