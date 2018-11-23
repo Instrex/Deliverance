@@ -6,6 +6,7 @@ function this:behaviour(npc)
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
+  local level = game:GetLevel()
   local current_floor = level:GetStage()
   local brim_type=1;
 
@@ -19,10 +20,10 @@ function this:behaviour(npc)
       sprite:LoadGraphics()
       brim_type=1
     end
-  else
-      sprite:ReplaceSpritesheet(0,"gfx/monsters/beamo.png")
-      sprite:LoadGraphics()
-      brim_type=1
+--else
+--    sprite:ReplaceSpritesheet(0,"gfx/monsters/beamo.png")
+--    sprite:LoadGraphics()
+--    brim_type=1
   end
 
   -- Begin --

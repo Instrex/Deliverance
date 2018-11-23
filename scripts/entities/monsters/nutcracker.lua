@@ -31,7 +31,7 @@ function this:behaviour(npc)
 
     if npc.StateFrame>=35 then
       if npc.Position:Distance(data.playertarget) <= 275 then
-         sfx:Play(SoundEffect.SOUND_BOSS_LITE_ROAR, 1.2, 0, false, 1)
+         sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 1.25, 0, false, 0.8)
          npc.State = NpcState.STATE_ATTACK
       end
     end
@@ -49,7 +49,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Shake") then
         Game():ShakeScreen(4)
-        sfx:Play(SoundEffect.SOUND_POT_BREAK, 0.4, 0, false, 2)
+        sfx:Play(SoundEffect.SOUND_POT_BREAK, 0.6, 0, false, 2)
 
         for e, food in pairs(Isaac.FindInRadius(npc.Position, 30, EntityPartition.ENEMY)) do
            if food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 or food.Type == 85 or food.Type == 94 then
