@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="24.11.2018 1:50:17" Version="120" Fps="30"/>
+	<Info CreatedBy="robot" CreatedOn="25.11.2018 1:08:02" Version="123" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="monsters\rosenberg.png" Id="0"/>
@@ -72,9 +72,9 @@
 					<Frame XPosition="0" YPosition="-9" XPivot="16" YPivot="32" XCrop="64" YCrop="0" Width="32" Height="48" XScale="105" YScale="95" Delay="4" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 					<Frame XPosition="0" YPosition="-9" XPivot="16" YPivot="32" XCrop="64" YCrop="0" Width="32" Height="48" XScale="105" YScale="95" Delay="4" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 					<Frame XPosition="0" YPosition="-11" XPivot="16" YPivot="32" XCrop="64" YCrop="0" Width="32" Height="48" XScale="90" YScale="115" Delay="4" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
-					<Frame XPosition="0" YPosition="-11" XPivot="16" YPivot="32" XCrop="64" YCrop="0" Width="32" Height="48" XScale="90" YScale="120" Delay="4" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="25" Rotation="0" Interpolated="true"/>
-					<Frame XPosition="0" YPosition="-8" XPivot="16" YPivot="32" XCrop="96" YCrop="0" Width="32" Height="48" XScale="105" YScale="95" Delay="6" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="50" Rotation="0" Interpolated="true"/>
-					<Frame XPosition="0" YPosition="-5" XPivot="16" YPivot="32" XCrop="96" YCrop="0" Width="32" Height="48" XScale="120" YScale="70" Delay="2" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="75" Rotation="0" Interpolated="false"/>
+					<Frame XPosition="0" YPosition="-11" XPivot="16" YPivot="32" XCrop="64" YCrop="0" Width="32" Height="48" XScale="90" YScale="120" Delay="4" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="10" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="-8" XPivot="16" YPivot="32" XCrop="96" YCrop="0" Width="32" Height="48" XScale="105" YScale="95" Delay="6" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="20" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="-5" XPivot="16" YPivot="32" XCrop="96" YCrop="0" Width="32" Height="48" XScale="120" YScale="70" Delay="2" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="30" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 					<Frame XPosition="0" YPosition="-11" XPivot="16" YPivot="32" XCrop="128" YCrop="0" Width="32" Height="48" XScale="90" YScale="120" Delay="2" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 					<Frame XPosition="0" YPosition="-9" XPivot="16" YPivot="32" XCrop="128" YCrop="0" Width="32" Height="48" XScale="90" YScale="110" Delay="2" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 					<Frame XPosition="0" YPosition="-9" XPivot="16" YPivot="32" XCrop="128" YCrop="0" Width="32" Height="48" XScale="105" YScale="95" Delay="3" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
@@ -94,9 +94,10 @@
 				<Trigger EventId="2" AtFrame="6"/>
 				<Trigger EventId="1" AtFrame="42"/>
 				<Trigger EventId="0" AtFrame="43"/>
-				<Trigger EventId="0" AtFrame="46"/>
+				<Trigger EventId="0" AtFrame="45"/>
+				<Trigger EventId="0" AtFrame="47"/>
 				<Trigger EventId="0" AtFrame="49"/>
-				<Trigger EventId="0" AtFrame="52"/>
+				<Trigger EventId="0" AtFrame="51"/>
 			</Triggers>
 		</Animation>
 		<Animation Name="DigIn" FrameNum="17" Loop="false">

@@ -18,7 +18,7 @@ function this:behaviour(npc)
         sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_flooded.png")
         sprite:LoadGraphics()
     end
-  elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 then
+  elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
     if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
         sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_scarred.png")
     else
@@ -49,7 +49,7 @@ function this:behaviour(npc)
 
     if sprite:IsFinished("DigInIdle") then
       npc.State = NpcState.STATE_ATTACK
-      sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 0.75, 0, false, 1.25)
+      npc.Position = room:FindFreePickupSpawnPosition(npc.Position, 100, true)
     end
 
   elseif npc.State == NpcState.STATE_ATTACK then
@@ -66,7 +66,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Shoot") then
        local params = ProjectileParams() 
-       params.FallingSpeedModifier = math.random(-28, -24) 
+       params.FallingSpeedModifier = math.random(-18, -14) 
        params.FallingAccelModifier = 1.2 
        params.Variant = 3
        if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then
@@ -77,7 +77,7 @@ function this:behaviour(npc)
          params.Variant = 0
        end
 
-       local velocity = (target.Position - npc.Position):Rotated(math.random(-15, 15)) * 0.04 * 10 * 0.1
+       local velocity = (target.Position - npc.Position):Rotated(math.random(-15, 15)) * 0.05 * 12 * 0.1
        local length = velocity:Length() 
        if length > 12 then 
          velocity = (velocity / length) * 12
@@ -101,7 +101,6 @@ function this:behaviour(npc)
     npc.StateFrame = npc.StateFrame + 1
     if npc.StateFrame>=30 then
       npc.State = NpcState.STATE_ATTACK
-      sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 0.75, 0, false, 1.25)
       npc.Position = room:FindFreePickupSpawnPosition(npc.Position, 100, true)
     end
   end

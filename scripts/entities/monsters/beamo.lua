@@ -20,10 +20,6 @@ function this:behaviour(npc)
       sprite:LoadGraphics()
       brim_type=1
     end
---else
---    sprite:ReplaceSpritesheet(0,"gfx/monsters/beamo.png")
---    sprite:LoadGraphics()
---    brim_type=1
   end
 
   -- Begin --
