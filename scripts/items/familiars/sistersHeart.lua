@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Sister's Heart")
+this.variant = Isaac.GetEntityVariantByName("Sister's Heart")
 
 local sfx = SFXManager()
 function this.checkEnemies()
@@ -16,15 +17,32 @@ function this:behaviour(fam)
   local player = Isaac.GetPlayer(0)
   local data = fam:GetData()
 
+  if player:GetPlayerType() == PlayerType.PLAYER_XXX then  
+    sprite:ReplaceSpritesheet(1,"gfx/familiars/familiar_itlives2.png")
+    sprite:LoadGraphics()
+  elseif player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
+    sprite:ReplaceSpritesheet(1,"gfx/familiars/familiar_itlives3.png")
+    sprite:LoadGraphics()
+  else  
+    sprite:ReplaceSpritesheet(1,"gfx/familiars/familiar_itlives.png")
+    sprite:LoadGraphics()
+  end
+
   if player:GetFireDirection() == Direction.NO_DIRECTION then
-    sprite:Play("Shoot")
+    if this.checkEnemies() >= 1 then
+       sprite:Play("Shoot")
+    else
+       sprite:Play("Idle")
+    end
   else
     sprite:Play("Intense")
   end
 
-  if sprite:IsEventTriggered("Shoot") and this.checkEnemies() >= 1 then
+  if sprite:IsEventTriggered("Shoot") then
     sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTER, 1, 0, false, 1)
-    Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, fam.Position + Vector(0, 15), Vector(-3,0):Rotated(math.random(0, 360)), nil)
+       if utils.chancep(50) then
+          Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, fam.Position + Vector(0, 15), Vector(-3,0):Rotated(math.random(0, 360)), nil)
+       end
   end
 
   if sprite:IsEventTriggered("IntenseShoot") then
@@ -49,12 +67,12 @@ function this:awake(fam)
 end
 
 function this:cache(player, flag)
-  player:CheckFamiliar(this.id, player:GetCollectibleNum(this.id) * (player:GetEffects():GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_BOX_OF_FRIENDS) + 1), RNG())
+  player:CheckFamiliar(this.variant, player:GetCollectibleNum(this.id) * (player:GetEffects():GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_BOX_OF_FRIENDS) + 1), RNG())
 end
 
 function this.Init()
-  mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, this.awake, this.id)
+  mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, this.behaviour, this.variant)
+  mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, this.awake, this.variant)
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, this.cache)
 end

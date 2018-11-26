@@ -15,6 +15,7 @@ function this:cache(player, flag)
   end
 end
 
+
 -- Replace all hearts to their corresponding reward --
 function this:pickupMorph(pickup)
   local player = Isaac.GetPlayer(0)
@@ -65,21 +66,36 @@ end
 function this:update()
    local player = Isaac.GetPlayer(0)
    local room = game:GetRoom()
-   print(data.temporary.devilPrize)
-   if room:GetType() == RoomType.ROOM_DEVIL and room:GetFrameCount() == 5 and not data.temporary.devilPrize then  
+-- print(data.temporary.devilPrize)
+   if room:GetType() == RoomType.ROOM_DEVIL and not data.temporary.devilPrize then  
      if player:HasCollectible(this.id) then
+        Game():ShakeScreen(20) 
         SFXManager():Play(SoundEffect.SOUND_SATAN_GROW , 0.6, 0, false, math.random(10, 12) / 10)
-        local pos = Isaac.GetFreeNearPosition(room:GetCenterPos(), 1)
+        local pos = Isaac.GetFreeNearPosition(room:GetCenterPos(), 1)  
         if utils.chancep(30) then
-          Isaac.Spawn(5, 150, 0, pos, Vector(0, 0), nil)
-          Isaac.Spawn(1000, 15, 0, pos, Vector(0, 0), nil)
+          if utils.chancep(75) then
+             Isaac.Spawn(5, 150, 0, pos, Vector(0, 0), nil)
+          else
+             Isaac.Spawn(5, 100, 0, pos, Vector(0, 0), nil)
+          end
+          if utils.chancep(50) then
+             Isaac.Spawn(5, 69, 0, room:GetCenterPos() + Vector(65, 0), Vector(0, 0), nil)
+             Isaac.Spawn(5, 69, 0, room:GetCenterPos() - Vector(65, 0), Vector(0, 0), nil)
+          end
         else
-             local pos2 = room:GetCenterPos() + Vector(80, 0)
-             Isaac.Spawn(5, 360, 0, pos2, Vector(0, 0), nil)
-             Isaac.Spawn(1000, 15, 0, pos2, Vector(0, 0), nil)
-             local pos3 = room:GetCenterPos() - Vector(80, 0)
-             Isaac.Spawn(5, 360, 0, pos3, Vector(0, 0), nil)
-             Isaac.Spawn(1000, 15, 0, pos3, Vector(0, 0), nil)
+          Isaac.Spawn(5, 360, 0, room:GetCenterPos() + Vector(65, 0), Vector(0, 0), nil)
+          Isaac.Spawn(5, 360, 0, room:GetCenterPos() - Vector(65, 0), Vector(0, 0), nil)
+          if utils.chancep(30) then
+             Isaac.Spawn(5, Utils.choose(51, 60), 0, room:GetCenterPos() + Vector(85, 40), Vector(0, 0), nil)
+             Isaac.Spawn(5, Utils.choose(51, 60), 0, room:GetCenterPos() + Vector(-85, 40), Vector(0, 0), nil)
+          end
+          if utils.chancep(50) then
+             Isaac.Spawn(5, 360, 0, room:GetCenterPos() + Vector(0, 0), Vector(0, 0), nil)
+          else
+             if utils.chancep(50) then
+                Isaac.Spawn(5, 350, 0, room:GetCenterPos() + Vector(0, 0), Vector(0, 0), nil)
+             end
+          end
         end
         player:AddHearts(20)
         player:AddSoulHearts(2)
@@ -96,7 +112,7 @@ end
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.pickupMorph)
-  mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.update)
+  mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.update)
   mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.nullDevilPrize)
 end
 

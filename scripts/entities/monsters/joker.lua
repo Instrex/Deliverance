@@ -88,8 +88,8 @@ end
 
 function this:die(npc)
   Isaac.Explode(npc.Position, npc, 1.0)
-  if utils.chancep(12) then
-      proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, card_mannaz, npc.Position, Vector(0, 0), player)
+  if utils.chancep(15) then
+      proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Isaac.GetCardIdByName("Mannaz"), npc.Position, Vector(0, 0), player)
   end
 end
 

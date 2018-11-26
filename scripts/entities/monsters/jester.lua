@@ -63,8 +63,8 @@ end
 --end
 
 function this:die(npc)
-  if utils.chancep(20) then
-      proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, card_mannaz, npc.Position, Vector(0, 0), player)
+  if utils.chancep(33) then
+      proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Isaac.GetCardIdByName("Mannaz"), npc.Position, Vector(0, 0), player)
   end
 end
 

@@ -47,6 +47,14 @@ content = {
     darkLock                  = require 'scripts.trinkets.darkLock'
   },
 
+  cards = {
+    mannaz                   = require 'scripts.cards.mannaz'
+  },
+
+  pills = {
+    dissReaction             = require 'scripts.pills.dissReaction'
+  },
+
   entityVariants = {
     dorkyHaunt                = require 'scripts.entities.monsters.variants.dorkyHaunt',
     dukie                     = require 'scripts.entities.monsters.variants.dukie'
