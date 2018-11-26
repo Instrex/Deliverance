@@ -1,43 +1,103 @@
 local this = {}
-this.id = Isaac.GetItemIdByName("Breath of the Devil")
+this.id = Isaac.GetItemIdByName("The Covenant")
 
-
--- Replace all hearts to their corresponding reward --
-function this:pickupMorph(pickup)
-  if Isaac.GetPlayer(0):HasCollectible(this.id) and pickup.Variant == PickupVariant.PICKUP_HEART then
-    if pickup.SubType == HeartSubType.HEART_FULL then
-      pickup:Morph(5, 20, 1)
-
-    elseif pickup.SubType == HeartSubType.HEART_SOUL then
-      for i = 0, math.random(1, 3) do
-        Isaac.Spawn(3, 43, 0, pickup.Position, Vector(0, 0), nil)
-      end
-
-      pickup:Remove()
-
-    elseif pickup.SubType == HeartSubType.HEART_BLACK then
-      pickup:Morph(5, 40, 1)
-
-    elseif pickup.SubType == HeartSubType.HEART_ETERNAL then
-      pickup:Morph(5, 30, 2)
-
-    elseif pickup.SubType == HeartSubType.HEART_HALF_SOUL or pickup.SubType == HeartSubType.HEART_HALF or pickup.SubType == HeartSubType.HEART_BLENDED then
-      Isaac.Spawn(3, 43, 0, pickup.Position, Vector(0, 0), nil)
-
-      pickup:Remove()
-
-    elseif pickup.SubType == HeartSubType.HEART_BONE then
-      pickup:Morph(5, 30, 1)
-
-    elseif pickup.SubType == HeartSubType.HEART_DOUBLEPACK then
-      pickup:Morph(5, 20, 40)
-
+function this:cache(player, flag)
+  local player = Isaac.GetPlayer(0)
+  if player:HasCollectible(this.id) then
+    player:AddNullCostume(content.costumes.theCovenant)
+    if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
+      player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(content.costumes.theCovenant), "gfx/costumes/sheet_costume_theCovenant_forgotten.png", 0)
+    end
+    if not data.temporary.hasCovenant then
+      data.temporary.devilPrize=false
+      data.temporary.hasCovenant = true
     end
   end
 end
 
+-- Replace all hearts to their corresponding reward --
+function this:pickupMorph(pickup)
+  local player = Isaac.GetPlayer(0)
+  if player:HasCollectible(this.id) and pickup.Variant == PickupVariant.PICKUP_HEART then
+    
+    local data = pickup:GetData()
+    if data.time == nil then data.time = math.random(-10,0) end
+
+    pickup.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+
+    if data.time <= 40 then data.time = data.time + 1
+    else
+      Isaac.Spawn(1000, 97, 0, Vector(pickup.Position.X, pickup.Position.Y-4), Vector(0, 0), nil)
+      SFXManager():Play(SoundEffect.SOUND_SATAN_SPIT , 0.6, 0, false, math.random(10, 12) / 10)
+      if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED or pickup.SubType == HeartSubType.HEART_HALF then
+        Isaac.Spawn(5, 20, 1, pickup.Position, Vector(0, 0), nil)
+        pickup:Remove()
+
+      elseif pickup.SubType == HeartSubType.HEART_BLACK then
+        Isaac.Spawn(5, 40, 1, pickup.Position, Vector(0, 0), nil)
+        pickup:Remove()
+
+      elseif pickup.SubType == HeartSubType.HEART_ETERNAL then
+        Isaac.Spawn(5, 30, 2, pickup.Position, Vector(0, 0), nil)
+        pickup:Remove()
+
+      elseif pickup.SubType == HeartSubType.HEART_SOUL or pickup.SubType == HeartSubType.HEART_HALF_SOUL or pickup.SubType == HeartSubType.HEART_BLENDED then
+        Isaac.Spawn(5, 30, 1, pickup.Position, Vector(0, 0), nil)
+        pickup:Remove()
+
+      elseif pickup.SubType == HeartSubType.HEART_BONE then
+        Isaac.Spawn(5, 30, 4, pickup.Position, Vector(0, 0), nil)
+        pickup:Remove()
+
+      elseif pickup.SubType == HeartSubType.HEART_DOUBLEPACK then
+        Isaac.Spawn(5, 20, 4, pickup.Position, Vector(0, 0), nil)
+        pickup:Remove()
+
+      elseif pickup.SubType == HeartSubType.HEART_GOLDEN then
+        Isaac.Spawn(5, 20, 5, pickup.Position, Vector(0, 0), nil)
+        pickup:Remove()
+
+      end
+    end
+  end
+end
+
+function this:update()
+   local player = Isaac.GetPlayer(0)
+   local room = game:GetRoom()
+   print(data.temporary.devilPrize)
+   if room:GetType() == RoomType.ROOM_DEVIL and room:GetFrameCount() == 5 and not data.temporary.devilPrize then  
+     if player:HasCollectible(this.id) then
+        SFXManager():Play(SoundEffect.SOUND_SATAN_GROW , 0.6, 0, false, math.random(10, 12) / 10)
+        local pos = Isaac.GetFreeNearPosition(room:GetCenterPos(), 1)
+        if utils.chancep(30) then
+          Isaac.Spawn(5, 150, 0, pos, Vector(0, 0), nil)
+          Isaac.Spawn(1000, 15, 0, pos, Vector(0, 0), nil)
+        else
+             local pos2 = room:GetCenterPos() + Vector(80, 0)
+             Isaac.Spawn(5, 360, 0, pos2, Vector(0, 0), nil)
+             Isaac.Spawn(1000, 15, 0, pos2, Vector(0, 0), nil)
+             local pos3 = room:GetCenterPos() - Vector(80, 0)
+             Isaac.Spawn(5, 360, 0, pos3, Vector(0, 0), nil)
+             Isaac.Spawn(1000, 15, 0, pos3, Vector(0, 0), nil)
+        end
+        player:AddHearts(20)
+        player:AddSoulHearts(2)
+        player:AddBlackHearts(2)
+        data.temporary.devilPrize=true
+     end
+   end
+end
+
+function this:nullDevilPrize()     
+   data.temporary.devilPrize=false
+end
+
 function this.Init()
-  mod:AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, this.pickupMorph)
+  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
+  mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.pickupMorph)
+  mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.update)
+  mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.nullDevilPrize)
 end
 
 return this

@@ -14,7 +14,7 @@ function this:behaviour(npc)
   -- Move and seek for a moment to attack --
   elseif npc.State == NpcState.STATE_MOVE then
     sprite:Play("Fly")
-    npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 4
+    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 4 end
 
     if utils.chancep(4) then
       sfx:Play(SoundEffect.SOUND_MONSTER_GRUNT_0 , 1.2, 0, false, 1)
@@ -24,7 +24,7 @@ function this:behaviour(npc)
   -- Play charge animation and select attack --
   elseif npc.State == NpcState.STATE_ATTACK then
     sprite:Play("Charge")
-    npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 2
+    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 2 end
 
     if sprite:IsFinished("Charge") then
       npc.State = utils.choose(NpcState.STATE_ATTACK2, NpcState.STATE_ATTACK3)
@@ -34,7 +34,7 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_ATTACK2 then
     sprite:Play("Summon")
 
-    npc.Velocity = utils.vecToPos(target.Position, npc.Position)
+    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) end
     if npc.StateFrame == 0 then
       sfx:Play(SoundEffect.SOUND_MONSTER_YELL_A , 0.8, 0, false, 1)
 
@@ -54,7 +54,7 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_ATTACK3 then
     sprite:Play("Attack")
 
-    npc.Velocity = utils.vecToPos(target.Position, npc.Position)
+    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) end
     if npc.StateFrame == 0 then
       sfx:Play(SoundEffect.SOUND_RAGMAN_1 , 1, 0, false, 1)
 

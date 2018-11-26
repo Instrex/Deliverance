@@ -10,7 +10,7 @@
 
   <active name="Sage" description="Descending souls" gfx="collectibles_sage.png" maxcharges="6"/>
 
-  <passive name="Breath of the Devil" description="Evil at a solid cost" gfx="collectibles_breathofdevil.png" />
+  <passive name="The Covenant" description="Evil at a solid cost" gfx="collectibles_breathofdevil.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="speed" />
   <passive name="Second Chance" description="Your LAST chance..." gfx="collectibles_secondchance.png" />
   <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed"/>
   <passive name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="2" cache="speed" />

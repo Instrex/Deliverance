@@ -39,8 +39,7 @@ function this:behaviour(npc)
   -- Chases the player and destroys objects on the way --
   elseif npc.State == NpcState.STATE_ATTACK then
     npc:AnimWalkFrame("WalkHoriRage", "WalkHoriRage", 0.1)
-    npc.Velocity = utils.vecToPos(data.playertarget, npc.Position) * 7
-
+    if not target:IsDead() then npc.Velocity = utils.vecToPos(data.playertarget, npc.Position) * 7 end
 
     if sprite:IsFinished("WalkHoriRage") then
        npc.State = NpcState.STATE_MOVE;
@@ -54,6 +53,8 @@ function this:behaviour(npc)
         for e, food in pairs(Isaac.FindInRadius(npc.Position, 30, EntityPartition.ENEMY)) do
            if food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 or food.Type == 85 or food.Type == 94 then
                food:TakeDamage(10, 0, EntityRef(nil), 0)
+               Isaac.Spawn(1000, 49, 0, Vector(npc.Position.X,npc.Position.Y-16), Vector(0,0), nil)
+               sfx:Play(SoundEffect.SOUND_VAMP_GULP , 1.25, 0, false, 0.8)
                npc.HitPoints = npc.MaxHitPoints
                sprite:ReplaceSpritesheet(1,"gfx/monsters/gluttyb.png")
                sprite:LoadGraphics()

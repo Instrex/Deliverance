@@ -34,7 +34,7 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_ATTACK then
     sprite:Play("Jump");
 
-    npc.Velocity = (target.Position - npc.Position):Normalized()*7.5
+    if not target:IsDead() then npc.Velocity = (target.Position - npc.Position):Normalized()*7.5 end
 
     for i = 1, Game():GetRoom():GetGridSize() do
         local grid = room:GetGridEntity(i)

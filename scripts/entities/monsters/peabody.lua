@@ -8,7 +8,7 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
 
-  npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/5)
+  if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/10) end
 
   if npc.Variant == 4000 then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody.png")
@@ -30,25 +30,28 @@ function this:behaviour(npc)
     if room:CheckLine(npc.Position,target.Position,0,1,false,false) and utils.chancep(60) then
       npc.StateFrame = npc.StateFrame + 1
     end
+      npc.StateFrame = npc.StateFrame + 1
 
-    if npc.StateFrame>=40 then
+    if npc.StateFrame>=80 then
       sfx:Play(SoundEffect.SOUND_MONSTER_GRUNT_0 , 1.2, 0, false, 1)
       npc.State = NpcState.STATE_ATTACK
     end
 
   elseif npc.State == NpcState.STATE_ATTACK then
     sprite:Play("Attack")
-    npc.StateFrame = npc.StateFrame - 1
 
-    if utils.chancep(50) and npc.StateFrame<30 then
-      local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, Vector(0,0), nil)
-      RCreep.SpriteScale = Vector(0.75,0.75) 
-      RCreep:Update()
+    npc.StateFrame = npc.StateFrame - 1
+    if npc.StateFrame<60 then
+      npc.StateFrame = npc.StateFrame - 1
+      if utils.chancep(60) then
+        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, Vector(0,0), nil)
+        RCreep.SpriteScale = Vector(0.75,0.75) 
+        RCreep:Update()
+      end
     end
 
-
     if sprite:IsEventTriggered("Smack") then
-    npc.StateFrame = npc.StateFrame - 10
+    npc.StateFrame = npc.StateFrame - Utils.choose(20, 15, 10)
        for i=1, 4 do
           if npc.Variant == 4000 then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*90):Resized(8), npc) end
           if npc.Variant == 4001 then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(8), npc) end
@@ -58,7 +61,6 @@ function this:behaviour(npc)
 
     if sprite:IsFinished("Attack") then
       npc.State = NpcState.STATE_MOVE
-      npc.StateFrame = Utils.choose(12, 8, 4)
     end
   end
 end

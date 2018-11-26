@@ -42,7 +42,7 @@
 
     <!-- Greed Itempools -->
     <Pool Name="greedTreasure">
-	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -66,8 +66,8 @@
       <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="secret">
-	     <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-       <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Life Tap" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedCurse">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
