@@ -41,7 +41,12 @@ function this:behaviour(fam)
   if sprite:IsEventTriggered("Shoot") then
     sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTER, 1, 0, false, 1)
        if utils.chancep(50) then
-          Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, fam.Position + Vector(0, 15), Vector(-3,0):Rotated(math.random(0, 360)), nil)
+          local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, fam.Position + Vector(0, 15), Vector(-3,0):Rotated(math.random(0, 360)), nil):ToTear()
+          if player:HasTrinket(127) then
+            prj.TearFlags = TearFlags.TEAR_HOMING
+            prj:GetSprite().Color = Color(0.40000000596046,0.15000000596046,0.15000000596046,1,math.floor(0.27843138575554*255),0,math.floor(0.45490199327469*255))
+          end
+          prj.Scale = 0.7
        end
   end
 
@@ -50,16 +55,22 @@ function this:behaviour(fam)
 
     if player:GetHearts() <= 1 or data.offset % 2 == 0 then
       sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTEST, 1, 0, false, 1)
-      Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, fam.Position + Vector(0, 15), Vector(7, 0):Rotated(10 * data.offset), nil)
-      Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, fam.Position + Vector(0, 15), Vector(-7, 0):Rotated(10 * data.offset), nil)
-      Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, fam.Position + Vector(0, 15), Vector(0, 7):Rotated(10 * data.offset), nil)
-      Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, fam.Position + Vector(0, 15), Vector(0, -7):Rotated(10 * data.offset), nil)
+      for i=1, 4 do
+        local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, fam.Position + Vector(0, 15), Vector(7, 0):Rotated(10 * data.offset + i*90), nil):ToTear()
+        if player:HasTrinket(127) then
+          prj.TearFlags = TearFlags.TEAR_HOMING
+          prj:GetSprite().Color = Color(0.40000000596046,0.15000000596046,0.15000000596046,1,math.floor(0.27843138575554*255),0,math.floor(0.45490199327469*255))
+        end
+        prj.Scale = 0.7
+      end
     end
   end
 
+  if fam.Variant == this.variant then
   if player:GetFireDirection() == Direction.NO_DIRECTION then
     fam:FollowParent()
   else fam.Velocity = Vector(0, 0) end
+  end
 end
 
 function this:awake(fam)

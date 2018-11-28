@@ -37,14 +37,18 @@ content = {
     gasoline                  = require 'scripts.items.gasoline',
     luckySaucer               = require 'scripts.items.luckySaucer',
     bloodyStream              = require 'scripts.items.bloodyStream',
-    breathOfDevil             = require 'scripts.items.breathOfDevil'
+    theCovenant               = require 'scripts.items.theCovenant',
+    adamsRib                  = require 'scripts.items.adamsRib',
+    goodOldFriend             = require 'scripts.items.goodOldFriend'
   },
 
   trinkets = {
     uncertainty               = require 'scripts.trinkets.uncertainty',
     appleCore                 = require 'scripts.trinkets.appleCore',
     krampusHorn               = require 'scripts.trinkets.krampusHorn',
-    darkLock                  = require 'scripts.trinkets.darkLock'
+    discountBrochure          = require 'scripts.trinkets.discountBrochure',
+    darkLock                  = require 'scripts.trinkets.darkLock',
+    specialPenny              = require 'scripts.trinkets.specialPenny'
   },
 
   cards = {
@@ -78,7 +82,9 @@ content = {
     saltySoup = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_saltySoup.anm2"),
     gasoline = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_gasoline.anm2"),
     luckySaucer = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_luckySaucer.anm2"),
-    theCovenant = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_theCovenant.anm2")
+    theCovenant = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_theCovenant.anm2"),
+    adamsRib = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_adamsRib.anm2"),
+    adamsRib2 = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_adamsRib2.anm2")
   }
 }
 

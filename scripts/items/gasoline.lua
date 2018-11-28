@@ -15,7 +15,7 @@ end
 function this:onHitNPC(npc)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-      Isaac.Spawn(1000, 45, 0, npc.Position, Vector(0, 0), player)
+      Isaac.Spawn(1000, 45, 0, npc.Position, Vector(0, 0), nil)
       SFXManager():Play(43, 0.8, 0, false, 1.2)
       local fire = Isaac.Spawn(1000, this.variant, 0, npc.Position, Vector(0, 0), player)
       local data = fire:GetData()

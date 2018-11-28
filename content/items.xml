@@ -10,8 +10,9 @@
 
   <active name="Sage" description="Descending souls" gfx="collectibles_sage.png" maxcharges="6"/>
 
-  <passive name="The Covenant" description="Evil at a solid cost" gfx="collectibles_breathofdevil.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="speed" />
-  <passive name="Second Chance" description="Your LAST chance..." gfx="collectibles_secondchance.png" />
+  <passive name="The Covenant" description="Evil at a solid cost" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="speed" />
+  <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
+  <passive name="Adam's Rib" devilprice="2" description="It all began" gfx="collectibles_adamsRib.png" cache="speed"/>
   <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed"/>
   <passive name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="1" cache="speed" />
   <passive name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay"/>
@@ -24,4 +25,5 @@
   <trinket name="Dark Lock" description="Even darker rewards" gfx="trinket_darklock.png" />
   <trinket name="Krampus' Horn" description="Сursed as before" gfx="trinket_krampus_horn.png" />
   <trinket name="Apple Core" description="Someone is eating, but someone has already ate.." gfx="trinket_appleCore.png" />
+  <trinket name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
 </items>

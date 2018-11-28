@@ -2,7 +2,6 @@
 local game = Game()
 
 --                  Collectibles
-local secondChance = Isaac.GetItemIdByName("Second Chance")
 local sage = Isaac.GetItemIdByName("Sage")
 
 
@@ -27,58 +26,6 @@ function mod:DiscountBrochureUpdate()
   end
 end
 mod:AddCallback(ModCallbacks.MC_POST_UPDATE, mod.DiscountBrochureUpdate)
-
--------------------------------------------------------------------------------------------
---  Second Chance
--------------------------------------------------------------------------------------------
-
-function mod:SecondChanceUpdate()
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(secondChance) then
-    if player:GetHearts() == 0 and player:GetSoulHearts() == 0
-    and player:GetBoneHearts() == 0 and player:GetBlackHearts() == 0 then
-      SFXManager():Play(SoundEffect.SOUND_SUPERHOLY, 0.8, 0, false, 1)
-      player:Revive()
-      player:AddSoulHearts(2)
-
-      if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
-        player:AddBoneHearts(2)
-        player:AddSoulHearts(-2)
-      end
-
-      if player:GetPlayerType() == PlayerType.XXX then
-        player:AddSoulHearts(6)
-      end
-
-      player:SetFullHearts()
-      player:RemoveCollectible(secondChance)
-
-      for e, entity in pairs(Isaac.GetRoomEntities()) do
-        if entity:IsVulnerableEnemy() then
-          entity:TakeDamage(40, 0, EntityRef(nil), 0)
-          entity:AddConfusion(EntityRef(nil), 60, false)
-        end
-      end
-    end
-  end
-end
-
-mod:AddCallback(ModCallbacks.MC_POST_UPDATE, mod.SecondChanceUpdate)
--------------------------------------------------------------------------------------------
---  D<3
--------------------------------------------------------------------------------------------
-
-function mod:dHeartReroll()
-  local player = Isaac.GetPlayer(0)
-  local roomEntities = Isaac.GetRoomEntities()
-  for e, entity in pairs(roomEntities) do
-    if entity.Type == EntityType.ENTITY_PICKUP and entity.Variant == PickupVariant.PICKUP_HEART then
-      entity:ToPickup():Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_HEART, math.random(1, 11), false)
-    end
-  end
-end
-
-mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.dHeartReroll, dheart)
 
 -------------------------------------------------------------------------------------------
 --  FAMILIAR FUNCTIONS
