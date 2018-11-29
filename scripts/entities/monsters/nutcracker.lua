@@ -8,29 +8,30 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
 
-  if npc.State ~= NpcState.STATE_INIT then
-    if data.timer<4 then data.timer = data.timer + 1 else data.timer=0 data.playertarget=target.Position end
-  end
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_MOVE
     npc.StateFrame = Utils.choose(-10, -5, 0)
-    data.timer = 0 data.playertarget=target.Position
 
   -- Move and wait for player to get closer --
   elseif npc.State == NpcState.STATE_MOVE then
     
-    if room:CheckLine(npc.Position,data.playertarget,0,1,false,false) then
-      npc.Pathfinder:FindGridPath(data.playertarget, 0.6, 2, false)
+    if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
+      npc.Pathfinder:FindGridPath(target.Position, math.random(5, 7) / 10, 2, false)
     else
       npc.Pathfinder:MoveRandomly(false)
     end
-    npc:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
+    
+    if npc.Velocity.Y>0 then
+    npc:AnimWalkFrame("WalkHori", "WalkVertUp", 0.1)
+    else
+    npc:AnimWalkFrame("WalkHori", "WalkVertDown", 0.1)
+    end
 
     npc.StateFrame = npc.StateFrame + 1
 
     if npc.StateFrame>=35 then
-      if npc.Position:Distance(data.playertarget) <= 275 then
+      if npc.Position:Distance(target.Position) <= 275 then
          sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 1.25, 0, false, 0.8)
          npc.State = NpcState.STATE_ATTACK
       end
@@ -38,17 +39,23 @@ function this:behaviour(npc)
 
   -- Chases the player and destroys objects on the way --
   elseif npc.State == NpcState.STATE_ATTACK then
-    npc:AnimWalkFrame("WalkHoriRage", "WalkHoriRage", 0.1)
-    if not target:IsDead() then npc.Velocity = utils.vecToPos(data.playertarget, npc.Position) * 7 end
+    
+    if npc.Velocity.Y>0 then
+    npc:AnimWalkFrame("WalkHoriRage", "WalkVertUpRage", 0.1)
+    else
+    npc:AnimWalkFrame("WalkHoriRage", "WalkVertDownRage", 0.1)
+    end
 
-    if sprite:IsFinished("WalkHoriRage") then
+    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 6.5 end
+
+    if sprite:IsEventTriggered("Stop") then
        npc.State = NpcState.STATE_MOVE;
-       npc.StateFrame = Utils.choose(-32, -24, -16)
+       npc.StateFrame = Utils.choose(-45, -35, -25)
     end
 
     if sprite:IsEventTriggered("Shake") then
-        Game():ShakeScreen(4)
-        sfx:Play(SoundEffect.SOUND_POT_BREAK, 0.6, 0, false, 2)
+        Game():ShakeScreen(5)
+        sfx:Play(SoundEffect.SOUND_POT_BREAK, 0.5, 0, false, math.random(10, 20) / 10)
 
         for e, food in pairs(Isaac.FindInRadius(npc.Position, 30, EntityPartition.ENEMY)) do
            if food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 or food.Type == 85 or food.Type == 94 then

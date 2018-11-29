@@ -24,20 +24,37 @@
     </entity>
 
     <entity id="746" variant="4000" anm2path="peabody.anm2" baseHP="18" boss="0" champion="0" collisionDamage="1" collisionMass="75" collisionRadius="8" friction="1" name="Peabody" numGridCollisionPoints="0" shadowSize="18" stageHP="0">
-        <gibs amount="20" blood="1" bone="1" eye="1" gut="0" large="0" />
+        <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 
     <entity id="746" variant="4001" anm2path="peabody.anm2" baseHP="18" boss="0" champion="0" collisionDamage="1" collisionMass="75" collisionRadius="8" friction="1" name="Peabody" numGridCollisionPoints="0" shadowSize="18" stageHP="0">
-        <gibs amount="20" blood="1" bone="1" eye="1" gut="0" large="0" />
+        <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 
     <entity id="747" variant="4000" anm2path="rosenberg.anm2" baseHP="15" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Rosenberg" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
-        <gibs amount="20" blood="1" bone="1" eye="1" gut="0" large="0" />
+        <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 
     <entity id="748" variant="4000" anm2path="shroomeo.anm2" baseHP="30" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Shroomeo" numGridCollisionPoints="0" shadowSize="35" stageHP="0">
         <gibs amount="20" blood="0" bone="1" eye="1" gut="1" large="0" />
     </entity>
+
+    <entity id="749" variant="4000" anm2path="tinhorn.anm2" baseHP="15" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Tinhorn" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
+        <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
+    </entity>
+
+    <entity id="750" variant="4000" anm2path="musk.anm2" baseHP="30" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Musk" numGridCollisionPoints="0" shadowSize="25" stageHP="0">
+        <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
+    </entity>
+
+    <entity id="750" variant="4001" anm2path="musk.anm2" baseHP="30" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Dusk" numGridCollisionPoints="0" shadowSize="25" stageHP="0">
+        <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
+    </entity>
+
+    <entity id="751" variant="4000" anm2path="fathost.anm2" baseHP="20" boss="0" champion="0" collisionDamage="0" collisionMass="100" collisionRadius="10" friction="1" name="Fat Host" numGridCollisionPoints="10" shadowSize="20" stageHP="0">
+        <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
+    </entity>
+
 
     <!-- Familiars -->
     <entity id="3" variant="4000" anm2path="familiar_sistersheart.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Sister's Heart" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
