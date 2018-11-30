@@ -11,21 +11,30 @@ function this:behaviour(npc)
   npc:AddEntityFlags(EntityFlag.FLAG_NO_KNOCKBACK | EntityFlag.FLAG_NO_PHYSICS_KNOCKBACK)
   npc.Velocity = Vector(0,0)
 
+  if npc.Variant == 4000 then
+    sprite:ReplaceSpritesheet(0,"gfx/monsters/fathost.png")
+    sprite:LoadGraphics()
+  elseif npc.Variant == 4001 then
+    sprite:ReplaceSpritesheet(0,"gfx/monsters/redFathost.png")
+    sprite:LoadGraphics()
+  end
+
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_IDLE;
     npc.StateFrame = Utils.choose(-10, -5, 0)
+    if data.Shielded == nil then data.Shielded = true end
+    if data.HTimer == nil then data.HTimer = 0 end
   
   -- Seek for a moment to attack --
   elseif npc.State == NpcState.STATE_IDLE then
-
     sprite:Play("Idle");
-    if npc.Position:Distance(target.Position) <= 150 then
-       npc.StateFrame = npc.StateFrame + 1
+    if npc.Position:Distance(target.Position) <= 100 then
+       data.HTimer = data.HTimer + 1
     end
-    npc.StateFrame = npc.StateFrame + 1
+    data.HTimer = data.HTimer + 1
 
-    if npc.StateFrame>=50 then
+    if data.HTimer>=40 then
       npc.State = NpcState.STATE_ATTACK
     end
 
@@ -33,8 +42,13 @@ function this:behaviour(npc)
 
     sprite:Play("Shoot")
 
-    if sprite:IsEventTriggered("Cough") then
-       sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 1.1, 0, false, 0.8)
+    if sprite:IsEventTriggered("CanBeAttacked") then
+       sfx:Play(SoundEffect.SOUND_MEAT_JUMPS , 1.1, 0, false, 0.8)
+       data.Shielded = false
+    end
+
+    if sprite:IsEventTriggered("CantBeAttacked") then
+       data.Shielded = true
     end
 
     if sprite:IsEventTriggered("Attack") then 
@@ -55,19 +69,31 @@ function this:behaviour(npc)
 
     if sprite:IsFinished("Shoot") then
       npc.State = NpcState.STATE_IDLE
-      npc.StateFrame = Utils.choose(-15, -10, -5)
+      data.HTimer  = math.random(-45, -25) 
+    end
+  end
+end
+
+function this:onHitNPC(npc)
+  local data = npc:GetData()
+  if npc.Type == this.id and npc.Variant == Isaac.GetEntityVariantByName("Fat Host") then
+    if npc.State == NpcState.STATE_IDLE or data.Shielded then
+      data.HTimer  = math.random(-25, -10) 
+      return false
     end
   end
 end
 
 function this:die(npc)
     sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
-    Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 69, 56, 52)
+    Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player)
+    Game():ShakeScreen(10) 
 end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
+  mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
 end
 
 return this
