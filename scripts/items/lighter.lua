@@ -4,7 +4,7 @@ this.id = Isaac.GetItemIdByName("Lighter")
 function this.use()
   SFXManager():Play(SoundEffect.SOUND_FIRE_RUSH , 0.8, 0, false, 1)
   for e, entity in pairs(Isaac.GetRoomEntities()) do 
-     if entity:IsVulnerableEnemy() then 
+     if entity:IsActiveEnemy() then 
         entity:AddBurn(EntityRef(nil), 60, 5) 
      end 
   end

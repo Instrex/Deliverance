@@ -61,6 +61,9 @@ function this:behaviour(npc)
           npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
 
           local velocity2 = (target.Position - npc.Position):Rotated(math.random(-10, 10)) * 0.05 * 9 * 0.1
+          if npc.Variant == 4001 then 
+             velocity2 = (target.Position - npc.Position):Rotated(math.random(-10, 10)) * 0.05 * 11 * 0.1
+          end
           npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y-4), velocity2, 0, params)
        end
        Game():ShakeScreen(20) 

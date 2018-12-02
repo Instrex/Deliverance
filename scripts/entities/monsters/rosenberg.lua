@@ -49,7 +49,7 @@ function this:behaviour(npc)
 
     if sprite:IsFinished("DigInIdle") then
       npc.State = NpcState.STATE_ATTACK
-      npc.Position = room:FindFreePickupSpawnPosition(npc.Position, 100, true)
+      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
     end
 
   elseif npc.State == NpcState.STATE_ATTACK then
@@ -77,7 +77,7 @@ function this:behaviour(npc)
          params.Variant = 0
        end
 
-       local velocity = (target.Position - npc.Position):Rotated(math.random(-15, 15)) * 0.05 * 12 * 0.1
+       local velocity = (target.Position - npc.Position):Rotated(math.random(-15, 15)) * 0.06 * 12 * 0.1
        local length = velocity:Length() 
        if length > 12 then 
          velocity = (velocity / length) * 12
@@ -101,7 +101,7 @@ function this:behaviour(npc)
     npc.StateFrame = npc.StateFrame + 1
     if npc.StateFrame>=30 then
       npc.State = NpcState.STATE_ATTACK
-      npc.Position = room:FindFreePickupSpawnPosition(npc.Position, 100, true)
+      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
     end
   end
 end

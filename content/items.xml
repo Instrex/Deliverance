@@ -1,12 +1,13 @@
 ﻿<items gfxroot="gfx/items/" version="1">
   <active name="Captain's Brooch" description="Calls down a chest nearby" gfx="collectibles_capbrooch.png" maxcharges="6"  />
   <active name="Sister's Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
-  <active name="D<3" description="Life will change!" gfx="collectibles_dheart.png" maxcharges="4"/>
+  <active name="D<3" description="Life will change!" gfx="collectibles_dheart.png" maxcharges="6"/>
   <active name="Special Delivery" description="Re-supply!" gfx="collectibles_special_delivery.png" maxcharges="4"/>
   <active name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="x"/>
   <active name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
   <active name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="4"/>
   <active name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
+  <active name="Battle Royale" description="'My life is nothing but theater'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
 
   <active name="Sage" description="Descending souls" gfx="collectibles_sage.png" maxcharges="6"/>
 
@@ -15,8 +16,9 @@
   <passive name="Adam's Rib" devilprice="2" description="It all began" gfx="collectibles_adamsRib.png" cache="speed"/>
   <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed"/>
   <passive name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="1" cache="speed" />
-  <passive name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay"/>
+  <passive name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
   <passive name="Lucky Saucer" description="I brought you some food!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck"/>
+  <passive name="Hot Milk" description="DGM up.. down.. whatever." gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" soulhearts="1" cache="speed"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
 

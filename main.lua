@@ -39,7 +39,9 @@ content = {
     bloodyStream              = require 'scripts.items.bloodyStream',
     theCovenant               = require 'scripts.items.theCovenant',
     adamsRib                  = require 'scripts.items.adamsRib',
-    goodOldFriend             = require 'scripts.items.goodOldFriend'
+    goodOldFriend             = require 'scripts.items.goodOldFriend',
+    hotMilk                   = require 'scripts.items.hotMilk',
+    battleRoyale              = require 'scripts.items.battleRoyale'
   },
 
   trinkets = {
@@ -61,7 +63,8 @@ content = {
 
   entityVariants = {
     dorkyHaunt                = require 'scripts.entities.monsters.variants.dorkyHaunt',
-    dukie                     = require 'scripts.entities.monsters.variants.dukie'
+    dukie                     = require 'scripts.entities.monsters.variants.dukie',
+    greenLevel2Fly            = require 'scripts.entities.monsters.variants.greenLevel2Fly'
   },
 
   entities = {
@@ -76,6 +79,7 @@ content = {
     shroomeo                  = require 'scripts.entities.monsters.shroomeo',
     tinhorn                   = require 'scripts.entities.monsters.tinhorn',
     musk                      = require 'scripts.entities.monsters.musk',
+    gelatino                  = require 'scripts.entities.monsters.gelatino',
     fathost                   = require 'scripts.entities.monsters.fathost'
   },
 
@@ -87,6 +91,7 @@ content = {
     luckySaucer = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_luckySaucer.anm2"),
     theCovenant = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_theCovenant.anm2"),
     adamsRib = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_adamsRib.anm2"),
+    hotmilk = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_hotmilk.anm2"),
     adamsRib2 = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_adamsRib2.anm2")
   }
 }

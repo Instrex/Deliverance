@@ -20,7 +20,7 @@ function this:saltyTearUpdate(tear)
     tear.Velocity = tear.Velocity:Rotated(math.random(-10,10))
   end
 end
-
+ 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_POST_FIRE_TEAR  , this.saltyTearUpdate)

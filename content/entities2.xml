@@ -59,6 +59,14 @@
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
+    <entity id="752" variant="4000" anm2path="gelatino.anm2" baseHP="32" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="20" friction="1" name="Gelatino" numGridCollisionPoints="15" shadowSize="25" stageHP="0">
+        <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
+    </entity>
+
+    <entity id="752" variant="4001" anm2path="gelatino.anm2" baseHP="22" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Mini Gelatino" numGridCollisionPoints="12" shadowSize="20" stageHP="0">
+        <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
+    </entity>
+
 
     <!-- Familiars -->
     <entity id="3" variant="4000" anm2path="familiar_sistersheart.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Sister's Heart" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
