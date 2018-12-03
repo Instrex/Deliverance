@@ -45,8 +45,8 @@ function this:behaviour(npc)
     else
     npc:AnimWalkFrame("WalkHoriRage", "WalkVertDownRage", 0.1)
     end
-
-    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 6.5 end
+ 
+    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1.25 + npc.Velocity * 0.86 end
 
     if sprite:IsEventTriggered("Stop") then
        npc.State = NpcState.STATE_MOVE;

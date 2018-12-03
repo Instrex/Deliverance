@@ -8,7 +8,7 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
 
-  if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/11) end
+  if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/80) + npc.Velocity * 0.95 end
 
   if npc.Variant == 4000 then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody.png")
@@ -41,6 +41,7 @@ function this:behaviour(npc)
     sprite:Play("Attack")
 
     npc.StateFrame = npc.StateFrame - 1
+    npc.Velocity = npc.Velocity * 0.85
     if npc.StateFrame<60 then
       npc.StateFrame = npc.StateFrame - 1
       if utils.chancep(60) then
@@ -53,8 +54,8 @@ function this:behaviour(npc)
     if sprite:IsEventTriggered("Smack") then
     npc.StateFrame = npc.StateFrame - Utils.choose(20, 15, 10)
        for i=1, 4 do
-          if npc.Variant == 4000 then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*90):Resized(8), npc) end
-          if npc.Variant == 4001 then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(8), npc) end
+          if npc.Variant == 4000 then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*90):Resized(12), npc) end
+          if npc.Variant == 4001 then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(12), npc) end
        end
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
     end

@@ -37,7 +37,7 @@ function this:behaviour(npc)
     if npc.StateFrame==10 then sfx:Play(SoundEffect.SOUND_RAGMAN_1, 1.2, 0, false, 1.) end
 
     if npc.StateFrame >= 20 then
-      if target.Position.Y > npc.Position.Y-40 and target.Position.Y < npc.Position.Y+40  then
+      if target.Position.Y > npc.Position.Y-32 and target.Position.Y < npc.Position.Y+32  then
         if(target.Position.X > npc.Position.X) then
           npc.State = NpcState.STATE_ATTACK;
         else
@@ -56,7 +56,7 @@ function this:behaviour(npc)
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
        local brimstone_laser = EntityLaser.ShootAngle(brim_type, npc.Position, 180, 15, Vector(-25,-9), npc)
        brimstone_laser.DepthOffset = 200
-       npc.Velocity = Vector(25,0)
+       npc.Velocity = Vector(25,Utils.choose(-2, -0, 2))
     end
 
     if(sprite:IsFinished("BrimstoneLeft")) then
@@ -72,7 +72,7 @@ function this:behaviour(npc)
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
        local brimstone_laser = EntityLaser.ShootAngle(brim_type, npc.Position, 0, 15, Vector(22,-9), npc)
        brimstone_laser.DepthOffset = 200
-       npc.Velocity = Vector(-25,0)
+       npc.Velocity = Vector(-25,Utils.choose(-2, -0, 2))
     end
 
     if(sprite:IsFinished("BrimstoneRight")) then
