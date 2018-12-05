@@ -41,7 +41,8 @@ content = {
     adamsRib                  = require 'scripts.items.adamsRib',
     goodOldFriend             = require 'scripts.items.goodOldFriend',
     hotMilk                   = require 'scripts.items.hotMilk',
-    battleRoyale              = require 'scripts.items.battleRoyale'
+    battleRoyale              = require 'scripts.items.battleRoyale',
+    sage                      = require 'scripts.items.familiars.sage'
   },
 
   trinkets = {
@@ -80,7 +81,8 @@ content = {
     tinhorn                   = require 'scripts.entities.monsters.tinhorn',
     musk                      = require 'scripts.entities.monsters.musk',
     gelatino                  = require 'scripts.entities.monsters.gelatino',
-    fathost                   = require 'scripts.entities.monsters.fathost'
+    fathost                   = require 'scripts.entities.monsters.fathost',
+    cadaver                   = require 'scripts.entities.monsters.cadaver'
   },
 
   costumes = {

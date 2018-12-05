@@ -7,18 +7,52 @@ function this:behaviour(npc)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
 
+  local level = game:GetLevel()
+  local stage = level:GetStage()
+
   if npc.Variant == 4000 then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino.png")
+    if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino_blue.png")
+    elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino_red.png")
+    elseif stage == LevelStage.STAGE5 or stage == LevelStage.STAGE6 or stage == LevelStage.STAGE7 or (stage == LevelStage.STAGE5_GREED or stage == LevelStage.STAGE6_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino2_gray.png")
+    end
     sprite:ReplaceSpritesheet(1,"gfx/monsters/gelatino.png")
     sprite:LoadGraphics()
   elseif npc.Variant == 4001 then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino2.png")
+    if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino2_blue.png")
+    elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino2_red.png")
+    elseif stage == LevelStage.STAGE5 or stage == LevelStage.STAGE6 or stage == LevelStage.STAGE7 or (stage == LevelStage.STAGE5_GREED or stage == LevelStage.STAGE6_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino2_gray.png")
+    end
     sprite:ReplaceSpritesheet(1,"gfx/monsters/gelatino2.png")
     sprite:LoadGraphics()
   end
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
+    if data.color == nil then data.color = Color(0, 0, 0, 0.75, 58, 140, 122) end
+    if data.tearColor == nil then data.tearColor = Color(0, 0, 0, 1, 116, 280, 244) end
+
+    if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+       data.color = Color(0, 0, 0, 0.75, 58, 79, 140)
+       data.tearColor = Color(0, 0, 0, 1, 87, 119, 210)
+    elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+       data.color = Color(0, 0, 0, 0.75, 171, 47, 60)
+       data.tearColor = Color(0, 0, 0, 1, 256, 64, 90)
+    elseif stage == LevelStage.STAGE5 or stage == LevelStage.STAGE6 or stage == LevelStage.STAGE7 or (stage == LevelStage.STAGE5_GREED or stage == LevelStage.STAGE6_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+       data.color = Color(0, 0, 0, 0.75, 101, 71, 96)
+       data.tearColor = Color(0, 0, 0, 1, 152, 104, 144)
+    else
+       data.color = Color(0, 0, 0, 0.75, 58, 140, 122)
+       data.tearColor = Color(0, 0, 0, 1, 87, 210, 183)
+    end
+ 
     if data.roll == nil then data.roll = npc:GetDropRNG():RandomInt(99) end
       if data.roll<10 then sprite:Play("WithSack");
         elseif data.roll<25 then sprite:Play("WithCoins");
@@ -33,8 +67,6 @@ function this:behaviour(npc)
       end
     npc.State = NpcState.STATE_MOVE
   elseif npc.State == NpcState.STATE_MOVE then
---  npc.Pathfinder:FindGridPath(target.Position, 0.6, 1, false)
---  npc.Pathfinder:MoveRandomlyAxisAligned(0.6, false)
     if npc.Variant == 4000 then
     if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1 + npc.Velocity * 0.8 end
     elseif npc.Variant == 4001 then
@@ -43,8 +75,7 @@ function this:behaviour(npc)
 
       if utils.chancep(33) then
         local Creep = Isaac.Spawn(1000, 7, 0, npc.Position, Vector(0,0), nil)
-        Creep.Color = Color(0, 0, 0, 0.75, 58, 140, 122)
---      Creep.SpriteScale = Vector(0.75,0.75) 
+        Creep.Color = data.color
         Creep:Update()
       end
   end  
@@ -61,26 +92,23 @@ function this:behaviour(npc)
       elseif data.roll==97 then Isaac.Spawn(5, 350, 14, npc.Position, Vector(0, 0), player) 
       elseif data.roll>97 then Isaac.Spawn(5, 350, 53, npc.Position, Vector(0, 0), player);
     end
-  end
-end
 
-function this:die(npc)
-  sfx:Play(SoundEffect.SOUND_MEATHEADSHOOT  , 1, 0, false, 1) 
-  local Creep = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), npc)
-  Creep.Color = Color(0, 0, 0, 0.75, 58, 140, 122)
-  Creep.SpriteScale = Vector(0.75,0.75) 
+    sfx:Play(SoundEffect.SOUND_MEATHEADSHOOT  , 1, 0, false, 1) 
+    local Creep = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), npc)
+    Creep.Color = data.color
+    Creep.SpriteScale = Vector(0.75,0.75) 
 
-  for i=1, 8 do
-       if npc.Variant == 4000 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(i*45):Resized(10), npc).Color = Color(0, 0, 0, 0.75, 68, 150, 132) end
-  end
-  for i=1, 4 do
-       if npc.Variant == 4001 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(10), npc).Color = Color(0, 0, 0, 0.75, 68, 150, 132) end
+    for i=1, 8 do
+       if npc.Variant == 4000 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(i*45):Resized(10), npc).Color = data.tearColor end
+    end
+    for i=1, 4 do
+       if npc.Variant == 4001 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(10), npc).Color = data.tearColor end
+    end
   end
 end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
 end
 
 return this

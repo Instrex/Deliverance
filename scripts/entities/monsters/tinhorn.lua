@@ -100,6 +100,7 @@ function this:behaviour(npc)
 
          npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
        end
+       Game():ShakeScreen(10)
        sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
        Isaac.Spawn(1000, 34, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 132, 163, 244)
        npc:Remove()
@@ -135,6 +136,7 @@ function this:die(npc)
     end
     sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
     Isaac.Spawn(1000, 34, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 132, 163, 244)
+    Game():ShakeScreen(5)
 end
 
 function this.Init()

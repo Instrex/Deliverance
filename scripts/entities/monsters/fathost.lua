@@ -22,14 +22,14 @@ function this:behaviour(npc)
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_IDLE;
-    npc.StateFrame = Utils.choose(-10, -5, 0)
+    npc.StateFrame = Utils.choose(0, 5, 10)
     if data.Shielded == nil then data.Shielded = true end
     if data.HTimer == nil then data.HTimer = 0 end
   
   -- Seek for a moment to attack --
   elseif npc.State == NpcState.STATE_IDLE then
     sprite:Play("Idle");
-    if npc.Position:Distance(target.Position) <= 100 then
+    if npc.Position:Distance(target.Position) <= 150 then
        data.HTimer = data.HTimer + 1
     end
     data.HTimer = data.HTimer + 1
@@ -81,7 +81,7 @@ function this:onHitNPC(npc)
   local data = npc:GetData()
   if npc.Type == this.id and npc.Variant == Isaac.GetEntityVariantByName("Fat Host") then
     if npc.State == NpcState.STATE_IDLE or data.Shielded then
-      data.HTimer  = math.random(-25, -10) 
+      data.HTimer = math.random(-10, 5) 
       return false
     end
   end

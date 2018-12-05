@@ -59,7 +59,7 @@ function this:behaviour(npc)
        npc.Velocity = Vector(25,Utils.choose(-2, -0, 2))
     end
 
-    if(sprite:IsFinished("BrimstoneLeft")) then
+    if sprite:IsFinished("BrimstoneLeft") then
        npc.Velocity = Vector(-3,0);
        npc.State = NpcState.STATE_MOVE;
        npc.StateFrame = 0;
@@ -75,7 +75,7 @@ function this:behaviour(npc)
        npc.Velocity = Vector(-25,Utils.choose(-2, -0, 2))
     end
 
-    if(sprite:IsFinished("BrimstoneRight")) then
+    if sprite:IsFinished("BrimstoneRight") then
        npc.Velocity = Vector(3,0);
        npc.State = NpcState.STATE_MOVE;
        npc.StateFrame = 0;

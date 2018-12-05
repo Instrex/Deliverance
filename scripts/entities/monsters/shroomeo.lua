@@ -20,7 +20,7 @@ function this:behaviour(npc)
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_IDLE;
-    npc.StateFrame = Utils.choose(-10, -5, 0)
+    npc.StateFrame = Utils.choose(10, 15, 20)
   
   -- Move and seek for a moment to attack --
   elseif npc.State == NpcState.STATE_IDLE then

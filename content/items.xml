@@ -7,9 +7,7 @@
   <active name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
   <active name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="4"/>
   <active name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
-  <active name="Battle Royale" description="'My life is nothing but theater'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
-
-  <active name="Sage" description="Descending souls" gfx="collectibles_sage.png" maxcharges="6"/>
+  <active name="Battle Royale" description="'My life is nothing but spectacle'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
 
   <passive name="The Covenant" description="Evil at a solid cost" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="speed" />
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
@@ -21,6 +19,7 @@
   <passive name="Hot Milk" description="DGM up.. down.. whatever." gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" soulhearts="1" cache="speed"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
+  <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>
 
   <trinket name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
   <trinket name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
