@@ -1,4 +1,4 @@
-local this = {}
+ local this = {}
 this.id = Isaac.GetItemIdByName("Special Delivery")
 local specialDel_target = Isaac.GetEntityVariantByName("Special Delivery Target")
 local specialDel = Isaac.GetEntityVariantByName("Special Delivery")
@@ -22,7 +22,7 @@ function this:updatetarget(s)
   if sprite:IsFinished("Die") then s:Remove() Isaac.Spawn(1000, specialDel, 0, s.Position, Vector(0, 0), nil) player:AnimateCollectible(this.id, "HideItem", "Idle") end
 
   if Input.IsMouseBtnPressed(0) then s.Velocity = (Input.GetMousePosition(true) - s.Position) / 6
-    elseif player:GetFireDirection() ~= Direction.NO_DIRECTION then s.Velocity = player:GetAimDirection()*10
+    elseif player:GetFireDirection() ~= Direction.NO_DIRECTION then s.Velocity = player:GetAimDirection()*13
     else s.Velocity = Vector(0,0) 
   end
  end

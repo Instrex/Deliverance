@@ -42,7 +42,10 @@ content = {
     goodOldFriend             = require 'scripts.items.goodOldFriend',
     hotMilk                   = require 'scripts.items.hotMilk',
     battleRoyale              = require 'scripts.items.battleRoyale',
-    sage                      = require 'scripts.items.familiars.sage'
+    sage                      = require 'scripts.items.familiars.sage',
+    rottenPorkChop            = require 'scripts.items.rottenPorkChop',
+    lilTummy                  = require 'scripts.items.familiars.lilTummy',
+    scaredyShroom             = require 'scripts.items.familiars.scaredyShroom'
   },
 
   trinkets = {

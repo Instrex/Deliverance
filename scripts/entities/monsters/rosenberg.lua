@@ -64,7 +64,7 @@ function this:behaviour(npc)
       npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
     end
 
-    if sprite:IsEventTriggered("Shoot") then
+    if sprite:IsEventTriggered("Shoot") and npc.StateFrame>=15 then
        local params = ProjectileParams() 
        params.FallingSpeedModifier = math.random(-18, -14) 
        params.FallingAccelModifier = 1.2 

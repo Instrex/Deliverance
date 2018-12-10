@@ -42,11 +42,8 @@ function this:behaviour(fam)
     sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTER, 1, 0, false, 1)
        if utils.chancep(50) then
           local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, fam.Position + Vector(0, 15), Vector(-3,0):Rotated(math.random(0, 360)), nil):ToTear()
-          if player:HasTrinket(127) then
-            prj.TearFlags = TearFlags.TEAR_HOMING
-            prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255))
-          end
-          prj.Scale = 0.7
+          if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
+          if player:HasCollectible(247) then prj.Scale = 0.9 prj.CollisionDamage = 4.5 else prj.Scale = 0.7 prj.CollisionDamage = 3 end
        end
   end
 
@@ -57,11 +54,8 @@ function this:behaviour(fam)
       sfx:Play(SoundEffect.SOUND_HEARTBEAT_FASTEST, 1, 0, false, 1)
       for i=1, 4 do
         local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 0, fam.Position + Vector(0, 15), Vector(7, 0):Rotated(10 * data.offset + i*90), nil):ToTear()
-        if player:HasTrinket(127) then
-          prj.TearFlags = TearFlags.TEAR_HOMING
-          prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255))
-        end
-        prj.Scale = 0.7
+        if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
+        if player:HasCollectible(247) then prj.Scale = 0.9 prj.CollisionDamage = 4.5 else prj.Scale = 0.7 prj.CollisionDamage = 3 end
       end
     end
   end

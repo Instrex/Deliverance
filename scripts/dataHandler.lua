@@ -4,29 +4,35 @@ local this = {}
 this.unsaved = false
 this.loaded = false
 
-function this.load()
-  if mod:HasData() then
-    data = json.decode(mod:LoadData())
-  end
 
-  this.loaded = true
+function this.load(fromSave)
 
-  if not data.temporary then
+  if not data.temporary or not fromSave then
     data.temporary = {}
+    this.directSave()
   end
-
-  local meta = {
-    __newindex = function(t, k, v)
-      rawset(t, k, v)
-      if type(v) == 'table' then
-        setmetatable(t[k], meta)
-      end
-
-      this.unsaved = true
-    end
-  }
-
-  setmetatable(data.temporary, meta)
+--  if mod:HasData() then
+--    data = json.decode(mod:LoadData())
+--  end
+--
+--  this.loaded = true
+--
+--  if not data.temporary or not fromSave then
+--    data.temporary = {}
+--  end
+--
+--  local meta = {
+--    __index = function(t, k, v)
+--     rawset(t, k, v)
+--      if type(v) == 'table' then
+--        setmetatable(t[k], meta)
+--      end
+--
+--      this.unsaved = true
+--    end
+--  }
+--
+--  setmetatable(data.temporary, meta)
 end
 
 function this.directSave()
@@ -41,8 +47,7 @@ function this.save()
 end
 
 function this.leave()
-  this.save()
-  this.loaded = false
+  this.directSave()
 end
 
 function this.finalize()
@@ -55,7 +60,7 @@ end
 function this.init()
   mod:AddCallback(ModCallbacks.MC_POST_GAME_END, this.finalize)
   mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, this.leave)
-  mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED , this.load)
+  mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, this.load)
   mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.save)
 end
 

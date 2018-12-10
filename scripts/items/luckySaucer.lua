@@ -18,6 +18,9 @@ function this:update(player)
       player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(content.costumes.luckySaucer), "gfx/costumes/sheet_costume_luckySaucerG.png", 0)
     end
   end
+  for k, v in pairs(data.temporary) do print(k..' = '..tostring(v)) end
+  print(' loaded '..tostring(dataHandler.loaded))
+  print(' unsaved '..tostring(dataHandler.unsaved))
 end
 
 function this.Init()

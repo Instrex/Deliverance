@@ -4,7 +4,7 @@ function this:behaviour(npc)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local room = game:GetRoom()
-  if data.trytochange == nil and utils.chancep(12) then
+  if data.trytochange == nil and utils.chancep(16) then
     data.greenFly = 1
     sprite:ReplaceSpritesheet(0,"gfx/monsters/variants/level2fly.png") sprite:LoadGraphics()
   end

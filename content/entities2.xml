@@ -89,6 +89,14 @@
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
+    <entity id="3" variant="4002" anm2path="lilTummy.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Lil Tummy" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+    </entity>
+
+    <entity id="3" variant="4003" anm2path="scaredyShroom.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Scaredy-shroom" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+    </entity>
+
     <!-- Effects -->
     <entity id="1000" variant="4000" anm2path="effect_special_delivery_cursor.anm2" baseHP="0" boss="0" bossID = "0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Special Delivery Target" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
@@ -107,6 +115,10 @@
     </entity>
 
     <entity id="1000" variant="4005" anm2path="goodOldFriend.anm2" baseHP="0" boss="0" bossID = "0" champion="0" friction="1" name="Good Old Friend" shadowSize="16" stageHP="0">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+    </entity>
+
+    <entity id="1000" variant="4006" anm2path="fart.anm2" baseHP="0" boss="0" bossID = "0" champion="0" friction="1" name="Rotten Fart" shadowSize="0" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 

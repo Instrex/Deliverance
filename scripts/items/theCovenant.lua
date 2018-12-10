@@ -11,10 +11,10 @@ function this:cache(player, flag)
     if not data.temporary.hasCovenant then
       data.temporary.devilPrize=false
       data.temporary.hasCovenant = true
+      dataHandler.directSave()
     end
   end
 end
-
 
 -- Replace all hearts to their corresponding reward --
 function this:pickupMorph(pickup)
@@ -101,6 +101,7 @@ function this:update()
         player:AddSoulHearts(2)
         player:AddBlackHearts(2)
         data.temporary.devilPrize=true
+        dataHandler.directSave()
      end
    end
 end
