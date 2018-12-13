@@ -4,10 +4,14 @@ this.variant = Isaac.GetEntityVariantByName("Rotten Fart")
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
-  if flag == CacheFlag.CACHE_TEARCOLOR and player:HasCollectible(this.id) then
+    if flag == CacheFlag.CACHE_TEARCOLOR and player:HasCollectible(this.id) then
        
-     player.Color = Color(0.6,1,0.6,1,0,0,0)
-  end
+      if not data.temporary.hasRottenPorkChop then
+        data.temporary.hasRottenPorkChop = true
+        dataHandler.directSave()
+        player.Color = Color(0.6,1,0.6,1,0,0,0)
+      end
+    end
 end
 
 function this:rottenUpdate(player)

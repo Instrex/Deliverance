@@ -1,5 +1,5 @@
 local this = {}
-this.id = Isaac.GetEntityTypeByName("Rosenberg")
+this.id = Isaac.GetEntityTypeByName("Eddie")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
@@ -9,20 +9,19 @@ function this:behaviour(npc)
   local room = game:GetRoom()
 
   npc.Velocity = Vector(0,0)
-  if target.Position.X<npc.Position.X then sprite.FlipX=false else sprite.FlipX=true end
 
   local level = game:GetLevel()
   local stage = level:GetStage()
   if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then
     if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_flooded.png")
+        sprite:ReplaceSpritesheet(0, "gfx/monsters/eddie_flooded.png")
         sprite:LoadGraphics()
     end
   elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
     if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_scarred.png")
+        sprite:ReplaceSpritesheet(0, "gfx/monsters/eddie_scarred.png")
     else
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_womb.png")
+        sprite:ReplaceSpritesheet(0, "gfx/monsters/eddie_womb.png")
     end
     sprite:LoadGraphics()
   end
@@ -65,25 +64,8 @@ function this:behaviour(npc)
     end
 
     if sprite:IsEventTriggered("Shoot") then
-       local params = ProjectileParams() 
-       params.FallingSpeedModifier = math.random(-18, -14) 
-       params.FallingAccelModifier = 1.2 
-       params.Variant = 3
-       if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then
-         if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
-         params.Variant = 4
-         end
-       elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 then
-         params.Variant = 0
-       end
-
-       local velocity = (target.Position - npc.Position):Rotated(math.random(-15, 15)) * 0.06 * 12 * 0.1
-       local length = velocity:Length() 
-       if length > 12 then 
-         velocity = (velocity / length) * 12
-       end 
-       npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y+8), velocity, 0, params)
-       sfx:Play(SoundEffect.SOUND_WORM_SPIT, 1, 0, false, 1)
+       Isaac.Spawn(9, 0, 0, Vector(npc.Position.X,npc.Position.Y + 7.5), (utils.vecToPos(target.Position, npc.Position) * 15):Rotated(math.random(-5, 5)), npc)
+       sfx:Play(SoundEffect.SOUND_WORM_SPIT, 1, 0, false, 1.5)
     end
 
     if sprite:IsFinished("DigOut") then

@@ -4,14 +4,15 @@ this.id = Isaac.GetItemIdByName("The Covenant")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    player:AddNullCostume(content.costumes.theCovenant)
-    if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
-      player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(content.costumes.theCovenant), "gfx/costumes/sheet_costume_theCovenant_forgotten.png", 0)
-    end
-    if not data.temporary.hasCovenant then
-      data.temporary.devilPrize=false
-      data.temporary.hasCovenant = true
-      dataHandler.directSave()
+    if not deliveranceData.temporary.hasCovenant then
+      deliveranceData.temporary.devilPrize=false
+      deliveranceData.temporary.hasCovenant = true
+      deliveranceDataHandler.directSave()
+
+      player:AddNullCostume(content.costumes.theCovenant)
+      if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
+        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(content.costumes.theCovenant), "gfx/costumes/sheet_costume_theCovenant_forgotten.png", 0)
+      end
     end
   end
 end
@@ -67,7 +68,7 @@ function this:update()
    local player = Isaac.GetPlayer(0)
    local room = game:GetRoom()
 -- print(data.temporary.devilPrize)
-   if room:GetType() == RoomType.ROOM_DEVIL and not data.temporary.devilPrize then  
+   if room:GetType() == RoomType.ROOM_DEVIL and not deliveranceData.temporary.devilPrize then  
      if player:HasCollectible(this.id) then
         Game():ShakeScreen(20) 
         SFXManager():Play(SoundEffect.SOUND_SATAN_GROW , 0.6, 0, false, math.random(10, 12) / 10)
@@ -100,14 +101,15 @@ function this:update()
         player:AddHearts(20)
         player:AddSoulHearts(2)
         player:AddBlackHearts(2)
-        data.temporary.devilPrize=true
-        dataHandler.directSave()
+        deliveranceData.temporary.devilPrize=true
+        deliveranceDataHandler.directSave()
      end
    end
 end
 
 function this:nullDevilPrize()     
-   data.temporary.devilPrize=false
+   deliveranceData.temporary.devilPrize=false
+   deliveranceDataHandler.directSave()
 end
 
 function this.Init()

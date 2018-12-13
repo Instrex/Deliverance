@@ -5,9 +5,13 @@ this.variant = Isaac.GetEntityVariantByName("Adam's Knife")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    player:AddNullCostume(content.costumes.adamsRib2)
-    if player:GetPlayerType() == PlayerType.PLAYER_EVE then
-       player:AddNullCostume(content.costumes.adamsRib)
+    if not data.temporary.hasAdamsRib then
+      data.temporary.hasAdamsRib = true
+      dataHandler.directSave()
+      player:AddNullCostume(content.costumes.adamsRib2)
+      if player:GetPlayerType() == PlayerType.PLAYER_EVE then
+         player:AddNullCostume(content.costumes.adamsRib)
+      end
     end
   end
 end
@@ -15,25 +19,32 @@ end
 function this:onHitNPC(npc,damage,flags,source)
   local player = Isaac.GetPlayer(0)
   if npc:IsVulnerableEnemy() and player:HasCollectible(this.id) then
-     for e, entity in pairs(Isaac.GetRoomEntities()) do 
-        if source.Entity and source.Entity.Index == entity.Index and entity.SpawnerType == 1 then 
-           if math.random(1, 8-(math.min(player.Luck, 6))) == 2 then
-              SFXManager():Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
-              Isaac.Spawn(1000, this.variant, 0, npc.Position, Vector(0, 0), nil)
-           end
-        end
-     end 
+--     for e, entity in pairs(Isaac.GetRoomEntities()) do 
+--        if source.Entity and source.Entity.Index == entity.Index and entity.SpawnerType == 1 then 
+--           if math.random(1, 8-(math.min(player.Luck, 6))) == 2 then
+--              SFXManager():Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
+--              Isaac.Spawn(1000, this.variant, 0, npc.Position, Vector(0, 0), nil)
+--           end
+--        end
+--     end 
+     if not npc:GetData().doubleDamaged then
+        npc:GetData().doubleDamaged = true
+        SFXManager():Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
+        local knife = Isaac.Spawn(1000, this.variant, 0, npc.Position, Vector(0, 0), nil)
+        knife:GetData().dmg = damage*0.75
+     end
   end
 end
 
 function this:update(npc)
+  local data = npc:GetData()
   if npc.Variant == this.variant then
     local sprite = npc:GetSprite()
 
     if sprite:IsEventTriggered("Attack") then
-       SFXManager():Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
+       SFXManager():Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 0.8)
        for e, enemies in pairs(Isaac.FindInRadius(npc.Position, 45, EntityPartition.ENEMY)) do
-         enemies:TakeDamage(10, 0, EntityRef(nil), 0)
+         enemies:TakeDamage(data.dmg, 0, EntityRef(nil), 0)
        end
 
        local room = game:GetRoom()

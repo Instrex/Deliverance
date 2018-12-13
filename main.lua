@@ -1,10 +1,10 @@
-mod = RegisterMod("Kal-Mem", 1)
+mod = RegisterMod("tBoi: Deliverance", 1)
 game = Game()
 
 utils = require('scripts.utils')
 
 -- Mod data --
-data = {
+deliveranceData = {
 
   -- Remains even after restart --
   persistent = {
@@ -17,11 +17,11 @@ data = {
   }
 }
 
-dataHandler = require('scripts.dataHandler')
-dataHandler.init()
+deliveranceDataHandler = require('scripts.deliveranceDataHandler')
+deliveranceDataHandler.init()
 
 -- Register mod content here --
-content = {
+deliveranceContent = {
 
   items = {
     sistersKey                = require 'scripts.items.sistersKey',
@@ -85,7 +85,9 @@ content = {
     musk                      = require 'scripts.entities.monsters.musk',
     gelatino                  = require 'scripts.entities.monsters.gelatino',
     fathost                   = require 'scripts.entities.monsters.fathost',
-    cadaver                   = require 'scripts.entities.monsters.cadaver'
+    cadaver                   = require 'scripts.entities.monsters.cadaver',
+    eddie                     = require 'scripts.entities.monsters.eddie',
+    explosimaw                = require 'scripts.entities.monsters.explosimaw'
   },
 
   costumes = {
@@ -102,11 +104,11 @@ content = {
 }
 
 -- Content Initialization --
-print("Kalmem: Loading content... ! ")
-for q, r in pairs(content) do
+print("tBoI Deliverance: Loading content... ! ")
+for q, r in pairs(deliveranceContent) do
   if r.noAutoload == nil then
     for k, v in pairs(r) do
-      print("Kalmem: Loading " .. k .. " " .. q .. "...")
+      print("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
       v.Init()
     end
   end

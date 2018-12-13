@@ -5,16 +5,14 @@ this.unsaved = false
 this.loaded = false
 
 
-function this.load(fromSave)
-
-  if not data.temporary or not fromSave then
-    data.temporary = {}
+function this:load(fromSave)
+--print(fromSave)
+  if fromSave then
+    deliveranceData = json.decode(mod:LoadData())
+  else
+    deliveranceData.temporary = {}
     this.directSave()
   end
---  if mod:HasData() then
---    data = json.decode(mod:LoadData())
---  end
---
 --  this.loaded = true
 --
 --  if not data.temporary or not fromSave then
@@ -36,7 +34,7 @@ function this.load(fromSave)
 end
 
 function this.directSave()
-  mod:SaveData(json.encode(data))
+  mod:SaveData(json.encode(deliveranceData))
 end
 
 function this.save()
@@ -51,7 +49,7 @@ function this.leave()
 end
 
 function this.finalize()
-  data.temporary = {}
+  deliveranceData.temporary = {}
 
   this.directSave()
   this.loaded = false

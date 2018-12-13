@@ -11,7 +11,7 @@
 
   <passive name="The Covenant" description="Evil at a solid cost" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="speed" />
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
-  <passive name="Adam's Rib" devilprice="2" description="It all began" gfx="collectibles_adamsRib.png" cache="speed"/>
+  <passive name="Adam's Rib" devilprice="2" description="Deals double damage on first hit" gfx="collectibles_adamsRib.png" cache="speed"/>
   <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed"/>
   <passive name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="1" cache="speed" />
   <passive name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
