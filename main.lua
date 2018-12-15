@@ -87,7 +87,8 @@ deliveranceContent = {
     fathost                   = require 'scripts.entities.monsters.fathost',
     cadaver                   = require 'scripts.entities.monsters.cadaver',
     eddie                     = require 'scripts.entities.monsters.eddie',
-    explosimaw                = require 'scripts.entities.monsters.explosimaw'
+    explosimaw                = require 'scripts.entities.monsters.explosimaw',
+    seraphim                  = require 'scripts.entities.monsters.seraphim'
   },
 
   costumes = {

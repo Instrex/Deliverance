@@ -4,16 +4,16 @@ this.id = Isaac.GetItemIdByName("Hot Milk")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not data.temporary.hasHotMilk then
-      data.temporary.hasHotMilk = true
-      dataHandler.directSave()
-      player:AddNullCostume(content.costumes.hotmilk)
+    if not deliveranceData.temporary.hasHotMilk then
+      deliveranceData.temporary.hasHotMilk = true
+      deliveranceDataHandler.directSave()
+      player:AddNullCostume(deliveranceContent.costumes.hotmilk)
       if player:GetPlayerType() ~= PlayerType.PLAYER_THEFORGOTTEN then
-        player:AddNullCostume(content.costumes.hotmilk)
+        player:AddNullCostume(deliveranceContent.costumes.hotmilk)
       end
     end
 --  if flag == CacheFlag.CACHE_TEARCOLOR then player.TearColor = Color(219, 231, 251, 1, 0, 0, 0) end
-
+    if flag == CacheFlag.CACHE_DAMAGE then player.Damage = player.Damage + 0.35 end
   end
 end
 

@@ -21,8 +21,6 @@ function this:behaviour(fam)
     end 
 
     d.scared = count > 0
-    
-    print(count)
 
     if not d.scared then
       if d.cooldown>0 then

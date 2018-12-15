@@ -4,10 +4,10 @@ this.id = Isaac.GetItemIdByName("Lucky Saucer")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not data.temporary.hasLuckySaucer then
-      data.temporary.hasLuckySaucer = true
-      dataHandler.directSave()
-      player:AddNullCostume(content.costumes.luckySaucer)
+    if not deliveranceData.temporary.hasLuckySaucer then
+      deliveranceData.temporary.hasLuckySaucer = true
+      deliveranceDataHandler.directSave()
+      player:AddNullCostume(deliveranceContent.costumes.luckySaucer)
       if flag == CacheFlag.CACHE_LUCK then
        player.Luck = player.Luck + 3; 
       end
@@ -19,7 +19,7 @@ function this:update(player)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
     if player:HasCollectible(202) then  
-      player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(content.costumes.luckySaucer), "gfx/costumes/sheet_costume_luckySaucerG.png", 0)
+      player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.luckySaucer), "gfx/costumes/sheet_costume_luckySaucerG.png", 0)
     end
   end
 --for k, v in pairs(data.temporary) do print(k..' = '..tostring(v)) end

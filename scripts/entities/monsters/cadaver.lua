@@ -85,6 +85,8 @@ function this:behaviour(npc)
     npc.Velocity = Vector(0,0)
     sprite:Play("Stasis");	
 
+    npc.StateFrame = npc.StateFrame + 1
+
     if npc.Position:Distance(target.Position) <= npc.StateFrame then
        sfx:Play(SoundEffect.SOUND_MAGGOT_BURST_OUT , 1, 0, false, data.sped)
        if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then

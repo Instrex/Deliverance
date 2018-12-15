@@ -15,7 +15,7 @@
   <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed"/>
   <passive name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="1" cache="speed" />
   <passive name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
-  <passive name="Lucky Saucer" description="I brought you some food!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck"/>
+  <passive name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck"/>
   <passive name="Hot Milk" description="DGM up.. down.. whatever." gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" cache="speed"/>
   <passive name="Rotten Pork Chop" description="Ass killer" gfx="collectibles_rottenPorkChop.png" maxhearts="2" hearts="3" cache="tearcolor"/>
 

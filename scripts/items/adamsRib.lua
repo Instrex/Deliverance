@@ -5,12 +5,12 @@ this.variant = Isaac.GetEntityVariantByName("Adam's Knife")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not data.temporary.hasAdamsRib then
-      data.temporary.hasAdamsRib = true
-      dataHandler.directSave()
-      player:AddNullCostume(content.costumes.adamsRib2)
+    if not deliveranceData.temporary.hasAdamsRib then
+      deliveranceData.temporary.hasAdamsRib = true
+      deliveranceDataHandler.directSave()
+      player:AddNullCostume(deliveranceContent.costumes.adamsRib2)
       if player:GetPlayerType() == PlayerType.PLAYER_EVE then
-         player:AddNullCostume(content.costumes.adamsRib)
+         player:AddNullCostume(deliveranceContent.costumes.adamsRib)
       end
     end
   end

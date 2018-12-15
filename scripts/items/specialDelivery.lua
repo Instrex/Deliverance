@@ -19,7 +19,7 @@ function this:updatetarget(s)
     elseif data.time == 40 then sprite:Play("Die") data.time = -1 end
   end
 
-  if sprite:IsFinished("Die") then s:Remove() Isaac.Spawn(1000, specialDel, 0, s.Position, Vector(0, 0), nil) player:AnimateCollectible(this.id, "HideItem", "Idle") end
+  if sprite:IsFinished("Die") then s:Remove() box = Isaac.Spawn(1000, specialDel, 0, s.Position, Vector(0, 0), nil) box:GetData().typ=math.random(0,3) player:AnimateCollectible(this.id, "HideItem", "Idle") end
 
   if Input.IsMouseBtnPressed(0) then s.Velocity = (Input.GetMousePosition(true) - s.Position) / 6
     elseif player:GetFireDirection() ~= Direction.NO_DIRECTION then s.Velocity = player:GetAimDirection()*13
@@ -32,6 +32,18 @@ function this:updatebox(npc)
  if npc.Variant == specialDel then
     local player = Isaac.GetPlayer(0)
     local sprite = npc:GetSprite()
+    local data = npc:GetData()
+    
+    if data.typ == 0 then 
+        sprite:ReplaceSpritesheet(0,"gfx/projectiles/proj_special_delivery.png")
+        sprite:LoadGraphics()
+    elseif data.typ == 1 then 
+        sprite:ReplaceSpritesheet(0,"gfx/projectiles/proj_special_delivery2.png")
+        sprite:LoadGraphics()
+    elseif data.typ == 2 then 
+        sprite:ReplaceSpritesheet(0,"gfx/projectiles/proj_special_delivery3.png")
+        sprite:LoadGraphics()
+    end
 
     if sprite:IsEventTriggered("Land") then
        SFXManager():Play(SoundEffect.SOUND_CHEST_DROP, 1, 0, false, 1)
@@ -39,12 +51,23 @@ function this:updatebox(npc)
 
     if sprite:IsEventTriggered("Explode") then
        Isaac.Explode(npc.Position, player, 180)
-       local rand = math.random(0, 3)
-
-       if rand == 0 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COIN, math.random(0, 2), npc.Position, Vector(0,0), nil) end
-       if rand == 1 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, math.random(0, 2), npc.Position, Vector(0,0), nil) end
-       if rand == 2 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_KEY, 1, npc.Position, Vector(0,0), nil) end
-       if rand == 3 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_HEART, math.random(0, 11), npc.Position, Vector(0,0), nil) end
+       if data.typ == 0 then
+          local rand = math.random(0, 3)
+          if rand == 0 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COIN, math.random(0, 2), npc.Position, Vector(0,0), nil) end
+          if rand == 1 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, math.random(0, 2), npc.Position, Vector(0,0), nil) end
+          if rand == 2 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_KEY, 1, npc.Position, Vector(0,0), nil) end
+          if rand == 3 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_HEART, math.random(0, 11), npc.Position, Vector(0,0), nil) end
+       elseif data.typ == 1 then
+          for i=1, 8+math.random(0, 3) do
+             Isaac.Spawn(3, 73, 0, npc.Position, Vector(0,0), nil)
+          end
+       elseif data.typ == 2 then
+          local rand2 = math.random(1, 14)
+          for i=1, 3 do
+             Isaac.Spawn(EntityType.ENTITY_PICKUP, 70, rand2, npc.Position, Vector.FromAngle(i*120):Resized(5), nil)
+          end
+       end
+       
     end
 
     if sprite:IsEventTriggered("Die") then

@@ -4,10 +4,10 @@ this.id = Isaac.GetItemIdByName("Sailor Hat")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not data.temporary.hasSailorHat then
-      data.temporary.hasSailorHat = true
-      dataHandler.directSave()
-      player:AddNullCostume(content.costumes.sailorHat)
+    if not deliveranceData.temporary.hasSailorHat then
+      deliveranceData.temporary.hasSailorHat = true
+      deliveranceDataHandler.directSave()
+      player:AddNullCostume(deliveranceContent.costumes.sailorHat)
       if flag == CacheFlag.CACHE_SPEED then
         player.MoveSpeed = player.MoveSpeed + 0.2
       end
@@ -18,8 +18,14 @@ end
 function this:onHitNPC(npc)
   local player = Isaac.GetPlayer(0)
   if npc:IsVulnerableEnemy() and player:HasCollectible(this.id) then
-    if math.random(1, 6-(math.min(player.Luck, 4))) == 2 then
-      Isaac.Spawn(1000, 54, 0, npc.Position, Vector(0, 0), player)
+    if math.random(1, 4-(math.min(player.Luck, 2))) == 2 then
+      local creep = Isaac.Spawn(1000, 54, 0, npc.Position, Vector(0, 0), player)
+      if npc:IsBoss() then
+         creep.SpriteScale = Vector(2.6,2.6)
+      else
+         creep.SpriteScale = Vector(0.5+npc.MaxHitPoints / 60,0.5+npc.MaxHitPoints / 60)
+      end
+      creep:Update()
     end
   end
 end

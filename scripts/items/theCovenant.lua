@@ -8,10 +8,11 @@ function this:cache(player, flag)
       deliveranceData.temporary.devilPrize=false
       deliveranceData.temporary.hasCovenant = true
       deliveranceDataHandler.directSave()
+      SFXManager():Play(SoundEffect.SOUND_SATAN_GROW , 0.6, 0, false, math.random(10, 12) / 10)
 
-      player:AddNullCostume(content.costumes.theCovenant)
+      player:AddNullCostume(deliveranceContent.costumes.theCovenant)
       if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
-        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(content.costumes.theCovenant), "gfx/costumes/sheet_costume_theCovenant_forgotten.png", 0)
+        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.theCovenant), "gfx/costumes/sheet_costume_theCovenant_forgotten.png", 0)
       end
     end
   end
@@ -67,7 +68,7 @@ end
 function this:update()
    local player = Isaac.GetPlayer(0)
    local room = game:GetRoom()
--- print(data.temporary.devilPrize)
+-- print(deliveranceData.temporary.devilPrize)
    if room:GetType() == RoomType.ROOM_DEVIL and not deliveranceData.temporary.devilPrize then  
      if player:HasCollectible(this.id) then
         Game():ShakeScreen(20) 

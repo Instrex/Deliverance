@@ -10,12 +10,12 @@ function this:behaviour(npc)
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_MOVE
-    npc.StateFrame = Utils.choose(-10, -5, 0)
+    npc.StateFrame = Utils.choose(-10, 3, 16)
 
   -- Move and wait for player to get closer --
   elseif npc.State == NpcState.STATE_MOVE then
    
-    npc.Pathfinder:FindGridPath(target.Position, 0.75, 1, false)
+    npc.Pathfinder:FindGridPath(target.Position, 0.7, 1, false)
     npc:AnimWalkFrame("WalkHori", "WalkVert", 0.1)
 
     if npc.Position:Distance(target.Position) <= 250 then
@@ -23,9 +23,9 @@ function this:behaviour(npc)
     end
 
     if npc.StateFrame >= 50 then
-       sfx:Play(SoundEffect.SOUND_FAT_GRUNT , 1.2, 0, false, 1)
+       sfx:Play(SoundEffect.SOUND_FAT_GRUNT , 1, 0, false, 1)
        npc.State = NpcState.STATE_ATTACK;
-       npc.StateFrame = 0;
+       npc.StateFrame = Utils.choose(-10, -5, 0)
     end
 
   -- Charges --
@@ -44,6 +44,7 @@ function this:behaviour(npc)
            urod.Scale = 0.75
         Isaac.Spawn(1000, 15, 0, npc.Position+Vector(0, 15), Vector(0, 0), nil)
         game:ShakeScreen(3)
+        if utils.chancep(20) then game:Darken(1, 90) end
     end
 
   -- Summons tiny Bony --

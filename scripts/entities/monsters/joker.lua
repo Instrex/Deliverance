@@ -10,7 +10,7 @@ function this:behaviour(npc)
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_MOVE
-    npc.StateFrame = Utils.choose(-10, -5, 0)
+    npc.StateFrame = Utils.choose(-10, 3, 16)
 
   -- Move and wait for player to get closer --
   elseif npc.State == NpcState.STATE_MOVE then
@@ -23,9 +23,9 @@ function this:behaviour(npc)
     end
 
     if npc.StateFrame >= 75 then
-       sfx:Play(SoundEffect.SOUND_FAT_GRUNT , 1.2, 0, false, 1.12)
+       sfx:Play(SoundEffect.SOUND_FAT_GRUNT , 1, 0, false, 1.12)
        if utils.chancep(50) then npc.State = NpcState.STATE_ATTACK else npc.State = NpcState.STATE_ATTACK3 end
-       npc.StateFrame = 0;
+       npc.StateFrame = Utils.choose(-10, -5, 0)
     end
 
   -- Charges --
@@ -44,6 +44,7 @@ function this:behaviour(npc)
            urod.Scale = 0.75
         Isaac.Spawn(1000, 15, 0, npc.Position+Vector(0, 15), Vector(0, 0), nil)
         game:ShakeScreen(3)
+        if utils.chancep(50) then game:Darken(1, 125) end
     end
 
   -- Summons tiny black Bony --
