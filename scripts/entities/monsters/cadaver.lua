@@ -3,6 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Cadaver")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Wicked Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Sluggish Cadaver") then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -75,7 +76,7 @@ function this:behaviour(npc)
  
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
     npc.StateFrame = Utils.choose(100, 125, 150)
-    if data.sped == nil then data.sped = Utils.choose(0.8, 0.75, 0.7) end
+    if data.sped == nil then data.sped = Utils.choose(0.85, 0.8, 0.75) end
     if data.GridCountdown == nil then data.GridCountdown = 0 end
     
   -- Move and wait for player to get closer --
@@ -133,14 +134,17 @@ function this:behaviour(npc)
        end
     end
   end
+ end
 end
 
 function this:die(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Wicked Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Sluggish Cadaver") then
    sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 0.75)
    for i=1, 4 do
        if npc.Variant == 4001 then Isaac.Spawn(9, 1, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(12), npc) end
        if npc.Variant == 4002 then Isaac.Spawn(9, 1, 0, npc.Position, Vector.FromAngle(i*90):Resized(12), npc) end
    end
+ end
 end
          
 function this.Init()

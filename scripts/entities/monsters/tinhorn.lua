@@ -1,8 +1,10 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Tinhorn")
+this.variant = Isaac.GetEntityVariantByName("Tinhorn")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -121,9 +123,11 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("ChangePower") then npc.Velocity = Vector(0,0) end
   end
+ end
 end
 
-function this:die(npc)       
+function this:die(npc)   
+ if npc.Variant == this.variant then    
     for i=4, 8 do
        local params = ProjectileParams() 
        params.FallingSpeedModifier = math.random(-18, -14) 
@@ -137,6 +141,7 @@ function this:die(npc)
     sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
     Isaac.Spawn(1000, 34, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 132, 163, 244)
     Game():ShakeScreen(5)
+ end
 end
 
 function this.Init()

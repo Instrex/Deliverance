@@ -1,8 +1,10 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Eddie")
+this.variant = Isaac.GetEntityVariantByName("Eddie")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -86,6 +88,7 @@ function this:behaviour(npc)
       npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
     end
   end
+ end
 end
 
 function this.Init()

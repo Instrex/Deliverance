@@ -1,0 +1,14 @@
+<sounds root="sfx/">
+	<sound name="Spawn">
+		<sample weight="1" path="Spawn.wav"/>
+	</sound>
+	<sound name="Firestarter">
+		<sample weight="1" path="Firestarter.wav"/>
+	</sound>
+	<sound name="Whoosh">
+		<sample weight="1" path="Whoosh.wav"/>
+	</sound>
+	<sound name="Charge">
+		<sample weight="1" path="Charge.wav"/>
+	</sound>
+</sounds>

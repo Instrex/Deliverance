@@ -1,8 +1,10 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Raga")
+this.variant = Isaac.GetEntityVariantByName("Raga")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -74,6 +76,7 @@ function this:behaviour(npc)
 
     end
   end
+ end
 end
 
 --function this:transformation(npc)
@@ -83,7 +86,9 @@ end
 --end
 
 function this:die(npc)
+ if npc.Variant == this.variant then
     Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 90, 0, 90)
+ end
 end
 
 function this.Init()

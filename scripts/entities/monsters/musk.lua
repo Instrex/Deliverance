@@ -3,6 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Musk")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Musk") or npc.Variant == Isaac.GetEntityVariantByName("Dusk") then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -89,22 +90,27 @@ function this:behaviour(npc)
       npc.State = NpcState.STATE_IDLE
     end
   end
+ end
 end
 
 function this:onHitNPC(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Musk") or npc.Variant == Isaac.GetEntityVariantByName("Dusk") then
   local data = npc:GetData()
   if npc.Type == this.id then
     if npc.State == NpcState.STATE_ATTACK2 then
       return false
     end
   end
+ end
 end
 
 function this:die(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Musk") or npc.Variant == Isaac.GetEntityVariantByName("Dusk") then
     sfx:Play(SoundEffect.SOUND_DEATH_BURST_LARGE , 1, 0, false, 1)
     Game():ShakeScreen(15) 
     local prj = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player)
     if npc.Variant == 4001 then prj.Color = Color(0, 0, 0, 1, 90, 0, 90) end
+ end
 end
 
 function this.Init()

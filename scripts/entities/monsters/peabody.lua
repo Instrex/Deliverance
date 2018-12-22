@@ -3,12 +3,13 @@ this.id = Isaac.GetEntityTypeByName("Peabody")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Peabody") or npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local room = game:GetRoom()
 
-  if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/80) + npc.Velocity * 0.95 end
+  if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/72) + npc.Velocity * 0.95 end
 
   if npc.Variant == 4000 then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody.png")
@@ -64,6 +65,7 @@ function this:behaviour(npc)
       npc.State = NpcState.STATE_MOVE
     end
   end
+ end
 end
 
 function this.Init()

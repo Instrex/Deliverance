@@ -1,8 +1,10 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Beamo")
+this.variant = Isaac.GetEntityVariantByName("Beamo")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -58,7 +60,7 @@ function this:behaviour(npc)
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
        local brimstone_laser = EntityLaser.ShootAngle(brim_type, npc.Position, 180, 15, Vector(-25,-9), npc)
        brimstone_laser.DepthOffset = 200
-       npc.Velocity = Vector(25,Utils.choose(-2, -0, 2))
+       npc.Velocity = Vector(25,Utils.choose(-1, 0, 1))
     end
 
     if sprite:IsFinished("BrimstoneLeft") then
@@ -74,7 +76,7 @@ function this:behaviour(npc)
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
        local brimstone_laser = EntityLaser.ShootAngle(brim_type, npc.Position, 0, 15, Vector(22,-9), npc)
        brimstone_laser.DepthOffset = 200
-       npc.Velocity = Vector(-25,Utils.choose(-2, -0, 2))
+       npc.Velocity = Vector(-25,Utils.choose(-1, 0, 1))
     end
 
     if sprite:IsFinished("BrimstoneRight") then
@@ -83,6 +85,7 @@ function this:behaviour(npc)
        npc.StateFrame = 0;
     end
   end
+ end
 end
 
 --function this:transformation(npc)
@@ -92,9 +95,11 @@ end
 --end
 
 function this:die(npc)
-  blood = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), target)
-  if current_floor == LevelStage.STAGE5 and level:GetStageType() == StageType.STAGETYPE_WOTL then
-     blood.Color = Color( 0, 0, 0,   1,   150, 150, 150)
+  if npc.Variant == this.variant then
+    blood = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), target)
+    if current_floor == LevelStage.STAGE5 and level:GetStageType() == StageType.STAGETYPE_WOTL then
+       blood.Color = Color( 0, 0, 0,   1,   150, 150, 150)
+    end
   end
 end
 

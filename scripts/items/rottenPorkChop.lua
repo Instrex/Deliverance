@@ -17,7 +17,7 @@ end
 function this:rottenUpdate(player)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if player:GetFireDirection() ~= Direction.NO_DIRECTION and math.random(1, 240-(math.min(player.Luck*12, 120))) == 2 then
+    if player:GetFireDirection() ~= Direction.NO_DIRECTION and math.random(1, 210-(math.min(player.Luck*12, 105))) == 2 then
       local dirs = { 
          [Direction.LEFT] = Vector(15, 0), 
          [Direction.UP] = Vector(0, 15), 

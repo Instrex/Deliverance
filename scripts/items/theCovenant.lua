@@ -108,9 +108,11 @@ function this:update()
    end
 end
 
-function this:nullDevilPrize()     
-   deliveranceData.temporary.devilPrize=false
-   deliveranceDataHandler.directSave()
+function this:nullDevilPrize()   
+   if deliveranceData.temporary.devilPrize~=nil then
+      deliveranceData.temporary.devilPrize=false
+      deliveranceDataHandler.directSave()
+   end
 end
 
 function this.Init()

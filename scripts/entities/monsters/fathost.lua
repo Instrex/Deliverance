@@ -3,6 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Fat Host")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Fat Host") or npc.Variant == Isaac.GetEntityVariantByName("Red Fat Host") then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -33,7 +34,7 @@ function this:behaviour(npc)
        data.HTimer = data.HTimer + 1
     end
 
-    if data.HTimer>=40 then
+    if data.HTimer>=32 then
       npc.State = NpcState.STATE_ATTACK
     end
 
@@ -74,9 +75,11 @@ function this:behaviour(npc)
       data.HTimer  = math.random(-45, -25) 
     end
   end
+ end
 end
 
 function this:onHitNPC(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Fat Host") or npc.Variant == Isaac.GetEntityVariantByName("Red Fat Host") then
   local data = npc:GetData()
   if npc.Type == this.id and npc.Variant == Isaac.GetEntityVariantByName("Fat Host") then
     if npc.State == NpcState.STATE_IDLE or data.Shielded then
@@ -85,12 +88,15 @@ function this:onHitNPC(npc)
       return false
     end
   end
+ end
 end
 
 function this:die(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Fat Host") or npc.Variant == Isaac.GetEntityVariantByName("Red Fat Host") then
     sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
     Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player)
     Game():ShakeScreen(10) 
+ end
 end
 
 function this.Init()

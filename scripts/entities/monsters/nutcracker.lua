@@ -1,8 +1,10 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Nutcracker")
+this.variant = Isaac.GetEntityVariantByName("Nutcracker")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -79,6 +81,7 @@ function this:behaviour(npc)
     end
 
   end
+ end
 end
 
 --function this:transformation(npc)

@@ -1,8 +1,10 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Rosenberg")
+this.variant = Isaac.GetEntityVariantByName("Rosenberg")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -66,7 +68,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Shoot") then
        local params = ProjectileParams() 
-       params.FallingSpeedModifier = math.random(-18, -14) 
+       params.FallingSpeedModifier = math.random(-24, -20) 
        params.FallingAccelModifier = 1.2 
        params.Variant = 3
        if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then
@@ -104,6 +106,7 @@ function this:behaviour(npc)
       npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
     end
   end
+ end
 end
 
 function this.Init()

@@ -9,7 +9,7 @@
   <active name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
   <active name="Battle Royale" description="'My life is nothing but spectacle'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
 
-  <passive name="The Covenant" description="Evil at a solid cost" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="speed" />
+  <passive name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="speed" />
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
   <passive name="Adam's Rib" devilprice="2" description="Deals double damage on first hit" gfx="collectibles_adamsRib.png" cache="speed"/>
   <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed"/>
@@ -18,6 +18,9 @@
   <passive name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck"/>
   <passive name="Hot Milk" description="DGM up.. down.. whatever." gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" cache="speed"/>
   <passive name="Rotten Pork Chop" description="Ass killer" gfx="collectibles_rottenPorkChop.png" maxhearts="2" hearts="3" cache="tearcolor"/>
+  <passive name="Dr. Medicine" description="Pills for breakfast, lunch and dinner" gfx="collectibles_drMedicine.png" cache="tearcolor"/>
+  <passive name="The Manuscript" description="It's about cards?" gfx="collectibles_manuscript.png" cache="tearcolor"/>
+  <passive name="Edgeless Cube Battery" description="Safe and effective!" gfx="collectibles_roundBattery.png"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>

@@ -3,6 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Gelatino")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == Isaac.GetEntityVariantByName("Gelatino") or npc.Variant == Isaac.GetEntityVariantByName("Mini Gelatino") then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -38,6 +39,7 @@ function this:behaviour(npc)
   if npc.State == NpcState.STATE_INIT then
     if data.color == nil then data.color = Color(0, 0, 0, 0.75, 58, 140, 122) end
     if data.tearColor == nil then data.tearColor = Color(0, 0, 0, 1, 116, 280, 244) end
+    if data.GridCountdown == nil then data.GridCountdown = 0 end
 
     if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
        data.color = Color(0, 0, 0, 0.75, 58, 79, 140)
@@ -67,17 +69,29 @@ function this:behaviour(npc)
       end
     npc.State = NpcState.STATE_MOVE
   elseif npc.State == NpcState.STATE_MOVE then
-    if npc.Variant == 4000 then
-    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1 + npc.Velocity * 0.8 end
-    elseif npc.Variant == 4001 then
-    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1.05 + npc.Velocity * 0.86 end
+
+    if not target:IsDead() then 
+       if npc:CollidesWithGrid() or data.GridCountdown > 0 then
+          npc.Pathfinder:FindGridPath(target.Position, 0.85, 1, false)
+          if data.GridCountdown <= 0 then
+              data.GridCountdown = 30
+          else
+              data.GridCountdown = data.GridCountdown - 1
+          end
+       else
+          if npc.Variant == 4000 then
+             npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 0.9 + npc.Velocity * 0.85 
+          elseif npc.Variant == 4001 then
+             npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1.06 + npc.Velocity * 0.85
+          end
+       end
     end
 
-      if utils.chancep(33) then
-        local Creep = Isaac.Spawn(1000, 7, 0, npc.Position, Vector(0,0), nil)
-        Creep.Color = data.color
-        Creep:Update()
-      end
+    if utils.chancep(33) then
+      local Creep = Isaac.Spawn(1000, 7, 0, npc.Position, Vector(0,0), nil)
+      Creep.Color = data.color
+      Creep:Update()
+    end
   end  
 
   if npc:IsDead() then
@@ -105,6 +119,7 @@ function this:behaviour(npc)
        if npc.Variant == 4001 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(10), npc).Color = data.tearColor end
     end
   end
+ end
 end
 
 function this.Init()

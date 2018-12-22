@@ -1,8 +1,10 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Shroomeo")
+this.variant = Isaac.GetEntityVariantByName("Shroomeo")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -77,11 +79,14 @@ function this:behaviour(npc)
       npc.StateFrame = Utils.choose(-10, -5, 0)
     end
   end
+ end
 end
 
 function this:die(npc)
+ if npc.Variant == this.variant then
     sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
     Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 69, 56, 52)
+ end
 end
 
 function this:shroomBreakUpdate()

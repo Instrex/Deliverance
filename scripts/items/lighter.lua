@@ -2,7 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Lighter")
 
 function this.use()
-  SFXManager():Play(SoundEffect.SOUND_FIRE_RUSH , 0.8, 0, false, 1)
+  SFXManager():Play(Isaac.GetSoundIdByName("Firestarter") , 0.75, 0, false, 1)
   for e, entity in pairs(Isaac.GetRoomEntities()) do 
      if entity:IsActiveEnemy() then 
         entity:AddBurn(EntityRef(nil), 1800, 1.5) 

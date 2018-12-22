@@ -2,7 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Battle Royale")
 
 function this.use()
-  SFXManager():Play(SoundEffect.SOUND_POWERUP1, 0.7, 0, false, 0.9)
+  SFXManager():Play(Isaac.GetSoundIdByName("Spawn"), 1, 0, false, 1)
   for e, entity in pairs(Isaac.GetRoomEntities()) do 
      if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:IsBoss() then 
         local clone = Game():Spawn(entity.Type, entity.Variant, entity.Position, Vector(0,0), entity, 0, 1):ToNPC()
@@ -13,7 +13,7 @@ function this.use()
 	clone:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
         clone:SetColor(Color(10,10,10,0.75,0,0,0),0,0,false,false)
         clone:GetData().battleRoyaled = true
-     end 
+     end
   end
   return true
 end

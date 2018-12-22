@@ -13,7 +13,7 @@ function this:cache(player, flag)
       end
     end
 --  if flag == CacheFlag.CACHE_TEARCOLOR then player.TearColor = Color(219, 231, 251, 1, 0, 0, 0) end
-    if flag == CacheFlag.CACHE_DAMAGE then player.Damage = player.Damage + 0.35 end
+    if flag == CacheFlag.CACHE_DAMAGE then player.Damage = player.Damage + 0.45 end
   end
 end
 

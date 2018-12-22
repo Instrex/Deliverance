@@ -1,14 +1,26 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Seraphim")
+this.variant = Isaac.GetEntityVariantByName("Seraphim")
 
 local sfx = SFXManager()
+
+local Number = 0
+
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local room = game:GetRoom()
 
-  npc:AddEntityFlags(EntityFlag.FLAG_NO_KNOCKBACK | EntityFlag.FLAG_NO_PHYSICS_KNOCKBACK | EntityFlag.FLAG_NO_BLOOD_SPLASH | EntityFlag.FLAG_NO_DEATH_TRIGGER | EntityFlag.FLAG_NO_STATUS_EFFECTS  )
+  if data.RealHp == nil then data.RealHp = npc.HitPoints end
+
+  npc:AddEntityFlags(EntityFlag.FLAG_NO_KNOCKBACK | 
+                     EntityFlag.FLAG_NO_PHYSICS_KNOCKBACK | 
+                     EntityFlag.FLAG_NO_BLOOD_SPLASH |
+                     EntityFlag.FLAG_NO_DEATH_TRIGGER | 
+                     EntityFlag.FLAG_NO_STATUS_EFFECTS  
+  )
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
@@ -33,7 +45,8 @@ function this:behaviour(npc)
     sprite:Play("Attack")
 
     if sprite:IsEventTriggered("Dash") then
-      sfx:Play(SoundEffect.SOUND_SUMMONSOUND , 0.75, 0, false, 1) 
+--    sfx:Play(SoundEffect.SOUND_SUMMONSOUND , 0.75, 0, false, 1) 
+      sfx:Play(Isaac.GetSoundIdByName("Charge"), 1, 0, false, 1)
       npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 25
     end
 
@@ -69,6 +82,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("CrossShot1") then
       sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 0.8, 0, false, 1.5)
+      sfx:Play(Isaac.GetSoundIdByName("Whoosh"), 0.7, 0, false, 1.5)
       Game():ShakeScreen(6) 
       
       for i=1, 3 do
@@ -78,6 +92,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("CrossShot2") then
       sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 0.8, 0, false, 1.25)
+      sfx:Play(Isaac.GetSoundIdByName("Whoosh"), 0.7, 0, false, 1.25)
       Game():ShakeScreen(6) 
       
       for i=1, 4 do
@@ -89,13 +104,15 @@ function this:behaviour(npc)
        npc.State = NpcState.STATE_MOVE;
        npc.StateFrame = Utils.choose(-20, -15, -10)
     end
-  elseif npc.State == NpcState.STATE_UNIQUE_DEATH then
+  end
+  if data.dead then
+    npc.State = NpcState.STATE_UNIQUE_DEATH;
     npc.StateFrame = -666
     npc.Velocity = Vector(0,0)
 
     if sprite:IsEventTriggered("Died") then
-    sfx:Play(SoundEffect.SOUND_DEATH_BURST_LARGE , 1, 0, false, 1)
-    Game():ShakeScreen(15) 
+      sfx:Play(SoundEffect.SOUND_DEATH_BURST_LARGE , 1, 0, false, 1)
+      game:ShakeScreen(15) 
     end
 
     if sprite:IsEventTriggered("Teleport") then
@@ -107,32 +124,29 @@ function this:behaviour(npc)
     if sprite:IsFinished("Death") then
        npc:Remove()
     end
-
-    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
   end
-  
-  if data.dead then
-     npc.State = NpcState.STATE_UNIQUE_DEATH;
-  end
+ end
 end
 
 function this:onHitNPC(npc, dmgAmount, flags, source, frames)
+ if npc.Variant == this.variant then
   local data = npc:GetData()
   if npc.Type == this.id then
-    if npc.State == NpcState.STATE_ATTACK then
-      return false
+    if data.RealHp == nil then
+      data.RealHp = npc.HitPoints
     end
-    
-    if (npc.HitPoints - dmgAmount) <= 0 then
-      data.dead = true
-      return false
+    data.RealHp = data.RealHp - dmgAmount
+    if data.RealHp <= 0 and not data.dead then
+       data.dead=true
+       npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+       return false
     end
   end
+ end
 end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
 end
 

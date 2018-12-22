@@ -45,7 +45,10 @@ deliveranceContent = {
     sage                      = require 'scripts.items.familiars.sage',
     rottenPorkChop            = require 'scripts.items.rottenPorkChop',
     lilTummy                  = require 'scripts.items.familiars.lilTummy',
-    scaredyShroom             = require 'scripts.items.familiars.scaredyShroom'
+    scaredyShroom             = require 'scripts.items.familiars.scaredyShroom',
+    drMedicine                = require 'scripts.items.drMedicine',
+    manuscript                = require 'scripts.items.manuscript'
+--    roundBattery              = require 'scripts.items.familiars.roundBattery'
   },
 
   trinkets = {
@@ -100,7 +103,8 @@ deliveranceContent = {
     theCovenant = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_theCovenant.anm2"),
     adamsRib = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_adamsRib.anm2"),
     hotmilk = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_hotmilk.anm2"),
-    adamsRib2 = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_adamsRib2.anm2")
+    adamsRib2 = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_adamsRib2.anm2"),
+    manuscript = Isaac.GetCostumeIdByPath("gfx/costumes/animation_costume_manuscript.anm2")
   }
 }
 

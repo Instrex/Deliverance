@@ -1,8 +1,10 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Cracker")
+this.variant = Isaac.GetEntityVariantByName("Cracker")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -74,10 +76,13 @@ function this:behaviour(npc)
         npc.State = NpcState.STATE_MOVE;
      end
   end
+ end
 end
 
 function this:die(npc)
+ if npc.Variant == this.variant then
   blood = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player)
+ end
 end
 
 function this.Init()

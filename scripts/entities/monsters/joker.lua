@@ -1,11 +1,17 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Joker")
+this.variant = Isaac.GetEntityVariantByName("Joker")
 
 local sfx = SFXManager()
 function this:behaviour(npc)
+ if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
+
+  if data.RealHp == nil then data.RealHp = npc.HitPoints end
+
+  npc:AddEntityFlags(EntityFlag.FLAG_NO_DEATH_TRIGGER)
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
@@ -79,25 +85,52 @@ function this:behaviour(npc)
         npc.State = NpcState.STATE_MOVE;
     end
   end
+
+  if data.dead then
+    npc.State = NpcState.STATE_UNIQUE_DEATH;
+    npc.StateFrame = -666
+    npc.Velocity = Vector(0,0)
+
+    sprite:Play("Death");
+
+    if sprite:IsEventTriggered("HatDrop") then
+        sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 0.75)
+        game:ShakeScreen(5) 
+    end
+
+    if sprite:IsFinished("Death") then
+       npc:Remove()
+    end
+  end
+ end
 end
 
---function this:transformation(npc)
---  if utils.chancep(15) then
---    npc:Morph(this.id, 0, 0, 0)
---  end
---end
-
-function this:die(npc)
-  Isaac.Explode(npc.Position, npc, 1.0)
-  if utils.chancep(15) then
-      proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Isaac.GetCardIdByName("Mannaz"), npc.Position, Vector(0, 0), player)
+function this:onHitNPC(npc, dmgAmount, flags, source, frames)
+ if npc.Variant == this.variant then
+  local data = npc:GetData()
+  if npc.Type == this.id then
+    if data.RealHp == nil then
+      data.RealHp = npc.HitPoints
+    end
+    data.RealHp = data.RealHp - dmgAmount
+    if data.RealHp <= 0 and not data.dead then
+       data.dead=true
+       npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+       Isaac.Explode(npc.Position, npc, 1.0)
+       sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
+       if utils.chancep(25) then
+          proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Isaac.GetCardIdByName("Mannaz"), npc.Position, Vector(0, 0), player)
+       end
+       return false
+    end
   end
+ end
 end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
 --  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
-  mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
+  mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
 end
 
 return this
