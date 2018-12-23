@@ -66,7 +66,7 @@ function this:behaviour(npc)
     end
 
     if sprite:IsEventTriggered("Shoot") then
-       Isaac.Spawn(9, 0, 0, Vector(npc.Position.X,npc.Position.Y + 7.5), (utils.vecToPos(target.Position, npc.Position) * 15):Rotated(math.random(-5, 5)), npc)
+       Isaac.Spawn(9, 0, 0, Vector(npc.Position.X,npc.Position.Y + 7.5), (utils.vecToPos(target.Position, npc.Position) * 12):Rotated(math.random(-5, 5)), npc)
        sfx:Play(SoundEffect.SOUND_WORM_SPIT, 1, 0, false, 1.5)
     end
 

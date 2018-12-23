@@ -44,7 +44,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Fall") then
        npc.StateFrame = 25
-       npc.Velocity = npc.Velocity * 0.66
+       npc.Velocity = npc.Velocity * 0.6
     end
 
     if sprite:IsEventTriggered("Explode") then

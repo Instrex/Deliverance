@@ -20,17 +20,17 @@
   <passive name="Rotten Pork Chop" description="Ass killer" gfx="collectibles_rottenPorkChop.png" maxhearts="2" hearts="3" cache="tearcolor"/>
   <passive name="Dr. Medicine" description="Pills for breakfast, lunch and dinner" gfx="collectibles_drMedicine.png" cache="tearcolor"/>
   <passive name="The Manuscript" description="It's about cards?" gfx="collectibles_manuscript.png" cache="tearcolor"/>
-  <passive name="Edgeless Cube Battery" description="Safe and effective!" gfx="collectibles_roundBattery.png"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>
   <familiar name="Lil Tummy" description="Baa!" gfx="collectibles_lilTummy.png"/>
   <familiar name="Scaredy-shroom" description="'Who's there?'" gfx="collectibles_scaredyShroom.png"/>
+  <familiar name="Edgeless Cube Battery" description="Safe and effective!" gfx="collectibles_roundBattery.png"/>
 
   <trinket name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
   <trinket name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
   <trinket name="Dark Lock" description="Even darker rewards" gfx="trinket_darklock.png" />
-  <trinket name="Krampus' Horn" description="Сursed as before" gfx="trinket_krampus_horn.png" />
+  <trinket name="Krampus' Horn" description="Cursed as always" gfx="trinket_krampus_horn.png" />
   <trinket name="Apple Core" description="Someone is eating, but someone has already ate.." gfx="trinket_appleCore.png" />
   <trinket name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
 </items>

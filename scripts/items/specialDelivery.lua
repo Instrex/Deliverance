@@ -27,7 +27,8 @@ function this:updatetarget(s)
   if sprite:IsFinished("Die") then 
      s:Remove() 
      box = Isaac.Spawn(1000, specialDel, 0, s.Position + data.boxvec, Vector(0, 0), nil) 
-     if math.random(0,20)==1 then 
+     
+     if utils.chancep(1) and utils.chancep(1) then 
         box:GetData().typ=3 
      else 
         box:GetData().typ=math.random(0,3)
@@ -86,7 +87,6 @@ function this:updatebox(npc)
        elseif data.typ == 3 then
           Isaac.Spawn(5, 350, 0, npc.Position, Vector(0,0), nil)
        end
-       
     end
 
     if sprite:IsEventTriggered("Die") then

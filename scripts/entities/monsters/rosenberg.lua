@@ -68,7 +68,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Shoot") then
        local params = ProjectileParams() 
-       params.FallingSpeedModifier = math.random(-24, -20) 
+       params.FallingSpeedModifier = math.random(-14, -10) 
        params.FallingAccelModifier = 1.2 
        params.Variant = 3
        if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then
