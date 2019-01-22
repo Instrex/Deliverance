@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Tinhorn")
 this.variant = Isaac.GetEntityVariantByName("Tinhorn")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
@@ -33,7 +32,7 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_ATTACK then
 
     npc.StateFrame = npc.StateFrame + 1
-    if npc.StateFrame<8 then npc.Velocity = Vector(0,0) end
+    if npc.StateFrame<8 then npc.Velocity = vectorZero end
     if npc.StateFrame==8 then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 4 end
 
     if sprite:IsEventTriggered("Scream") then
@@ -66,7 +65,7 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_ATTACK2 then
 
     npc.StateFrame = npc.StateFrame + 1
-    if npc.StateFrame>38 then npc.Velocity = Vector(0,0) end
+    if npc.StateFrame>38 then npc.Velocity = vectorZero end
 
     if sprite:IsFinished("Attack2") or sprite:IsFinished("Attack2Up") then
        npc.Position = room:FindFreePickupSpawnPosition(npc.Position, 150, true)
@@ -80,12 +79,12 @@ function this:behaviour(npc)
        end
     end
 
-    if sprite:IsEventTriggered("ChangePower") then npc.Velocity = Vector(0,0) end
+    if sprite:IsEventTriggered("ChangePower") then npc.Velocity = vectorZero end
 
   elseif npc.State == NpcState.STATE_ATTACK3 then
 
     npc.StateFrame = npc.StateFrame + 1
-    if npc.StateFrame>38 then npc.Velocity = Vector(0,0) end
+    if npc.StateFrame>38 then npc.Velocity = vectorZero end
 
     if sprite:IsEventTriggered("Mine") then
        sfx:Play(139, 1.25, 0, false, 1)
@@ -104,12 +103,12 @@ function this:behaviour(npc)
        end
        Game():ShakeScreen(10)
        sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
-       Isaac.Spawn(1000, 34, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 132, 163, 244)
+       Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 132, 163, 244)
        npc:Remove()
     end
   elseif npc.State == NpcState.STATE_ATTACK4 then
 
-    npc.Velocity = Vector(0,0)
+    npc.Velocity = vectorZero
 
     if sprite:IsFinished("Trick") then
        npc.Position = room:FindFreePickupSpawnPosition(npc.Position, 150, true)
@@ -121,7 +120,7 @@ function this:behaviour(npc)
        sfx:Play(197, 1.25, 0, false, math.random(9, 11) / 10)
     end
 
-    if sprite:IsEventTriggered("ChangePower") then npc.Velocity = Vector(0,0) end
+    if sprite:IsEventTriggered("ChangePower") then npc.Velocity = vectorZero end
   end
  end
 end
@@ -139,7 +138,7 @@ function this:die(npc)
        npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
     end
     sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
-    Isaac.Spawn(1000, 34, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 132, 163, 244)
+    Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 132, 163, 244)
     Game():ShakeScreen(5)
  end
 end

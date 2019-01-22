@@ -7,10 +7,10 @@ function this.special()
     for e, entity in pairs(Isaac.GetRoomEntities()) do 
        if entity.Type==17 then 
          if entity.Variant==0 then 
-           Isaac.Spawn(17,3,0,entity.Position, Vector(0,0), player); entity:Remove(); 
+           Isaac.Spawn(17,3,0,entity.Position, vectorZero, player); entity:Remove(); 
          end  
          if entity.Variant==1 then 
-           Isaac.Spawn(17,4,0,entity.Position, Vector(0,0), player); entity:Remove();
+           Isaac.Spawn(17,4,0,entity.Position, vectorZero, player); entity:Remove();
          end  
        end
     end

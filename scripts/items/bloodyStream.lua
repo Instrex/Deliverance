@@ -5,9 +5,9 @@ this.variant = Isaac.GetEntityVariantByName("Bloody Stream")
 function this.use()
   this.time = 0
   game:ShakeScreen(60)
-  SFXManager():Play(SoundEffect.SOUND_SATAN_RISE_UP , 0.8, 0, false, 1.1)
+  sfx:Play(SoundEffect.SOUND_SATAN_RISE_UP , 0.8, 0, false, 1.1)
   for i = 0, 8 do
-    local stream = Isaac.Spawn(1000, this.variant, 0, Isaac.GetPlayer(0).Position, Vector(0, 0), nil)
+    local stream = Isaac.Spawn(1000, this.variant, 0, Isaac.GetPlayer(0).Position, vectorZero, nil)
     local data = stream:GetData()
     data.id = i
     data.time = 0
@@ -27,7 +27,7 @@ function this:update(npc)
 
     -- Spawn creep with 50% chance --
     if utils.chancep(50) then
-      Isaac.Spawn(1000, 46, 0, npc.Position, Vector(0, 0), nil):ToEffect().Scale = 1.5
+      Isaac.Spawn(1000, 46, 0, npc.Position, vectorZero, nil):ToEffect().Scale = 1.5
     end
 
     -- Animate beam sprite --

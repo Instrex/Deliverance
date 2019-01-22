@@ -19,7 +19,7 @@ function this:onHitNPC(npc)
   local player = Isaac.GetPlayer(0)
   if npc:IsVulnerableEnemy() and player:HasCollectible(this.id) then
     if math.random(1, 4-(math.min(player.Luck, 2))) == 2 then
-      local creep = Isaac.Spawn(1000, 54, 0, npc.Position, Vector(0, 0), player)
+      local creep = Isaac.Spawn(1000, 54, 0, npc.Position, vectorZero, player)
       if npc:IsBoss() then
          creep.SpriteScale = Vector(2.6,2.6)
       else
@@ -33,7 +33,7 @@ end
 function this:onHit()
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-      Isaac.Spawn(1000, 54, 0, player.Position, Vector(0, 0), player)
+      Isaac.Spawn(1000, 54, 0, player.Position, vectorZero, player)
   end
 end
 

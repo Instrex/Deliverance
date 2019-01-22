@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Beamo")
 this.variant = Isaac.GetEntityVariantByName("Beamo")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
@@ -48,7 +47,7 @@ function this:behaviour(npc)
           npc.State = NpcState.STATE_ATTACK2;
         end
         npc.StateFrame = 0;
-        npc.Velocity = Vector(0,0);
+        npc.Velocity = vectorZero;
       end
     end
 
@@ -96,7 +95,7 @@ end
 
 function this:die(npc)
   if npc.Variant == this.variant then
-    blood = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), target)
+    blood = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, target)
     if current_floor == LevelStage.STAGE5 and level:GetStageType() == StageType.STAGETYPE_WOTL then
        blood.Color = Color( 0, 0, 0,   1,   150, 150, 150)
     end

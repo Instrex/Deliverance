@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Nutcracker")
 this.variant = Isaac.GetEntityVariantByName("Nutcracker")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
@@ -62,7 +61,7 @@ function this:behaviour(npc)
         for e, food in pairs(Isaac.FindInRadius(npc.Position, 30, EntityPartition.ENEMY)) do
            if food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 or food.Type == 85 or food.Type == 94 then
                food:TakeDamage(10, 0, EntityRef(nil), 0)
-               Isaac.Spawn(1000, 49, 0, Vector(npc.Position.X,npc.Position.Y-16), Vector(0,0), nil)
+               Isaac.Spawn(1000, 49, 0, Vector(npc.Position.X,npc.Position.Y-16), vectorZero, nil)
                sfx:Play(SoundEffect.SOUND_VAMP_GULP , 1.25, 0, false, 0.8)
                npc.HitPoints = npc.MaxHitPoints
                sprite:ReplaceSpritesheet(1,"gfx/monsters/gluttyb.png")
@@ -91,7 +90,7 @@ end
 --end
 
 --function this:die(npc) 
---  game:Spawn(11, utils.choose(0, 1), npc.Position, Vector(0,0), npc, 0, 1)
+--  game:Spawn(11, utils.choose(0, 1), npc.Position, vectorZero, npc, 0, 1)
 --    :ToNPC():ClearEntityFlags(EntityFlag.FLAG_APPEAR)
 --end
 

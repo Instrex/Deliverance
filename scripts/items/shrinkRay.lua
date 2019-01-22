@@ -2,7 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Shrink Ray")
 
 function this.use()
-  SFXManager():Play(SoundEffect.SOUND_POWERUP_SPEWER , 0.8, 0, false, 1)
+  sfx:Play(SoundEffect.SOUND_POWERUP_SPEWER , 0.8, 0, false, 1)
   for e, entity in pairs(Isaac.GetRoomEntities()) do 
      if entity:IsActiveEnemy() and not entity:IsBoss() then 
         entity:AddShrink(EntityRef(nil), 3600) 

@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Jester")
 this.variant = Isaac.GetEntityVariantByName("Jester")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
@@ -39,17 +38,17 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_ATTACK then
    
     sprite:Play("Charge");
-    npc.Velocity = Vector(0,0)
+    npc.Velocity = vectorZero
 
     if(sprite:IsFinished("Charge")) then
         npc.State = NpcState.STATE_ATTACK2;
         sfx:Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_1 , 1, 0, false, 1)
-        local urod = Game():Spawn(227, 0, npc.Position, Vector(0,0), npc, 0, 1):ToNPC()
+        local urod = Game():Spawn(227, 0, npc.Position, vectorZero, npc, 0, 1):ToNPC()
            urod.HitPoints = 4
            urod.State = 0
            urod:SetSize(9, Vector(1,1), 12)
            urod.Scale = 0.75
-        Isaac.Spawn(1000, 15, 0, npc.Position+Vector(0, 20), Vector(0, 0), nil)
+        Isaac.Spawn(1000, 15, 0, npc.Position+Vector(0, 20), vectorZero, nil)
         game:ShakeScreen(3)
         if utils.chancep(20) then game:Darken(1, 90) end
     end
@@ -66,7 +65,7 @@ function this:behaviour(npc)
   if data.dead then
     npc.State = NpcState.STATE_UNIQUE_DEATH;
     npc.StateFrame = -666
-    npc.Velocity = Vector(0,0)
+    npc.Velocity = vectorZero
 
     sprite:Play("Death");
 
@@ -96,7 +95,7 @@ function this:onHitNPC(npc, dmgAmount, flags, source, frames)
        npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
        sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
        if utils.chancep(11) then
-          proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Isaac.GetCardIdByName("Mannaz"), npc.Position, Vector(0, 0), player)
+          proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Isaac.GetCardIdByName("Mannaz"), npc.Position, vectorZero, player)
        end
      
        for i=1, 5+math.random(0, 3) do

@@ -1,8 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("The Manuscript")
 
-local sfx = SFXManager()
-
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
@@ -19,7 +17,7 @@ function this:useCard(card)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
      player:AddSoulHearts(1)
-     local heart = Isaac.Spawn(1000, 49, 0, Vector(player.Position.X,player.Position.Y-96), Vector(0,0), nil)
+     local heart = Isaac.Spawn(1000, 49, 0, Vector(player.Position.X,player.Position.Y-96), vectorZero, nil)
      heart:GetSprite():ReplaceSpritesheet(0,"gfx/effects/hearteffect3.png")
      heart:GetSprite():LoadGraphics()
      sfx:Play(Isaac.GetSoundIdByName("Spawn"), 1.2, 0, false, 1.1)

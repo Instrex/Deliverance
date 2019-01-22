@@ -2,8 +2,6 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Lil Tummy")
 this.variant = Isaac.GetEntityVariantByName("Lil Tummy")
 
-local sfx = SFXManager()
-
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
     local player = Isaac.GetPlayer(0)
@@ -63,7 +61,7 @@ end
 function this.shot(fam)   
    local player = Isaac.GetPlayer(0)
    local d = fam:GetData() 
-      local dirs = { [Direction.LEFT] = Vector(-12.5, 0), [Direction.UP] = Vector(0, -12.5), [Direction.RIGHT] = Vector(12.5, 0), [Direction.DOWN] = Vector(0, 12.5), [Direction.NO_DIRECTION] = Vector(0, 0), }
+      local dirs = { [Direction.LEFT] = Vector(-12.5, 0), [Direction.UP] = Vector(0, -12.5), [Direction.RIGHT] = Vector(12.5, 0), [Direction.DOWN] = Vector(0, 12.5), [Direction.NO_DIRECTION] = vectorZero, }
       if not d.shoot then
       sfx:Play(108, 1, 0, false, 1.5)
         for i=1, 6 do

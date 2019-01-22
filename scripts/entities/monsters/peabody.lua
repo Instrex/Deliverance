@@ -1,7 +1,6 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Peabody")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Peabody") or npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then
   local target = Isaac.GetPlayer(0)
@@ -46,7 +45,7 @@ function this:behaviour(npc)
     if npc.StateFrame<60 then
       npc.StateFrame = npc.StateFrame - 1
       if utils.chancep(60) then
-        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, Vector(0,0), nil)
+        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
         RCreep.SpriteScale = Vector(0.75,0.75) 
         RCreep:Update()
       end

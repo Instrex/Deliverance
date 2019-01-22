@@ -2,8 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Seraphim")
 this.variant = Isaac.GetEntityVariantByName("Seraphim")
 
-local sfx = SFXManager()
-
 local Number = 0
 
 function this:behaviour(npc)
@@ -67,7 +65,7 @@ function this:behaviour(npc)
        npc.State = NpcState.STATE_MOVE;
        Game():ShakeScreen(14) 
        sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 0.8, 0, false, 1.5) 
-       npc.Velocity = Vector(0,0)
+       npc.Velocity = vectorZero
     end
 
   elseif npc.State == NpcState.STATE_ATTACK2 then
@@ -77,7 +75,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("HolyCross") then
       sfx:Play(SoundEffect.SOUND_1UP, 0.8, 0, false, 0.8)
-       npc.Velocity = Vector(0,0)
+       npc.Velocity = vectorZero
     end
 
     if sprite:IsEventTriggered("CrossShot1") then
@@ -108,7 +106,7 @@ function this:behaviour(npc)
   if data.dead then
     npc.State = NpcState.STATE_UNIQUE_DEATH;
     npc.StateFrame = -666
-    npc.Velocity = Vector(0,0)
+    npc.Velocity = vectorZero
 
     if sprite:IsEventTriggered("Died") then
       sfx:Play(SoundEffect.SOUND_DEATH_BURST_LARGE , 1, 0, false, 1)

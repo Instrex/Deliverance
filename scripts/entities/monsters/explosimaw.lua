@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Explosimaw")
 this.variant = Isaac.GetEntityVariantByName("Explosimaw")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)

@@ -2,10 +2,10 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Battle Royale")
 
 function this.use()
-  SFXManager():Play(Isaac.GetSoundIdByName("Spawn"), 1, 0, false, 1)
+  sfx:Play(Isaac.GetSoundIdByName("Spawn"), 1, 0, false, 1)
   for e, entity in pairs(Isaac.GetRoomEntities()) do 
      if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:IsBoss() then 
-        local clone = Game():Spawn(entity.Type, entity.Variant, entity.Position, Vector(0,0), entity, 0, 1):ToNPC()
+        local clone = Game():Spawn(entity.Type, entity.Variant, entity.Position, vectorZero, entity, 0, 1):ToNPC()
 --      clone.HitPoints = entity.HitPoints/1.25
         clone:SetSize(9, Vector(1,1), 12)
         clone.Scale = 0.75
@@ -25,8 +25,8 @@ function this:update(clone)
        if data.time == nil then data.time = math.random(-10,0) end
        if data.time <= chanse then data.time = data.time + 1 
        else
-           Isaac.Spawn(1000, 19, 0, Vector(clone.Position.X, clone.Position.Y-4), Vector(0, 0), nil)
-           SFXManager():Play(SoundEffect.SOUND_1UP, 0.5, 0, false, math.random(8, 12) / 10)
+           Isaac.Spawn(1000, 19, 0, Vector(clone.Position.X, clone.Position.Y-4), vectorZero, nil)
+           sfx:Play(SoundEffect.SOUND_1UP, 0.5, 0, false, math.random(8, 12) / 10)
            clone:Remove()
        end
     end

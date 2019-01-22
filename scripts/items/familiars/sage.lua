@@ -2,8 +2,6 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Sage")
 this.variant = Isaac.GetEntityVariantByName("Sage")
 
-local sfx = SFXManager()
-
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
     local player = Isaac.GetPlayer(0)
@@ -75,7 +73,7 @@ end
 function this.shot(fam)   
    local player = Isaac.GetPlayer(0)
    local d = fam:GetData() 
-   local dirs = { [Direction.LEFT] = Vector(-15+d.multiplier, 0), [Direction.UP] = Vector(0, -15+d.multiplier), [Direction.RIGHT] = Vector(15-d.multiplier, 0), [Direction.DOWN] = Vector(0, 15-d.multiplier), [Direction.NO_DIRECTION] = Vector(0, 0), }
+   local dirs = { [Direction.LEFT] = Vector(-15+d.multiplier, 0), [Direction.UP] = Vector(0, -15+d.multiplier), [Direction.RIGHT] = Vector(15-d.multiplier, 0), [Direction.DOWN] = Vector(0, 15-d.multiplier), [Direction.NO_DIRECTION] = vectorZero, }
    if not d.shoot then
       if d.multiplier == 0 then
          local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()] + player:GetTearMovementInheritance(player.Velocity), nil):ToTear()
@@ -122,7 +120,7 @@ function this.trigger(id)
     if fam.Type == EntityType.ENTITY_FAMILIAR and fam.Variant == this.variant then
        sfx:Play(169, 0.9, 0, false, 0.6+d.multiplier/10)
        if d.multiplier < 4 then d.multiplier = d.multiplier + 1 end
-       Isaac.Spawn(1000, 97, 0, Vector(fam.Position.X, fam.Position.Y-20), Vector(0, 0), nil)
+       Isaac.Spawn(1000, 97, 0, Vector(fam.Position.X, fam.Position.Y-20), vectorZero, nil)
     end
   end
 end

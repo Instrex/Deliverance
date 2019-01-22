@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Eddie")
 this.variant = Isaac.GetEntityVariantByName("Eddie")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
@@ -10,7 +9,7 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
 
-  npc.Velocity = Vector(0,0)
+  npc.Velocity = vectorZero
 
   local level = game:GetLevel()
   local stage = level:GetStage()

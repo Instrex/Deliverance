@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Cracker")
 this.variant = Isaac.GetEntityVariantByName("Cracker")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
@@ -55,7 +54,7 @@ function this:behaviour(npc)
     if(sprite:IsFinished("Jump")) then
         npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
         npc.State = NpcState.STATE_ATTACK2;
-        npc.Velocity=Vector(0,0)
+        npc.Velocity=vectorZero
         sfx:Play(SoundEffect.SOUND_POT_BREAK , 1, 0, false, 1)
         Isaac.Spawn(9, 0, 0, npc.Position, Vector(0, 12), target)
         Isaac.Spawn(9, 0, 0, npc.Position, Vector(12, 0), target)
@@ -81,7 +80,7 @@ end
 
 function this:die(npc)
  if npc.Variant == this.variant then
-  blood = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player)
+  blood = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player)
  end
 end
 

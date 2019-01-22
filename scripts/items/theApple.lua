@@ -6,8 +6,8 @@ function this.use()
   player:AddHearts(20)
   player:RemoveCollectible(this.id)
 
-  SFXManager():Play(SoundEffect.SOUND_1UP , 0.8, 0, false, 0.8)
-  Isaac.Spawn(5, 350, deliveranceContent.trinkets.appleCore.id, Isaac.GetFreeNearPosition(player.Position, 1), Vector(0, 0), player);
+  sfx:Play(SoundEffect.SOUND_1UP , 0.8, 0, false, 0.8)
+  Isaac.Spawn(5, 350, deliveranceContent.trinkets.appleCore.id, Isaac.GetFreeNearPosition(player.Position, 1), vectorZero, player);
 
   return true
 end

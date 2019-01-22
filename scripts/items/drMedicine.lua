@@ -1,8 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Dr. Medicine")
 
-local sfx = SFXManager()
-
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
@@ -22,7 +20,7 @@ function this:usePill(pill)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
      player:AddHearts(1)
-     local heart = Isaac.Spawn(1000, 49, 0, Vector(player.Position.X,player.Position.Y-96), Vector(0,0), nil)
+     local heart = Isaac.Spawn(1000, 49, 0, Vector(player.Position.X,player.Position.Y-96), vectorZero, nil)
      heart:GetSprite():ReplaceSpritesheet(0,"gfx/effects/hearteffect2.png")
      heart:GetSprite():LoadGraphics()
      sfx:Play(SoundEffect.SOUND_VAMP_GULP , 1.25, 0, false, 0.8)

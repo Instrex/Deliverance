@@ -2,7 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Sister's Key")
 
 function this.use()
-  SFXManager():Play(SoundEffect.SOUND_ULTRA_GREED_COIN_DESTROY, 0.8, 0, false, 1)
+  sfx:Play(SoundEffect.SOUND_ULTRA_GREED_COIN_DESTROY, 0.8, 0, false, 1)
   for e, entity in pairs(Isaac.GetRoomEntities()) do
     if entity.Type == EntityType.ENTITY_PICKUP
     and entity.Variant == PickupVariant.PICKUP_LOCKEDCHEST or entity.Variant == PickupVariant.PICKUP_CHEST

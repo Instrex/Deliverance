@@ -20,11 +20,11 @@ function this:onHitNPC(npc)
   local player = Isaac.GetPlayer(0)
   if not npc:IsBoss() then 
     if player:HasCollectible(this.id) then
-      local creep = Isaac.Spawn(1000, 45, 0, npc.Position, Vector(0, 0), nil)
+      local creep = Isaac.Spawn(1000, 45, 0, npc.Position, vectorZero, nil)
       creep.SpriteScale = Vector(0.5+npc.MaxHitPoints / 50,0.5+npc.MaxHitPoints / 50)
       creep:Update()
-      SFXManager():Play(43, 0.8, 0, false, 1.2)
-      local fire = Isaac.Spawn(1000, this.variant, 0, npc.Position, Vector(0, 0), player)
+      sfx:Play(43, 0.8, 0, false, 1.2)
+      local fire = Isaac.Spawn(1000, this.variant, 0, npc.Position, vectorZero, player)
       local data = fire:GetData()
       data.time = 0
       fire:GetSprite():Play("Start")

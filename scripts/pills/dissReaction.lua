@@ -8,7 +8,7 @@ function this:soultesPill(soultemesisPill)
   for i = 0, hearts do
     local room = Game():GetRoom()
     local position = Isaac.GetFreeNearPosition(player.Position,1)
-    Isaac.Spawn(5, 10, 8, position, Vector(0, 0), player)
+    Isaac.Spawn(5, 10, 8, position, vectorZero, player)
   end
 end
 

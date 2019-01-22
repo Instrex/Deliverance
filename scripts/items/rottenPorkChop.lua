@@ -23,9 +23,9 @@ function this:rottenUpdate(player)
          [Direction.UP] = Vector(0, 15), 
          [Direction.RIGHT] = Vector(-15, 0), 
          [Direction.DOWN] = Vector(0, -15), 
-         [Direction.NO_DIRECTION] = Vector(0, 0), 
+         [Direction.NO_DIRECTION] = vectorZero, 
       }
-      SFXManager():Play(SoundEffect.SOUND_FART , 0.8, 0, false, math.random(11, 13) / 10)
+      sfx:Play(SoundEffect.SOUND_FART , 0.8, 0, false, math.random(11, 13) / 10)
       local fart = Isaac.Spawn(1000, this.variant, 0, player.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()], player)
       fart:GetSprite():Play("Fart")
     end

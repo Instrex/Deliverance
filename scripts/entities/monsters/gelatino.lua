@@ -1,7 +1,6 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Gelatino")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Gelatino") or npc.Variant == Isaac.GetEntityVariantByName("Mini Gelatino") then
   local target = Isaac.GetPlayer(0)
@@ -88,27 +87,27 @@ function this:behaviour(npc)
     end
 
     if utils.chancep(33) then
-      local Creep = Isaac.Spawn(1000, 7, 0, npc.Position, Vector(0,0), nil)
+      local Creep = Isaac.Spawn(1000, 7, 0, npc.Position, vectorZero, nil)
       Creep.Color = data.color
       Creep:Update()
     end
   end  
 
   if npc:IsDead() then
-    if data.roll<10 then Isaac.Spawn(5, 69, 0, npc.Position, Vector(0, 0), player);
-      elseif data.roll<25 then if npc.Variant == 4000 then Isaac.Spawn(5, 20, 4, npc.Position, Vector(0, 0), player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 20, 1, npc.Position, Vector(0, 0), player) end
-      elseif data.roll<40 then if npc.Variant == 4000 then Isaac.Spawn(5, 40, 2, npc.Position, Vector(0, 0), player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 40, 1, npc.Position, Vector(0, 0), player) end
-      elseif data.roll<55 then if npc.Variant == 4000 then Isaac.Spawn(5, 30, 3, npc.Position, Vector(0, 0), player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 30, 1, npc.Position, Vector(0, 0), player) end
-      elseif data.roll<75 then if npc.Variant == 4000 then Isaac.Spawn(227, 0, 0, npc.Position, Vector(0, 0), player) elseif npc.Variant == 4001 then Isaac.Spawn(215, 0, 0, npc.Position, Vector(0, 0), player) end
-      elseif data.roll<95 then if npc.Variant == 4000 then Isaac.Spawn(92, 0, 0, npc.Position, Vector(0, 0), player) elseif npc.Variant == 4001 then Isaac.Spawn(26, 1, 0, npc.Position, Vector(0, 0), player) end
-      elseif data.roll==95 then Isaac.Spawn(5, 350, 32, npc.Position, Vector(0, 0), npc);
-      elseif data.roll==96 then Isaac.Spawn(5, 350, 43, npc.Position, Vector(0, 0), player);
-      elseif data.roll==97 then Isaac.Spawn(5, 350, 14, npc.Position, Vector(0, 0), player) 
-      elseif data.roll>97 then Isaac.Spawn(5, 350, 53, npc.Position, Vector(0, 0), player);
+    if data.roll<10 then Isaac.Spawn(5, 69, 0, npc.Position, vectorZero, player);
+      elseif data.roll<25 then if npc.Variant == 4000 then Isaac.Spawn(5, 20, 4, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 20, 1, npc.Position, vectorZero, player) end
+      elseif data.roll<40 then if npc.Variant == 4000 then Isaac.Spawn(5, 40, 2, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 40, 1, npc.Position, vectorZero, player) end
+      elseif data.roll<55 then if npc.Variant == 4000 then Isaac.Spawn(5, 30, 3, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 30, 1, npc.Position, vectorZero, player) end
+      elseif data.roll<75 then if npc.Variant == 4000 then Isaac.Spawn(227, 0, 0, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(215, 0, 0, npc.Position, vectorZero, player) end
+      elseif data.roll<95 then if npc.Variant == 4000 then Isaac.Spawn(92, 0, 0, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(26, 1, 0, npc.Position, vectorZero, player) end
+      elseif data.roll==95 then Isaac.Spawn(5, 350, 32, npc.Position, vectorZero, npc);
+      elseif data.roll==96 then Isaac.Spawn(5, 350, 43, npc.Position, vectorZero, player);
+      elseif data.roll==97 then Isaac.Spawn(5, 350, 14, npc.Position, vectorZero, player) 
+      elseif data.roll>97 then Isaac.Spawn(5, 350, 53, npc.Position, vectorZero, player);
     end
 
     sfx:Play(SoundEffect.SOUND_MEATHEADSHOOT  , 1, 0, false, 1) 
-    local Creep = Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), npc)
+    local Creep = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc)
     Creep.Color = data.color
     Creep.SpriteScale = Vector(0.75,0.75) 
 

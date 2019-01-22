@@ -42,7 +42,7 @@ function mod:CheckRoomEnemies()
 end
 
 function SpawnFollower(Variant, player)
-  return Isaac.Spawn(EntityType.ENTITY_FAMILIAR, Variant, 0, player.Position, Vector(0,0), player):ToFamiliar()
+  return Isaac.Spawn(EntityType.ENTITY_FAMILIAR, Variant, 0, player.Position, vectorZero, player):ToFamiliar()
 end
 
 function RealignFamiliars()
@@ -155,7 +155,7 @@ function mod:SageFloor()
     sagesCount = 0
     local player = Isaac.GetPlayer(0)
     player:CheckFamiliar(sagesoul, sagesCount, RNG())
-    proj = Isaac.Spawn(1000, 15, 0, player.Position, Vector(0, 0), player)
+    proj = Isaac.Spawn(1000, 15, 0, player.Position, vectorZero, player)
     proj.Color = Color( 0, 0, 0,   1,   255, 0, 255)
   end
 end

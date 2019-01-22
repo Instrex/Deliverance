@@ -5,7 +5,7 @@ function this.trigger(id)
   local player = Isaac.GetPlayer(0)
   if player:HasTrinket(this.id) then
     if utils.chance(8) then
-      SFXManager():Play(SoundEffect.SOUND_1UP , 0.8, 0, false, 0.8)
+      sfx:Play(SoundEffect.SOUND_1UP , 0.8, 0, false, 0.8)
       player:AddHearts(20)
       player:TryRemoveTrinket(this.id)
     end

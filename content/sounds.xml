@@ -11,4 +11,10 @@
 	<sound name="Charge">
 		<sample weight="1" path="Charge.wav"/>
 	</sound>
+	<sound name="Yuck">
+		<sample weight="1" path="Yuck.wav"/>
+	</sound>
+	<sound name="Firethrower">
+		<sample weight="1" path="Firethrower.wav"/>
+	</sound>
 </sounds>

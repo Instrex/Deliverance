@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Sister's Heart")
 this.variant = Isaac.GetEntityVariantByName("Sister's Heart")
 
-local sfx = SFXManager()
 function this.checkEnemies()
   local count = 0
   for _, e in pairs(Isaac.GetRoomEntities()) do
@@ -63,7 +62,7 @@ function this:behaviour(fam)
   if fam.Variant == this.variant then
   if player:GetFireDirection() == Direction.NO_DIRECTION then
     fam:FollowParent()
-  else fam.Velocity = Vector(0, 0) end
+  else fam.Velocity = vectorZero end
   end
 end
 

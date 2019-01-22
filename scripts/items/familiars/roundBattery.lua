@@ -2,8 +2,6 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Edgeless Cube Battery")
 this.variant = Isaac.GetEntityVariantByName("Round Battery")
 
-local sfx = SFXManager()
-
 function this:behaviour(fam)
   local sprite = fam:GetSprite()
   local player = Isaac.GetPlayer(0)

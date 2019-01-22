@@ -11,9 +11,9 @@ function this:behaviour(npc)
    data.trytochange = 1
 
   if npc:IsDead() and data.greenFly then
-    Isaac.Spawn(1000, 34, 0, npc.Position, Vector(0, 0), player)
+    Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player)
     for i=1, math.random(2, 3) do
---    npc:ThrowSpider(npc.Position, npc, Vector(0,0), false, 0)	
+--    npc:ThrowSpider(npc.Position, npc, vectorZero, false, 0)	
       EntityNPC.ThrowSpider(npc.Position, npc, room:FindFreePickupSpawnPosition(npc.Position, 160, true), false, 1.0)
     end
   end

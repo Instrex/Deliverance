@@ -2,8 +2,6 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Scaredy-shroom")
 this.variant = Isaac.GetEntityVariantByName("Scaredy-shroom")
 
-local sfx = SFXManager()
-
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
     local player = Isaac.GetPlayer(0)
@@ -75,7 +73,7 @@ end
 function this.shot(fam)   
    local player = Isaac.GetPlayer(0)
    local d = fam:GetData() 
-      local dirs = { [Direction.LEFT] = Vector(-12.5, 0), [Direction.UP] = Vector(0, -12.5), [Direction.RIGHT] = Vector(12.5, 0), [Direction.DOWN] = Vector(0, 12.5), [Direction.NO_DIRECTION] = Vector(0, 0), }
+      local dirs = { [Direction.LEFT] = Vector(-12.5, 0), [Direction.UP] = Vector(0, -12.5), [Direction.RIGHT] = Vector(12.5, 0), [Direction.DOWN] = Vector(0, 12.5), [Direction.NO_DIRECTION] = vectorZero, }
       if not d.shoot then
         local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()], nil):ToTear()
         prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255))

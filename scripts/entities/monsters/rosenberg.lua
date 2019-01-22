@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Rosenberg")
 this.variant = Isaac.GetEntityVariantByName("Rosenberg")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
@@ -10,7 +9,7 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
 
-  npc.Velocity = Vector(0,0)
+  npc.Velocity = vectorZero
   if target.Position.X<npc.Position.X then sprite.FlipX=false else sprite.FlipX=true end
 
   local level = game:GetLevel()
@@ -59,7 +58,8 @@ function this:behaviour(npc)
     sprite:Play("DigOut")
 
     if sprite:IsEventTriggered("Scream") then
-       sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 1.25, 0, false, 0.8)
+--     sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 1.25, 0, false, 0.8)
+       sfx:Play(Isaac.GetSoundIdByName("Yuck"), 0.7, 0, false, 1.2)
     end
 
     if sprite:IsEventTriggered("ChangeCol") then
@@ -97,7 +97,7 @@ function this:behaviour(npc)
     sprite:Play("DigIn")
 
     if sprite:IsEventTriggered("ChangeCol") then
-    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+      npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
     end
 
     npc.StateFrame = npc.StateFrame + 1

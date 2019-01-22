@@ -1,7 +1,6 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Fat Host")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Fat Host") or npc.Variant == Isaac.GetEntityVariantByName("Red Fat Host") then
   local target = Isaac.GetPlayer(0)
@@ -10,7 +9,7 @@ function this:behaviour(npc)
   local room = game:GetRoom()
 
   npc:AddEntityFlags(EntityFlag.FLAG_NO_KNOCKBACK | EntityFlag.FLAG_NO_PHYSICS_KNOCKBACK)
-  npc.Velocity = Vector(0,0)
+  npc.Velocity = vectorZero
 
   if npc.Variant == 4000 then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/fathost.png")
@@ -94,7 +93,7 @@ end
 function this:die(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Fat Host") or npc.Variant == Isaac.GetEntityVariantByName("Red Fat Host") then
     sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
-    Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player)
+    Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player)
     Game():ShakeScreen(10) 
  end
 end

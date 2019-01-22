@@ -7,7 +7,7 @@ function this:cardCallback(cardId)
     hearts = player:GetMaxHearts()
     player:AddSoulHearts(hearts * 2)
     player:AddMaxHearts(0 - hearts)
-    SFXManager():Play(SoundEffect.SOUND_HOLY , 1, 0, false, 1.05)
+    sfx:Play(SoundEffect.SOUND_HOLY , 1, 0, false, 1.05)
   end
 end
 

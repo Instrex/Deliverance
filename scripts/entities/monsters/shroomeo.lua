@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Shroomeo")
 this.variant = Isaac.GetEntityVariantByName("Shroomeo")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = Isaac.GetPlayer(0)
@@ -17,7 +16,7 @@ function this:behaviour(npc)
     sprite:LoadGraphics()
   end
 
-  npc.Velocity = Vector(0,0)
+  npc.Velocity = vectorZero
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
@@ -69,7 +68,7 @@ function this:behaviour(npc)
     end
 
     if sprite:IsEventTriggered("Wave") then
-       Isaac.Spawn(1000, 34, 0, npc.Position, Vector(0, 0), player)
+       Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player)
        Isaac.GridSpawn(GridEntityType.GRID_POOP, 0, Isaac.GetFreeNearPosition(npc.Position,64), true)
        Game():ShakeScreen(5)
     end
@@ -85,7 +84,7 @@ end
 function this:die(npc)
  if npc.Variant == this.variant then
     sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
-    Isaac.Spawn(1000, 77, 0, npc.Position, Vector(0, 0), player).Color = Color(0, 0, 0, 1, 69, 56, 52)
+    Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 69, 56, 52)
  end
 end
 
@@ -113,7 +112,7 @@ function this:shroomBreakUpdate()
 	for _,s in ipairs(Isaac.GetRoomEntities()) do
         local data = s:GetData()
 	   if data.Shockwave and s.FrameCount%5 == 0 or data.Shroomwave and (s.FrameCount%2 == 0 or s.FrameCount == 0) then
-	      local sbreak = Isaac.Spawn(EntityType.ENTITY_EFFECT, 6, 0, s.Position, Vector(0,0), v)
+	      local sbreak = Isaac.Spawn(EntityType.ENTITY_EFFECT, 6, 0, s.Position, vectorZero, v)
 	      sbreak:GetSprite():Load("gfx/1000.062_groundbreak.anm2", true)
 	      sbreak:GetSprite():Play("Break")
 	      sbreak:GetData().IsShockwave = true

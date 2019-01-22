@@ -1,7 +1,6 @@
 local this = {}
 this.id = Isaac.GetEntityTypeByName("Cadaver")
 
-local sfx = SFXManager()
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Wicked Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Sluggish Cadaver") then
   local target = Isaac.GetPlayer(0)
@@ -83,7 +82,7 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_IDLE then
     
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
-    npc.Velocity = Vector(0,0)
+    npc.Velocity = vectorZero
     sprite:Play("Stasis");	
 
     npc.StateFrame = npc.StateFrame + 1

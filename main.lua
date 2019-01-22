@@ -1,5 +1,7 @@
 mod = RegisterMod("tBoi: Deliverance", 1)
 game = Game()
+sfx = SFXManager()
+vectorZero = Vector(0,0)
 
 utils = require('scripts.utils')
 

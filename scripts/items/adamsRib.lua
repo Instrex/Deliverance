@@ -22,15 +22,15 @@ function this:onHitNPC(npc,damage,flags,source)
 --     for e, entity in pairs(Isaac.GetRoomEntities()) do 
 --        if source.Entity and source.Entity.Index == entity.Index and entity.SpawnerType == 1 then 
 --           if math.random(1, 8-(math.min(player.Luck, 6))) == 2 then
---              SFXManager():Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
---              Isaac.Spawn(1000, this.variant, 0, npc.Position, Vector(0, 0), nil)
+--              sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
+--              Isaac.Spawn(1000, this.variant, 0, npc.Position, vectorZero, nil)
 --           end
 --        end
 --     end 
      if not npc:GetData().doubleDamaged then
         npc:GetData().doubleDamaged = true
-        SFXManager():Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
-        local knife = Isaac.Spawn(1000, this.variant, 0, npc.Position, Vector(0, 0), nil)
+        sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
+        local knife = Isaac.Spawn(1000, this.variant, 0, npc.Position, vectorZero, nil)
         knife:GetData().dmg = damage*0.75
      end
   end
@@ -42,7 +42,7 @@ function this:update(npc)
     local sprite = npc:GetSprite()
 
     if sprite:IsEventTriggered("Attack") then
-       SFXManager():Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 0.8)
+       sfx:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 0.8)
        for e, enemies in pairs(Isaac.FindInRadius(npc.Position, 45, EntityPartition.ENEMY)) do
          enemies:TakeDamage(data.dmg, 0, EntityRef(nil), 0)
        end
