@@ -3,7 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Fat Host")
 
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Fat Host") or npc.Variant == Isaac.GetEntityVariantByName("Red Fat Host") then
-  local target = Isaac.GetPlayer(0)
+  local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local room = game:GetRoom()
@@ -29,11 +29,11 @@ function this:behaviour(npc)
   -- Seek for a moment to attack --
   elseif npc.State == NpcState.STATE_IDLE then
     sprite:Play("Idle");
-    if npc.Position:Distance(target.Position) <= 160 then
+    if npc.Position:Distance(target.Position) <= 240 then
        data.HTimer = data.HTimer + 1
     end
 
-    if data.HTimer>=32 then
+    if data.HTimer>=24 then
       npc.State = NpcState.STATE_ATTACK
     end
 
@@ -78,6 +78,7 @@ function this:behaviour(npc)
 end
 
 function this:onHitNPC(npc)
+ if npc.Type == Isaac.GetEntityTypeByName("Fat Host") then
  if npc.Variant == Isaac.GetEntityVariantByName("Fat Host") or npc.Variant == Isaac.GetEntityVariantByName("Red Fat Host") then
   local data = npc:GetData()
   if npc.Type == this.id and npc.Variant == Isaac.GetEntityVariantByName("Fat Host") then
@@ -87,6 +88,7 @@ function this:onHitNPC(npc)
       return false
     end
   end
+ end
  end
 end
 

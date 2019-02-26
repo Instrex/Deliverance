@@ -3,7 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Musk")
 
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Musk") or npc.Variant == Isaac.GetEntityVariantByName("Dusk") then
-  local target = Isaac.GetPlayer(0)
+  local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local room = game:GetRoom()

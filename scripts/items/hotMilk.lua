@@ -8,9 +8,9 @@ function this:cache(player, flag)
       deliveranceData.temporary.hasHotMilk = true
       deliveranceDataHandler.directSave()
       player:AddNullCostume(deliveranceContent.costumes.hotmilk)
-      if player:GetPlayerType() ~= PlayerType.PLAYER_THEFORGOTTEN then
-        player:AddNullCostume(deliveranceContent.costumes.hotmilk)
-      end
+    --if player:GetPlayerType() ~= PlayerType.PLAYER_THEFORGOTTEN then
+    --  player:AddNullCostume(deliveranceContent.costumes.hotmilk)
+    --end
     end
 --  if flag == CacheFlag.CACHE_TEARCOLOR then player.TearColor = Color(219, 231, 251, 1, 0, 0, 0) end
     if flag == CacheFlag.CACHE_DAMAGE then player.Damage = player.Damage + 0.45 end

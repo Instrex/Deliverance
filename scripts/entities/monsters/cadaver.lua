@@ -3,7 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Cadaver")
 
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Wicked Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Sluggish Cadaver") then
-  local target = Isaac.GetPlayer(0)
+  local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local room = game:GetRoom()
@@ -27,8 +27,8 @@ function this:behaviour(npc)
         sprite:LoadGraphics()
     end
   elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-    sprite:ReplaceSpritesheet(0,"gfx/monsters/cadaver_womb.png")
     if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/cadaver_scarred.png")
         sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_scarred.png")
         sprite:ReplaceSpritesheet(3,"gfx/monsters/cadaver_scarred.png")
         if npc.Variant == 4000 then
@@ -42,6 +42,7 @@ function this:behaviour(npc)
            sprite:LoadGraphics()
         end
     else
+        sprite:ReplaceSpritesheet(0,"gfx/monsters/cadaver_womb.png")
         sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_womb.png")
         sprite:ReplaceSpritesheet(3,"gfx/monsters/cadaver_womb.png")
         if npc.Variant == 4000 then
@@ -73,7 +74,6 @@ function this:behaviour(npc)
     npc.State = NpcState.STATE_IDLE
     npc:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
  
-    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
     npc.StateFrame = Utils.choose(100, 125, 150)
     if data.sped == nil then data.sped = Utils.choose(0.85, 0.8, 0.75) end
     if data.GridCountdown == nil then data.GridCountdown = 0 end

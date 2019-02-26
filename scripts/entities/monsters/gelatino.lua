@@ -3,7 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Gelatino")
 
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Gelatino") or npc.Variant == Isaac.GetEntityVariantByName("Mini Gelatino") then
-  local target = Isaac.GetPlayer(0)
+  local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
 
@@ -78,9 +78,9 @@ function this:behaviour(npc)
               data.GridCountdown = data.GridCountdown - 1
           end
        else
-          if npc.Variant == 4000 then
+          if npc.Variant == Isaac.GetEntityVariantByName("Gelatino") then
              npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 0.9 + npc.Velocity * 0.85 
-          elseif npc.Variant == 4001 then
+          elseif npc.Variant == Isaac.GetEntityVariantByName("Mini Gelatino") then
              npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1.06 + npc.Velocity * 0.85
           end
        end

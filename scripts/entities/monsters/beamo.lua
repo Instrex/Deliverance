@@ -4,7 +4,7 @@ this.variant = Isaac.GetEntityVariantByName("Beamo")
 
 function this:behaviour(npc)
  if npc.Variant == this.variant then
-  local target = Isaac.GetPlayer(0)
+  local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local level = game:GetLevel()

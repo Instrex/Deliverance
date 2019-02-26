@@ -3,7 +3,7 @@ this.id = Isaac.GetEntityTypeByName("Peabody")
 
 function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Peabody") or npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then
-  local target = Isaac.GetPlayer(0)
+  local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local room = game:GetRoom()
@@ -28,9 +28,9 @@ function this:behaviour(npc)
     sprite:Play("Fly")
 
     if room:CheckLine(npc.Position,target.Position,0,1,false,false) and utils.chancep(60) then
-      npc.StateFrame = npc.StateFrame + 1
+      npc.StateFrame = npc.StateFrame + Utils.choose(0, 1)
     end
-      npc.StateFrame = npc.StateFrame + 1
+      npc.StateFrame = npc.StateFrame + Utils.choose(0, 1)
 
     if npc.StateFrame>=80 then
       sfx:Play(SoundEffect.SOUND_MONSTER_GRUNT_0 , 1.2, 0, false, 1)
@@ -44,7 +44,7 @@ function this:behaviour(npc)
     npc.Velocity = npc.Velocity * 0.85
     if npc.StateFrame<60 then
       npc.StateFrame = npc.StateFrame - 1
-      if utils.chancep(60) then
+      if utils.chancep(80) then
         local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
         RCreep.SpriteScale = Vector(0.75,0.75) 
         RCreep:Update()

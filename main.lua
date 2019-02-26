@@ -22,7 +22,7 @@ deliveranceData = {
 deliveranceDataHandler = require('scripts.deliveranceDataHandler')
 deliveranceDataHandler.init()
 
--- Register mod content here --
+ -- Register mod content here --
 deliveranceContent = {
 
   items = {
@@ -93,7 +93,9 @@ deliveranceContent = {
     cadaver                   = require 'scripts.entities.monsters.cadaver',
     eddie                     = require 'scripts.entities.monsters.eddie',
     explosimaw                = require 'scripts.entities.monsters.explosimaw',
-    seraphim                  = require 'scripts.entities.monsters.seraphim'
+    seraphim                  = require 'scripts.entities.monsters.seraphim',
+    fistubomb                 = require 'scripts.entities.monsters.fistubomb',
+    fistulauncher             = require 'scripts.entities.monsters.fistulauncher'   
   },
 
   costumes = {
@@ -110,7 +112,7 @@ deliveranceContent = {
   }
 }
 
--- Content Initialization --
+ -- Content Initialization --
 print("tBoI Deliverance: Loading content... ! ")
 for q, r in pairs(deliveranceContent) do
   if r.noAutoload == nil then
