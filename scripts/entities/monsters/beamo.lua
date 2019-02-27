@@ -29,6 +29,12 @@ function this:behaviour(npc)
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_MOVE
     npc.StateFrame = Utils.choose(-10, -5, 0)
+    if current_floor == LevelStage.STAGE5 or (current_floor == LevelStage.STAGE5_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+      if level:GetStageType() == StageType.STAGETYPE_WOTL then
+        local fly = Isaac.Spawn(EntityType.ENTITY_ETERNALFLY, 0 , 0, npc.Position, vectorZero, nil)
+        fly.Parent = npc
+      end
+    end
 
   -- Move and wait for player to get closer --
   elseif npc.State == NpcState.STATE_MOVE then
