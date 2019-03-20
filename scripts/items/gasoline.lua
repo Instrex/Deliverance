@@ -10,13 +10,14 @@ function this:cache(player, flag)
       deliveranceDataHandler.directSave()
       player:AddNullCostume(deliveranceContent.costumes.gasoline)
       if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
-        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.gasoline), "gfx/costumes/sheet_costume_gasoline_forgotten.png", 0)
+        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.gasoline), "gfx/characters/costumes_forgotten/sheet_costume_gasoline_forgotten.png", 0)
       end
     end
   end
 end
 
 function this:onHitNPC(npc)
+
   local player = Isaac.GetPlayer(0)
   if not npc:IsBoss() then 
     if player:HasCollectible(this.id) then

@@ -12,7 +12,7 @@ function this:cache(player, flag)
 
       player:AddNullCostume(deliveranceContent.costumes.theCovenant)
       if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
-        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.theCovenant), "gfx/costumes/sheet_costume_theCovenant_forgotten.png", 0)
+        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.theCovenant), "gfx/characters/costumes_forgotten/sheet_costume_theCovenant_forgotten.png", 0)
       end
     end
   end

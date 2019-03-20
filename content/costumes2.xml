@@ -1,4 +1,4 @@
-<costumes anm2root="gfx/costumes/">
+<costumes anm2root="gfx/characters/costumes/">
      <costume anm2path="animation_costume_sailorhat.anm2" priority="98" type="none" />
      <costume anm2path="animation_costume_luckySaucer.anm2" priority="98" type="none" />
      <costume anm2path="animation_costume_saltySoup.anm2" type="none" hasSkinAlt="true" />

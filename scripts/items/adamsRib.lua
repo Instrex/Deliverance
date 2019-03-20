@@ -12,7 +12,7 @@ function this:cache(player, flag)
       if player:GetPlayerType() == PlayerType.PLAYER_EVE then
          player:AddNullCostume(deliveranceContent.costumes.adamsRib)
       end
-    end
+    end 
   end
 end
 

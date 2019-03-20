@@ -9,7 +9,7 @@ function this:cache(player, flag)
       deliveranceDataHandler.directSave()
       player:AddNullCostume(deliveranceContent.costumes.adamsRib)
       if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
-        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.adamsRib), "gfx/costumes/sheet_costume_adamsRib_forgotten.png", 0)
+        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.adamsRib), "gfx/characters/costumes_forgotten/sheet_costume_adamsRib_forgotten.png", 0)
       end
       local pill = Isaac.Spawn(5, 70, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
     end

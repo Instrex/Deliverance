@@ -9,7 +9,7 @@ function this:cache(player, flag)
       deliveranceDataHandler.directSave()
       player:AddNullCostume(deliveranceContent.costumes.saltySoup)
       if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
-        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.saltySoup), "gfx/costumes/sheet_costume_saltySoup_forgotten.png", 0)
+        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.saltySoup), "gfx/characters/costumes_forgotten/sheet_costume_saltySoup_forgotten.png", 0)
       end
       if flag == CacheFlag.CACHE_SPEED then player.MoveSpeed = player.MoveSpeed - 0.08 end
       if flag == CacheFlag.CACHE_FIREDELAY then player.MaxFireDelay = player.MaxFireDelay - 2 end

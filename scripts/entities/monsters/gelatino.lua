@@ -7,8 +7,12 @@ function this:behaviour(npc)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
 
+  if data.RealHp == nil then data.RealHp = npc.HitPoints end
+
   local level = game:GetLevel()
   local stage = level:GetStage()
+
+  npc:AddEntityFlags(EntityFlag.FLAG_NO_DEATH_TRIGGER)
 
   if npc.Variant == 4000 then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/gelatino.png")
@@ -93,36 +97,61 @@ function this:behaviour(npc)
     end
   end  
 
-  if npc:IsDead() then
-    if data.roll<10 then Isaac.Spawn(5, 69, 0, npc.Position, vectorZero, player);
-      elseif data.roll<25 then if npc.Variant == 4000 then Isaac.Spawn(5, 20, 4, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 20, 1, npc.Position, vectorZero, player) end
-      elseif data.roll<40 then if npc.Variant == 4000 then Isaac.Spawn(5, 40, 2, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 40, 1, npc.Position, vectorZero, player) end
-      elseif data.roll<55 then if npc.Variant == 4000 then Isaac.Spawn(5, 30, 3, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 30, 1, npc.Position, vectorZero, player) end
-      elseif data.roll<75 then if npc.Variant == 4000 then Isaac.Spawn(227, 0, 0, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(215, 0, 0, npc.Position, vectorZero, player) end
-      elseif data.roll<95 then if npc.Variant == 4000 then Isaac.Spawn(92, 0, 0, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(26, 1, 0, npc.Position, vectorZero, player) end
-      elseif data.roll==95 then Isaac.Spawn(5, 350, 32, npc.Position, vectorZero, npc);
-      elseif data.roll==96 then Isaac.Spawn(5, 350, 43, npc.Position, vectorZero, player);
-      elseif data.roll==97 then Isaac.Spawn(5, 350, 14, npc.Position, vectorZero, player) 
-      elseif data.roll>97 then Isaac.Spawn(5, 350, 53, npc.Position, vectorZero, player);
-    end
+  if data.dead then
+    npc.State = NpcState.STATE_UNIQUE_DEATH;
+    npc.StateFrame = -666
+    npc.Velocity = vectorZero
 
-    sfx:Play(SoundEffect.SOUND_MEATHEADSHOOT  , 1, 0, false, 1) 
-    local Creep = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc)
-    Creep.Color = data.color
-    Creep.SpriteScale = Vector(0.75,0.75) 
 
-    for i=1, 8 do
-       if npc.Variant == 4000 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(i*45):Resized(10), npc).Color = data.tearColor end
-    end
-    for i=1, 4 do
-       if npc.Variant == 4001 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(10), npc).Color = data.tearColor end
+    sprite:Play("Death");
+
+    if sprite:IsFinished("Death") then
+       npc:Remove()
+       sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 1, 0, false, 1)
+       local Creep = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc)
+       Creep.Color = data.color
+       Creep.SpriteScale = Vector(0.75,0.75) 
+       for i=1, 8 do
+          if npc.Variant == 4000 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(i*45):Resized(10), npc).Color = data.tearColor end
+       end
+       for i=1, 4 do
+          if npc.Variant == 4001 then Isaac.Spawn(9, 6, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(10), npc).Color = data.tearColor end
+       end
     end
   end
  end
 end
 
+function this:onHitNPC(npc, dmgAmount, flags, source, frames)
+ if (npc.Variant == Isaac.GetEntityVariantByName("Gelatino") or npc.Variant == Isaac.GetEntityVariantByName("Mini Gelatino")) and npc.Type == this.id then
+  local data = npc:GetData()
+    if data.RealHp == nil then
+      data.RealHp = npc.HitPoints
+    end
+    data.RealHp = data.RealHp - dmgAmount
+    if data.RealHp <= 0 and not data.dead then
+       data.dead=true
+       npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+       sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
+       if data.roll<10 then Isaac.Spawn(5, 69, 0, npc.Position, vectorZero, player);
+         elseif data.roll<25 then if npc.Variant == 4000 then Isaac.Spawn(5, 20, 4, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 20, 1, npc.Position, vectorZero, player) end
+         elseif data.roll<40 then if npc.Variant == 4000 then Isaac.Spawn(5, 40, 2, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 40, 1, npc.Position, vectorZero, player) end
+         elseif data.roll<55 then if npc.Variant == 4000 then Isaac.Spawn(5, 30, 3, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(5, 30, 1, npc.Position, vectorZero, player) end
+         elseif data.roll<75 then if npc.Variant == 4000 then Isaac.Spawn(227, 0, 0, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(215, 0, 0, npc.Position, vectorZero, player) end
+         elseif data.roll<95 then if npc.Variant == 4000 then Isaac.Spawn(92, 0, 0, npc.Position, vectorZero, player) elseif npc.Variant == 4001 then Isaac.Spawn(26, 1, 0, npc.Position, vectorZero, player) end
+         elseif data.roll==95 then Isaac.Spawn(5, 350, 32, npc.Position, vectorZero, npc);
+         elseif data.roll==96 then Isaac.Spawn(5, 350, 43, npc.Position, vectorZero, player);
+         elseif data.roll==97 then Isaac.Spawn(5, 350, 14, npc.Position, vectorZero, player) 
+         elseif data.roll>97 then Isaac.Spawn(5, 350, 53, npc.Position, vectorZero, player);
+       end
+       return false
+    end
+ end
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
+  mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
 end
 
 return this

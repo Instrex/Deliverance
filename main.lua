@@ -19,6 +19,12 @@ deliveranceData = {
   }
 }
 
+if not __eidItemDescriptions then         
+  __eidItemDescriptions = {};
+end	
+
+__eidItemDescriptions[Isaac.GetItemIdByName("Gasoline")] = "Most Fitting Description";
+
 deliveranceDataHandler = require('scripts.deliveranceDataHandler')
 deliveranceDataHandler.init()
 

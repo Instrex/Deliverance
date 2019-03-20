@@ -103,6 +103,9 @@ function this:shroomBreakUpdate()
                       local grid = room:GetGridEntity(i)
                       if grid and (grid.Desc.Type==2 or grid.Desc.Type==3 or grid.Desc.Type==4 or grid.Desc.Type==5 or grid.Desc.Type==6 or grid.Desc.Type==14 or grid.Desc.Type==22) then 
                          if sbreak.Position:Distance(grid.Position) <= 42 then
+                            if grid.Desc.Type==GridEntityType.GRID_POOP and grid.Desc.State<4 then
+                               Game():Spawn(217, 0, grid.Position, vectorZero, sbreak, 0, 1)
+                            end
                             room:DestroyGrid(i, true) 
                          end
                       end
