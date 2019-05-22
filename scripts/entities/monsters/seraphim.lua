@@ -47,7 +47,7 @@ function this:behaviour(npc)
     if sprite:IsEventTriggered("Dash") then
 --    sfx:Play(SoundEffect.SOUND_SUMMONSOUND , 0.75, 0, false, 1) 
       sfx:Play(Isaac.GetSoundIdByName("Charge"), 1, 0, false, 1)
-      npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 25
+      npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 20
     end
 
 --  if sprite:IsEventTriggered("DashShot") then
