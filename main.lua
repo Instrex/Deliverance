@@ -95,7 +95,8 @@ deliveranceContent = {
     explosimaw                = require 'scripts.entities.monsters.explosimaw',
     seraphim                  = require 'scripts.entities.monsters.seraphim',
     fistubomb                 = require 'scripts.entities.monsters.fistubomb',
-    fistulauncher             = require 'scripts.entities.monsters.fistulauncher'   
+    fistulauncher             = require 'scripts.entities.monsters.fistulauncher',
+    lilbonydies               = require 'scripts.entities.monsters.lilbonydies'  
   },
 
   costumes = {

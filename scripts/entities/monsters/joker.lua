@@ -2,6 +2,15 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Joker")
 this.variant = Isaac.GetEntityVariantByName("Joker")
 
+function this.checkEnemies()
+  local count = 0
+  for _, e in pairs(Isaac.GetRoomEntities()) do
+    if e:GetData().bsmol then count = count + 1 end
+  end
+
+  return count
+end
+
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = npc:GetPlayerTarget()
@@ -29,7 +38,7 @@ function this:behaviour(npc)
 
     if npc.StateFrame >= 75 then
        sfx:Play(SoundEffect.SOUND_FAT_GRUNT , 1, 0, false, 1.12)
-       if utils.chancep(50) then npc.State = NpcState.STATE_ATTACK else npc.State = NpcState.STATE_ATTACK3 end
+       if this.checkEnemies() <= 2 then npc.State = NpcState.STATE_ATTACK else npc.State = NpcState.STATE_ATTACK3 end
        npc.StateFrame = Utils.choose(-10, -5, 0)
     end
 
@@ -47,6 +56,9 @@ function this:behaviour(npc)
            urod.State = 0
            urod:SetSize(9, Vector(1,1), 12)
            urod.Scale = 0.75
+           urod:GetData().bsmol = true
+           urod:GetSprite():ReplaceSpritesheet(1,"gfx/monsters/lilBlackBoney.png")
+           urod:GetSprite():LoadGraphics()
         Isaac.Spawn(1000, 15, 0, npc.Position+Vector(0, 15), vectorZero, nil)
         game:ShakeScreen(3)
         if utils.chancep(50) then game:Darken(1, 125) end

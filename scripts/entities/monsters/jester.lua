@@ -2,6 +2,15 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Jester")
 this.variant = Isaac.GetEntityVariantByName("Jester")
 
+function this.checkEnemies()
+  local count = 0
+  for _, e in pairs(Isaac.GetRoomEntities()) do
+    if e:GetData().smol then count = count + 1 end
+  end
+
+  return count
+end
+
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = npc:GetPlayerTarget()
@@ -30,7 +39,11 @@ function this:behaviour(npc)
 
     if npc.StateFrame >= 50 then
        sfx:Play(SoundEffect.SOUND_FAT_GRUNT , 1, 0, false, 1)
-       npc.State = NpcState.STATE_ATTACK;
+       if this.checkEnemies() <= 2 then
+          npc.State = NpcState.STATE_ATTACK;
+       else
+          npc.State = NpcState.STATE_ATTACK3;
+       end
        npc.StateFrame = Utils.choose(-10, -5, 0)
     end
 
@@ -43,14 +56,17 @@ function this:behaviour(npc)
     if(sprite:IsFinished("Charge")) then
         npc.State = NpcState.STATE_ATTACK2;
         sfx:Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_1 , 1, 0, false, 1)
-        local urod = Game():Spawn(227, 0, npc.Position, vectorZero, npc, 0, 1):ToNPC()
+           local urod = Game():Spawn(227, 0, npc.Position, vectorZero, npc, 0, 1):ToNPC()
            urod.HitPoints = 4
            urod.State = 0
            urod:SetSize(9, Vector(1,1), 12)
            urod.Scale = 0.75
+           urod:GetData().smol = true
+           urod:GetSprite():ReplaceSpritesheet(1,"gfx/monsters/lilBoney.png")
+           urod:GetSprite():LoadGraphics()
         Isaac.Spawn(1000, 15, 0, npc.Position+Vector(0, 20), vectorZero, nil)
         game:ShakeScreen(3)
-        if utils.chancep(20) then game:Darken(1, 90) end
+--      if utils.chancep(20) then game:Darken(1, 90) end
     end
 
   -- Summons tiny Bony --
@@ -58,6 +74,36 @@ function this:behaviour(npc)
         sprite:Play("Summon");
 
         if(sprite:IsFinished("Summon")) then
+            npc.State = NpcState.STATE_MOVE;
+        end
+
+  -- Explodes all bonies --
+  elseif npc.State == NpcState.STATE_ATTACK3 then
+        sprite:Play("Order");
+        
+        npc.Velocity = npc.Velocity * 0.85
+
+        if sprite:IsEventTriggered("Stomp") then
+           sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 0.75)
+        end
+
+        if sprite:IsEventTriggered("Order") then
+           npc.Velocity = npc.Velocity * 0
+           game:ShakeScreen(20)
+           sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
+           for _, e in pairs(Isaac.GetRoomEntities()) do
+             if e:GetData().smol then 
+                game:Spawn(Isaac.GetEntityTypeByName("Lil Bony Dies"), Isaac.GetEntityVariantByName("Lil Bony Dies"), e.Position, vectorZero, e, 0, 1)
+                e:Remove()
+             end
+           end
+        end
+
+        if sprite:IsEventTriggered("AnimeScream") then
+           sfx:Play(SoundEffect.SOUND_RAGMAN_2 , 1.25, 0, false, 0.8)
+        end
+
+        if(sprite:IsFinished("Order")) then
             npc.State = NpcState.STATE_MOVE;
         end
   end
@@ -80,7 +126,6 @@ function this:behaviour(npc)
   end
  end
 end
-
 
 function this:onHitNPC(npc, dmgAmount, flags, source, frames)
  if npc.Variant == this.variant then
