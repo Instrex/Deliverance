@@ -61,7 +61,7 @@ function this:behaviour(npc)
            urod:GetSprite():LoadGraphics()
         Isaac.Spawn(1000, 15, 0, npc.Position+Vector(0, 15), vectorZero, nil)
         game:ShakeScreen(3)
-        if utils.chancep(50) then game:Darken(1, 125) end
+        if utils.chancep(50) then game:Darken(1, 90) end
     end
 
   -- Summons tiny black Bony --
@@ -82,10 +82,10 @@ function this:behaviour(npc)
         npc.State = NpcState.STATE_ATTACK4;
         sfx:Play(SoundEffect.SOUND_ULTRA_GREED_ROAR_2 , 1, 0, false, 1)
 
-        for i=1, 4 do
-          local brimstone_laser = EntityLaser.ShootAngle(1, npc.Position, 45+i*90, 15, Vector(0,-20), npc)
-          brimstone_laser.DepthOffset = 200
-        end
+         for i=1, 4 do
+           local brimstone_laser = EntityLaser.ShootAngle(1, npc.Position, 45+i*90, 15, Vector(0,-20), npc)
+           brimstone_laser.DepthOffset = 200
+         end
     end
 
   -- After brimstone shot --
