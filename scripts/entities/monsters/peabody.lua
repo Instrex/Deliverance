@@ -44,7 +44,7 @@ function this:behaviour(npc)
     sprite:Play("Attack")
 
     npc.StateFrame = npc.StateFrame - 1
-    npc.Velocity = npc.Velocity * 0.925
+    npc.Velocity = npc.Velocity * 0.9
     if npc.StateFrame<60 then
       npc.StateFrame = npc.StateFrame - 1
       if utils.chancep(80) then

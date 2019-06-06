@@ -104,7 +104,14 @@ function this:shroomBreakUpdate()
                       if grid and (grid.Desc.Type==2 or grid.Desc.Type==3 or grid.Desc.Type==4 or grid.Desc.Type==5 or grid.Desc.Type==6 or grid.Desc.Type==14 or grid.Desc.Type==22) then 
                          if sbreak.Position:Distance(grid.Position) <= 42 then
                             if grid.Desc.Type==GridEntityType.GRID_POOP and grid.Desc.State<4 then
-                               Game():Spawn(217, 0, grid.Position, vectorZero, sbreak, 0, 1)
+                               if utils.chancep(25) then
+                                  Game():Spawn(217, 0, grid.Position, vectorZero, sbreak, 0, 1)
+                               else
+                                  local rnd = math.random(-60, 60)
+                                  for i=1, 3 do
+                                     Isaac.Spawn(9, 3, 0, grid.Position, Vector.FromAngle(i*120+rnd):Resized(10), sbreak)
+                                  end
+                               end
                             end
                             room:DestroyGrid(i, true) 
                          end
