@@ -2,7 +2,7 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Peabody")
 
 function this:behaviour(npc)
- if npc.Variant == Isaac.GetEntityVariantByName("Peabody") or npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then
+ if npc.Variant == Isaac.GetEntityVariantByName("Peabody") or npc.Variant == Isaac.GetEntityVariantByName("Peabody X") or npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
@@ -10,11 +10,14 @@ function this:behaviour(npc)
 
   if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/72) + npc.Velocity * 0.95 end
 
-  if npc.Variant == 4000 then
+  if npc.Variant == Isaac.GetEntityVariantByName("Peabody") then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody.png")
     sprite:LoadGraphics()
-  elseif npc.Variant == 4001 then
+  elseif npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody_x.png")
+    sprite:LoadGraphics()
+  elseif npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then
+    sprite:ReplaceSpritesheet(0,"gfx/monsters/peamonger.png")
     sprite:LoadGraphics()
   end
 
@@ -41,12 +44,12 @@ function this:behaviour(npc)
     sprite:Play("Attack")
 
     npc.StateFrame = npc.StateFrame - 1
-    npc.Velocity = npc.Velocity * 0.85
+    npc.Velocity = npc.Velocity * 0.925
     if npc.StateFrame<60 then
       npc.StateFrame = npc.StateFrame - 1
       if utils.chancep(80) then
         local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
-        RCreep.SpriteScale = Vector(0.75,0.75) 
+        if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then RCreep.SpriteScale = Vector(1.25,1.25) else RCreep.SpriteScale = Vector(0.75,0.75) end
         RCreep:Update()
       end
     end
@@ -54,8 +57,19 @@ function this:behaviour(npc)
     if sprite:IsEventTriggered("Smack") then
     npc.StateFrame = npc.StateFrame - Utils.choose(20, 15, 10)
        for i=1, 4 do
-          if npc.Variant == 4000 then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*90):Resized(12), npc) end
-          if npc.Variant == 4001 then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(12), npc) end
+          if npc.Variant == Isaac.GetEntityVariantByName("Peabody") then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*90):Resized(12), npc) end
+          if npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(12), npc) end
+          if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then 
+             for j=1, 3 do
+               local params = ProjectileParams() 
+               params.FallingSpeedModifier = math.random(-28, -4) 
+               params.FallingAccelModifier = 1.2 
+
+               local velocity = Vector(Utils.choose(math.random(-6, -1), math.random(1, 6)), Utils.choose(math.random(-6, -1), math.random(1, 6))):Rotated(math.random(-30*i, 30*i))
+               npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
+             end
+             Game():ShakeScreen(12) 
+          end
        end
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 1)
     end

@@ -32,45 +32,48 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_MOVE then
 
     sprite:Play("Idle");
+    if target.Position.X<npc.Position.X then sprite.FlipX=false else sprite.FlipX=true end
     npc.StateFrame = npc.StateFrame + 1
 
     if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1 + npc.Velocity * 0.8 end
 
     if npc.StateFrame>=45 then
-      npc.State = utils.choose(NpcState.STATE_ATTACK, NpcState.STATE_ATTACK2)
+        npc.State = utils.choose(NpcState.STATE_ATTACK, NpcState.STATE_ATTACK2) 
     end
 
-  elseif npc.State == NpcState.STATE_ATTACK then
+  elseif npc.State == NpcState.STATE_ATTACK3 then
 
-    sprite:Play("Attack")
+    sprite:Play("AttackLeft")
 
     if sprite:IsEventTriggered("Dash") then
---    sfx:Play(SoundEffect.SOUND_SUMMONSOUND , 0.75, 0, false, 1) 
       sfx:Play(Isaac.GetSoundIdByName("Charge"), 1, 0, false, 1)
-      npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 20
+      npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 18
     end
 
---  if sprite:IsEventTriggered("DashShot") then
---    Game():ShakeScreen(6) 
---    
---    for i=1, 2 do
---       Isaac.Spawn(9, 6, 0, Vector(npc.Position.X,npc.Position.Y + 2), (npc.Velocity/2.5):Rotated(-18+i*12+180), npc)
---    end
---  end
-
-    if(sprite:IsFinished("Attack")) then
+    if(sprite:IsFinished("AttackLeft")) then
        npc.State = NpcState.STATE_MOVE;
        npc.StateFrame = Utils.choose(-10, -5, 0)
     end
     
     if npc:CollidesWithGrid() then
-       npc.State = NpcState.STATE_MOVE;
        Game():ShakeScreen(14) 
+       npc.State = NpcState.STATE_MOVE;
+       npc.StateFrame = Utils.choose(-10, -5, 0)
        sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 0.8, 0, false, 1.5) 
        npc.Velocity = vectorZero
     end
 
   elseif npc.State == NpcState.STATE_ATTACK2 then
+
+    sprite:Play("Attack")
+    if target.Position.X<npc.Position.X then sprite.FlipX=false else sprite.FlipX=true end
+
+    if(sprite:IsFinished("Attack")) then
+       npc.State = NpcState.STATE_ATTACK3
+       npc.StateFrame = Utils.choose(-10, -5, 0)
+    end
+
+  elseif npc.State == NpcState.STATE_ATTACK then
 
     if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 0.5 + npc.Velocity * 0.5 end
     sprite:Play("Attack2")
