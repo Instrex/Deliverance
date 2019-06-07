@@ -4,12 +4,9 @@ this.id = Isaac.GetItemIdByName("The Manuscript")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not deliveranceData.temporary.hasManuscript then
-      deliveranceData.temporary.hasManuscript = true
-      deliveranceDataHandler.directSave()
-      player:AddNullCostume(deliveranceContent.costumes.manuscript)
-      local card = Isaac.Spawn(5, 300, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
-    end
+      if flag == CacheFlag.CACHE_TEARCOLOR then
+         player:AddNullCostume(deliveranceContent.costumes.manuscript)
+      end
   end
 end
 
@@ -24,9 +21,19 @@ function this:useCard(card)
   end
 end
 
+function this:dropCard()
+  local player = Isaac.GetPlayer(0)
+  if player:HasCollectible(this.id) and not deliveranceData.temporary.cardDropped then
+      local card = Isaac.Spawn(5, 300, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
+      deliveranceData.temporary.cardDropped=true
+      deliveranceDataHandler.directSave()
+  end
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_USE_CARD, this.useCard)
+  mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.dropCard)
 end
 
 return this

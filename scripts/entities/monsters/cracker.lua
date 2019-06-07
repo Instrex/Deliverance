@@ -55,15 +55,14 @@ function this:behaviour(npc)
         npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
         npc.State = NpcState.STATE_ATTACK2;
         npc.Velocity=vectorZero
-        sfx:Play(SoundEffect.SOUND_POT_BREAK , 1, 0, false, 1)
-        Isaac.Spawn(9, 0, 0, npc.Position, Vector(0, 12), target)
-        Isaac.Spawn(9, 0, 0, npc.Position, Vector(12, 0), target)
-        Isaac.Spawn(9, 0, 0, npc.Position, Vector(0, -12), target)
-        Isaac.Spawn(9, 0, 0, npc.Position, Vector(-12, 0), target)
-        Isaac.Spawn(9, 0, 0, npc.Position, Vector(9, 9), target)
-        Isaac.Spawn(9, 0, 0, npc.Position, Vector(-9, 9), target)
-        Isaac.Spawn(9, 0, 0, npc.Position, Vector(9, -9), target)
-        Isaac.Spawn(9, 0, 0, npc.Position, Vector(-9, -9), target)
+        sfx:Play(SoundEffect.SOUND_MEAT_IMPACTS, 1.2, 0, false, 1)
+        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 1.2, 0, false, 1)
+        for i=1, 8 do
+           Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*45):Resized(8), npc)
+        end
+        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
+        RCreep.SpriteScale = Vector(1.25,1.25)
+        RCreep:Update()
         Game():ShakeScreen(6)
     end
 

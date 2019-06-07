@@ -109,7 +109,7 @@ function this:shroomBreakUpdate()
                                else
                                   local rnd = math.random(-60, 60)
                                   for i=1, 3 do
-                                     Isaac.Spawn(9, 3, 0, grid.Position, Vector.FromAngle(i*120+rnd):Resized(10), sbreak)
+                                     Isaac.Spawn(9, 3, 0, grid.Position, Vector.FromAngle(i*120+rnd):Resized(8), sbreak)
                                   end
                                end
                             end

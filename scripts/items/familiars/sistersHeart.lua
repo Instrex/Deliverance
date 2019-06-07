@@ -62,7 +62,7 @@ function this:behaviour(fam)
   if fam.Variant == this.variant then
   if player:GetFireDirection() == Direction.NO_DIRECTION then
     fam:FollowParent()
-  else fam.Velocity = vectorZero end
+  else fam.Velocity = fam.Velocity * 0.9 end
   end
 end
 

@@ -57,8 +57,8 @@ function this:behaviour(npc)
     if sprite:IsEventTriggered("Smack") then
     npc.StateFrame = npc.StateFrame - Utils.choose(20, 15, 10)
        for i=1, 4 do
-          if npc.Variant == Isaac.GetEntityVariantByName("Peabody") then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*90):Resized(12), npc) end
-          if npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(12), npc) end
+          if npc.Variant == Isaac.GetEntityVariantByName("Peabody") then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*90):Resized(10), npc) end
+          if npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(10), npc) end
           if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then 
              for j=1, 3 do
                local params = ProjectileParams() 

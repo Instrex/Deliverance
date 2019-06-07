@@ -4,14 +4,15 @@ this.id = Isaac.GetItemIdByName("Sailor Hat")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not deliveranceData.temporary.hasSailorHat then
-      deliveranceData.temporary.hasSailorHat = true
-      deliveranceDataHandler.directSave()
-      player:AddNullCostume(deliveranceContent.costumes.sailorHat)
+    --if not deliveranceData.temporary.hasSailorHat then
+    --  deliveranceData.temporary.hasSailorHat = true
+    --  deliveranceDataHandler.directSave()
       if flag == CacheFlag.CACHE_SPEED then
         player.MoveSpeed = player.MoveSpeed + 0.2
+      elseif flag == CacheFlag.CACHE_TEARCOLOR then
+         player:AddNullCostume(deliveranceContent.costumes.sailorHat)
       end
-    end
+    --end
   end
 end
 
@@ -37,10 +38,18 @@ function this:onHit()
   end
 end
 
+function this:update(player)
+  if player:HasCollectible(this.id) then
+      player:AddCacheFlags(CacheFlag.CACHE_SPEED)
+      player:EvaluateItems()
+  end
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHit, EntityType.ENTITY_PLAYER)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
+  mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, this.update)
 end
 
 return this

@@ -2,21 +2,25 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Salty Soup")
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not deliveranceData.temporary.hasSaltySoup then
-      deliveranceData.temporary.hasSaltySoup = true
-      deliveranceDataHandler.directSave()
-      player:AddNullCostume(deliveranceContent.costumes.saltySoup)
-      if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
-        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.saltySoup), "gfx/characters/costumes_forgotten/sheet_costume_saltySoup_forgotten.png", 0)
+      if flag == CacheFlag.CACHE_SPEED then player.MoveSpeed = player.MoveSpeed - 0.09
+      elseif flag == CacheFlag.CACHE_FIREDELAY then player.MaxFireDelay = player.MaxFireDelay - 2 
+      elseif flag == CacheFlag.CACHE_TEARCOLOR then
+         player:AddNullCostume(deliveranceContent.costumes.saltySoup)
       end
-      if flag == CacheFlag.CACHE_SPEED then player.MoveSpeed = player.MoveSpeed - 0.08 end
-      if flag == CacheFlag.CACHE_FIREDELAY then player.MaxFireDelay = player.MaxFireDelay - 2 end
-    end
   end
 end
 
+function this:update(player)
+  if player:HasCollectible(this.id) then
+     if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
+        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.saltySoup), "gfx/characters/costumes_forgotten/sheet_costume_saltySoup_forgotten.png", 0)
+     end
+      player:AddCacheFlags(CacheFlag.CACHE_SPEED)
+      player:AddCacheFlags(CacheFlag.CACHE_FIREDELAY)
+      player:EvaluateItems()
+  end
+end
 
 function this:saltyTearUpdate(tear)
   local player = Isaac.GetPlayer(0)
@@ -27,7 +31,8 @@ end
  
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
-  mod:AddCallback(ModCallbacks.MC_POST_FIRE_TEAR  , this.saltyTearUpdate)
+  mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, this.update)
+  mod:AddCallback(ModCallbacks.MC_POST_FIRE_TEAR, this.saltyTearUpdate)
 end
 
 return this

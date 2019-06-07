@@ -5,14 +5,16 @@ this.variant = Isaac.GetEntityVariantByName("Gasoline Fire")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not deliveranceData.temporary.hasGasoline then
-      deliveranceData.temporary.hasGasoline = true
-      deliveranceDataHandler.directSave()
+    --if not deliveranceData.temporary.hasGasoline then
+      --deliveranceData.temporary.hasGasoline = true
+      --deliveranceDataHandler.directSave()
+      if flag == CacheFlag.CACHE_TEARCOLOR then
       player:AddNullCostume(deliveranceContent.costumes.gasoline)
       if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
         player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.gasoline), "gfx/characters/costumes_forgotten/sheet_costume_gasoline_forgotten.png", 0)
       end
-    end
+      end
+    --end
   end
 end
 

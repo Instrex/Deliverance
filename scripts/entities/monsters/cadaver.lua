@@ -140,8 +140,8 @@ function this:die(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Wicked Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Sluggish Cadaver") then
    sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 0.75)
    for i=1, 4 do
-       if npc.Variant == 4001 then Isaac.Spawn(9, 1, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(12), npc) end
-       if npc.Variant == 4002 then Isaac.Spawn(9, 1, 0, npc.Position, Vector.FromAngle(i*90):Resized(12), npc) end
+       if npc.Variant == 4001 then Isaac.Spawn(9, 1, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(9), npc) end
+       if npc.Variant == 4002 then Isaac.Spawn(9, 1, 0, npc.Position, Vector.FromAngle(i*90):Resized(9), npc) end
    end
  end
 end

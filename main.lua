@@ -71,7 +71,6 @@ deliveranceContent = {
   },
 
   entityVariants = {
-    dorkyHaunt                = require 'scripts.entities.monsters.variants.dorkyHaunt',
     dukie                     = require 'scripts.entities.monsters.variants.dukie',
     greenLevel2Fly            = require 'scripts.entities.monsters.variants.greenLevel2Fly'
   },
@@ -118,7 +117,7 @@ print("tBoI Deliverance: Loading content... ! ")
 for q, r in pairs(deliveranceContent) do
   if r.noAutoload == nil then
     for k, v in pairs(r) do
-      print("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
+--      print("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
       v.Init()
     end
   end

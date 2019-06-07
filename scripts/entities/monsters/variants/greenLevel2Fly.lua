@@ -1,16 +1,9 @@
 local this = {}
+this.variant = Isaac.GetEntityVariantByName("lvl2.5 Fly")
 
 function this:behaviour(npc)
-  local sprite = npc:GetSprite()
-  local data = npc:GetData()
   local room = game:GetRoom()
-  if data.trytochange == nil and utils.chancep(16) then
-    data.greenFly = 1
-    sprite:ReplaceSpritesheet(0,"gfx/monsters/variants/level2fly.png") sprite:LoadGraphics()
-  end
-   data.trytochange = 1
-
-  if npc:IsDead() and data.greenFly then
+  if npc:IsDead() and npc.Variant == this.variant then
     Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player)
     for i=1, math.random(2, 3) do
 --    npc:ThrowSpider(npc.Position, npc, vectorZero, false, 0)	

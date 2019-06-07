@@ -5,14 +5,16 @@ this.variant = Isaac.GetEntityVariantByName("Adam's Knife")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not deliveranceData.temporary.hasAdamsRib then
-      deliveranceData.temporary.hasAdamsRib = true
-      deliveranceDataHandler.directSave()
+    --if not deliveranceData.temporary.hasAdamsRib then
+      --deliveranceData.temporary.hasAdamsRib = true
+      --deliveranceDataHandler.directSave()
+      if flag == CacheFlag.CACHE_TEARCOLOR then
       player:AddNullCostume(deliveranceContent.costumes.adamsRib2)
-      if player:GetPlayerType() == PlayerType.PLAYER_EVE then
+       if player:GetPlayerType() == PlayerType.PLAYER_EVE then
          player:AddNullCostume(deliveranceContent.costumes.adamsRib)
+       end
       end
-    end 
+    --end 
   end
 end
 
@@ -43,7 +45,7 @@ function this:update(npc)
 
     if sprite:IsEventTriggered("Attack") then
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS, 1, 0, false, 0.8)
-       for e, enemies in pairs(Isaac.FindInRadius(npc.Position, 45, EntityPartition.ENEMY)) do
+       for e, enemies in pairs(Isaac.FindInRadius(npc.Position, 60, EntityPartition.ENEMY)) do
          enemies:TakeDamage(data.dmg, 0, EntityRef(nil), 0)
        end
 

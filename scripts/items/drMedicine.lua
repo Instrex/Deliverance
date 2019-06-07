@@ -4,15 +4,17 @@ this.id = Isaac.GetItemIdByName("Dr. Medicine")
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if not deliveranceData.temporary.hasDrMedicine then
-      deliveranceData.temporary.hasDrMedicine = true
-      deliveranceDataHandler.directSave()
+    --if not deliveranceData.temporary.hasDrMedicine then
+      --deliveranceData.temporary.hasDrMedicine = true
+      --deliveranceDataHandler.directSave()
+      if flag == CacheFlag.CACHE_TEARCOLOR then
       player:AddNullCostume(deliveranceContent.costumes.adamsRib)
       if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
         player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.adamsRib), "gfx/characters/costumes_forgotten/sheet_costume_adamsRib_forgotten.png", 0)
       end
+      end
       local pill = Isaac.Spawn(5, 70, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
-    end
+    --end
   end
 end
 
