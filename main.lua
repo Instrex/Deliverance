@@ -57,7 +57,8 @@ deliveranceContent = {
     krampusHorn               = require 'scripts.trinkets.krampusHorn',
     discountBrochure          = require 'scripts.trinkets.discountBrochure',
     darkLock                  = require 'scripts.trinkets.darkLock',
-    specialPenny              = require 'scripts.trinkets.specialPenny'
+    specialPenny              = require 'scripts.trinkets.specialPenny',
+    littleTransducer          = require 'scripts.trinkets.littleTransducer'
   },
 
   cards = {

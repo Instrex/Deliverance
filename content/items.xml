@@ -33,4 +33,5 @@
   <trinket name="Krampus' Horn" description="Cursed as always" gfx="trinket_krampus_horn.png" />
   <trinket name="Apple Core" description="Someone is eating, but someone has already ate.." gfx="trinket_appleCore.png" />
   <trinket name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
+  <trinket name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
 </items>
