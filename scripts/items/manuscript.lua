@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("The Manuscript")
+this.description = "Gives half of an soul heart each time you use a card/rune"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Discount Brochure")
+this.description = "Teleports you into the shop after reaching next floor"
 
 function this:discountBrochureUpdate()
   local player = Isaac.GetPlayer(0)

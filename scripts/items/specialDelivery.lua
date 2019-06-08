@@ -1,5 +1,7 @@
- local this = {}
+local this = {}
 this.id = Isaac.GetItemIdByName("Special Delivery")
+this.description = "Summons a box with random things"
+
 local specialDel_target = Isaac.GetEntityVariantByName("Special Delivery Target")
 local specialDel = Isaac.GetEntityVariantByName("Special Delivery")
 

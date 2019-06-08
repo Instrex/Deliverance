@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Dr. Medicine")
+this.description = "Restores half a heart each time you swallow a pill"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
@@ -8,12 +9,15 @@ function this:cache(player, flag)
       --deliveranceData.temporary.hasDrMedicine = true
       --deliveranceDataHandler.directSave()
       if flag == CacheFlag.CACHE_TEARCOLOR then
-      player:AddNullCostume(deliveranceContent.costumes.adamsRib)
-      if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
-        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.adamsRib), "gfx/characters/costumes_forgotten/sheet_costume_adamsRib_forgotten.png", 0)
+        player:AddNullCostume(deliveranceContent.costumes.adamsRib)
+        if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
+          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.adamsRib), "gfx/characters/costumes_forgotten/sheet_costume_adamsRib_forgotten.png", 0)
+        end
       end
+
+      if utils.switchData('pickedUpDrMedicinePill') then
+        Isaac.Spawn(5, 70, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
       end
-      local pill = Isaac.Spawn(5, 70, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
     --end
   end
 end

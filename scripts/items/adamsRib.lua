@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Adam's Rib")
 this.variant = Isaac.GetEntityVariantByName("Adam's Knife")
+this.description = "Enemies with full health take extra damage"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Krampus' Horn")
+this.description = "Chance to teleport to the Devil Room when taking damage"
 
 function this.trigger(id)
   local player = Isaac.GetPlayer(0)

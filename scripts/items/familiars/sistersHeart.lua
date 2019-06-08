@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Sister's Heart")
 this.variant = Isaac.GetEntityVariantByName("Sister's Heart")
+this.description = "Shoots tear in different directions, increases the firerate when you are low on health"
 
 function this.checkEnemies()
   local count = 0

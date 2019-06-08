@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Sister's Key")
+this.description = "Opens all chests in the room"
 
 function this.use()
   sfx:Play(SoundEffect.SOUND_ULTRA_GREED_COIN_DESTROY, 0.8, 0, false, 1)
