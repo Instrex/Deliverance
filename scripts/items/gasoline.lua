@@ -31,7 +31,7 @@ function this:onHitNPC(npc)
       local data = fire:GetData()
       data.time = 0
       fire:GetSprite():Play("Start")
-      fire.SpriteScale = Vector(math.min(1.75, 0.5+npc.MaxHitPoints / 50), math.min(0.6+npc.MaxHitPoints / 50))
+      fire.SpriteScale = Vector(math.min(1.75, 0.5+npc.MaxHitPoints / 50), math.min(1.75, 0.6+npc.MaxHitPoints / 50))
 
       data.radius = npc.MaxHitPoints
       data.dmg = npc.MaxHitPoints / 20

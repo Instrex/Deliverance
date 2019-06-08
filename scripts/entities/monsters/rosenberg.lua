@@ -49,7 +49,7 @@ function this:behaviour(npc)
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
     if sprite:IsFinished("DigInIdle") then
-      npc.State = NpcState.STATE_ATTACK
+      npc.State = utils.choose(NpcState.STATE_ATTACK, NpcState.STATE_ATTACK, NpcState.STATE_ATTACK3) 
       npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
     end
 
@@ -93,6 +93,24 @@ function this:behaviour(npc)
       npc.StateFrame = Utils.choose(-30, -15, 0)
     end
 
+  elseif npc.State == NpcState.STATE_ATTACK3 then
+
+    sprite:Play("DigOut2")
+
+    if sprite:IsEventTriggered("ChangeCol") then
+      npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
+    end
+
+    if sprite:IsEventTriggered("Shoot2") then
+       sfx:Play(Isaac.GetSoundIdByName("Yuck"), 0.7, 0, false, 0.9)
+       Game():Spawn(Isaac.GetEntityTypeByName("Rosenberg Spit"), Isaac.GetEntityVariantByName("Rosenberg Spit"), npc.Position, vectorZero, npc, 0, 1)
+    end
+
+    if sprite:IsFinished("DigOut2") then
+      npc.State = NpcState.STATE_ATTACK2
+      npc.StateFrame = Utils.choose(-30, -15, 0)
+    end
+
   elseif npc.State == NpcState.STATE_ATTACK2 then
     sprite:Play("DigIn")
 
@@ -102,7 +120,7 @@ function this:behaviour(npc)
 
     npc.StateFrame = npc.StateFrame + 1
     if npc.StateFrame>=30 then
-      npc.State = NpcState.STATE_ATTACK
+      npc.State = utils.choose(NpcState.STATE_ATTACK, NpcState.STATE_ATTACK, NpcState.STATE_ATTACK3) 
       npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
     end
   end

@@ -60,8 +60,9 @@ function this:trigger(pickup, col)
 
         -- Spawn many spiders with 10% chance --
         elseif utils.chancep(10) then
-          for i = 0, math.random(2, 8), 1 do
-            Isaac.Spawn(85, 0, 0, pickup.Position, Vector.FromAngle(math.random(0, 360)) * math.random(1, 10), nil)
+          for i = 0, math.random(2, 4), 1 do
+            --Isaac.Spawn(85, 0, 0, pickup.Position, Vector.FromAngle(math.random(0, 360)) * math.random(1, 10), nil)
+            EntityNPC.ThrowSpider(pickup.Position, pickup, room:FindFreePickupSpawnPosition(pickup.Position, 160, true), false, 1.0)
           end
 
         end

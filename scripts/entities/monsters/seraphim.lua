@@ -25,12 +25,14 @@ function this:behaviour(npc)
     npc.State = NpcState.STATE_MOVE;
     npc.StateFrame = Utils.choose(0, 10, 20)
     if data.dead == nil then data.dead = false end
+    if data.hitWall == nil then data.hitWall = false end
     --local fly = Isaac.Spawn(EntityType.ENTITY_ETERNALFLY, 0 , 0, npc.Position, vectorZero, nil)
     --fly.Parent = npc
 
   -- Move and seek for a moment to attack --
   elseif npc.State == NpcState.STATE_MOVE then
-
+     
+    data.hitWall = false
     sprite:Play("Idle");
     if target.Position.X<npc.Position.X then sprite.FlipX=false else sprite.FlipX=true end
     npc.StateFrame = npc.StateFrame + 1
@@ -47,7 +49,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Dash") then
       sfx:Play(Isaac.GetSoundIdByName("Charge"), 1, 0, false, 1)
-      npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 18
+      npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 20
     end
 
     if(sprite:IsFinished("AttackLeft")) then
@@ -56,11 +58,13 @@ function this:behaviour(npc)
     end
     
     if npc:CollidesWithGrid() then
-       Game():ShakeScreen(14) 
-       npc.State = NpcState.STATE_MOVE;
-       npc.StateFrame = Utils.choose(-10, -5, 0)
-       sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 0.8, 0, false, 1.5) 
-       npc.Velocity = vectorZero
+       if not data.hitWall then
+          data.hitWall=true
+          Game():ShakeScreen(14) 
+          sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 0.8, 0, false, 1.5) 
+          --npc.Velocity = vectorZero
+          npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 9
+       end
     end
 
   elseif npc.State == NpcState.STATE_ATTACK2 then
@@ -111,7 +115,7 @@ function this:behaviour(npc)
   if data.dead then
     npc.State = NpcState.STATE_UNIQUE_DEATH;
     npc.StateFrame = -666
-    npc.Velocity = vectorZero
+    npc.Velocity = npc.Velocity * 0.9
 
     if sprite:IsEventTriggered("Died") then
       sfx:Play(SoundEffect.SOUND_DEATH_BURST_LARGE , 1, 0, false, 1)
