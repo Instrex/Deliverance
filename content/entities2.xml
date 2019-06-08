@@ -47,11 +47,11 @@
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="750" variant="4000" anm2path="musk.anm2" baseHP="30" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Musk" numGridCollisionPoints="0" shadowSize="25" stageHP="0">
+    <entity id="750" variant="4000" anm2path="musk.anm2" baseHP="36" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Musk" numGridCollisionPoints="0" shadowSize="25" stageHP="0">
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="750" variant="4001" anm2path="musk.anm2" baseHP="30" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Dusk" numGridCollisionPoints="0" shadowSize="25" stageHP="0">
+    <entity id="750" variant="4001" anm2path="musk.anm2" baseHP="36" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Dusk" numGridCollisionPoints="0" shadowSize="25" stageHP="0">
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
@@ -91,7 +91,7 @@
         <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 
-    <entity id="756" variant="4000" anm2path="seraphim.anm2" baseHP="36" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Seraphim" numGridCollisionPoints="0" shadowSize="25" stageHP="0">
+    <entity id="756" variant="4000" anm2path="seraphim.anm2" baseHP="42" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Seraphim" numGridCollisionPoints="0" shadowSize="25" stageHP="0">
         <gibs amount="15" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 

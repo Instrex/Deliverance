@@ -12,8 +12,9 @@ function this.use()
       for i = 0, math.random(1, 2) do
         Isaac.Spawn(1000, 5, 0, pickup.Position, Vector(math.random(-5, 5),math.random(-5, 5)), nil)
       end
-      
-      pickup:Morph(5, 10, 0, true)
+      if pickup:CanReroll() then
+        pickup:Morph(5, 10, 0, true)
+      end
     end
   end
   return true
