@@ -1,9 +1,9 @@
-utils = {}
+Utils = {}
 
 -- Usage
--- utils.chance(10) to roll a number from 0 to 10 and return true with 10% chance
--- utils.chance(10, "yes", "no") to roll a number and return "yes" or "no" based of result of roll
-function utils.chance(k, t, f)
+-- Utils.chance(10) to roll a number from 0 to 10 and return true with 10% chance
+-- Utils.chance(10, "yes", "no") to roll a number and return "yes" or "no" based of result of roll
+function Utils.chance(k, t, f)
   if t ~= nil then
     if math.random(0, k) == k - 1 then
       return t
@@ -16,38 +16,38 @@ function utils.chance(k, t, f)
 end
 
 -- Usage
--- utils.chancep(20) will return true with 20% probability
-function utils.chancep(percentage)
+-- Utils.chancep(20) will return true with 20% probability
+function Utils.chancep(percentage)
   return math.random(0, 100) <= percentage
 end
 
 -- Usage
--- utils.switch(value, { "a" = function() print("smth") end, "b" = doSmth()}) to invoke "a" if value = "a", "b" if value = "b"
-function utils.switch(val, cases)
+-- Utils.switch(value, { "a" = function() print("smth") end, "b" = doSmth()}) to invoke "a" if value = "a", "b" if value = "b"
+function Utils.switch(val, cases)
   if cases[val] ~= nil then
     cases[val]()
   end
 end
 
 -- Usage
--- utils.vecToPos(player.Position, npc.Position, 4) will return velocity from player's pos to enemy with speed 4
-function utils.vecToPos(from, to, speed)
+-- Utils.vecToPos(player.Position, npc.Position, 4) will return velocity from player's pos to enemy with speed 4
+function Utils.vecToPos(from, to, speed)
   return (from - to):Normalized() * (speed or 1)
 end
 
 -- Usage
--- utils.choose(1, 2, 3) will return 1, 2 or 3 randomly
-function utils.choose(...)
+-- Utils.choose(1, 2, 3) will return 1, 2 or 3 randomly
+function Utils.choose(...)
   assert(..., "Can't choose from 0 options")
   local args = { ... }
   return args[math.random(#args)]
 end
 
 -- Usage
--- if utils.switchData('something') then
+-- if Utils.switchData('something') then
 --  ...
 -- end
-function utils.switchData(key, value, type)
+function Utils.switchData(key, value, type)
   type = type or 'temporary'
   value = value or true
   if not deliveranceData[type][key] then 
@@ -59,9 +59,9 @@ function utils.switchData(key, value, type)
 end
 
 -- Usage
--- utils.getCostume('costumeName')
-function utils.getCostume(name)
+-- Utils.getCostume('costumeName')
+function Utils.getCostume(name)
   return Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_"..name..".anm2")
 end
 
-return utils
+return Utils
