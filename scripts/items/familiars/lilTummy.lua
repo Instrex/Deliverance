@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Lil Tummy")
 this.variant = Isaac.GetEntityVariantByName("Lil Tummy")
+this.description = "Shoots six tears in different directions"
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()

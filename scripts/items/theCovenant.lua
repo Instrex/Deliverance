@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("The Covenant")
+this.description = "Devil room contain more things, but all hearts are replaced by other pickups"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

@@ -7,7 +7,6 @@ utils = require('scripts.utils')
 
 -- Mod data --
 deliveranceData = {
-
   -- Remains even after restart --
   persistent = {
 
@@ -24,7 +23,6 @@ deliveranceDataHandler.init()
 
  -- Register mod content here --
 deliveranceContent = {
-
   items = {
     sistersKey                = require 'scripts.items.sistersKey',
     sistersHeart              = require 'scripts.items.familiars.sistersHeart',
@@ -100,78 +98,31 @@ deliveranceContent = {
 
   costumes = {
     noAutoload = true,
-    sailorHat = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_sailorhat.anm2"),
-    saltySoup = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_saltySoup.anm2"),
-    gasoline = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_gasoline.anm2"),
-    luckySaucer = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_luckySaucer.anm2"),
-    theCovenant = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_theCovenant.anm2"),
-    adamsRib = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_adamsRib.anm2"),
-    hotmilk = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_hotmilk.anm2"),
-    adamsRib2 = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_adamsRib2.anm2"),
-    manuscript = Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_manuscript.anm2")
+
+    sailorHat                 = utils.getCostume('sailorhat'),
+    saltySoup                 = utils.getCostume('saltySoup'),
+    gasoline                  = utils.getCostume('gasoline'),
+    luckySaucer               = utils.getCostume('luckySaucer'),
+    theCovenant               = utils.getCostume('theCovenant'),
+    adamsRib                  = utils.getCostume('adamsRib'),
+    hotmilk                   = utils.getCostume('hotmilk'),
+    adamsRib2                 = utils.getCostume('adamsRib2'),
+    manuscript                = utils.getCostume('manuscript')
   }
 }
 
- -- Content Initialization --
-print("tBoI Deliverance: Loading content... ! ")
-for q, r in pairs(deliveranceContent) do
+-- Content Initialization --
+local eid = require 'scripts.eidHandler'
+eid.init()
+
+for type, r in pairs(deliveranceContent) do
   if r.noAutoload == nil then
-    for k, v in pairs(r) do
---      print("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
-      v.Init()
+    for name, class in pairs(r) do
+      --      print("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
+      class.Init()
+      eid.tryAddDescription(type, class)
     end
   end
 end
 
-if not __eidItemDescriptions then         
-  __eidItemDescriptions = {}
-end	
-
-__eidItemDescriptions[Isaac.GetItemIdByName("Captain's Brooch")] = "Creates a treasure chest nearby";
-__eidItemDescriptions[Isaac.GetItemIdByName("Sister's Key")] = "Opens all chests in the room";
-__eidItemDescriptions[Isaac.GetItemIdByName("D<3")] = "Turns all pickups into different kinds of hearts";
-__eidItemDescriptions[Isaac.GetItemIdByName("Special Delivery")] = "Summons a box with random things";
-__eidItemDescriptions[Isaac.GetItemIdByName("Golden Apple")] = "Fully restores health, then turning into Apple core";
-__eidItemDescriptions[Isaac.GetItemIdByName("Lighter")] = "Ignites all enemies in the room";
-__eidItemDescriptions[Isaac.GetItemIdByName("Shrink Ray")] = "Shrinks all enemies in the room";
-__eidItemDescriptions[Isaac.GetItemIdByName("Bloody Stream")] = "Summons huge brimstone pillars destroying everything in its path";
-__eidItemDescriptions[Isaac.GetItemIdByName("Battle Royale")] = "Summons a friendly copy of every enemy in the room, making them fight each other";
-__eidItemDescriptions[Isaac.GetItemIdByName("The Covenant")] = "Devil room contain more things, but all hearts are replaced by other pickups";
-__eidItemDescriptions[Isaac.GetItemIdByName("Good Old Friend")] = "Revives you once, dealing damage to all enemies in the room";
-__eidItemDescriptions[Isaac.GetItemIdByName("Adam's Rib")] = "Enemies with full health take extra damage";
-__eidItemDescriptions[Isaac.GetItemIdByName("Sailor Hat")] = "Creates large puddles when tear hits the enemy";
-__eidItemDescriptions[Isaac.GetItemIdByName("Gasoline")] = "Kindles damaging fires when enemy's dies";
-__eidItemDescriptions[Isaac.GetItemIdByName("Salty Soup")] = "Increases firerate and movement speed, but gives a chance to miss";
-__eidItemDescriptions[Isaac.GetItemIdByName("Lucky Saucer")] = "Increases luck by 3";
-__eidItemDescriptions[Isaac.GetItemIdByName("Hot Milk")] = "Tears get random increases and decreases in damage";
-__eidItemDescriptions[Isaac.GetItemIdByName("Rotten Pork Chop")] = "Chance to powerfully fart during shot";
-__eidItemDescriptions[Isaac.GetItemIdByName("Dr. Medicine")] = "Restores half heart each time you swallow a pill";
-__eidItemDescriptions[Isaac.GetItemIdByName("The Manuscript")] = "Gives half of soul heart each time you use a card/rune";
-__eidItemDescriptions[Isaac.GetItemIdByName("Sister's Heart")] = "Shoots tear in different directions, increases the firerate when you have little health";
-__eidItemDescriptions[Isaac.GetItemIdByName("Sage")] = "Shoots tears at enemies, increasing number of tears fired when damage taken";
-__eidItemDescriptions[Isaac.GetItemIdByName("Lil Tummy")] = "Shoots six tears in different directions";
-__eidItemDescriptions[Isaac.GetItemIdByName("Scaredy-shroom")] = "Shoots tears, but hides when enemies near";
-__eidItemDescriptions[Isaac.GetItemIdByName("Edgeless Cube Battery")] = "Shoots lasers every time enemy's projectile hit it";
-
-if not __eidTrinketDescriptions then
-  __eidTrinketDescriptions = {}
-end	
-
-__eidTrinketDescriptions[Isaac.GetTrinketIdByName("Discount Brochure")] = "Teleports you to a shop after reaching next floor.";
-__eidTrinketDescriptions[Isaac.GetTrinketIdByName("Uncertainty")] = "Changes your stats every time you taking damage";
-__eidTrinketDescriptions[Isaac.GetTrinketIdByName("Dark Lock")] = "Adds more items in red chests";
-__eidTrinketDescriptions[Isaac.GetTrinketIdByName("Krampus' Horn")] = "Chance to teleport to devil room when taking damage";
-__eidTrinketDescriptions[Isaac.GetTrinketIdByName("Apple Core")] = "Chance to swallow apple core when taking damage and restore all health";
-__eidTrinketDescriptions[Isaac.GetTrinketIdByName("Special Penny")] = "Shopkeepers now always spawns with coins in eyes";
-
-if not __eidCardDescriptions  then
-  __eidCardDescriptions  = {}
-end
-
-__eidCardDescriptions[Isaac.GetCardIdByName("Mannaz")] = "Replaces all of yours red hearts with twice amount of soul hearts"
-
-if not __eidPillDescriptions  then
-  __eidPillDescriptions  = {}
-end
-
-__eidPillDescriptions[Isaac.GetPillEffectByName("Dissociative Reaction")] = "Drops all of your soul hearts on floor"
+print("tBoI Deliverance: Successfully initialized! Have a nice run :)")

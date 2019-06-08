@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Golden Apple")
+this.description = "Fully restores health, then turns into Apple core"
 
 function this.use()
   local player = Isaac.GetPlayer(0)

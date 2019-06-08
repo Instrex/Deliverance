@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Special Penny")
+this.description = "Shopkeepers now always have coins in their eyes"
 
 function this.special()
   local player = Isaac.GetPlayer(0)

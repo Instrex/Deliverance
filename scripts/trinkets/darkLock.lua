@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Dark Lock")
+this.description = "Makes rewards from red chests much more exciting"
 
 function this:trigger(pickup, col)
   local player = Isaac.GetPlayer(0)
@@ -9,7 +10,6 @@ function this:trigger(pickup, col)
     if pickup.Variant == PickupVariant.PICKUP_REDCHEST and data.darkLocked == nil and pickup.SubType == ChestSubType.CHEST_OPENED then
       data.darkLocked = true
 
-      print("triggering dark lock effect")
       -- Good effects --
       if utils.chancep(50) then
         -- Drop random amount of coins, bombs or keys --

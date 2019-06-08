@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetCardIdByName("Mannaz")
+this.description = "Replaces all of your red hearts with twice amount of soul hearts"
 
 function this:cardCallback(cardId)
   local player = Isaac.GetPlayer(0)

@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Shrink Ray")
+this.description = "Shrinks all enemies in the room"
 
 function this.use()
   sfx:Play(SoundEffect.SOUND_POWERUP_SPEWER , 0.8, 0, false, 1)

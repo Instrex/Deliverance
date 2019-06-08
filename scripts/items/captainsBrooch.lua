@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Captain's Brooch")
+this.description = "Creates a treasure chest nearby"
 
 function this.use()
   local player = Isaac.GetPlayer(0)

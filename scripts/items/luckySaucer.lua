@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Lucky Saucer")
+this.description = "Increases luck by 3"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
