@@ -5,7 +5,7 @@ this.description = "Sets all enemies on fire"
 function this.use()
   sfx:Play(Isaac.GetSoundIdByName("Firestarter") , 0.75, 0, false, 1)
   for e, entity in pairs(Isaac.GetRoomEntities()) do 
-     if entity:IsActiveEnemy() then 
+     if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then 
         entity:AddBurn(EntityRef(nil), 1800, 1.5) 
      end 
   end

@@ -24,8 +24,9 @@ function this:behaviour(npc)
     if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
        npc.StateFrame = npc.StateFrame + 1
     end
+    npc.StateFrame = npc.StateFrame + 1
 
-    if npc.StateFrame>=30 then
+    if npc.StateFrame>=50 then
       if npc.Position:Distance(target.Position) <= 275 then
          sfx:Play(SoundEffect.SOUND_MEAT_JUMPS, 1.2, 0, false, 1)
          npc.State = NpcState.STATE_ATTACK;
@@ -60,9 +61,9 @@ function this:behaviour(npc)
         for i=1, 8 do
            Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*45):Resized(8), npc)
         end
-        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
-        RCreep.SpriteScale = Vector(1.25,1.25)
-        RCreep:Update()
+        --local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
+        --RCreep.SpriteScale = Vector(1.25,1.25)
+        --RCreep:Update()
         Game():ShakeScreen(6)
     end
 

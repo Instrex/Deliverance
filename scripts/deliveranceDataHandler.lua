@@ -58,7 +58,7 @@ end
 function this.init()
   mod:AddCallback(ModCallbacks.MC_POST_GAME_END, this.finalize)
   mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, this.leave)
-  mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, this.load)
+  mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, this.load)
   mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.save)
 end
 

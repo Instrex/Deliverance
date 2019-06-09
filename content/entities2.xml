@@ -3,11 +3,11 @@
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="1" />
     </entity>
 
-    <entity id="741" variant="4000" anm2path="cracker.anm2" baseHP="30" boss="0" champion="0" collisionDamage="1" collisionMass="90" collisionRadius="12" friction="1" name="Cracker" numGridCollisionPoints="12" shadowSize="25" stageHP="0">
+    <entity id="741" variant="4000" anm2path="cracker.anm2" baseHP="36" boss="0" champion="0" collisionDamage="1" collisionMass="90" collisionRadius="12" friction="1" name="Cracker" numGridCollisionPoints="12" shadowSize="25" stageHP="0">
         <gibs amount="20" blood="1" bone="1" eye="1" gut="1" large="0" />
     </entity>
 
-    <entity id="742" variant="4000" anm2path="jester.anm2" baseHP="30" boss="0" champion="0" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Jester" numGridCollisionPoints="12" shadowSize="18" stageHP="0">
+    <entity id="742" variant="4000" anm2path="jester.anm2" baseHP="40" boss="0" champion="0" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Jester" numGridCollisionPoints="12" shadowSize="18" stageHP="0">
          <gibs amount="12" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
@@ -113,6 +113,10 @@
 
     <entity id="760" variant="4000" anm2path="rosenberg_spit.anm2" baseHP="10" boss="0" champion="0" collisionDamage="0" collisionMass="100" collisionRadius="8" friction="1" name="Rosenberg Spit" numGridCollisionPoints="0" shadowSize="18" stageHP="0">
         <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
+    </entity>
+
+    <entity anm2path="coinAltar.anm2" baseHP="1" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" id="761" name="Coin Altar" numGridCollisionPoints="24" shadowSize="45" stageHP="0" variant="0" shutdoors="false">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
     <!-- Familiars -->

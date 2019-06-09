@@ -102,7 +102,7 @@ function this:behaviour(npc)
     end
 
     if sprite:IsEventTriggered("Shoot2") then
-       sfx:Play(Isaac.GetSoundIdByName("Yuck"), 0.7, 0, false, 0.9)
+       sfx:Play(Isaac.GetSoundIdByName("Yuck"), 1, 0, false, 0.9)
        Game():Spawn(Isaac.GetEntityTypeByName("Rosenberg Spit"), Isaac.GetEntityVariantByName("Rosenberg Spit"), npc.Position, vectorZero, npc, 0, 1)
     end
 
