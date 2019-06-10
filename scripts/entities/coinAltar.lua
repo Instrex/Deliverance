@@ -6,12 +6,18 @@ function this:behaviour(npc)
  if npc.Variant == this.variant then
   local sprite = npc:GetSprite()
 
+  -- В начале нужно инициализировать data.persistent --
   local data = npc:GetData()
-  if deliveranceData.temporary.DonatedCoins == nil then deliveranceData.temporary.DonatedCoins = 0 end
+  data.persistent = data.persistent or { coins = 0 }
+  data.Position = data.Position or npc.Position
 
-  if data.Position == nil then data.Position = npc.Position end
+  -- Затем, если этот объект не имеет присвоенного индекса, задать его и загрузить данные(если имеются) --
+  if not data._index then 
+    data._index = npcPersistence.initEntity(npc)
+  end
+
   npc.Velocity = data.Position - npc.Position
-  local room = game:GetRoom()
+  --local room = game:GetRoom()
 
   local player = Isaac.GetPlayer(0)
 
@@ -26,9 +32,13 @@ function this:behaviour(npc)
       if (npc.Position - player.Position):Length() <= npc.Size + player.Size then
           if player:GetNumCoins() >= 1 then
               sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
-              player:AddCoins(-1)
-              deliveranceData.temporary.DonatedCoins = deliveranceData.temporary.DonatedCoins+1
-              deliveranceDataHandler.directSave()
+              player:AddCoins(1)
+              print(data._index..': '..data.persistent.coins)
+
+              -- При обновлении переменных необходимо вызывать npcPersistence.update(npc) --
+              data.persistent.coins = data.persistent.coins + 1
+              npcPersistence.update(npc)
+
               sprite:LoadGraphics()
               npc.State = NpcState.STATE_ATTACK
               npc.StateFrame = -1
@@ -40,7 +50,7 @@ function this:behaviour(npc)
     sprite:Play("StackUp")
 
     if sprite:IsFinished("StackUp") then
-        if deliveranceData.temporary.DonatedCoins == 15 then
+        if data.persistent.coins == 15 then
            Game():ShakeScreen(5)
            npc.State = NpcState.STATE_ATTACK2
         else
@@ -61,7 +71,8 @@ function this:behaviour(npc)
     end
 
     if sprite:IsFinished("AltarGone") then
-       deliveranceData.temporary.DonatedCoins={}
+       -- При удалении нпс нужно вызывать npcPersistence.remove(npc) --
+       npcPersistence.remove(npc)
        npc:Remove()
     end
   end

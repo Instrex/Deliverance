@@ -8,7 +8,9 @@ this.loaded = false
 function this:load(fromSave)
 --print(fromSave)
   if fromSave then
+    deliveranceData.temporary = {}
     deliveranceData = json.decode(mod:LoadData())
+    npcPersistence._reload()
   else
     deliveranceData.temporary = {}
     this.directSave()
