@@ -1,4 +1,6 @@
 local this = {}
+local register = {}
+
 function this.init(classes) 
     this.objects = {}
     for name, class in pairs(classes) do 
@@ -23,12 +25,11 @@ function this.update(entity)
         register[i].index == entity:GetData()._index then
             table.remove(register, i)
             this._add(entity)
+            this._save()
 
             break
         end
     end
-
-    this._save() 
 end
 
 function this.remove(entity)
@@ -56,7 +57,6 @@ function this._save()
 end
 
 -- Register control --
-local register = {}
 local function restore()
     for i = 1, #register do
         if register[i].room == game:GetLevel():GetCurrentRoomIndex() then
