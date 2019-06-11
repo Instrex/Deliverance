@@ -59,6 +59,13 @@ function Utils.switchData(key, value, type)
 end
 
 -- Usage
+-- Utils.getData('key') is equal to deliveranceData.temporary.key
+function Utils.getData(key, type)
+  type = type or 'temporary'
+  return deliveranceData[type][key]
+end
+
+-- Usage
 -- Utils.getCostume('costumeName')
 function Utils.getCostume(name)
   return Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_"..name..".anm2")

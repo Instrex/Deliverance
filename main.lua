@@ -18,9 +18,6 @@ deliveranceData = {
   }
 }
 
-deliveranceDataHandler = require('scripts.deliveranceDataHandler')
-deliveranceDataHandler.init()
-
  -- Register mod content here --
 deliveranceContent = {
   items = {
@@ -76,6 +73,10 @@ deliveranceContent = {
   },
 
   entities = {
+    persistent = {
+      coinAltar               = require 'scripts.entities.coinAltar' 
+    },
+
     raga                      = require 'scripts.entities.monsters.raga',
     nutcracker                = require 'scripts.entities.monsters.nutcracker',
     jester                    = require 'scripts.entities.monsters.jester',
@@ -96,8 +97,7 @@ deliveranceContent = {
     fistubomb                 = require 'scripts.entities.monsters.fistubomb',
     fistulauncher             = require 'scripts.entities.monsters.fistulauncher',
     lilbonydies               = require 'scripts.entities.monsters.lilbonydies',
-    rosenbergspit             = require 'scripts.entities.monsters.rosenbergspit', 
-    coinAltar                 = require 'scripts.entities.coinAltar'  
+    rosenbergspit             = require 'scripts.entities.monsters.rosenbergspit'
   },
 
   costumes = {
@@ -115,6 +115,12 @@ deliveranceContent = {
   }
 }
 
+npcPersistence = require 'scripts.npcPersistenceHandler'
+npcPersistence.init(deliveranceContent.entities.persistent)
+
+deliveranceDataHandler = require('scripts.deliveranceDataHandler')
+deliveranceDataHandler.init()
+
 -- Content Initialization --
 local eid = require 'scripts.eidHandler'
 eid.init()
@@ -123,8 +129,10 @@ for type, r in pairs(deliveranceContent) do
   if r.noAutoload == nil then
     for name, class in pairs(r) do
       --      print("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
-      class.Init()
       eid.tryAddDescription(type, class)
+      if class.Init then
+        class.Init()
+      end
     end
   end
 end
