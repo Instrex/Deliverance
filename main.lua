@@ -59,11 +59,13 @@ deliveranceContent = {
   },
 
   cards = {
-    mannaz                   = require 'scripts.cards.mannaz'
+    farewellStone             = require 'scripts.cards.farewellStone',
+    firestorms                = require 'scripts.cards.firestorms',
+    glitch                    = require 'scripts.cards.glitch'
   },
 
   pills = {
-    dissReaction             = require 'scripts.pills.dissReaction'
+    dissReaction              = require 'scripts.pills.dissReaction'
   },
 
   entityVariants = {
@@ -116,11 +118,14 @@ deliveranceContent = {
   }
 }
 
+deliveranceDataHandler = require('scripts.deliveranceDataHandler')
+deliveranceDataHandler.init()
+
 npcPersistence = require 'scripts.npcPersistenceHandler'
 npcPersistence.init(deliveranceContent.entities.persistent)
 
-deliveranceDataHandler = require('scripts.deliveranceDataHandler')
-deliveranceDataHandler.init()
+cardHandler = require 'scripts.cardHandler'
+cardHandler.init(deliveranceContent.cards)
 
 -- Content Initialization --
 local eid = require 'scripts.eidHandler'

@@ -1,4 +1,7 @@
 <pocketitems>
-  <card name="Farewell Stone" description="What do you have that I cannot obtain?" hud="Mannaz"/>
+  <card name="Farewell Stone" description="What do you have that I cannot obtain?" hud="FarewellStone"/>
+  <card name="Firestorms" description="Feed your anger like fire" hud="Firestorms"/>
+  <card name="Gl1tch" description="Distortion is getting bigger..." hud="Glitch"/>
+
   <pilleffect name="Dissociative Reaction" />
 </pocketitems>
