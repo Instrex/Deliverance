@@ -97,7 +97,8 @@ deliveranceContent = {
     fistubomb                 = require 'scripts.entities.monsters.fistubomb',
     fistulauncher             = require 'scripts.entities.monsters.fistulauncher',
     lilbonydies               = require 'scripts.entities.monsters.lilbonydies',
-    rosenbergspit             = require 'scripts.entities.monsters.rosenbergspit'
+    rosenbergspit             = require 'scripts.entities.monsters.rosenbergspit',
+    creampile                 = require 'scripts.entities.monsters.creampile'
   },
 
   costumes = {

@@ -43,8 +43,6 @@ function this:behaviour(npc)
     sprite:Play("Move");
     npc.StateFrame = npc.StateFrame + 1
 
-    if npc.StateFrame==10 then sfx:Play(SoundEffect.SOUND_RAGMAN_1, 1.2, 0, false, 1.) end
-
     if npc.StateFrame >= 20 then
       if target.Position.Y > npc.Position.Y-32 and target.Position.Y < npc.Position.Y+32  then
         if(target.Position.X > npc.Position.X) then
@@ -52,6 +50,7 @@ function this:behaviour(npc)
         else
           npc.State = NpcState.STATE_ATTACK2;
         end
+        sfx:Play(SoundEffect.SOUND_RAGMAN_1, 1.2, 0, false, 1.2) 
         npc.StateFrame = 0;
         npc.Velocity = vectorZero;
       end

@@ -26,8 +26,8 @@ function this:behaviour(npc)
     npc.StateFrame = Utils.choose(0, 10, 20)
     if data.dead == nil then data.dead = false end
     if data.hitWall == nil then data.hitWall = false end
-    --local fly = Isaac.Spawn(EntityType.ENTITY_ETERNALFLY, 0 , 0, npc.Position, vectorZero, nil)
-    --fly.Parent = npc
+    local fly = Isaac.Spawn(EntityType.ENTITY_ETERNALFLY, 0 , 0, npc.Position, vectorZero, nil)
+    fly.Parent = npc
 
   -- Move and seek for a moment to attack --
   elseif npc.State == NpcState.STATE_MOVE then

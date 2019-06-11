@@ -1,4 +1,4 @@
-local this = {}
+﻿local this = {}
 this.id = Isaac.GetEntityTypeByName("Coin Altar")
 this.variant = Isaac.GetEntityVariantByName("Coin Altar")
 
@@ -24,6 +24,8 @@ function this:behaviour(npc)
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_IDLE
+    npc:ClearEntityFlags(npc:GetEntityFlags()) 
+    npc:AddEntityFlags(EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS)
     
   elseif npc.State == NpcState.STATE_IDLE then
     
