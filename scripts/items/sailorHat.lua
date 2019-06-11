@@ -1,6 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Sailor Hat")
-this.description = "Creates large damaging puddles when tear hits the enemy"
+this.description = "\1 +0.2 Speed up#Creates large damaging puddles when tear hits the enemy"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

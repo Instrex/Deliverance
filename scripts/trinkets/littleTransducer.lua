@@ -7,7 +7,7 @@ function this.onNewRoom()
     if player:HasTrinket(this.id) and player:NeedsCharge() then
         local room = game:GetRoom()
         if room:GetType() == RoomType.ROOM_DEFAULT and room:IsFirstVisit() and room:IsClear() then
-            Isaac.Spawn(1000, 48, 0, Vector(player.Position.X, player.Position.Y - 32), vectorZero, nil)
+            Isaac.Spawn(1000, 48, 0, Vector(player.Position.X, player.Position.Y - 64), vectorZero, nil)
             player:SetActiveCharge(player:GetActiveCharge() + 1)
         end
     end

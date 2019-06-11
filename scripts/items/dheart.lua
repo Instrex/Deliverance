@@ -8,7 +8,7 @@ function this.use()
   for _, e in pairs(Isaac:GetRoomEntities()) do
     local pickup = e:ToPickup()
 --  if pickup ~= nil and pickup.Variant == PickupVariant.PICKUP_HEART then
-    if pickup ~= nil then
+    if pickup and not pickup:IsShopItem() then
       Isaac.Spawn(1000, 14, 1, pickup.Position, vectorZero, nil)
       for i = 0, math.random(1, 2) do
         Isaac.Spawn(1000, 5, 0, pickup.Position, Vector(math.random(-5, 5),math.random(-5, 5)), nil)
