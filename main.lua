@@ -71,7 +71,8 @@ deliveranceContent = {
 
   entityVariants = {
     dukie                     = require 'scripts.entities.monsters.variants.dukie',
-    greenLevel2Fly            = require 'scripts.entities.monsters.variants.greenLevel2Fly'
+    greenLevel2Fly            = require 'scripts.entities.monsters.variants.greenLevel2Fly',
+    greenLevel2Spider         = require 'scripts.entities.monsters.variants.greenLevel2Spider'
   },
 
   entities = {

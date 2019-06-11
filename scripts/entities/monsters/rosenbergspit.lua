@@ -9,20 +9,28 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
 
+  if sprite:IsEventTriggered("ChangeColToAll") then
+     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY 
+  end
+
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_IDLE
+    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+    npc.GridCollisionClass = GridCollisionClass.COLLISION_NONE 
     npc:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
  
     
   -- Move and wait for player to get closer --
   elseif npc.State == NpcState.STATE_IDLE then
     
-    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
-    npc.GridCollisionClass = GridCollisionClass.COLLISION_NONE 
     if data.GridCountdown == nil then data.GridCountdown = 0 end
     sprite:Play("Start")
 
+    if sprite:IsEventTriggered("Drop") then
+        sfx:Play(SoundEffect.SOUND_MEAT_IMPACTS, 1.2, 0, false, 1)
+        Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 0.9, 10, 10, 10)
+    end
     if sprite:IsFinished("Start") then
        npc:Remove()
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 1.2, 0, false, 1)

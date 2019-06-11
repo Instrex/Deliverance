@@ -61,10 +61,12 @@ function this:behaviour(npc)
         for i=1, 8 do
            Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*45):Resized(8), npc)
         end
-        --local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
-        --RCreep.SpriteScale = Vector(1.25,1.25)
-        --RCreep:Update()
-        Game():ShakeScreen(6)
+        if not npc:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then
+           local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
+           RCreep.SpriteScale = Vector(1.25,1.25)
+           RCreep:Update()
+           Game():ShakeScreen(6)
+        end
     end
 
   -- Falls --
