@@ -1,6 +1,6 @@
 local this = {}
 this.id = Isaac.GetCardIdByName("Abyss")
-this.description = "Consumes all the cards and drops itself#Will trigger the effect of all consumed cards if used in a room without any cards"
+this.description = "Consumes all the cards and drops itself#Will trigger the effect of all consumed cards if used in a room without any cards#\3Will reset all the effects upon use"
 this.cardImage = 'gfx/items/pick ups/pickup_card_abyss.png'
 
 function this.cardCallback()
@@ -21,10 +21,13 @@ function this.cardCallback()
         for _, card in pairs(deliveranceData.temporary.abyssCard) do
             player:UseCard(card)
         end
+        
+        deliveranceData.temporary.abyssCard = {}
     else
-        deliveranceDataHandler.directSave()
         Isaac.Spawn(5, 300, this.id, Isaac.GetPlayer(0).Position, vectorZero, nil)
     end
+
+    deliveranceDataHandler.directSave()
 end
 
 function this.Init()
