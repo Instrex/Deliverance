@@ -56,8 +56,8 @@ function this:behaviour(npc)
         npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
         npc.State = NpcState.STATE_ATTACK2;
         npc.Velocity=vectorZero
-        sfx:Play(SoundEffect.SOUND_MEAT_IMPACTS, 1.2, 0, false, 1)
-        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 1.2, 0, false, 1)
+        sfx:Play(SoundEffect.SOUND_MEAT_IMPACTS, 0.9, 0, false, 1)
+        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 0.8, 0, false, 1)
         for i=1, 8 do
            Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*45):Resized(8), npc)
         end

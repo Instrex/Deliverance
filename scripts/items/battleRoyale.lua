@@ -26,7 +26,7 @@ function this:update(clone)
        if data.time == nil then data.time = math.random(-10,0) end
        if data.time <= chanse then data.time = data.time + 1 
        else
-           Isaac.Spawn(1000, 19, 0, Vector(clone.Position.X, clone.Position.Y-4), vectorZero, nil)
+           Isaac.Spawn(1000, 19, 0, Vector(clone.Position.X, clone.Position.Y-4), vectorZero, clone)
            sfx:Play(SoundEffect.SOUND_1UP, 0.5, 0, false, math.random(8, 12) / 10)
            clone:Remove()
        end

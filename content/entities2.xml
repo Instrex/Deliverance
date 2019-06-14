@@ -119,7 +119,7 @@
         <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 
-    <entity anm2path="coinAltar.anm2" baseHP="1" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" id="761" name="Coin Altar" numGridCollisionPoints="24" shadowSize="45" stageHP="0" variant="0" shutdoors="false">
+    <entity anm2path="chestboy.anm2" baseHP="1" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" id="761" name="Munchubus" numGridCollisionPoints="24" shadowSize="50" stageHP="0" variant="4000" shutdoors="false">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
@@ -170,6 +170,10 @@
     </entity>
 
     <entity id="1000" variant="4006" anm2path="fart.anm2" baseHP="0" boss="0" bossID = "0" champion="0" friction="1" name="Rotten Fart" shadowSize="0" stageHP="0">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+    </entity>
+
+    <entity id="1000" variant="4007" anm2path="effect_airStrike.anm2" baseHP="0" boss="0" bossID = "0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Air Strike Target" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 

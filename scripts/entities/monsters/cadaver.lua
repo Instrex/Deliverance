@@ -11,6 +11,8 @@ function this:behaviour(npc)
   local level = game:GetLevel()
   local stage = level:GetStage()
 
+  -- Begin --
+  if npc.State == NpcState.STATE_INIT then
   if (stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2) and level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/cadaver_flooded.png")
     sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_flooded.png")
@@ -18,13 +20,10 @@ function this:behaviour(npc)
     sprite:ReplaceSpritesheet(5,"gfx/monsters/cadaver_flooded.png")
     if npc.Variant == 4000 then
         sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver_flooded.png")
-        sprite:LoadGraphics()
     elseif npc.Variant == 4001 then
         sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver2_flooded.png")
-        sprite:LoadGraphics()
     elseif npc.Variant == 4002 then
         sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver3_flooded.png")
-        sprite:LoadGraphics()
     end
   elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
     if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
@@ -33,13 +32,10 @@ function this:behaviour(npc)
         sprite:ReplaceSpritesheet(3,"gfx/monsters/cadaver_scarred.png")
         if npc.Variant == 4000 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver_scarred.png")
-           sprite:LoadGraphics()
         elseif npc.Variant == 4001 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver2_scarred.png")
-           sprite:LoadGraphics()
         elseif npc.Variant == 4002 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver3_scarred.png")
-           sprite:LoadGraphics()
         end
     else
         sprite:ReplaceSpritesheet(0,"gfx/monsters/cadaver_womb.png")
@@ -47,30 +43,22 @@ function this:behaviour(npc)
         sprite:ReplaceSpritesheet(3,"gfx/monsters/cadaver_womb.png")
         if npc.Variant == 4000 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver_womb.png")
-           sprite:LoadGraphics()
         elseif npc.Variant == 4001 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver2_womb.png")
-           sprite:LoadGraphics()
         elseif npc.Variant == 4002 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver3_womb.png")
-           sprite:LoadGraphics()
         end
     end
   else
     if npc.Variant == 4000 then
       sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver.png")
-      sprite:LoadGraphics()
     elseif npc.Variant == 4001 then
       sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver2.png")
-      sprite:LoadGraphics()
     elseif npc.Variant == 4002 then
       sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver3.png")
-      sprite:LoadGraphics()
     end
   end
-
-  -- Begin --
-  if npc.State == NpcState.STATE_INIT then
+  sprite:LoadGraphics()
     npc.State = NpcState.STATE_IDLE
     npc:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
  

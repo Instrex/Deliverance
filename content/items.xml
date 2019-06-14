@@ -13,7 +13,7 @@
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
   <passive name="Adam's Rib" devilprice="2" description="Deals double damage on first hit" gfx="collectibles_adamsRib.png" cache="tearcolor"/>
   <passive name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="tearcolor"/>
-  <passive name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="1" cache="tearcolor" />
+  <passive name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="2" cache="tearcolor" />
   <passive name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
   <passive name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck tearcolor"/>
   <passive name="Hot Milk" description="DMG up.. down.. whatever." gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" cache="tearcolor"/>

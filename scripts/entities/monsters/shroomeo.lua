@@ -11,15 +11,15 @@ function this:behaviour(npc)
 
   local level = game:GetLevel()
   local stage = level:GetStage()
-  if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-    sprite:ReplaceSpritesheet(0, "gfx/monsters/shroomeo_depths.png")
-    sprite:LoadGraphics()
-  end
 
   npc.Velocity = vectorZero
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
+    if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+      sprite:ReplaceSpritesheet(0, "gfx/monsters/shroomeo_depths.png")
+      sprite:LoadGraphics()
+    end
     npc.State = NpcState.STATE_IDLE;
     npc.StateFrame = Utils.choose(10, 15, 20)
   

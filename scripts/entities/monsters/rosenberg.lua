@@ -14,22 +14,22 @@ function this:behaviour(npc)
 
   local level = game:GetLevel()
   local stage = level:GetStage()
-  if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then
-    if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_flooded.png")
-        sprite:LoadGraphics()
-    end
-  elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-    if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_scarred.png")
-    else
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_womb.png")
-    end
-    sprite:LoadGraphics()
-  end
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
+     if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then
+       if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
+          sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_flooded.png")
+          sprite:LoadGraphics()
+       end
+     elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+       if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
+          sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_scarred.png")
+       else
+          sprite:ReplaceSpritesheet(0, "gfx/monsters/rosenberg_womb.png")
+       end
+       sprite:LoadGraphics()
+    end
     npc.State = NpcState.STATE_IDLE;
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
