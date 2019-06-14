@@ -1,6 +1,6 @@
 local this = {}
 this.id = Isaac.GetCardIdByName("Firestorms")
-this.description = "Sets all enemies on fire#Grants Fire Mind effect for one room"
+this.description = "Sets all enemies on fire#Sets fire on all enemies#Grants Fire Mind effect for one room"
 this.isActive = false
 
 function this:cardCallback(cardId)
