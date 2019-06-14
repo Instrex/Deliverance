@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Battle Royale")
 this.description = "Summons a friendly copy of every enemy in the room, making them fight each other"
+this.isActive = true
 
 function this.use()
   sfx:Play(Isaac.GetSoundIdByName("Spawn"), 1, 0, false, 1)

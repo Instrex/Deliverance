@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("D<3")
 this.description = "Turns all pickups into different kinds of hearts"
+this.isActive = true
 
 function this.use()
   local player = Isaac.GetPlayer(0)

@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Lighter")
 this.description = "Sets all enemies on fire"
+this.isActive = true
 
 function this.use()
   sfx:Play(Isaac.GetSoundIdByName("Firestarter") , 0.75, 0, false, 1)

@@ -8,7 +8,6 @@ function this.init(cards)
     for name, class in pairs(cards) do
         if not class.noCardAppearance then
             table.insert(this.cardSubtypes, {id = class.id, sprite = class.cardImage or 'gfx/items/pick ups/pickup_card.png', animate = class.getFrame})
-            print(class.getFrame)
         end
     end
 end

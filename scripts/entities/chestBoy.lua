@@ -2,6 +2,17 @@
 this.id = Isaac.GetEntityTypeByName("Munchubus")
 this.variant = Isaac.GetEntityVariantByName("Munchubus")
 
+function this:_yieldPassiveItems()
+  local set = {}
+  for _, class in pairs(deliveranceContent.items) do
+    if not class.isActive then 
+      table.insert(set, class.id)
+    end
+  end
+
+  return set
+end
+
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local sprite = npc:GetSprite()
@@ -111,13 +122,14 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("SpawnItem") then
       local loopIndex = 0
-      local item = utils.chooset(deliveranceContent.items)
-      while loopIndex < 50 and player:HasCollectible(item.id) do
-          item = utils.chooset(deliveranceContent.items)
+      local passives = this._yieldPassiveItems()
+      local item = utils.chooset(passives)
+      while loopIndex < 50 and player:HasCollectible(item) do
+          item = utils.chooset(passives)
           loopIndex = loopIndex + 1
       end
 
-      Isaac.Spawn(5, 100, item.id, Isaac.GetFreeNearPosition(npc.Position + Vector(0, 75), 1), vectorZero, nil)
+      Isaac.Spawn(5, 100, item, Isaac.GetFreeNearPosition(npc.Position + Vector(0, 75), 1), vectorZero, nil)
       sfx:Play(SoundEffect.SOUND_POWERUP1, 1, 0, false, 1)
     end
 

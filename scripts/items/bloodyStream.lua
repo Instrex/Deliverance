@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Bloody Stream")
 this.variant = Isaac.GetEntityVariantByName("Bloody Stream")
 this.description = "Summons huge brimstone pillars which obliterate everything in the room"
+this.isActive = true
 
 function this.use()
   this.time = 0
