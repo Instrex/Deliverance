@@ -1,6 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Salty Soup")
-this.description = "Increases fire rate and movement speed, but gives a chance to miss"
+this.description = "\1 Tears up#Slightly higher chance to miss"
 
 function this:cache(player, flag)
   if player:HasCollectible(this.id) then

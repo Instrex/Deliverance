@@ -61,7 +61,8 @@ deliveranceContent = {
   cards = {
     farewellStone             = require 'scripts.cards.farewellStone',
     firestorms                = require 'scripts.cards.firestorms',
-    glitch                    = require 'scripts.cards.glitch'
+    glitch                    = require 'scripts.cards.glitch',
+    abyss                     = require 'scripts.cards.abyss',
   },
 
   pills = {

@@ -1,6 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Dr. Medicine")
-this.description = "Restores half a heart each time you swallow a pill"
+this.description = "Restores half a heart each time you swallow a pill#Spawns a pill upon pickup"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

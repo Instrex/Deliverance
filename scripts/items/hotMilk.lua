@@ -1,6 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Hot Milk")
-this.description = "Makes tear damage vary a bit"
+this.description = "\1+0.45 Damage Up#Makes tear damage vary a bit"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

@@ -40,10 +40,7 @@ function this.directSave()
 end
 
 function this.save()
-  if this.unsaved and this.loaded then
-    this.directSave()
-    this.unsaved = false
-  end
+  this.directSave()
 end
 
 function this.leave()
