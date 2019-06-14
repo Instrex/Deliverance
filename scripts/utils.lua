@@ -44,6 +44,17 @@ function Utils.choose(...)
 end
 
 -- Usage
+-- Utils.choose({2, 3, 4}) will return 2, 3 or 4 randomly
+function Utils.chooset(t)
+  local keyset = {}
+  for k in pairs(t) do
+      table.insert(keyset, k)
+  end
+
+  return t[keyset[math.random(#keyset)]]
+end
+
+-- Usage
 -- if Utils.switchData('something') then
 --  ...
 -- end

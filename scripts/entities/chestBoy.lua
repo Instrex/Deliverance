@@ -38,7 +38,7 @@ function this:behaviour(npc)
   end
 
   -- Begin --
-оале  if npc.State == NpcState.STATE_INIT then
+  if npc.State == NpcState.STATE_INIT then
     npc:ClearEntityFlags(npc:GetEntityFlags()) 
     npc:AddEntityFlags(EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS)
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
@@ -110,12 +110,15 @@ function this:behaviour(npc)
     end
 
     if sprite:IsEventTriggered("SpawnItem") then
-        local item = utils.choose(deliveranceContent.items.id)
-        while player:HasCollectible(item) do
-            item = utils.choose(deliveranceContent.items.id)
-        end
-        Isaac.Spawn(5, 100, item, Isaac.GetFreeNearPosition(npc.Position + Vector(0, 75), 1), vectorZero, nil)
-        sfx:Play(SoundEffect.SOUND_POWERUP1, 1, 0, false, 1)
+      local loopIndex = 0
+      local item = utils.chooset(deliveranceContent.items)
+      while loopIndex < 50 and player:HasCollectible(item.id) do
+          item = utils.chooset(deliveranceContent.items)
+          loopIndex = loopIndex + 1
+      end
+
+      Isaac.Spawn(5, 100, item.id, Isaac.GetFreeNearPosition(npc.Position + Vector(0, 75), 1), vectorZero, nil)
+      sfx:Play(SoundEffect.SOUND_POWERUP1, 1, 0, false, 1)
     end
 
     if sprite:IsFinished("Transform") then
