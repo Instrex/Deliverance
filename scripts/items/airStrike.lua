@@ -19,7 +19,10 @@ function this:updatetarget(s)
   if data.timer2 ~= -1 then data.timer2 = data.timer2 + 1 end
   if data.timer < 45 and data.timer>=0 then sprite:Play("Idle") end
   if data.timer >=45 then sprite:Play("Die") end
-  if sprite:IsEventTriggered("Rocket1") then data.timer = -1 data.timer2 = 0 end
+  if data.timer == 45 then sfx:Play(Isaac.GetSoundIdByName("BombWhistle"), 0.8, 0, false, 1) end
+  if sprite:IsEventTriggered("Rocket1") then 
+       data.timer = -1 data.timer2 = 0 
+  end
   
   if data.timer2 == 8 or data.timer2 == 16 or data.timer2 == 24 or data.timer2 == 32 or data.timer2 == 40 then
      Isaac.Spawn(1000, airStrike, 0, s.Position + Vector(-240+data.timer2*10, 0), vectorZero, nil) 
@@ -58,6 +61,7 @@ function this.use()
   local player = Isaac.GetPlayer(0)
   player:AnimateCollectible(this.id, "LiftItem", "Idle")
   Isaac.Spawn(1000, airStrike_target, 0, player.Position, vectorZero, nil)
+  sfx:Play(Isaac.GetSoundIdByName("Bomber"), 0.8, 0, false, 1) 
 end
 
 function this.Init()

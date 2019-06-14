@@ -23,4 +23,10 @@
 	<sound name="Fistulauncher2">
 		<sample weight="1" path="Fistulauncher2.wav"/>
 	</sound>
+	<sound name="BombWhistle">
+		<sample weight="1" path="BombWhistle.wav"/>
+	</sound>
+	<sound name="Bomber">
+		<sample weight="1" path="Bomber.wav"/>
+	</sound>
 </sounds>
