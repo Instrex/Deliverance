@@ -70,7 +70,7 @@ function this:updatebox(npc)
     end
 
     if sprite:IsEventTriggered("Explode") then
-       Isaac.Explode(npc.Position, player, 180)
+       Isaac.Explode(npc.Position, nil, 60)
        if data.typ == 0 then
           local rand = math.random(0, 3)
           if rand == 0 then Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COIN, math.random(0, 2), npc.Position, vectorZero, nil) end

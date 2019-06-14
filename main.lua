@@ -45,7 +45,8 @@ deliveranceContent = {
     scaredyShroom             = require 'scripts.items.familiars.scaredyShroom',
     drMedicine                = require 'scripts.items.drMedicine',
     manuscript                = require 'scripts.items.manuscript',
-    roundBattery              = require 'scripts.items.familiars.roundBattery'
+    roundBattery              = require 'scripts.items.familiars.roundBattery',
+    airStrike                 = require 'scripts.items.airStrike'
   },
 
   trinkets = {

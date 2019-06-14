@@ -84,7 +84,7 @@ function this:onHitNPC(npc)
   if npc.Type == this.id and npc.Variant == Isaac.GetEntityVariantByName("Fat Host") then
     if npc.State == NpcState.STATE_IDLE or data.Shielded then
 --    data.HTimer = math.random(-10, 5) 
-      data.HTimer = data.HTimer - 5
+--    data.HTimer = data.HTimer - 5
       return false
     end
   end
