@@ -1,6 +1,5 @@
 local this = {}
 this.costume = Isaac.GetCostumeIdByPath("gfx/characters/costumes/character_awan.anm2")
-this.justHeadCostume = Isaac.GetCostumeIdByPath("gfx/characters/costumes/character_awan_severed.anm2")
 this.playerAwan = Isaac.GetPlayerTypeByName("Awan")
 this.gunPowder = Isaac.GetTrinketIdByName("Gunpowder")
 this.paper = Isaac.GetTrinketIdByName("Piece of Paper")
@@ -31,12 +30,12 @@ function this:Update()
          end
       end
       if room:GetFrameCount() == 1 then
-	if player:HasCollectible(CollectibleType.COLLECTIBLE_GUILLOTINE) or player:HasCollectible(CollectibleType.COLLECTIBLE_TRANSCENDENCE) then
-	    player:AddNullCostume(this.justHeadCostume)
-	else
-	    player:TryRemoveNullCostume(this.justHeadCostume)
+	--if player:HasCollectible(CollectibleType.COLLECTIBLE_GUILLOTINE) or player:HasCollectible(CollectibleType.COLLECTIBLE_TRANSCENDENCE) then
+	--    player:AddNullCostume(this.justHeadCostume)
+	--else
+	--    player:TryRemoveNullCostume(this.justHeadCostume)
 	    player:AddNullCostume(this.costume)
-	end
+	--end
       end
       for e, collect in pairs(Isaac.GetRoomEntities()) do 
          if collect.Type == 5 then 
@@ -108,12 +107,12 @@ end
 
 function this:PostInit(player)
    if player:GetPlayerType() == this.playerAwan then
-	player:TryRemoveNullCostume(this.justHeadCostume)
+	--player:TryRemoveNullCostume(this.justHeadCostume)
 	player:AddNullCostume(this.costume)
 	costumeEquipped = true
    else
 	player:TryRemoveNullCostume(this.costume)
-	player:TryRemoveNullCostume(this.justHeadCostume)
+	--player:TryRemoveNullCostume(this.justHeadCostume)
 	costumeEquipped = false
   end
 end
