@@ -29,6 +29,8 @@ function this:rottenUpdate(player)
       sfx:Play(SoundEffect.SOUND_FART , 0.8, 0, false, math.random(11, 13) / 10)
       local fart = Isaac.Spawn(1000, this.variant, 0, player.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()], player)
       fart:GetSprite():Play("Fart")
+      local fartSize = Utils.choose(1, 1.25, 1.5, 1.75, 2)
+      fart:GetSprite().Scale = Vector(fartSize, fartSize)
     end
   end
 end
@@ -43,6 +45,7 @@ function this:updateFart(npc)
     if sprite:IsFinished("Fart") then npc:Remove() end
 
     for e, enemies in pairs(Isaac.FindInRadius(npc.Position, 32, EntityPartition.ENEMY)) do
+     if enemies:IsActiveEnemy() and not enemies:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then 
       if player:HasCollectible(202) then  
          enemies:AddPoison(EntityRef(nil), 120, 2) 
       elseif player:HasCollectible(378) then  
@@ -52,6 +55,7 @@ function this:updateFart(npc)
       else
          enemies:AddPoison(EntityRef(nil), 80, 2) 
       end
+     end
     end
   end
 end

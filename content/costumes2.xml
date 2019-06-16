@@ -1,11 +1,13 @@
 <costumes anm2root="gfx/characters/costumes/">
-     <costume anm2path="animation_costume_sailorhat.anm2" priority="98" type="none" />
-     <costume anm2path="animation_costume_luckySaucer.anm2" priority="98" type="none" />
-     <costume anm2path="animation_costume_saltySoup.anm2" type="none" hasSkinAlt="true" />
-     <costume anm2path="animation_costume_gasoline.anm2" type="none" hasSkinAlt="true" />
-     <costume anm2path="animation_costume_theCovenant.anm2" type="none" hasSkinAlt="true" />
-     <costume anm2path="animation_costume_adamsRib.anm2" type="none" hasSkinAlt="true" />
-     <costume anm2path="animation_costume_adamsRib2.anm2" type="none" />
-     <costume anm2path="animation_costume_hotmilk.anm2" type="none" />
-     <costume anm2path="animation_costume_manuscript.anm2" type="none" />
+     <costume anm2path="animation_costume_sailorhat.anm2" priority="96" type="none" />
+     <costume anm2path="animation_costume_luckySaucer.anm2" priority="96" type="none" />
+     <costume anm2path="animation_costume_saltySoup.anm2" priority="96" type="none" hasSkinAlt="true" />
+     <costume anm2path="animation_costume_gasoline.anm2" priority="96" type="none" hasSkinAlt="true" />
+     <costume anm2path="animation_costume_theCovenant.anm2" priority="96" type="none" hasSkinAlt="true" />
+     <costume anm2path="animation_costume_adamsRib.anm2" priority="96" type="none" hasSkinAlt="true" />
+     <costume anm2path="animation_costume_adamsRib2.anm2" priority="96" type="none" />
+     <costume anm2path="animation_costume_hotmilk.anm2" priority="96" type="none" />
+     <costume anm2path="animation_costume_manuscript.anm2" priority="96" type="none" />
+     <costume anm2path="character_awan.anm2" priority="99" type="none" />
+     <costume anm2path="character_awan_severed.anm2" priority="100" type="none" />
 </costumes>

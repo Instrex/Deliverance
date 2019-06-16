@@ -66,6 +66,10 @@ deliveranceContent = {
     abyss                     = require 'scripts.cards.abyss',
   },
 
+  characters = {
+    awan                      = require 'scripts.characters.awan',
+  },
+
   pills = {
     dissReaction              = require 'scripts.pills.dissReaction'
   },
@@ -102,7 +106,8 @@ deliveranceContent = {
     fistulauncher             = require 'scripts.entities.monsters.fistulauncher',
     lilbonydies               = require 'scripts.entities.monsters.lilbonydies',
     rosenbergspit             = require 'scripts.entities.monsters.rosenbergspit',
-    creampile                 = require 'scripts.entities.monsters.creampile'
+    creampile                 = require 'scripts.entities.monsters.creampile',
+    gappy                     = require 'scripts.entities.monsters.gappy'
   },
 
   costumes = {

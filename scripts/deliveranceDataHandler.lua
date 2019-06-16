@@ -10,11 +10,11 @@ function this:load(fromSave)
   if fromSave then
     deliveranceData.temporary = {}
     deliveranceData = json.decode(mod:LoadData())
-    npcPersistence._reload()
   else
     deliveranceData.temporary = {}
     this.directSave()
   end
+  npcPersistence._reload()
 --  this.loaded = true
 --
 --  if not data.temporary or not fromSave then

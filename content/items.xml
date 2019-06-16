@@ -35,4 +35,10 @@
   <trinket name="Apple Core" description="Someone is eating, but someone has already ate.." gfx="trinket_appleCore.png" />
   <trinket name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
   <trinket name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
+
+  <trinket name="Gunpowder" description="That's what bombs are made of" gfx="trinket_gunPowder.png" />
+  <trinket name="Piece of Paper" description="Nothing here" gfx="trinket_pieceOfPaper.png" />
+  <trinket name="Bottled Blood" description="For dark recipes" gfx="trinket_bottledBlood.png" />
+  <trinket name="Wooden Rib" description="Something evil" gfx="trinket_woodenRib.png" />
+  <trinket name="Glowing Feather" description="Smells like potential" gfx="trinket_glowingFeather.png" />
 </items>
