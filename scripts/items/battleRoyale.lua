@@ -36,7 +36,7 @@ end
 
 function this:updateRoom()
   for e, entity in pairs(Isaac.GetRoomEntities()) do 
-     if entity:GetData().battleRoyaled then
+     if entity:IsActiveEnemy() and entity:GetData().battleRoyaled then
         entity:Remove()
      end
   end
