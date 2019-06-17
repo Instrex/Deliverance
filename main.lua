@@ -82,7 +82,8 @@ deliveranceContent = {
 
   entities = {
     persistent = {
-      chestBoy                = require 'scripts.entities.chestBoy' 
+      chestBoy                = require 'scripts.entities.chestBoy',
+      cauldron                = require 'scripts.entities.cauldron' 
     },
 
     raga                      = require 'scripts.entities.monsters.raga',

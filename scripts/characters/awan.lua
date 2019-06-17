@@ -79,12 +79,12 @@ function this:Update()
             end 
          end 
       end
-      if not deliveranceData.temporary.cauldronSpawned then
-         Isaac.Spawn(Isaac.GetEntityTypeByName("Munchubus"), Isaac.GetEntityVariantByName("Munchubus"), 0, Isaac.GetFreeNearPosition(player.Position - Vector(100, 300), 1), vectorZero, player)
-          deliveranceData.temporary.cauldronSpawned=true
-         deliveranceDataHandler.directSave()
+
+      if utils.switchData('cauldronSpawned') then
+         Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, Isaac.GetFreeNearPosition(player.Position - Vector(100, 300), 1), vectorZero, player)
       end
-      if room:IsClear() then this.speedBonus=1.33 else this.speedBonus=1 end
+
+      if room:IsClear() then this.speedBonus=1.5 else this.speedBonus=1 end
       player:AddCacheFlags(CacheFlag.CACHE_SPEED)
       player:EvaluateItems()
     end
