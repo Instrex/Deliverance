@@ -1,38 +1,22 @@
 local json = require 'json'
 local this = {}
 
-this.unsaved = false
-this.loaded = false
-
-
 function this:load(fromSave)
---print(fromSave)
-  if fromSave then
-    deliveranceData.temporary = {}
+  if mod:HasData() then 
     deliveranceData = json.decode(mod:LoadData())
   else
-    deliveranceData.temporary = {}
-    this.directSave()
+    deliveranceData = {persistent = {}, temporary = {}}
   end
+
+  if not fromSave then
+    deliveranceData.temporary = {}
+    npcPersistence._reload()
+  end
+
+  this.directSave()
   npcPersistence._reload()
---  this.loaded = true
---
---  if not data.temporary or not fromSave then
---    data.temporary = {}
---  end
---
---  local meta = {
---    __index = function(t, k, v)
---     rawset(t, k, v)
---      if type(v) == 'table' then
---        setmetatable(t[k], meta)
---      end
---
---      this.unsaved = true
---    end
---  }
---
---  setmetatable(data.temporary, meta)
+  npcPersistence.frozen = false
+  npcPersistence.restore()
 end
 
 function this.directSave()
@@ -43,21 +27,19 @@ function this.save()
   this.directSave()
 end
 
-function this.leave()
-  this.directSave()
-end
+function this:leave(shouldSave)
+  npcPersistence.frozen = true
+  if not shouldSave then 
+    deliveranceData.temporary = {}
+    npcPersistence._reload()
+  end
 
-function this.finalize()
-  deliveranceData.temporary = {}
-
   this.directSave()
-  this.loaded = false
 end
 
 function this.init()
-  mod:AddCallback(ModCallbacks.MC_POST_GAME_END, this.finalize)
   mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, this.leave)
-  mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, this.load)
+  mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, this.load)
   mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.save)
 end
 

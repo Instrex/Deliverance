@@ -1,6 +1,7 @@
 local this = {}
 local register = {}
 
+this.frozen = false
 function this.init(classes) 
     this.objects = {}
     for name, class in pairs(classes) do 
@@ -57,7 +58,11 @@ function this._save()
 end
 
 -- Register control --
-local function restore()
+function this.restore()
+    if this.frozen then 
+        return 
+    end
+
     for i = 1, #register do
         if register[i].room == game:GetLevel():GetCurrentRoomIndex() then
             local entity = Isaac.Spawn(register[i].type, register[i].variant, 0, Vector(register[i].x, register[i].y), vectorZero, nil)
@@ -91,7 +96,7 @@ end
 
 -- Callbacks --
 function this.onNewRoom()
-    restore()
+    this.restore()
     this._save()
 end
 
