@@ -46,7 +46,8 @@ deliveranceContent = {
     drMedicine                = require 'scripts.items.drMedicine',
     manuscript                = require 'scripts.items.manuscript',
     roundBattery              = require 'scripts.items.familiars.roundBattery',
-    airStrike                 = require 'scripts.items.airStrike'
+    airStrike                 = require 'scripts.items.airStrike',
+    lawful                    = require 'scripts.items.lawful'
   },
 
   trinkets = {

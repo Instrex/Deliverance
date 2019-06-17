@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Gasoline")
 this.variant = Isaac.GetEntityVariantByName("Gasoline Fire")
-this.descriptiont = "Lights up damaging fires when enemies die"
+this.description = "Lights up damaging fires when enemies die"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

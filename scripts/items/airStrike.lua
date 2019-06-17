@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Air Strike!")
 this.description = "Summon a line of exploding missiles"
+this.isActive = true
 
 local airStrike_target = Isaac.GetEntityVariantByName("Air Strike Target")
 local airStrike = Isaac.GetEntityVariantByName("Air Strike Missile")
