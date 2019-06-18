@@ -27,6 +27,13 @@ function this:Update()
 
    if player:GetPlayerType() == this.playerAwan then 
     if not player:IsDead() then
+      if not Game():IsPaused() and Input.IsActionTriggered(ButtonAction.ACTION_DROP, 0) then
+         if player:GetTrinket(0) ~= TrinketType.TRINKET_NULL then 
+            Isaac.Spawn(5, 350, player:GetTrinket(0), player.Position, vectorZero, player) 
+            player:TryRemoveTrinket(player:GetTrinket(0))
+         end
+      end
+
       if level:GetAbsoluteStage() == 1 and level.EnterDoor == -1 and player.FrameCount == 1 then
         
          this.speedBonus = 0
@@ -100,7 +107,7 @@ function this:Update()
    else
       for e, collect in pairs(Isaac.GetRoomEntities()) do 
          if collect.Type == 5 and collect.Variant == 350 and (collect.SubType==this.gunPowder or collect.SubType==this.paper or collect.SubType==this.blood or collect.SubType==this.rib or collect.SubType==this.feather) then
-            Isaac.Spawn(5, 350, 0, collect.Position, vectorZero, npc)
+            Isaac.Spawn(5, 350, 0, collect.Position, vectorZero, player)
             collect:Remove()
          end 
       end

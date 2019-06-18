@@ -37,6 +37,8 @@ function this:behaviour(npc)
     data._index = npcPersistence.initEntity(npc)
   end
 
+  data.processing = data.processing or false
+
   if data.persistent.components[1]~=nil then sprite:ReplaceSpritesheet(6, Isaac.GetItemConfig():GetTrinket(data.persistent.components[1]).GfxFileName) else sprite:ReplaceSpritesheet(6, "gfx/items/alchemicCauldronSymbol.png") end
   if data.persistent.components[2]~=nil then sprite:ReplaceSpritesheet(7, Isaac.GetItemConfig():GetTrinket(data.persistent.components[2]).GfxFileName) else sprite:ReplaceSpritesheet(7, "gfx/items/alchemicCauldronSymbol.png") end
   if data.persistent.components[3]~=nil then sprite:ReplaceSpritesheet(8, Isaac.GetItemConfig():GetTrinket(data.persistent.components[3]).GfxFileName) else sprite:ReplaceSpritesheet(8, "gfx/items/alchemicCauldronSymbol.png") end
@@ -57,7 +59,8 @@ function this:behaviour(npc)
     npc:ClearEntityFlags(npc:GetEntityFlags()) 
     npc:AddEntityFlags(EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS)
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
-    npc.State = 2
+    npc.State = 2 
+    data.processing = false
 
   elseif npc.State == 2 then
     sprite:Play("Idle")
@@ -77,6 +80,7 @@ function this:behaviour(npc)
                  npc.State = 3
               end 
       end
+      data.processing = false
 
   elseif npc.State == 3 then
     
@@ -86,10 +90,16 @@ function this:behaviour(npc)
         npc.State = 2
     end
 
+    if sprite:IsEventTriggered("Gulp") then
+      sfx:Play(212, 1, 0, false, math.random(6, 8) / 10)
+    end
+
     if droppedTrinket~=nil then
         sprite:ReplaceSpritesheet(10, Isaac.GetItemConfig():GetTrinket(droppedTrinket).GfxFileName) 
         sprite:LoadGraphics()
     end
+
+    data.processing = false
 
   elseif npc.State == 4 then
     
@@ -101,12 +111,18 @@ function this:behaviour(npc)
       local pos = Isaac.GetFreeNearPosition(npc.Position + Vector(0, 75), 1)
       Isaac.Spawn(1000, 15, 0, pos, vectorZero, npc)
       Isaac.Spawn(5, 100, 0, pos, vectorZero, nil)
-      sfx:Play(SoundEffect.SOUND_SLOTSPAWN, 1, 0, false, 1)
+      sfx:Play(SoundEffect.SOUND_SUMMONSOUND, 1, 0, false, 1)
+    end
+
+    if sprite:IsEventTriggered("CauldronProcess") then
+      sfx:Play(SoundEffect.SOUND_METAL_BLOCKBREAK , 1, 0, false, math.random(6, 9) / 10)
     end
 
     if sprite:IsFinished("Process") then
         npc.State = 2
     end
+
+    data.processing = true
   end
  end
 end
@@ -115,9 +131,9 @@ function this:onHitNPC(npc, dmg, flag)
  local data = npc:GetData()
  if npc.Type == this.id  then
   if npc.Variant == this.variant then 
-    if flag and DamageFlag.DAMAGE_EXPLOSION > 0 then
+    if flag and DamageFlag.DAMAGE_EXPLOSION > 0 and not data.processing then
        for i=1, #data.persistent.components do
-          if data.persistent.components[i]~=nil then Isaac.Spawn(5, 350, data.persistent.components[i], npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(5), npc) end
+          if data.persistent.components[i]~=nil then Isaac.Spawn(5, 350, data.persistent.components[i], npc.Position, Vector.FromAngle(math.random(0, 180)):Resized(5), npc) end
        end
        data.persistent.components = {}
        npcPersistence.update(npc)
