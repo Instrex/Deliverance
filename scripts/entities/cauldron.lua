@@ -8,6 +8,7 @@ this.rib = Isaac.GetTrinketIdByName("Wooden Rib")
 this.feather = Isaac.GetTrinketIdByName("Glowing Feather")
 
 local symbolType = 1
+local droppedTrinket = 1
 
 local componentNames = {
   [this.gunPowder] = 'gunPowder',
@@ -36,10 +37,10 @@ function this:behaviour(npc)
     data._index = npcPersistence.initEntity(npc)
   end
 
-  if data.persistent.components[1]~=nil then sprite:ReplaceSpritesheet(6, Isaac.GetItemConfig():GetCollectible(data.persistent.components[1]).GfxFileName) else sprite:ReplaceSpritesheet(6, "gfx/items/alchemicCauldronSymbol.png") end
-  if data.persistent.components[2]~=nil then sprite:ReplaceSpritesheet(7, Isaac.GetItemConfig():GetCollectible(data.persistent.components[2]).GfxFileName) else sprite:ReplaceSpritesheet(7, "gfx/items/alchemicCauldronSymbol.png") end
-  if data.persistent.components[3]~=nil then sprite:ReplaceSpritesheet(8, Isaac.GetItemConfig():GetCollectible(data.persistent.components[3]).GfxFileName) else sprite:ReplaceSpritesheet(8, "gfx/items/alchemicCauldronSymbol.png") end
-  if data.persistent.components[4]~=nil then sprite:ReplaceSpritesheet(9, Isaac.GetItemConfig():GetCollectible(data.persistent.components[4]).GfxFileName) else sprite:ReplaceSpritesheet(9, "gfx/items/alchemicCauldronSymbol.png") end
+  if data.persistent.components[1]~=nil then sprite:ReplaceSpritesheet(6, Isaac.GetItemConfig():GetTrinket(data.persistent.components[1]).GfxFileName) else sprite:ReplaceSpritesheet(6, "gfx/items/alchemicCauldronSymbol.png") end
+  if data.persistent.components[2]~=nil then sprite:ReplaceSpritesheet(7, Isaac.GetItemConfig():GetTrinket(data.persistent.components[2]).GfxFileName) else sprite:ReplaceSpritesheet(7, "gfx/items/alchemicCauldronSymbol.png") end
+  if data.persistent.components[3]~=nil then sprite:ReplaceSpritesheet(8, Isaac.GetItemConfig():GetTrinket(data.persistent.components[3]).GfxFileName) else sprite:ReplaceSpritesheet(8, "gfx/items/alchemicCauldronSymbol.png") end
+  if data.persistent.components[4]~=nil then sprite:ReplaceSpritesheet(9, Isaac.GetItemConfig():GetTrinket(data.persistent.components[4]).GfxFileName) else sprite:ReplaceSpritesheet(9, "gfx/items/alchemicCauldronSymbol.png") end
 
   if data.persistent.components[1]~=nil and data.persistent.components[2]~=nil and data.persistent.components[3]~=nil and data.persistent.components[4]~=nil then
       sprite:ReplaceSpritesheet(5, "gfx/items/symbol" .. symbolType .. ".png") 
@@ -47,7 +48,6 @@ function this:behaviour(npc)
      sprite:ReplaceSpritesheet(5, "gfx/items/alchemicCauldronSymbol.png") 
   end
   sprite:LoadGraphics()
-
 
   npc.Velocity = data.Position - npc.Position
   --local room = game:GetRoom()
@@ -72,13 +72,10 @@ function this:behaviour(npc)
                  sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
                  table.insert(data.persistent.components, player:GetTrinket(0))
                  npcPersistence.update(npc)
+                 droppedTrinket = player:GetTrinket(0)
                  player:TryRemoveTrinket(player:GetTrinket(0))
                  npc.State = 3
               end 
-              print(data.persistent.components[1])
-              print(data.persistent.components[2])
-              print(data.persistent.components[3])
-              print(data.persistent.components[4])
       end
 
   elseif npc.State == 3 then
@@ -87,6 +84,11 @@ function this:behaviour(npc)
 
     if sprite:IsFinished("AddTrinket") then
         npc.State = 2
+    end
+
+    if droppedTrinket~=nil then
+        sprite:ReplaceSpritesheet(10, Isaac.GetItemConfig():GetTrinket(droppedTrinket).GfxFileName) 
+        sprite:LoadGraphics()
     end
 
   elseif npc.State == 4 then
@@ -109,9 +111,18 @@ function this:behaviour(npc)
  end
 end
 
-function this:onHitNPC(npc)
+function this:onHitNPC(npc, dmg, flag)
+ local data = npc:GetData()
  if npc.Type == this.id  then
-  if npc.Variant == this.variant then
+  if npc.Variant == this.variant then 
+    if flag and DamageFlag.DAMAGE_EXPLOSION > 0 then
+       for i=1, #data.persistent.components do
+          if data.persistent.components[i]~=nil then Isaac.Spawn(5, 350, data.persistent.components[i], npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(5), npc) end
+       end
+       data.persistent.components = {}
+       npcPersistence.update(npc)
+       return false
+    end
     return false
   end
  end

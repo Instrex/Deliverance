@@ -57,7 +57,12 @@ deliveranceContent = {
     discountBrochure          = require 'scripts.trinkets.discountBrochure',
     darkLock                  = require 'scripts.trinkets.darkLock',
     specialPenny              = require 'scripts.trinkets.specialPenny',
-    littleTransducer          = require 'scripts.trinkets.littleTransducer'
+    littleTransducer          = require 'scripts.trinkets.littleTransducer',
+    gunPowder                 = require 'scripts.trinkets.gunPowder',
+    pieceOfPaper              = require 'scripts.trinkets.pieceOfPaper',
+    bottledBlood              = require 'scripts.trinkets.bottledBlood',
+    woodenRib                 = require 'scripts.trinkets.woodenRib',
+    glowingFeather            = require 'scripts.trinkets.glowingFeather'
   },
 
   cards = {

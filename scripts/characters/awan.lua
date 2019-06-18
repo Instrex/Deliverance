@@ -9,6 +9,15 @@ this.feather = Isaac.GetTrinketIdByName("Glowing Feather")
 
 this.speedBonus = 0
 
+function this.checkForCauldron()
+  local count = 0
+  for _, e in pairs(Isaac.GetRoomEntities()) do
+    if e.Type == Isaac.GetEntityTypeByName("Cauldron") and e.Variant == Isaac.GetEntityVariantByName("Cauldron") then count = count + 1 end
+  end
+
+  return count
+end
+
 function this:Update()
    local game = Game()
    local player = Isaac.GetPlayer(0)
@@ -39,7 +48,7 @@ function this:Update()
       end
       for e, collect in pairs(Isaac.GetRoomEntities()) do 
          if collect.Type == 5 then 
-            if collect.Variant == 100 then
+            if collect.Variant == 100 and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE then
                Isaac.Spawn(1000, 15, 0, collect.Position, vectorZero, npc)
                sfx:Play(SoundEffect.SOUND_POWERUP1, 1, 0, false, 0.8)
                local loot = Utils.choose(this.blood, this.rib, this.paper, this.gunPowder, this.feather)
@@ -81,10 +90,10 @@ function this:Update()
       end
 
       if utils.switchData('cauldronSpawned') then
-         Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, Isaac.GetFreeNearPosition(player.Position - Vector(100, 300), 1), vectorZero, player)
+         Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, Isaac.GetFreeNearPosition(player.Position - Vector(100, 200), 1), vectorZero, player)
       end
 
-      if room:IsClear() then this.speedBonus=1.5 else this.speedBonus=1 end
+      if room:IsClear() then this.speedBonus=1.85 else this.speedBonus=1 end
       player:AddCacheFlags(CacheFlag.CACHE_SPEED)
       player:EvaluateItems()
     end
