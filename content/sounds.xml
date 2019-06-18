@@ -29,4 +29,7 @@
 	<sound name="Bomber">
 		<sample weight="1" path="Bomber.wav"/>
 	</sound>
+	<sound name="CauldronJump">
+		<sample weight="1" path="CauldronJump.wav"/>
+	</sound>
 </sounds>

@@ -97,7 +97,9 @@ function this:Update()
       end
 
       if utils.switchData('cauldronSpawned') then
-         Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, Isaac.GetFreeNearPosition(player.Position - Vector(100, 200), 1), vectorZero, player)
+         local pos = Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 100), 1)
+         Isaac.Spawn(1000, 15, 0, pos, vectorZero, npc)
+         Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, pos, vectorZero, player)
       end
 
       if room:IsClear() then this.speedBonus=1.85 else this.speedBonus=1 end
