@@ -41,5 +41,5 @@
   <trinket name="Piece of Paper" description="Nothing here" gfx="trinket_pieceOfPaper.png" />
   <trinket name="Bottled Blood" description="For dark recipes" gfx="trinket_bottledBlood.png" />
   <trinket name="Wooden Rib" description="Something evil" gfx="trinket_woodenRib.png" />
-  <trinket name="Glowing Feather" description="Smells like potential" gfx="trinket_glowingFeather.png" />
+  <trinket name="Glowing Feather" description="Glows with potential" gfx="trinket_glowingFeather.png" />
 </items>

@@ -137,8 +137,8 @@ function this:EvaluateCache(player, cacheFlag)
   if player:GetPlayerType() == this.playerAwan then 
      if cacheFlag == CacheFlag.CACHE_SPEED then
 	player.MoveSpeed = player.MoveSpeed * this.speedBonus
-     elseif cacheFlag == CacheFlag.CACHE_DAMAGE then
-	player.Damage = player.Damage - 0.17
+     --elseif cacheFlag == CacheFlag.CACHE_DAMAGE then
+     --player.Damage = player.Damage - 0.17
      --elseif cacheFlag == CacheFlag.CACHE_FIREDELAY then 
      --   player.MaxFireDelay = player.MaxFireDelay - 1
      end
