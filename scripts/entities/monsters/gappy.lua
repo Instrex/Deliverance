@@ -49,7 +49,7 @@ function this:behaviour(npc)
    end
 
   elseif npc.State == NpcState.STATE_ATTACK then
-    sprite:Play("StandingStill");
+    npc:AnimWalkFrame("StandingHori", "StandingVert", 0.1)
 
     npc.Velocity = npc.Velocity * 0.5
 
@@ -63,7 +63,6 @@ function this:behaviour(npc)
 
     if npc.StateFrame>=32 then
        npc.State = NpcState.STATE_MOVE
-       npc:AnimWalkFrame("WalkHori", "WalkVertDo", 0.1)
        if data.parent:Exists() and not data.parent:IsDead() then
           data.target2 = room:FindFreePickupSpawnPosition((data.parent.Position+Vector(math.random(-24, 24),math.random(-24, 24))), 32, true)
        end

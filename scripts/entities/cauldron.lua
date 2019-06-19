@@ -61,12 +61,19 @@ function this:behaviour(npc)
               if data.persistent.components[1]~=nil and data.persistent.components[2]~=nil and data.persistent.components[3]~=nil and data.persistent.components[4]~=nil then
                  sfx:Play(SoundEffect.SOUND_COIN_SLOT, 1, 0, false, 1)
                  npc.State = 4
-              elseif player:GetTrinket(0) ~= TrinketType.TRINKET_NULL then
+              --elseif player:GetTrinket(0) ~= TrinketType.TRINKET_NULL then
+              elseif deliveranceContent.characters.awan.currentMaterialNumber > 0 then
                  sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
-                 table.insert(data.persistent.components, player:GetTrinket(0))
+                 table.insert(data.persistent.components, deliveranceContent.characters.awan.currentMaterial)
                  npcPersistence.update(npc)
-                 droppedTrinket = player:GetTrinket(0)
-                 player:TryRemoveTrinket(player:GetTrinket(0))
+                 droppedTrinket = deliveranceContent.characters.awan.currentMaterial
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.gunPowder then deliveranceData.temporary.m1=deliveranceData.temporary.m1-1 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.paper then deliveranceData.temporary.m2=deliveranceData.temporary.m2-1 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.blood then deliveranceData.temporary.m3=deliveranceData.temporary.m3-1 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.rib then deliveranceData.temporary.m4=deliveranceData.temporary.m4-1 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.feather then deliveranceData.temporary.m5=deliveranceData.temporary.m5-1 end
+                 deliveranceDataHandler.directSave()
+                 --player:TryRemoveTrinket(player:GetTrinket(0))
                  npc.State = 3
               end 
       end
