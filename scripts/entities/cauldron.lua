@@ -1,27 +1,11 @@
 ﻿local this = {}
 this.id = Isaac.GetEntityTypeByName("Cauldron")
 this.variant = Isaac.GetEntityVariantByName("Cauldron")
-this.gunPowder = Isaac.GetTrinketIdByName("Gunpowder")
-this.paper = Isaac.GetTrinketIdByName("Piece of Paper")
-this.blood = Isaac.GetTrinketIdByName("Bottled Blood")
-this.rib = Isaac.GetTrinketIdByName("Wooden Rib")
-this.feather = Isaac.GetTrinketIdByName("Glowing Feather")
 
 local symbolType = 1
 local droppedTrinket = 1
 
-local componentNames = {
-  [this.gunPowder] = 'gunPowder',
-  [this.paper]     = 'paper',
-  [this.blood]     = 'blood',
-  [this.rib]       = 'rib',
-  [this.feather]   = 'feather'
-}
-
-local function getComp(data)
-return data.persistent.components
-end
-
+cauldronRecipeHandler = require 'scripts.cauldronRecipeHandler'
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local sprite = npc:GetSprite()
@@ -45,9 +29,13 @@ function this:behaviour(npc)
   if data.persistent.components[4]~=nil then sprite:ReplaceSpritesheet(9, Isaac.GetItemConfig():GetTrinket(data.persistent.components[4]).GfxFileName) else sprite:ReplaceSpritesheet(9, "gfx/items/alchemicCauldronSymbol.png") end
 
   if data.persistent.components[1]~=nil and data.persistent.components[2]~=nil and data.persistent.components[3]~=nil and data.persistent.components[4]~=nil then
-      sprite:ReplaceSpritesheet(5, "gfx/items/symbol" .. symbolType .. ".png") 
+    if not data.outcome then 
+      data.outcome = cauldronRecipeHandler.queryExactRecipe(data.persistent.components)
+    end
+
+    sprite:ReplaceSpritesheet(5, "gfx/items/symbol" .. data.outcome[2] .. ".png") 
   else
-     sprite:ReplaceSpritesheet(5, "gfx/items/alchemicCauldronSymbol.png") 
+    sprite:ReplaceSpritesheet(5, "gfx/items/alchemicCauldronSymbol.png") 
   end
   sprite:LoadGraphics()
 
@@ -108,10 +96,13 @@ function this:behaviour(npc)
     if sprite:IsEventTriggered("SpawnItem") then
       data.persistent.components={}
       npcPersistence.update(npc)
+      
       local pos = Isaac.GetFreeNearPosition(npc.Position + Vector(0, 75), 1)
       Isaac.Spawn(1000, 15, 0, pos, vectorZero, npc)
-      Isaac.Spawn(5, 100, 0, pos, vectorZero, nil)
+      Isaac.Spawn(5, 100, cauldronRecipeHandler.evaluateOutcome(data.outcome), pos, vectorZero, nil)
       sfx:Play(SoundEffect.SOUND_SUMMONSOUND, 1, 0, false, 1)
+
+      data.outcome = nil
     end
 
     if sprite:IsEventTriggered("CauldronProcess") then
@@ -137,7 +128,9 @@ function this:onHitNPC(npc, dmg, flag)
        for i=1, #data.persistent.components do
           if data.persistent.components[i]~=nil then Isaac.Spawn(5, 350, data.persistent.components[i], npc.Position, Vector.FromAngle(math.random(0, 180)):Resized(5), npc) end
        end
+
        data.persistent.components = {}
+       data.outcome = nil
        npcPersistence.update(npc)
        return false
     end
@@ -146,9 +139,30 @@ function this:onHitNPC(npc, dmg, flag)
  end
 end
 
+-- MC_EXECUTE_CMD 
+function this:cauldronCmd(cmd, params)
+  if cmd ~= 'cauldron' then 
+    return
+  end
+
+  local components = string.split(params, ' ')
+  local lastComponent = -1
+  for i=1, #components do 
+    if tonumber(components[i]) ~= nil then 
+      for j=0, tonumber(components[i]) - 2 do 
+        Isaac.Spawn(5, 350, lastComponent, Isaac.GetPlayer(0).Position, vectorZero, nil)
+      end
+    else
+      Isaac.Spawn(5, 350, ComponentID[components[i]], Isaac.GetPlayer(0).Position, vectorZero, nil)
+      lastComponent = ComponentID[components[i]]
+    end
+  end
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
+  mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, this.cauldronCmd)
 end
 
 return this

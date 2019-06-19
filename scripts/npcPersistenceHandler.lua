@@ -10,8 +10,8 @@ function this.init(classes)
         table.insert(this.objects, {class.id, class.variant})
     end
 
-    mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.onNewRoom)
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewLevel)
+    mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.onNewRoom)
 end
 
 function this._reload()
@@ -102,7 +102,8 @@ end
 
 function this.onNewLevel()
     register = {}
-    this._save()  
+    this._save()
+    deliveranceDataHandler.directSave()
 end
 
 return this
