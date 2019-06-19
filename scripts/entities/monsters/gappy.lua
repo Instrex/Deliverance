@@ -9,7 +9,7 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
   if data.GridCountdown == nil then data.GridCountdown = 0 end
-  if data.sped == nil then data.sped = Utils.choose(0.7, 0.75, 0.8) end
+  if data.sped == nil then data.sped = Utils.choose(0.825, 0.85, 0.875) end
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then

@@ -16,6 +16,7 @@ function this:behaviour(npc)
   if npc.Variant == this.variant2 then
     sprite:ReplaceSpritesheet(0, "gfx/monsters/motherOfMany_pale.png")
     sprite:ReplaceSpritesheet(1, "gfx/monsters/motherOfMany_pale.png")
+    sprite:ReplaceSpritesheet(2, "gfx/monsters/motherOfMany_pale.png")
     sprite:LoadGraphics()
   end
   local data = npc:GetData()
@@ -41,7 +42,7 @@ function this:behaviour(npc)
              gapp:GetSprite():LoadGraphics() 
           end 
        end
-       for i=1, 6 do
+       for i=1, 9 do
           local params = ProjectileParams() 
           params.FallingSpeedModifier = math.random(-28, -4) 
           params.FallingAccelModifier = 1.2 
@@ -51,7 +52,7 @@ function this:behaviour(npc)
        end
         for e, gappy in pairs(Isaac.FindInRadius(npc.Position, 128, EntityPartition.ENEMY)) do
            if gappy.Type == Isaac.GetEntityTypeByName("Gappy") and gappy.Variant == Isaac.GetEntityVariantByName("Gappy") then
-              gappy.Velocity = (gappy.Position - npc.Position):Resized(48)
+              gappy.Velocity = (gappy.Position - npc.Position):Resized(36)
            end
         end
     end
