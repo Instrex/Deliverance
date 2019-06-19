@@ -10,7 +10,7 @@ function this.init(classes)
         table.insert(this.objects, {class.id, class.variant})
     end
 
-    mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewLevel)
+    --mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewLevel)
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.onNewRoom)
 end
 
@@ -53,6 +53,7 @@ function this.initEntity(entity)
 end
 
 function this._save() 
+    --print('[NPH] Save')
     deliveranceData.temporary._persistent = register
     deliveranceDataHandler.directSave()
 end
@@ -95,15 +96,17 @@ function this._add(entity)
 end
 
 -- Callbacks --
+local currentStage = LevelStage.STAGE_NULL
 function this.onNewRoom()
-    this.restore()
-    this._save()
-end
+    if currentStage ~= Game():GetLevel():GetStage() then 
+        currentStage = Game():GetLevel():GetStage()
+        register = {}
+        this._save()
 
-function this.onNewLevel()
-    register = {}
-    this._save()
-    deliveranceDataHandler.directSave()
+    else
+        this.restore()
+        this._save()
+    end
 end
 
 return this
