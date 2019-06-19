@@ -8,69 +8,94 @@ function this:behaviour(npc)
   local sprite = npc:GetSprite()
   local data = npc:GetData()
   local room = game:GetRoom()
+  if data.GridCountdown == nil then data.GridCountdown = 0 end
+  if data.sped == nil then data.sped = Utils.choose(0.7, 0.75, 0.8) end
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_MOVE
+    npc.StateFrame = Utils.choose(-60, -50, -40, -30, -20, -10, 0)
+    if data.parent:Exists() and not data.parent:IsDead() then
+       if data.target2 == nil then data.target2 = room:FindFreePickupSpawnPosition((data.parent.Position+Vector(math.random(-24, 24),math.random(-24, 24))), 32, true) end
+    end
 
   -- Move and wait for player to get closer --
   elseif npc.State == NpcState.STATE_MOVE then
     
-   if data.parent:Exists() and not data.parent:IsDead() then
-    --if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
-      npc.Pathfinder:FindGridPath(data.parent.Position, math.random(5, 7) / 10, 2, false)
-    --else
-    --  npc.Pathfinder:MoveRandomly(false)
-    --end
+   npc:AnimWalkFrame("WalkHori", "WalkVertDo", 0.1)
+   if not data.parent:Exists() or data.parent:IsDead() then
+      sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 0.8, 0, false, 1.25)
+      npc.State = NpcState.STATE_ATTACK2
    end
-    
-    npc:AnimWalkFrame("WalkHori", "WalkVertDo", 0.1)
 
-    if not data.parent:Exists() or data.parent:IsDead() then
-       sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 0.5, 0, false, 1.25)
-       npc.State = NpcState.STATE_ATTACK
-    end
+   if data.parent:Exists() and not data.parent:IsDead() then
+       if npc:CollidesWithGrid() or data.GridCountdown > 0 then
+          npc.Pathfinder:FindGridPath(data.target2, data.sped, 1, false)
+          if data.GridCountdown <= 0 then
+              data.GridCountdown = 30
+          else
+              data.GridCountdown = data.GridCountdown - 1
+          end
+       else
+          npc.Velocity = utils.vecToPos(data.target2, npc.Position) * 1.15 + npc.Velocity * data.sped
+       end
+   end
+
+   npc.StateFrame = npc.StateFrame + 1
+
+   if npc.StateFrame>=30 or npc.Position:Distance(data.target2) <= 16 then
+      npc.State = NpcState.STATE_ATTACK
+      npc.StateFrame = 0
+   end
 
   elseif npc.State == NpcState.STATE_ATTACK then
+    sprite:Play("StandingStill");
+
+    npc.Velocity = npc.Velocity * 0.5
+
+    if not data.parent:Exists() or data.parent:IsDead() then
+       sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 0.8, 0, false, 1.25)
+       npc.State = NpcState.STATE_ATTACK2
+       npc.StateFrame = Utils.choose(-60,-50,-40,-30,-20,-10, 0)
+    end
+
+    npc.StateFrame = npc.StateFrame + 1
+
+    if npc.StateFrame>=32 then
+       npc.State = NpcState.STATE_MOVE
+       npc:AnimWalkFrame("WalkHori", "WalkVertDo", 0.1)
+       if data.parent:Exists() and not data.parent:IsDead() then
+          data.target2 = room:FindFreePickupSpawnPosition((data.parent.Position+Vector(math.random(-24, 24),math.random(-24, 24))), 32, true)
+       end
+       npc.StateFrame = Utils.choose(-30, -20, -10, 0)
+    end
+
+  elseif npc.State == NpcState.STATE_ATTACK2 then
     npc:AnimWalkFrame("WalkHoriRage", "WalkVertRage", 0.1)
-    if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1.15 + npc.Velocity * 0.85 end
+    if not target:IsDead() then
+        if npc:CollidesWithGrid() or data.GridCountdown > 0 then
+          npc.Pathfinder:FindGridPath(target.Position, data.sped, 1, false)
+          if data.GridCountdown <= 0 then
+              data.GridCountdown = 30
+          else
+              data.GridCountdown = data.GridCountdown - 1
+          end
+       else
+          npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1.15 + npc.Velocity * data.sped 
+       end
+    end
+    npc.StateFrame = npc.StateFrame + 1
+
+    if npc.StateFrame>=150 then
+       sfx:Play(SoundEffect.SOUND_BOSS_LITE_SLOPPY_ROAR , 0.8, 0, false, 1.25)
+       npc.StateFrame = Utils.choose(-60,-50,-40,-30,-20,-10, 0)
+    end
   end
  end
 end
 
-function this.checkEnemies()
-  local count = 0
-  for _, e in pairs(Isaac.GetRoomEntities()) do
-    if e.Type == this.id and e.Variant == this.Variant then count = count + 1 end
-  end
-
-  return count
-end
-
-function this:spawnGappies(npc)
-  local sprite = npc:GetSprite()
-  local data = npc:GetData()
-  if data.spawnedGappies == nil then
-     if utils.chancep(25) and this.checkEnemies() <= 8 then
-        for i=1, 2+math.random(1, 3) do
-           local gapp = Game():Spawn(this.id, this.variant, npc.Position, vectorZero, npc, 0, 1):ToNPC()
-           gapp:GetData().parent=npc
-           if npc.Type == 208 and npc.Variant == 1 then
-              gapp:GetSprite():ReplaceSpritesheet(0, "gfx/monsters/lilgapers_pale.png")
-              gapp:GetSprite():ReplaceSpritesheet(1, "gfx/monsters/lilgapers_pale.png")
-              gapp:GetSprite():LoadGraphics() 
-           end 
-        end
-     end
-     data.spawnedGappies=true
-  end
-end
-
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.spawnGappies, 208)
-  mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.spawnGappies, 257)
-  mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.spawnGappies, 16)
 end
 
 return this

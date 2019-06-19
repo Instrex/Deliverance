@@ -97,7 +97,7 @@ function this:Update()
       end
 
       if utils.switchData('cauldronSpawned') then
-         local pos = Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 100), 1)
+         local pos = Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1)
          Isaac.Spawn(1000, 15, 0, pos, vectorZero, npc)
          Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, pos, vectorZero, player)
       end

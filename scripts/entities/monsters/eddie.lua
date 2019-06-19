@@ -48,8 +48,12 @@ function this:behaviour(npc)
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
     if sprite:IsFinished("DigInIdle") then
-      npc.State = NpcState.STATE_ATTACK
       npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
+      if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
+         npc.State = NpcState.STATE_ATTACK
+      else
+         npc.State = NpcState.STATE_ATTACK2
+      end
     end
 
   elseif npc.State == NpcState.STATE_ATTACK then
@@ -70,11 +74,19 @@ function this:behaviour(npc)
     end
 
     if sprite:IsFinished("DigOut") then
-      npc.State = NpcState.STATE_ATTACK2
+      npc.State = NpcState.STATE_ATTACK3
       npc.StateFrame = Utils.choose(-30, -15, 0)
     end
 
   elseif npc.State == NpcState.STATE_ATTACK2 then
+
+    sprite:Play("DigOut2")
+    if sprite:IsFinished("DigOut2") then
+      npc.State = NpcState.STATE_ATTACK3
+      npc.StateFrame = Utils.choose(0, 5, 10)
+    end
+
+  elseif npc.State == NpcState.STATE_ATTACK3 then
     sprite:Play("DigIn")
 
     if sprite:IsEventTriggered("ChangeCol") then
@@ -83,8 +95,12 @@ function this:behaviour(npc)
 
     npc.StateFrame = npc.StateFrame + 1
     if npc.StateFrame>=30 then
-      npc.State = NpcState.STATE_ATTACK
       npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
+      if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
+         npc.State = NpcState.STATE_ATTACK
+      else
+         npc.State = NpcState.STATE_ATTACK2
+      end
     end
   end
  end

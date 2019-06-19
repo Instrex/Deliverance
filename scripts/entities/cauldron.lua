@@ -34,8 +34,10 @@ function this:behaviour(npc)
     end
 
     sprite:ReplaceSpritesheet(5, "gfx/items/symbol" .. data.outcome[2] .. ".png") 
+    sprite:ReplaceSpritesheet(1, "gfx/items/alchemicCauldronCloud.png")
   else
     sprite:ReplaceSpritesheet(5, "gfx/items/alchemicCauldronSymbol.png") 
+    sprite:ReplaceSpritesheet(1, "gfx/items/alchemicCauldronSymbol.png")
   end
   sprite:LoadGraphics()
 

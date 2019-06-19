@@ -2,7 +2,7 @@ local json = require 'json'
 local this = {}
 
 function this:load(fromSave)
-  --print('[this:load] hasData', mod:HasData(), 'fromSave', fromSave)
+  print('[this:load] hasData', mod:HasData(), 'fromSave', fromSave)
   if mod:HasData() then 
     deliveranceData = json.decode(mod:LoadData())
   else
@@ -26,7 +26,7 @@ function this.directSave()
 end
 
 function this:leave(shouldSave)
-  --print('[this:leave] shouldSave', shouldSave)
+  print('[this:leave] shouldSave', shouldSave)
   npcPersistence.frozen = true
   if not shouldSave then 
     deliveranceData.temporary = {}
