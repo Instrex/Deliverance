@@ -2,12 +2,13 @@ local json = require 'json'
 local this = {}
 
 function this:load(fromSave)
-  print('[this:load] hasData', mod:HasData(), 'fromSave', fromSave)
   if mod:HasData() then 
     deliveranceData = json.decode(mod:LoadData())
   else
     deliveranceData = {persistent = {}, temporary = {}}
   end
+  
+  print('[this:load] hasData', mod:HasData(), 'fromSave', fromSave)
 
   if not fromSave then
     deliveranceData.temporary = {}

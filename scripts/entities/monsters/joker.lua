@@ -130,7 +130,7 @@ function this:onHitNPC(npc, dmgAmount, flags, source, frames)
        Isaac.Explode(npc.Position, npc, 1.0)
        sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
        if utils.chancep(25) then
-          proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Isaac.GetCardIdByName("Mannaz"), npc.Position, vectorZero, player)
+          proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, 0, npc.Position, vectorZero, player)
        end
        return false
     end

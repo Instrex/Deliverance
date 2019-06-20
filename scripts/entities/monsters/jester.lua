@@ -139,9 +139,6 @@ function this:onHitNPC(npc, dmgAmount, flags, source, frames)
        data.dead=true
        npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
        sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
-       if utils.chancep(11) then
-          proj = Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Isaac.GetCardIdByName("Mannaz"), npc.Position, vectorZero, player)
-       end
      
        for i=1, 5+math.random(0, 3) do
           Isaac.Spawn(1000, 35, 0, npc.Position, - npc.Velocity + Vector(math.random(-3,3), math.random(-3,3)), npc)
