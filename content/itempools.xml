@@ -5,7 +5,7 @@
        <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="treasure">
-       <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Sailor Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Shrink Ray" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Hot Milk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -49,7 +49,7 @@
 
     <!-- Greed Itempools -->
     <Pool Name="greedTreasure">
-       <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Sailor Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Shrink Ray" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Hot Milk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -62,7 +62,7 @@
     </Pool>
     <Pool Name="greedShop">
        <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-       <Item Name="Sailor's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Sailor Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Golden Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

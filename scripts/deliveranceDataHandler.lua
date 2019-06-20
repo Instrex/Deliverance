@@ -8,14 +8,14 @@ function this:load(fromSave)
     deliveranceData = {persistent = {}, temporary = {}}
   end
   
-  print('[this:load] hasData', mod:HasData(), 'fromSave', fromSave)
+  --print('[this:load] hasData', mod:HasData(), 'fromSave', fromSave)
 
   if not fromSave then
     deliveranceData.temporary = {}
     npcPersistence._reload()
   end
 
-  this.directSave()
+  --this.directSave()
   npcPersistence._reload()
   npcPersistence.frozen = false
   npcPersistence.restore()
@@ -27,13 +27,13 @@ function this.directSave()
 end
 
 function this:leave(shouldSave)
-  print('[this:leave] shouldSave', shouldSave)
+  --print('[this:leave] shouldSave', shouldSave)
   npcPersistence.frozen = true
   if not shouldSave then 
     deliveranceData.temporary = {}
   end
 
-  this.directSave()
+  --this.directSave()
   npcPersistence._reload()
 end
 

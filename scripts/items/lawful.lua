@@ -1,4 +1,4 @@
-local this = {}
+﻿local this = {}
 this.id = Isaac.GetItemIdByName('Lawful')
 this.description = 'All items on floors will be of same item pool#Item pool is randomly choosen at the start of level'
 

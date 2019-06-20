@@ -27,7 +27,7 @@ function this:dropCard()
   if player:HasCollectible(this.id) and not deliveranceData.temporary.cardDropped then
       local card = Isaac.Spawn(5, 300, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
       deliveranceData.temporary.cardDropped=true
-      deliveranceDataHandler.directSave()
+  deliveranceDataHandler.directSave()
   end
 end
 
