@@ -102,7 +102,6 @@ function this.onNewRoom()
         currentStage = Game():GetLevel():GetStage()
         register = {}
         this._save()
-
     else
         this.restore()
         this._save()

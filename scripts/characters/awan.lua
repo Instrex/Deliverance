@@ -1,11 +1,14 @@
 local this = {}
 this.costume = Isaac.GetCostumeIdByPath("gfx/characters/costumes/character_awan.anm2")
 this.playerAwan = Isaac.GetPlayerTypeByName("Awan")
+
 this.gunPowder = Isaac.GetTrinketIdByName("Gunpowder")
 this.paper = Isaac.GetTrinketIdByName("Piece of Paper")
 this.blood = Isaac.GetTrinketIdByName("Bottled Blood")
 this.rib = Isaac.GetTrinketIdByName("Wooden Rib")
 this.feather = Isaac.GetTrinketIdByName("Glowing Feather")
+
+this.materials = {}
 
 this.speedBonus = 0
 this.currentSlot = 1
@@ -32,26 +35,23 @@ function this:Update()
     if not player:IsDead() then
    
       if deliveranceData.temporary.awanStartUp == nil then
-        deliveranceData.temporary.m1=deliveranceData.temporary.m1 or 0
-        deliveranceData.temporary.m2=deliveranceData.temporary.m2 or 0
-        deliveranceData.temporary.m3=deliveranceData.temporary.m3 or 0
-        deliveranceData.temporary.m4=deliveranceData.temporary.m4 or 0
-        deliveranceData.temporary.m5=deliveranceData.temporary.m5 or 0
-        deliveranceData.temporary.awanStartUp=true
-        deliveranceDataHandler.directSave() 
+        deliveranceData.temporary.hasMaterial = deliveranceData.temporary.hasMaterial or {}
+         for i=1, 5 do 
+            table.insert(deliveranceData.temporary.hasMaterial, 0)
+         end
+         table.insert(this.materials, this.gunPowder)
+         table.insert(this.materials, this.paper)
+         table.insert(this.materials, this.blood)
+         table.insert(this.materials, this.rib)
+         table.insert(this.materials, this.feather)
+         deliveranceData.temporary.awanStartUp=true
+         deliveranceDataHandler.directSave() 
       end
 
-      if player:GetTrinket(0)==this.gunPowder then deliveranceData.temporary.m1=deliveranceData.temporary.m1+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if player:GetTrinket(0)==this.paper then deliveranceData.temporary.m2=deliveranceData.temporary.m2+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if player:GetTrinket(0)==this.blood then deliveranceData.temporary.m3=deliveranceData.temporary.m3+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if player:GetTrinket(0)==this.rib then deliveranceData.temporary.m4=deliveranceData.temporary.m4+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if player:GetTrinket(0)==this.feather then deliveranceData.temporary.m5=deliveranceData.temporary.m5+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-
-      if this.currentSlot == 1 then this.currentMaterial = this.gunPowder this.currentMaterialNumber=deliveranceData.temporary.m1 end
-      if this.currentSlot == 2 then this.currentMaterial = this.paper this.currentMaterialNumber=deliveranceData.temporary.m2 end
-      if this.currentSlot == 3 then this.currentMaterial = this.blood this.currentMaterialNumber=deliveranceData.temporary.m3 end
-      if this.currentSlot == 4 then this.currentMaterial = this.rib this.currentMaterialNumber=deliveranceData.temporary.m4 end
-      if this.currentSlot == 5 then this.currentMaterial = this.feather this.currentMaterialNumber=deliveranceData.temporary.m5 end
+      for i=1, 5 do 
+        if player:GetTrinket(0)==this.materials[i] then deliveranceData.temporary.hasMaterial[i]=deliveranceData.temporary.hasMaterial[i]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
+        if this.currentSlot == i then this.currentMaterial = this.materials[i] this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[i] end
+      end
 
       if level:GetAbsoluteStage() == 1 and level.EnterDoor == -1 and player.FrameCount == 1 then
          this.speedBonus = 0
@@ -170,24 +170,14 @@ end
 
 function this:onRender()
    local player = Isaac.GetPlayer(0)
-   if player:GetPlayerType() == this.playerAwan then 
-      HudMaterials:SetFrame("Idle", 0)
-      HudMaterials:RenderLayer(0, Vector(16,238))
-      HudMaterials:SetFrame("Idle", 1)
-      HudMaterials:RenderLayer(0, Vector(48,238))
-      HudMaterials:SetFrame("Idle", 2)
-      HudMaterials:RenderLayer(0, Vector(80,238))
-      HudMaterials:SetFrame("Idle", 3)
-      HudMaterials:RenderLayer(0, Vector(112,238))
-      HudMaterials:SetFrame("Idle", 4)
-      HudMaterials:RenderLayer(0, Vector(144,238))
-      RenderNumber(deliveranceData.temporary.m1, Vector(32,244))
-      RenderNumber(deliveranceData.temporary.m2, Vector(64,244))
-      RenderNumber(deliveranceData.temporary.m3, Vector(96,244))
-      RenderNumber(deliveranceData.temporary.m4, Vector(128,244))
-      RenderNumber(deliveranceData.temporary.m5, Vector(160,244))
+   if player:GetPlayerType() == this.playerAwan and deliveranceData.temporary.awanStartUp then 
+      for i=1, 5 do 
+        HudMaterials:SetFrame("Idle", i-1)
+        HudMaterials:RenderLayer(0, Vector(i*16,222))
+        RenderNumber(deliveranceData.temporary.hasMaterial[i], Vector(2+i*16,244))
+      end
       HudChoose:Play("Idle", false)
-      HudChoose:RenderLayer(0, Vector(this.currentSlot*32,246))
+      HudChoose:RenderLayer(0, Vector(8+this.currentSlot*16,238))
       HudChoose:Update()
       if not game:IsPaused() and Input.IsActionTriggered(ButtonAction.ACTION_DROP, 0) then
          if this.currentSlot<5 then
