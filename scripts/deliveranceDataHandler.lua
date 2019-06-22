@@ -12,12 +12,10 @@ function this:load(fromSave)
 
   if not fromSave then
     deliveranceData.temporary = {}
-    npcPersistence._reload()
   end
 
   --this.directSave()
-  npcPersistence._reload()
-  npcPersistence.frozen = false
+  npcPersistence.loadData(deliveranceData.temporary.persistentObjects)
   npcPersistence.restore()
 end
 
@@ -28,13 +26,16 @@ end
 
 function this:leave(shouldSave)
   --print('[this:leave] shouldSave', shouldSave)
-  npcPersistence.frozen = true
+
   if not shouldSave then 
     deliveranceData.temporary = {}
+
+  else
+    deliveranceData.temporary.persistentObjects = npcPersistence.getSaveData()
+
   end
 
   this.directSave()
-  npcPersistence._reload()
 end
 
 function this.init()
