@@ -90,8 +90,15 @@ end
 --end
 
 function this:die(npc) 
---  game:Spawn(11, utils.choose(0, 1), npc.Position, vectorZero, npc, 0, 1)
---  :ToNPC():ClearEntityFlags(EntityFlag.FLAG_APPEAR)
+    sfx:Play(SoundEffect.SOUND_MEAT_IMPACTS, 0.9, 0, false, 1)
+    for j=1, 9 do
+       local params = ProjectileParams() 
+       params.FallingSpeedModifier = math.random(-28, -4) 
+       params.FallingAccelModifier = 1.2 
+
+       local velocity = Vector(Utils.choose(math.random(-4, -1), math.random(1, 4)), Utils.choose(math.random(-4, -1), math.random(1, 4)))
+       npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
+    end
 end
 
 function this.Init()

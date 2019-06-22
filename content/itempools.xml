@@ -21,6 +21,7 @@
     <Pool Name="curse">
       <Item Name="The Covenant" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Adam's Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="goldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -40,6 +41,7 @@
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bloody Stream" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Gasoline" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="angel">
       <Item Name="Good Old Friend" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -77,6 +79,7 @@
       <Item Name="Bloody Stream" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Gasoline" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Adam's Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedAngel">
       <Item Name="Good Old Friend" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -90,6 +93,7 @@
     <Pool Name="greedCurse">
       <Item Name="The Covenant" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Adam's Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedGoldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

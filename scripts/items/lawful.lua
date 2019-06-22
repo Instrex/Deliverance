@@ -8,6 +8,7 @@ function this.onNewFloor()
     deliveranceDataHandler.directSave()
 end
 
+--[[
 -- MC_POST_PICKUP_SELECTION 
 function this:postPickupSelection(pickup, variant, subtype) 
     local player = Isaac.GetPlayer(0)
@@ -35,10 +36,27 @@ function this:postPickupSelection(pickup, variant, subtype)
         end
     end
 end
+]]--
+
+function this:preGetCollectible(pool, decrease, seed) 
+        if deliveranceData.temporary.lawfulPool == pool then
+           return
+        end
+        local player = Isaac.GetPlayer(0)
+
+        if player:HasCollectible(this.id) then 
+            if not deliveranceData.temporary.lawfulPool then 
+               this.onNewFloor()
+            end
+            local newItem = Game():GetItemPool():GetCollectible(deliveranceData.temporary.lawfulPool, decrease, seed+2)
+            return newItem
+        end
+end
 
 function this.Init()
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewFloor)
-    mod:AddCallback(ModCallbacks.MC_POST_PICKUP_SELECTION, this.postPickupSelection)
+    --mod:AddCallback(ModCallbacks.MC_POST_PICKUP_SELECTION, this.postPickupSelection)
+    mod:AddCallback(ModCallbacks.MC_PRE_GET_COLLECTIBLE, this.preGetCollectible)
 end
 
 return this
