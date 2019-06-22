@@ -67,19 +67,18 @@ function this:behaviour(npc)
                  sfx:Play(SoundEffect.SOUND_COIN_SLOT, 1, 0, false, 1)
                  npc.State = 4
               --elseif player:GetTrinket(0) ~= TrinketType.TRINKET_NULL then
-              elseif deliveranceContent.characters.awan.currentMaterialNumber > 0 then
+              elseif _awan_getCurrentMaterialInfo().count > 0 then
                  sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
-                 table.insert(data.persistent.components, deliveranceContent.characters.awan.currentMaterial)
+
+                 local material = _awan_getCurrentMaterialInfo()
+                 table.insert(data.persistent.components, material.type)
                  npcPersistence.update(npc)
-                 droppedTrinket = deliveranceContent.characters.awan.currentMaterial
-                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.gunPowder then deliveranceData.temporary.hasMaterial[1]=deliveranceData.temporary.hasMaterial[1]-1 end
-                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.paper then deliveranceData.temporary.hasMaterial[2]=deliveranceData.temporary.hasMaterial[2]-1 end
-                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.blood then deliveranceData.temporary.hasMaterial[3]=deliveranceData.temporary.hasMaterial[3]-1 end
-                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.rib then deliveranceData.temporary.hasMaterial[4]=deliveranceData.temporary.hasMaterial[4]-1 end
-                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.feather then deliveranceData.temporary.hasMaterial[5]=deliveranceData.temporary.hasMaterial[5]-1 end
-                 
+                 droppedTrinket = material.type
+
+                 print(material.type)
+                 deliveranceData.temporary.materials[material.slot] = deliveranceData.temporary.materials[material.slot] - 1
                  deliveranceDataHandler.directSave()
-                 --player:TryRemoveTrinket(player:GetTrinket(0))
+
                  npc.State = 3
               end 
       end
@@ -168,8 +167,8 @@ function this:cauldronCmd(cmd, params)
         Isaac.Spawn(5, 350, lastComponent, Isaac.GetPlayer(0).Position, vectorZero, nil)
       end
     else
-      Isaac.Spawn(5, 350, ComponentID[components[i]], Isaac.GetPlayer(0).Position, vectorZero, nil)
-      lastComponent = ComponentID[components[i]]
+      Isaac.Spawn(5, 350, CauldronMaterialID[components[i]], Isaac.GetPlayer(0).Position, vectorZero, nil)
+      lastComponent = CauldronMaterialID[components[i]]
     end
   end
 end

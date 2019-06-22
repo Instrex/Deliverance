@@ -16,11 +16,9 @@ function this:load(fromSave)
 
   --this.directSave()
   npcPersistence.loadData(deliveranceData.temporary.persistentObjects)
-  npcPersistence.restore()
 end
 
 function this.directSave()
-  --print('[DDH] Direct save')
   mod:SaveData(json.encode(deliveranceData))
 end
 

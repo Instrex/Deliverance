@@ -1,5 +1,16 @@
 local this = {}
 
+-- Every recipe should have a value of array with first element as OutcomeType
+-- Other elements vary by outcome types
+-- In the comments it's written what your array MUST include
+local OutcomeType = {
+    Item        = 1,    -- { OutcomeType.Item, OutcomeIcon, COLLECTIBLE_TYPE }
+    Pool        = 2,    -- { OutcomeType.Pool, OutcomeIcon, ITEM_POOL_TYPE }
+    Function    = 3     -- { OutcomeType.Function, OutcomeIcon, FUNCTION }           
+    -- !!!: Function must return either Item or Pool as defined previously, but not Function (or not cause infinite loop at least)
+}
+
+-- Outcome icons, which you can see when you add all four components --
 local OutcomeIcon = {
     Unknown     = 9,
     Bomb        = 1,
@@ -10,24 +21,6 @@ local OutcomeIcon = {
     Shop        = 6,
     Angel       = 7,
     DemonAngel  = 8
-}
-
-ComponentID = {
-    gunpowder   = Isaac.GetTrinketIdByName("Gunpowder"),
-    paper       = Isaac.GetTrinketIdByName("Piece of Paper"),
-    blood       = Isaac.GetTrinketIdByName("Bottled Blood"),
-    rib         = Isaac.GetTrinketIdByName("Wooden Rib"),
-    feather     = Isaac.GetTrinketIdByName("Glowing Feather")
-}
-
--- Every recipe should have a value of array with first element as OutcomeType
--- Other elements vary by outcome types
--- In the comments it's written what your array MUST include
-local OutcomeType = {
-    Item        = 1,    -- { OutcomeType.Item, OutcomeIcon, COLLECTIBLE_TYPE }
-    Pool        = 2,    -- { OutcomeType.Pool, OutcomeIcon, ITEM_POOL_TYPE }
-    Function    = 3     -- { OutcomeType.Function, OutcomeIcon, FUNCTION }           
-    -- !!!: Function must return either Item or Pool as defined previously, but not Function (or not cause infinite loop at least)
 }
 
 this.recipes = {
@@ -50,7 +43,7 @@ this.recipes = {
 -- Convert trinket IDs to brewable ingredients --
 function this.evaluateIngredients(table)
     local ingredients = {}
-    for name, id in pairs(ComponentID) do
+    for name, id in pairs(CauldronMaterialID) do
         for i = 1, 4 do 
             if table[i] == id then 
                 ingredients[name] = (ingredients[name] or 0) + 1
