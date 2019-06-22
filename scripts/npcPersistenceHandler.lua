@@ -10,8 +10,9 @@ function this.init(classes)
         table.insert(this.objects, {class.id, class.variant})
     end
 
-    --mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewLevel)
+    --mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewStage)
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.onNewRoom)
+  
 end
 
 function this._reload()
@@ -96,16 +97,20 @@ function this._add(entity)
 end
 
 -- Callbacks --
-local currentStage = LevelStage.STAGE_NULL
+
 function this.onNewRoom()
-    if currentStage ~= Game():GetLevel():GetStage() then 
-        currentStage = Game():GetLevel():GetStage()
-        register = {}
-        this._save()
-    else
-        this.restore()
-        this._save()
-    end
+
+   if Game():GetRoom():IsFirstVisit() and Game():GetLevel():GetCurrentRoomIndex() == 84 then 
+      register = {}
+     
+      this._save()         
+   else
+        
+      this.restore()
+        
+      this._save()
+    
+   end
 end
 
 return this

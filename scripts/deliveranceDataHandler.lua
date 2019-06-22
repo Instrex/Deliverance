@@ -33,7 +33,7 @@ function this:leave(shouldSave)
     deliveranceData.temporary = {}
   end
 
-  --this.directSave()
+  this.directSave()
   npcPersistence._reload()
 end
 

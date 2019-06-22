@@ -51,6 +51,11 @@ function this:behaviour(npc)
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
     npc.State = 2 
     data.processing = false
+    if game.Difficulty==2 or game.Difficulty==3 then
+       sprite:ReplaceSpritesheet(0, "gfx/items/alchemicCauldronGreed.png") 
+       sprite:ReplaceSpritesheet(2, "gfx/items/alchemicCauldronGreed.png")
+       sprite:LoadGraphics()
+    end
 
   elseif npc.State == 2 then
     sprite:Play("Idle")
@@ -67,9 +72,12 @@ function this:behaviour(npc)
                  table.insert(data.persistent.components, deliveranceContent.characters.awan.currentMaterial)
                  npcPersistence.update(npc)
                  droppedTrinket = deliveranceContent.characters.awan.currentMaterial
-                 for i=1, 5 do 
-                   if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.materials[i] then deliveranceData.temporary.hasMaterial[i]=deliveranceData.temporary.hasMaterial[i]-1 end
-                 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.gunPowder then deliveranceData.temporary.hasMaterial[1]=deliveranceData.temporary.hasMaterial[1]-1 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.paper then deliveranceData.temporary.hasMaterial[2]=deliveranceData.temporary.hasMaterial[2]-1 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.blood then deliveranceData.temporary.hasMaterial[3]=deliveranceData.temporary.hasMaterial[3]-1 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.rib then deliveranceData.temporary.hasMaterial[4]=deliveranceData.temporary.hasMaterial[4]-1 end
+                 if deliveranceContent.characters.awan.currentMaterial==deliveranceContent.characters.awan.feather then deliveranceData.temporary.hasMaterial[5]=deliveranceData.temporary.hasMaterial[5]-1 end
+                 
                  deliveranceDataHandler.directSave()
                  --player:TryRemoveTrinket(player:GetTrinket(0))
                  npc.State = 3

@@ -8,8 +8,6 @@ this.blood = Isaac.GetTrinketIdByName("Bottled Blood")
 this.rib = Isaac.GetTrinketIdByName("Wooden Rib")
 this.feather = Isaac.GetTrinketIdByName("Glowing Feather")
 
-this.materials = {}
-
 this.speedBonus = 0
 this.currentSlot = 1
 this.currentMaterial = this.gunPowder
@@ -39,19 +37,20 @@ function this:Update()
          for i=1, 5 do 
             table.insert(deliveranceData.temporary.hasMaterial, 0)
          end
-         table.insert(this.materials, this.gunPowder)
-         table.insert(this.materials, this.paper)
-         table.insert(this.materials, this.blood)
-         table.insert(this.materials, this.rib)
-         table.insert(this.materials, this.feather)
          deliveranceData.temporary.awanStartUp=true
          deliveranceDataHandler.directSave() 
       end
 
-      for i=1, 5 do 
-        if player:GetTrinket(0)==this.materials[i] then deliveranceData.temporary.hasMaterial[i]=deliveranceData.temporary.hasMaterial[i]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-        if this.currentSlot == i then this.currentMaterial = this.materials[i] this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[i] end
-      end
+      if player:GetTrinket(0)==this.gunPowder then deliveranceData.temporary.hasMaterial[1]=deliveranceData.temporary.hasMaterial[1]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
+      if player:GetTrinket(0)==this.paper then deliveranceData.temporary.hasMaterial[2]=deliveranceData.temporary.hasMaterial[2]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
+      if player:GetTrinket(0)==this.blood then deliveranceData.temporary.hasMaterial[3]=deliveranceData.temporary.hasMaterial[3]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
+      if player:GetTrinket(0)==this.rib then deliveranceData.temporary.hasMaterial[4]=deliveranceData.temporary.hasMaterial[4]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
+      if player:GetTrinket(0)==this.feather then deliveranceData.temporary.hasMaterial[5]=deliveranceData.temporary.hasMaterial[5]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
+      if this.currentSlot == 1 then this.currentMaterial = this.gunPowder this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[1] end
+      if this.currentSlot == 2 then this.currentMaterial = this.paper this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[2] end
+      if this.currentSlot == 3 then this.currentMaterial = this.blood this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[3] end
+      if this.currentSlot == 4 then this.currentMaterial = this.rib this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[4] end
+      if this.currentSlot == 5 then this.currentMaterial = this.feather this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[5] end
 
       if level:GetAbsoluteStage() == 1 and level.EnterDoor == -1 and player.FrameCount == 1 then
          this.speedBonus = 0
@@ -62,16 +61,16 @@ function this:Update()
       if room:GetFrameCount() == 1 then
 	    player:AddNullCostume(this.costume)
       end
+
       for e, collect in pairs(Isaac.GetRoomEntities()) do 
          if collect.Type == 5 then 
-            if collect.Variant == 100 and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
+            if (collect.Variant == 150 or collect.Variant == 100) and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
                Isaac.Spawn(1000, 15, 0, collect.Position, vectorZero, npc)
-               sfx:Play(SoundEffect.SOUND_POWERUP1, 1, 0, false, 0.8)
+               sfx:Play(SoundEffect.SOUND_POWERUP1, 0.5, 0, false, 0.825)
                local loot = Utils.choose(this.blood, this.rib, this.paper, this.gunPowder, this.feather)
                local amount = 1
 
                if room:GetType() == RoomType.ROOM_DEVIL then       loot = Utils.choose(this.blood, this.rib) amount=Utils.choose(1,2)
-               elseif room:GetType() == RoomType.ROOM_SHOP then    loot = Utils.choose(this.paper, this.gunPowder)
                elseif room:GetType() == RoomType.ROOM_CURSE then   loot = this.blood
                elseif room:GetType() == RoomType.ROOM_SECRET or room:GetType() == RoomType.ROOM_SUPERSECRET then loot = this.rib
                elseif room:GetType() == RoomType.ROOM_LIBRARY then loot = this.paper
@@ -94,7 +93,11 @@ function this:Update()
                    end
                end
 
-               for i=1, amount do Isaac.Spawn(5, 350, loot, collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+               if room:GetType() == RoomType.ROOM_SHOP then
+                  Isaac.Spawn(5, 150, 0, collect.Position, vectorZero, collect)
+               else
+                  for i=1, amount do Isaac.Spawn(5, 350, loot, collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect) end
+               end
 
                collect:Remove()
             end
@@ -105,10 +108,12 @@ function this:Update()
          end 
       end
 
-      if utils.switchData('cauldronSpawned') then
-         local pos = Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1)
-         Isaac.Spawn(1000, 15, 0, pos, vectorZero, npc)
-         Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, pos, vectorZero, player)
+      if deliveranceData.temporary.cauldronSpawned==nil then
+         if game.Difficulty==0 or game.Difficulty==1 then
+            this.spawnCauldron(Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1))
+         elseif (game.Difficulty==2 or game.Difficulty==3) and room:GetType() == RoomType.ROOM_SHOP then
+            this.spawnCauldron(room:GetCenterPos() - Vector(0, 50))
+         end
       end
 
       if room:IsClear() then this.speedBonus=1.85 else this.speedBonus=1 end
@@ -123,6 +128,14 @@ function this:Update()
          end 
       end
    end
+end
+
+function this.spawnCauldron(pos)
+   Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, pos, vectorZero, player)
+   Isaac.Spawn(1000, 15, 0, pos, vectorZero, npc)
+   sfx:Play(SoundEffect.SOUND_SUMMONSOUND, 0.75, 0, false, 1)
+   deliveranceData.temporary.cauldronSpawned=true
+   deliveranceDataHandler.directSave() 
 end
 
 function this:nullCauldronSpawn()   
@@ -173,11 +186,11 @@ function this:onRender()
    if player:GetPlayerType() == this.playerAwan and deliveranceData.temporary.awanStartUp then 
       for i=1, 5 do 
         HudMaterials:SetFrame("Idle", i-1)
-        HudMaterials:RenderLayer(0, Vector(i*16,222))
-        RenderNumber(deliveranceData.temporary.hasMaterial[i], Vector(2+i*16,244))
+        HudMaterials:RenderLayer(0, Vector(-8+i*16,234))
+        RenderNumber(deliveranceData.temporary.hasMaterial[i], Vector(-6+i*16,252))
       end
       HudChoose:Play("Idle", false)
-      HudChoose:RenderLayer(0, Vector(8+this.currentSlot*16,238))
+      HudChoose:RenderLayer(0, Vector(this.currentSlot*16,246))
       HudChoose:Update()
       if not game:IsPaused() and Input.IsActionTriggered(ButtonAction.ACTION_DROP, 0) then
          if this.currentSlot<5 then
@@ -190,8 +203,8 @@ function this:onRender()
 end
 
 function this.Init()
-  mod:AddCallback( ModCallbacks.MC_POST_UPDATE, this.Update)
-  mod:AddCallback( ModCallbacks.MC_POST_PLAYER_INIT, this.PostInit)
+  mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
+  mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, this.PostInit)
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.EvaluateCache)
   mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.nullCauldronSpawn)
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.onRender)

@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="Unknown" CreatedOn="21.06.2019 8:16:22" Version="112" Fps="30"/>
+	<Info CreatedBy="Unknown" CreatedOn="21.06.2019 18:17:13" Version="113" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="items\alchemicCauldron.png" Id="0"/>
