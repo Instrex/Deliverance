@@ -38,7 +38,10 @@ end
 -- Usage
 -- Utils.choose(1, 2, 3) will return 1, 2 or 3 randomly
 function Utils.choose(...)
-  assert(..., "Can't choose from 0 options")
+  if not ... then 
+    return nil
+  end
+
   local args = { ... }
   return args[math.random(#args)]
 end

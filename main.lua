@@ -3,7 +3,8 @@ game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
 
-utils = require('scripts.utils')
+utils = require 'scripts.utils'
+require 'scripts.enumerations'
 
 -- Mod data --
 deliveranceData = {

@@ -13,7 +13,9 @@ end
 
 -- Save & Load --
 function this.loadData(data)
+    deliveranceData.temporary.currentStage = Game():GetLevel():GetStage()
     register = data or {}
+    this.restore()
 end
 
 function this.getSaveData()
@@ -85,13 +87,13 @@ end
 
 -- Callbacks --
 function this.onNewRoom()
+    
     if deliveranceData.temporary.currentStage ~= Game():GetLevel():GetStage() then 
         deliveranceData.temporary.currentStage = Game():GetLevel():GetStage()
         register = {}
 
-    else
+    else 
         this.restore()
-
     end
 end
 
