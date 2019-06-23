@@ -25,9 +25,9 @@ local OutcomeIcon = {
 
 this.recipes = {
     [{ gunpowder = 1, rib = 1, blood = 1, feather = 1, paper = 1}] = { OutcomeType.Pool, OutcomeIcon.Unknown, ItemPoolType.POOL_BOSS },
-    [{ rib = 2, blood = 2 }]          = { OutcomeType.Pool, OutcomeIcon.Devil, ItemPoolType.POOL_DEVIL },
-    [{ paper = 2, gunpowder = 2 }]    = { OutcomeType.Pool, OutcomeIcon.Shop, ItemPoolType.POOL_SHOP },
-    [{ feather = 2, blood = 2 }]      = { OutcomeType.Function, OutcomeIcon.DemonAngel,
+    [{ rib = 2, blood = 2, precision = 1.0 }]          = { OutcomeType.Pool, OutcomeIcon.Devil, ItemPoolType.POOL_DEVIL },
+    [{ paper = 2, gunpowder = 2, precision = 1.0 }]    = { OutcomeType.Pool, OutcomeIcon.Shop, ItemPoolType.POOL_SHOP },
+    [{ feather = 2, blood = 2, precision = 1.0 }]      = { OutcomeType.Function, OutcomeIcon.DemonAngel,
         function() 
             return { OutcomeType.Pool, OutcomeIcon.DemonAngel, utils.choose(ItemPoolType.POOL_ANGEL, ItemPoolType.POOL_DEVIL) }
         end 
@@ -68,10 +68,12 @@ function this.queryExactRecipe(table)
             return outcome
         end
 
-        similiarities[cosineSimiliarity(
-            {recipe.gunpowder or 0, recipe.paper or 0, recipe.blood or 0, recipe.rib or 0, recipe.feather or 0},
-            {ingredients.gunpowder or 0, ingredients.paper or 0, ingredients.blood or 0, ingredients.rib or 0, ingredients.feather or 0}
-        )] = outcome
+        if not recipe.precision then 
+            similiarities[cosineSimiliarity(
+                {recipe.gunpowder or 0, recipe.paper or 0, recipe.blood or 0, recipe.rib or 0, recipe.feather or 0},
+                {ingredients.gunpowder or 0, ingredients.paper or 0, ingredients.blood or 0, ingredients.rib or 0, ingredients.feather or 0}
+            )] = outcome
+        end
     end
 
     return this.queryInexactRecipe(similiarities)

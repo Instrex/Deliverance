@@ -52,7 +52,18 @@ function this:Update()
 
    if player:GetPlayerType() == this.playerAwan then 
     if not player:IsDead() then
-   
+      if needToSpawnCauldron then 
+         if game.Difficulty==0 or game.Difficulty==1 then
+            this.spawnCauldron(Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1))
+            needToSpawnCauldron = false
+      
+         elseif (game.Difficulty==2 or game.Difficulty==3) and room:GetType() == RoomType.ROOM_SHOP then
+            this.spawnCauldron(room:GetCenterPos() - Vector(0, 50))
+            needToSpawnCauldron = false
+      
+         end
+      end
+
       if not deliveranceData.temporary.awanStartUp then
          deliveranceData.temporary.materials = deliveranceData.temporary.materials or {0, 0, 0, 0, 0}
 
@@ -149,17 +160,6 @@ function this:Update()
             Isaac.Spawn(5, 350, 0, collect.Position, vectorZero, player)
             collect:Remove()
          end 
-      end
-   end
-
-   if needToSpawnCauldron then 
-      needToSpawnCauldron = false
-      if game.Difficulty==0 or game.Difficulty==1 then
-         this.spawnCauldron(Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1))
-   
-      elseif (game.Difficulty==2 or game.Difficulty==3) and room:GetType() == RoomType.ROOM_SHOP then
-         this.spawnCauldron(room:GetCenterPos() - Vector(0, 50))
-   
       end
    end
 end
