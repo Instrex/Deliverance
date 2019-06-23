@@ -60,8 +60,7 @@ function this:behaviour(fam)
    for i,proj in ipairs(Isaac.FindByType(EntityType.ENTITY_PROJECTILE, -1, -1, true)) do
      if (fam.Position:Distance(proj.Position) < proj.Size*2 + fam.Size) and not deliveranceData.temporary.knightStunned then
 	proj:Die()
-
-        sfx:Play(SoundEffect.SOUND_ISAACDIES , 0.25, 0, false, 0.75)
+        Isaac.Spawn(1000, 97, 0, Vector(fam.Position.X, fam.Position.Y), vectorZero, nil)
         sfx:Play(SoundEffect.SOUND_THUMBS_DOWN, 1, 0, false, 1)
         deliveranceData.temporary.knightStunned=true
         deliveranceDataHandler.directSave()
@@ -88,6 +87,12 @@ end
 function this:restoreKnight()   
    if deliveranceData.temporary.knightStunned==true then
       deliveranceData.temporary.knightStunned=false
+      for e, fam in pairs(Isaac.GetRoomEntities()) do 
+        if fam.Type == 3 and fam.Variant == this.variant then 
+           local sprite = fam:GetSprite()
+           sprite:Play("FloatDown", false)
+        end 
+      end
       deliveranceDataHandler.directSave()
    end
 end

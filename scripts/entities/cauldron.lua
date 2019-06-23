@@ -75,7 +75,6 @@ function this:behaviour(npc)
                  npcPersistence.update(npc)
                  droppedTrinket = material.type
 
-                 print(material.type)
                  deliveranceData.temporary.materials[material.slot] = deliveranceData.temporary.materials[material.slot] - 1
                  deliveranceDataHandler.directSave()
 

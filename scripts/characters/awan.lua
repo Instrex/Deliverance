@@ -52,17 +52,6 @@ function this:Update()
 
    if player:GetPlayerType() == this.playerAwan then 
     if not player:IsDead() then
-      if needToSpawnCauldron then 
-         if game.Difficulty==0 or game.Difficulty==1 then
-            this.spawnCauldron(Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1))
-            needToSpawnCauldron = false
-      
-         elseif (game.Difficulty==2 or game.Difficulty==3) and room:GetType() == RoomType.ROOM_SHOP then
-            this.spawnCauldron(room:GetCenterPos() - Vector(0, 50))
-            needToSpawnCauldron = false
-      
-         end
-      end
 
       if not deliveranceData.temporary.awanStartUp then
          deliveranceData.temporary.materials = deliveranceData.temporary.materials or {0, 0, 0, 0, 0}
@@ -79,17 +68,6 @@ function this:Update()
          player:TryRemoveTrinket(trinket)
       end
 
-      --[[if player:GetTrinket(0)==this.gunPowder then deliveranceData.temporary.hasMaterial[1]=deliveranceData.temporary.hasMaterial[1]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if player:GetTrinket(0)==this.paper then deliveranceData.temporary.hasMaterial[2]=deliveranceData.temporary.hasMaterial[2]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if player:GetTrinket(0)==this.blood then deliveranceData.temporary.hasMaterial[3]=deliveranceData.temporary.hasMaterial[3]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if player:GetTrinket(0)==this.rib then deliveranceData.temporary.hasMaterial[4]=deliveranceData.temporary.hasMaterial[4]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if player:GetTrinket(0)==this.feather then deliveranceData.temporary.hasMaterial[5]=deliveranceData.temporary.hasMaterial[5]+1 deliveranceDataHandler.directSave() player:TryRemoveTrinket(player:GetTrinket(0)) end
-      if this.currentSlot == 1 then this.currentMaterial = this.gunPowder this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[1] end
-      if this.currentSlot == 2 then this.currentMaterial = this.paper this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[2] end
-      if this.currentSlot == 3 then this.currentMaterial = this.blood this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[3] end
-      if this.currentSlot == 4 then this.currentMaterial = this.rib this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[4] end
-      if this.currentSlot == 5 then this.currentMaterial = this.feather this.currentMaterialNumber=deliveranceData.temporary.hasMaterial[5] end]]
-
       if level:GetAbsoluteStage() == 1 and level.EnterDoor == -1 and player.FrameCount == 1 then
          this.speedBonus = 0
          player:AddCacheFlags(CacheFlag.CACHE_SPEED)
@@ -105,7 +83,7 @@ function this:Update()
          if collect.Type == 5 then 
             if (collect.Variant == 150 or collect.Variant == 100) and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
                Isaac.Spawn(1000, 15, 0, collect.Position, vectorZero, npc)
-               sfx:Play(SoundEffect.SOUND_POWERUP1, 0.5, 0, false, 0.825)
+               --sfx:Play(Utils.choose(SoundEffect.SOUND_POWERUP1,SoundEffect.SOUND_POWERUP2,SoundEffect.SOUND_POWERUP3), 0.25, 0, false, 0.825)
                local loot = Utils.chooset(CauldronMaterialID)
                local amount = 1
 
@@ -115,7 +93,9 @@ function this:Update()
                elseif room:GetType() == RoomType.ROOM_LIBRARY then loot = CauldronMaterialID.paper
                elseif room:GetType() == RoomType.ROOM_ANGEL then   loot = CauldronMaterialID.feather amount=Utils.choose(1,2)
                elseif room:GetType() == RoomType.ROOM_TREASURE then
-                   if stage == LevelStage.STAGE1_1 or stage == LevelStage.STAGE1_2 or (stage == LevelStage.STAGE1_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+                   if stage == LevelStage.STAGE1_1 or (stage == LevelStage.STAGE1_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+                       amount=Utils.choose(3,4)
+                   elseif stage == LevelStage.STAGE1_2 then
                        amount=Utils.choose(2,3)
                    elseif stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 or (stage == LevelStage.STAGE2_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
                        amount=2
@@ -133,23 +113,41 @@ function this:Update()
                end
 
                if room:GetType() == RoomType.ROOM_SHOP then
-                  Isaac.Spawn(5, 150, 0, collect.Position, vectorZero, collect)
+                  --Isaac.Spawn(5, 150, 0, collect.Position, vectorZero, collect)
+                  local pick = Isaac.Spawn(5, 350, loot, collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
+                  pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
                else
-                  print(loot)
-                  print(CauldronMaterialID.gunpowder)
                   for i=1, amount do Isaac.Spawn(5, 350, loot, collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect) end
                end
 
                collect:Remove()
             end
             if collect.Variant == 350 and not isCauldronComponent(collect.SubType) then
-               Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, vectorZero, npc)
+               local loot = Utils.chooset(CauldronMaterialID)
+               if collect:ToPickup().Price ~= PickupPrice.PRICE_FREE then
+                  local pick = Isaac.Spawn(5, 350, loot, collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
+                  pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
+               else
+                  Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, vectorZero, npc)
+               end
                collect:Remove()
             end 
          end 
       end
 
-      if room:IsClear() then this.speedBonus=1.85 else this.speedBonus=1 end
+      if needToSpawnCauldron then 
+         if game.Difficulty==0 or game.Difficulty==1 then
+            this.spawnCauldron(Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1))
+            needToSpawnCauldron = false
+      
+         elseif (game.Difficulty==2 or game.Difficulty==3) and room:GetType() == RoomType.ROOM_TREASURE then
+            this.spawnCauldron(room:GetCenterPos() - Vector(0, 50))
+            needToSpawnCauldron = false
+      
+         end
+      end
+
+      if room:IsClear() then this.speedBonus=1.5 else this.speedBonus=1 end
       player:AddCacheFlags(CacheFlag.CACHE_SPEED)
       player:EvaluateItems()
    end
