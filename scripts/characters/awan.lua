@@ -156,7 +156,7 @@ function this:Update()
 
    else
       for e, collect in pairs(Isaac.GetRoomEntities()) do 
-         if collect.Type == 5 and collect.Variant == 350 and not isCauldronComponent(collect.SubType) then
+         if collect.Type == 5 and collect.Variant == 350 and isCauldronComponent(collect.SubType) then
             Isaac.Spawn(5, 350, 0, collect.Position, vectorZero, player)
             collect:Remove()
          end 
