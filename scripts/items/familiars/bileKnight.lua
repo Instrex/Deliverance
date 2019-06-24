@@ -7,13 +7,13 @@ function this:behaviour(fam)
     local sprite = fam:GetSprite()
     local player = Isaac.GetPlayer(0)
     local d = fam:GetData()
-    if d.cooldown == nil then d.cooldown = 3 end
-    if d.maxCooldown == nil then d.maxCooldown = 3 end
+    if d.cooldown == nil then d.cooldown = 5 end
+    if d.maxCooldown == nil then d.maxCooldown = 5 end
     if d.shoot == nil then d.shoot = false end
   
     fam:FollowParent()
 
-    d.maxCooldown = 3
+    d.maxCooldown = 5
 	
     if deliveranceData.temporary.knightStunned then
         sprite:Play("StunnedLoop", false)
@@ -78,7 +78,7 @@ function this.shot(fam)
    local dirs = { [Direction.LEFT] = Vector(-15, 0), [Direction.UP] = Vector(0, -15), [Direction.RIGHT] = Vector(15, 0), [Direction.DOWN] = Vector(0, 15), [Direction.NO_DIRECTION] = vectorZero, }
    if not d.shoot then
       local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()] + player:GetTearMovementInheritance(player.Velocity), nil):ToTear()
-      prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15,8,15) if player:HasCollectible(247) then prj.Scale = 1.25 prj.CollisionDamage = 6.66 else prj.Scale = 1.15 prj.CollisionDamage = 5.5 end
+      prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15,8,15) if player:HasCollectible(247) then prj.Scale = 1.4 prj.CollisionDamage = 6.66 else prj.Scale = 1.2 prj.CollisionDamage = 5.5 end
       if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
       d.shoot = true
    end

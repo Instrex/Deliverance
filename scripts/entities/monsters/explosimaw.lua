@@ -9,7 +9,7 @@ function this:behaviour(npc)
   local data = npc:GetData()
   local room = game:GetRoom()
   
-  if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (0.33 + npc.StateFrame/55) + npc.Velocity * 0.85 end
+  if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (0.33 + npc.StateFrame/60) + npc.Velocity * 0.85 end
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
@@ -65,8 +65,13 @@ function this:behaviour(npc)
  end
 end
 
+function this:die(npc) 
+    Isaac.Spawn(4, 3, 0, npc.Position, vectorZero, npc)
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
+  mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
 end
 
 return this
