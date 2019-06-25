@@ -83,7 +83,7 @@ function this:Update()
          if collect.Type == 5 then 
             if (collect.Variant == 150 or collect.Variant == 100) and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
                Isaac.Spawn(1000, 15, 0, collect.Position, vectorZero, npc)
-               --sfx:Play(Utils.choose(SoundEffect.SOUND_POWERUP1,SoundEffect.SOUND_POWERUP2,SoundEffect.SOUND_POWERUP3), 0.25, 0, false, 0.825)
+               sfx:Play(Utils.choose(SoundEffect.SOUND_POWERUP1,SoundEffect.SOUND_POWERUP2,SoundEffect.SOUND_POWERUP3), 0.25, 0, false, 0.825)
                local loot = {}
 
                if room:GetType() == RoomType.ROOM_DEVIL then       for i=1,Utils.choose(1,2) do table.insert(loot, Utils.choose(CauldronMaterialID.blood, CauldronMaterialID.rib)) end
