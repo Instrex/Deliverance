@@ -35,7 +35,7 @@ function this:behaviour(npc)
     end
       npc.StateFrame = npc.StateFrame + Utils.choose(0, 1)
 
-    if npc.StateFrame>=80 then
+    if npc.StateFrame>=70 then
       sfx:Play(SoundEffect.SOUND_MONSTER_GRUNT_0 , 1.2, 0, false, 1)
       npc.State = NpcState.STATE_ATTACK
     end
@@ -45,7 +45,7 @@ function this:behaviour(npc)
 
     npc.StateFrame = npc.StateFrame - 1
     npc.Velocity = npc.Velocity * 0.9
-    if npc.StateFrame<60 then
+    if npc.StateFrame<66 then
       npc.StateFrame = npc.StateFrame - 1
       if utils.chancep(80) and not npc:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then
         local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
