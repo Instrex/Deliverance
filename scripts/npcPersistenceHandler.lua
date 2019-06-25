@@ -13,6 +13,7 @@ end
 
 -- Save & Load --
 function this.loadData(data)
+    print('------------- load')
     deliveranceData.temporary.currentStage = Game():GetLevel():GetStage()
     register = data or {}
     this.restore()
@@ -20,6 +21,11 @@ end
 
 function this.getSaveData()
     return register
+end
+
+function this.clear()
+    deliveranceData.temporary.currentStage = nil
+    register = {}
 end
 
 -- Register management --
@@ -89,6 +95,7 @@ end
 function this.onNewRoom()
     
     if deliveranceData.temporary.currentStage ~= Game():GetLevel():GetStage() then 
+        print('------------- clear')
         deliveranceData.temporary.currentStage = Game():GetLevel():GetStage()
         register = {}
 

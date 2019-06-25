@@ -89,6 +89,10 @@ deliveranceContent = {
     momOfMany                 = require 'scripts.entities.monsters.variants.momOfMany'
   },
 
+  pickups = {
+    rainbowHeart              = require 'scripts.pickups.rainbowHeart'
+  },
+  
   entities = {
     persistent = {
       chestBoy                = require 'scripts.entities.chestBoy',

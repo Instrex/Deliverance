@@ -168,6 +168,11 @@
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
+    <!-- Pickups -->
+    <entity id="5" variant="10" subtype="4000" anm2path="rainbowHeart.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" id="5" name="Heart" numGridCollisionPoints="24" shadowSize="17" stageHP="0" name="Rainbow Heart">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+    </entity>
+
     <!-- Effects -->
     <entity id="1000" variant="4000" anm2path="effect_special_delivery_cursor.anm2" baseHP="0" boss="0" bossID = "0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Special Delivery Target" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />

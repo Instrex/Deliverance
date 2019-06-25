@@ -24,7 +24,6 @@ end
 
 function this:leave(shouldSave)
   --print('[this:leave] shouldSave', shouldSave)
-
   if not shouldSave then 
     deliveranceData.temporary = {}
 
@@ -34,6 +33,7 @@ function this:leave(shouldSave)
   end
 
   this.directSave()
+  npcPersistence.clear()
 end
 
 function this.init()
