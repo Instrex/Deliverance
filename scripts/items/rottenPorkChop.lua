@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Rotten Pork Chop")
 this.variant = Isaac.GetEntityVariantByName("Rotten Fart")
 this.description = "Chance for a powerful fart during shot"
+this.bTimer = 0
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
@@ -32,6 +33,29 @@ function this:rottenUpdate(player)
       local fartSize = Utils.choose(1, 1.25, 1.5, 1.75, 2)
       fart:GetSprite().Scale = Vector(fartSize, fartSize)
     end
+    --[[
+    if this.bTimer<15 then this.bTimer=this.bTimer+1 end
+    if player:GetFireDirection() ~= Direction.NO_DIRECTION then
+      if this.bTimer>=15 then
+       this.bTimer=0 
+       local dirs1 = { 
+         [Direction.LEFT] = Vector(0, 10), [Direction.RIGHT] = Vector(0, -10), 
+         [Direction.UP] = Vector(10, 0), [Direction.DOWN] = Vector(-10, 0), 
+         [Direction.NO_DIRECTION] = vectorZero, 
+       }
+       local dirs2 = { 
+         [Direction.LEFT] = Vector(0, -10), [Direction.RIGHT] = Vector(0, 10), 
+         [Direction.UP] = Vector(-10, 0), [Direction.DOWN] = Vector(10, 0), 
+         [Direction.NO_DIRECTION] = vectorZero, 
+       }
+       local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, player.Position + dirs1[player:GetFireDirection()] + Vector(0, 14), dirs1[player:GetFireDirection()]:Rotated(math.random(-10, 10)), player):ToTear()
+       prj.Scale = 0.85 prj.CollisionDamage = 2.5
+       local prj2 = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, player.Position + dirs2[player:GetFireDirection()] + Vector(0, 14), dirs2[player:GetFireDirection()]:Rotated(math.random(-10, 10)), player):ToTear()
+       prj2.Scale = 0.85 prj2.CollisionDamage = 2.5
+       --sfx:Play(SoundEffect.SOUND_FART , 0.8, 0, false, math.random(11, 13) / 10)
+      end
+    end
+    ]]--
   end
 end
 

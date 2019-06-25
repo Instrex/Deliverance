@@ -68,6 +68,10 @@ function this:pickupMorph(pickup)
         Isaac.Spawn(5, 20, 5, pickup.Position, vectorZero, nil)
         pickup:Remove()
 
+      elseif pickup.SubType == 400 then
+        Isaac.Spawn(5, 20, 3, pickup.Position, vectorZero, nil)
+        pickup:Remove()
+
       end
     end
   end

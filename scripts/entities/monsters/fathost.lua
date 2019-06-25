@@ -29,7 +29,7 @@ function this:behaviour(npc)
   -- Seek for a moment to attack --
   elseif npc.State == NpcState.STATE_IDLE then
     sprite:Play("Idle");
-    if npc.Position:Distance(target.Position) <= 240 then
+    if npc.Position:Distance(target.Position) <= 320 then
        data.HTimer = data.HTimer + 1
     end
 
@@ -71,7 +71,7 @@ function this:behaviour(npc)
 
     if sprite:IsFinished("Shoot") then
       npc.State = NpcState.STATE_IDLE
-      data.HTimer  = math.random(-45, -25) 
+      data.HTimer  = math.random(-25, -15, 0) 
     end
   end
  end

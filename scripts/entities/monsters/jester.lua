@@ -24,7 +24,7 @@ function this:behaviour(npc)
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_MOVE
-    npc.StateFrame = Utils.choose(-10, 3, 16)
+    npc.StateFrame = Utils.choose(-10, 0, 15, 30)
     if data.dead == nil then data.dead = false end
 
   -- Move and wait for player to get closer --
