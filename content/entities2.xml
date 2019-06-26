@@ -123,7 +123,7 @@
         <gibs amount="12" blood="1" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="760" variant="4000" anm2path="rosenberg_spit.anm2" baseHP="10" boss="0" champion="0" collisionDamage="0" collisionMass="100" collisionRadius="8" friction="1" name="Rosenberg Spit" numGridCollisionPoints="0" shadowSize="18" stageHP="0">
+    <entity id="760" variant="4000" anm2path="rosenberg_spit.anm2" baseHP="10" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Rosenberg Spit" numGridCollisionPoints="0" shadowSize="18" stageHP="0">
         <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 

@@ -8,5 +8,6 @@
      <costume anm2path="animation_costume_adamsRib2.anm2" priority="96" type="none" />
      <costume anm2path="animation_costume_hotmilk.anm2" priority="96" type="none" />
      <costume anm2path="animation_costume_manuscript.anm2" priority="96" type="none" />
+     <costume anm2path="animation_costume_dangerRoom.anm2" priority="96" type="none" />
      <costume anm2path="character_awan.anm2" priority="99" type="none" />
 </costumes>

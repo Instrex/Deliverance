@@ -49,7 +49,8 @@ deliveranceContent = {
     roundBattery              = require 'scripts.items.familiars.roundBattery',
     airStrike                 = require 'scripts.items.airStrike',
     lawful                    = require 'scripts.items.lawful',
-    bileKnight                = require 'scripts.items.familiars.bileKnight'
+    bileKnight                = require 'scripts.items.familiars.bileKnight',
+    dangerRoom                = require 'scripts.items.dangerRoom'
   },
 
   trinkets = {
@@ -135,7 +136,8 @@ deliveranceContent = {
     adamsRib                  = utils.getCostume('adamsRib'),
     hotmilk                   = utils.getCostume('hotmilk'),
     adamsRib2                 = utils.getCostume('adamsRib2'),
-    manuscript                = utils.getCostume('manuscript')
+    manuscript                = utils.getCostume('manuscript'),
+    dangerRoom                = utils.getCostume('dangerRoom')
   }
 }
 

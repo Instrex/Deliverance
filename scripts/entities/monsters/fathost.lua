@@ -71,7 +71,7 @@ function this:behaviour(npc)
 
     if sprite:IsFinished("Shoot") then
       npc.State = NpcState.STATE_IDLE
-      data.HTimer  = math.random(-25, -15, 0) 
+      data.HTimer  = math.random(-30, -10) 
     end
   end
  end

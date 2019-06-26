@@ -15,16 +15,13 @@ function this:updateHeart(pickup)
   if pickup.Variant == this.variant and pickup.SubType == this.subtype then 
      if player:GetHearts() < player:GetMaxHearts() then
         if (pickup.Position - player.Position):Length() <= pickup.Size + player.Size and not pickup:GetSprite():IsPlaying("Collect") then
-           sfx:Play(SoundEffect.SOUND_1UP , 0.8, 0, false, 0.8)
+           sfx:Play(SoundEffect.SOUND_THUMBSUP , 0.8, 0, false, 1.2)
+           local poof = Isaac.Spawn(1000, 14, 0, pickup.Position, vectorZero, nil)
+           poof:GetSprite():ReplaceSpritesheet(0,"gfx/effects/effect_poof.png")
+           poof:GetSprite():LoadGraphics()
            player:AddHearts(20)
-           pickup:GetSprite():Play('Collect')
+           pickup:Remove()
         end
-     end
-     if pickup:GetSprite():IsPlaying("Collect") then
-        pickup.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
-     end
-     if pickup:GetSprite():IsFinished("Collect") then
-        pickup:Remove()
      end
   end
   if pickup.Variant == PickupVariant.PICKUP_HEART then

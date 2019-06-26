@@ -79,61 +79,8 @@ function this:Update()
 	    player:AddNullCostume(this.costume)
       end
 
-      for e, collect in pairs(Isaac.GetRoomEntities()) do 
-         if collect.Type == 5 then 
-            if (collect.Variant == 150 or collect.Variant == 100) and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
-               Isaac.Spawn(1000, 15, 0, collect.Position, vectorZero, npc)
-               sfx:Play(Utils.choose(SoundEffect.SOUND_POWERUP1,SoundEffect.SOUND_POWERUP2,SoundEffect.SOUND_POWERUP3), 0.25, 0, false, 0.825)
-               local loot = {}
-
-               if room:GetType() == RoomType.ROOM_DEVIL then       for i=1,Utils.choose(1,2) do table.insert(loot, Utils.choose(CauldronMaterialID.blood, CauldronMaterialID.rib)) end
-               elseif room:GetType() == RoomType.ROOM_CURSE then   table.insert(loot, CauldronMaterialID.blood)
-               elseif room:GetType() == RoomType.ROOM_SECRET or room:GetType() == RoomType.ROOM_SUPERSECRET then table.insert(loot, CauldronMaterialID.rib)
-               elseif room:GetType() == RoomType.ROOM_LIBRARY then table.insert(loot, CauldronMaterialID.paper)
-               elseif room:GetType() == RoomType.ROOM_ANGEL then   for i=1,Utils.choose(1,2) do table.insert(loot, CauldronMaterialID.feather) end
-               elseif room:GetType() == RoomType.ROOM_TREASURE then
-                   if stage == LevelStage.STAGE1_1 or (stage == LevelStage.STAGE1_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-                       for i=1,Utils.choose(3,4) do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
-                   elseif stage == LevelStage.STAGE1_2 then
-                       for i=1,Utils.choose(2,3) do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
-                   elseif stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 or (stage == LevelStage.STAGE2_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-                       for i=1,2 do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
-                   else
-                       table.insert(loot, Utils.chooset(CauldronMaterialID))
-                   end
-               elseif room:GetType() == RoomType.ROOM_BOSS then
-                   if stage == LevelStage.STAGE1_1 or stage == LevelStage.STAGE1_2 or (stage == LevelStage.STAGE1_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-                       for i=1,Utils.choose(2,3) do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
-                   elseif stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 or (stage == LevelStage.STAGE2_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-                       for i=1,2 do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
-                   else
-                       table.insert(loot, Utils.chooset(CauldronMaterialID))
-                   end
-               else
-                   for i=1,2 do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
-               end
-
-               if room:GetType() == RoomType.ROOM_SHOP then
-                  --Isaac.Spawn(5, 150, 0, collect.Position, vectorZero, collect)
-                  local pick = Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
-                  pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
-               else
-                  for i=1, #loot do Isaac.Spawn(5, 350, loot[i], collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect) end
-               end
-
-               collect:Remove()
-            end
-            if collect.Variant == 350 and not isCauldronComponent(collect.SubType) then
-               if room:GetType() == RoomType.ROOM_SHOP then
-                  local pick = Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
-                  pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
-               else
-                  Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, vectorZero, npc)
-               end
-               collect:Remove()
-            end 
-         end 
-      end
+      --for e, collect in pairs(Isaac.GetRoomEntities()) do 
+      --end
 
       if needToSpawnCauldron then 
          if game.Difficulty==0 or game.Difficulty==1 then
@@ -275,12 +222,75 @@ function this.onNewFloor()
    needToSpawnCauldron = true
 end
 
+function this:updateCollectibles(collect)
+   local player = Isaac.GetPlayer(0)
+   local room = game:GetRoom()
+   if player:GetPlayerType() == this.playerAwan then 
+    if not player:IsDead() then
+         if collect.Type == 5 then 
+            if (collect.Variant == 150 or collect.Variant == 100) and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
+               Isaac.Spawn(1000, 15, 0, collect.Position, vectorZero, npc)
+               sfx:Play(Utils.choose(SoundEffect.SOUND_POWERUP1,SoundEffect.SOUND_POWERUP2,SoundEffect.SOUND_POWERUP3), 0.25, 0, false, 0.825)
+               local loot = {}
+
+               if room:GetType() == RoomType.ROOM_DEVIL then       for i=1,Utils.choose(1,2) do table.insert(loot, Utils.choose(CauldronMaterialID.blood, CauldronMaterialID.rib)) end
+               elseif room:GetType() == RoomType.ROOM_CURSE then   table.insert(loot, CauldronMaterialID.blood)
+               elseif room:GetType() == RoomType.ROOM_SECRET or room:GetType() == RoomType.ROOM_SUPERSECRET then table.insert(loot, CauldronMaterialID.rib)
+               elseif room:GetType() == RoomType.ROOM_LIBRARY then table.insert(loot, CauldronMaterialID.paper)
+               elseif room:GetType() == RoomType.ROOM_ANGEL then   for i=1,Utils.choose(1,2) do table.insert(loot, CauldronMaterialID.feather) end
+               elseif room:GetType() == RoomType.ROOM_TREASURE then
+                   if stage == LevelStage.STAGE1_1 or (stage == LevelStage.STAGE1_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+                       for i=1,Utils.choose(3,4) do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
+                   elseif stage == LevelStage.STAGE1_2 then
+                       for i=1,Utils.choose(2,3) do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
+                   elseif stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 or (stage == LevelStage.STAGE2_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+                       for i=1,2 do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
+                   else
+                       table.insert(loot, Utils.chooset(CauldronMaterialID))
+                   end
+               elseif room:GetType() == RoomType.ROOM_BOSS then
+                   if stage == LevelStage.STAGE1_1 or stage == LevelStage.STAGE1_2 or (stage == LevelStage.STAGE1_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+                       for i=1,Utils.choose(2,3) do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
+                   elseif stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 or (stage == LevelStage.STAGE2_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+                       for i=1,2 do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
+                   else
+                       table.insert(loot, Utils.chooset(CauldronMaterialID))
+                   end
+               else
+                   for i=1,2 do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
+               end
+
+               if room:GetType() == RoomType.ROOM_SHOP then
+                  --Isaac.Spawn(5, 150, 0, collect.Position, vectorZero, collect)
+                  local pick = Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
+                  pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
+               else
+                  for i=1, #loot do Isaac.Spawn(5, 350, loot[i], collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect) end
+               end
+
+               collect:Remove()
+            end
+            if collect.Variant == 350 and not isCauldronComponent(collect.SubType) then
+               if room:GetType() == RoomType.ROOM_SHOP then
+                  local pick = Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
+                  pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
+               else
+                  Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, vectorZero, npc)
+               end
+               collect:Remove()
+            end 
+         end 
+    end end
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
   mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, this.PostInit)
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.EvaluateCache)
   mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewFloor)
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.onRender)
+  mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.updateCollectibles)
 end
+
 
 return this

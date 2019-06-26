@@ -97,7 +97,7 @@ function this:die(npc)
        params.FallingAccelModifier = 1.2 
        params.Variant = Utils.choose(0, 1)
 
-       local velocity = Vector(Utils.choose(math.random(-6, -1), math.random(1, 6)), Utils.choose(math.random(-6, -1), math.random(1, 6)))
+       local velocity = Vector(Utils.choose(math.random(-5, -1), math.random(1, 5)), Utils.choose(math.random(-5, -1), math.random(1, 5)))
        npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
     end
 end

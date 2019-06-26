@@ -11,6 +11,7 @@ function this:soultesPill(soultemesisPill)
     local position = Isaac.GetFreeNearPosition(player.Position,1)
     Isaac.Spawn(5, 10, 8, position, vectorZero, player)
   end
+  player:AnimateSad()
 end
 
 Isaac.AddPillEffectToPool(this.id)
