@@ -50,7 +50,9 @@ deliveranceContent = {
     airStrike                 = require 'scripts.items.airStrike',
     lawful                    = require 'scripts.items.lawful',
     bileKnight                = require 'scripts.items.familiars.bileKnight',
-    dangerRoom                = require 'scripts.items.dangerRoom'
+    dangerRoom                = require 'scripts.items.dangerRoom',
+    theThreater               = require 'scripts.items.familiars.theThreater',
+    beanborne                 = require 'scripts.items.familiars.beanborne'
   },
 
   trinkets = {

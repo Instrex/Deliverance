@@ -30,6 +30,8 @@
   <familiar name="Scaredy-shroom" description="'Who's there?'" gfx="collectibles_scaredyShroom.png"/>
   <familiar name="Edgeless Cube Battery" description="Safe and effective!" gfx="collectibles_roundBattery.png"/>
   <familiar name="Bile Knight" description="He has some complexes" gfx="collectibles_bileKnight.png"/>
+  <familiar name="The Threater" description="Shocking buddy!" gfx="collectibles_theThreater.png"/>
+  <familiar name="Beanborne" description="Real human bean" gfx="collectibles_beanborne.png"/>
 
   <trinket name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
   <trinket name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />

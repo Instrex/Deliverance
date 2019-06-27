@@ -14,6 +14,7 @@
        <Item Name="Air Strike!" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Lil Tummy" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Scaredy-shroom" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Beanborne" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -47,6 +48,7 @@
       <Item Name="Good Old Friend" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
 
     <!-- Greed Itempools -->
@@ -61,6 +63,7 @@
        <Item Name="Air Strike!" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Lil Tummy" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Scaredy-shroom" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Beanborne" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedShop">
        <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -85,6 +88,7 @@
       <Item Name="Good Old Friend" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="secret">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

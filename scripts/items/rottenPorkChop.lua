@@ -32,6 +32,9 @@ function this:rottenUpdate(player)
       fart:GetSprite():Play("Fart")
       local fartSize = Utils.choose(1, 1.25, 1.5, 1.75, 2)
       fart:GetSprite().Scale = Vector(fartSize, fartSize)
+      local data = fart:GetData()
+      data.radius = 32*fartSize
+      data.fartDamage = 1
     end
     --[[
     if this.bTimer<15 then this.bTimer=this.bTimer+1 end
@@ -63,21 +66,22 @@ function this:updateFart(npc)
   if npc.Variant == this.variant then
     local player = Isaac.GetPlayer(0)
     local sprite = npc:GetSprite()
+    local data = npc:GetData()
 --  sprite.Rotation = npc.Velocity:GetAngleDegrees() + 90
     npc.Velocity = npc.Velocity * 0.85
 
     if sprite:IsFinished("Fart") then npc:Remove() end
 
-    for e, enemies in pairs(Isaac.FindInRadius(npc.Position, 32, EntityPartition.ENEMY)) do
+    for e, enemies in pairs(Isaac.FindInRadius(npc.Position, data.radius, EntityPartition.ENEMY)) do
      if enemies:IsActiveEnemy() and not enemies:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then 
       if player:HasCollectible(202) then  
-         enemies:AddPoison(EntityRef(nil), 120, 2) 
+         enemies:AddPoison(EntityRef(nil), 120, 2*data.fartDamage) 
       elseif player:HasCollectible(378) then  
-         enemies:AddPoison(EntityRef(nil), 80, 4) 
+         enemies:AddPoison(EntityRef(nil), 80, 4*data.fartDamage) 
       elseif player:HasCollectible(202) and player:HasCollectible(378) then  
-         enemies:AddPoison(EntityRef(nil), 150, 5) 
+         enemies:AddPoison(EntityRef(nil), 150, 5*data.fartDamage) 
       else
-         enemies:AddPoison(EntityRef(nil), 80, 2) 
+         enemies:AddPoison(EntityRef(nil), 80, 2*data.fartDamage) 
       end
      end
     end

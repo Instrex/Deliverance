@@ -1,6 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Danger Room")
-this.description = "Gives half of an soul heart each time you use a card/rune"
+this.description = "Tracks nearby enemy projectiles, filling the scale of danger#After filling the scale gives a random pick-up item"
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
@@ -20,7 +20,6 @@ function this:Update()
    if player:HasCollectible(this.id) then
       if deliveranceData.temporary.dangerBarUsed == nil then deliveranceData.temporary.dangerBarUsed = 1 end
       if deliveranceData.temporary.dangerBar == nil then deliveranceData.temporary.dangerBar = 0 end
-      print(deliveranceData.temporary.dangerBarUsed)
       for i,proj in ipairs(Isaac.FindByType(EntityType.ENTITY_PROJECTILE, -1, -1, true)) do
          if ((player.Position):Distance(proj.Position) < proj.Size*7 + player.Size) and not room:IsClear() and this.backTimer3==0 and not player:IsDead() and deliveranceData.temporary.dangerBarUsed<4 then
             this.barOpacity=false
