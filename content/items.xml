@@ -9,6 +9,7 @@
   <active name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
   <active name="Battle Royale" description="'My life is nothing but spectacle'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
   <active name="Air Strike!" description="Incoming!" gfx="collectibles_airStrike.png" maxcharges="4"/>
+  <active name="The Divider" description="Divides into elementary particles" gfx="collectibles_theDivider.png" maxcharges="3"/>
 
   <passive name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="tearcolor" />
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
@@ -21,8 +22,9 @@
   <passive name="Rotten Pork Chop" description="Ass killer" gfx="collectibles_rottenPorkChop.png" maxhearts="2" hearts="3" cache="tearcolor"/>
   <passive name="Dr. Medicine" description="Pills for breakfast, lunch and dinner" gfx="collectibles_drMedicine.png" cache="tearcolor"/>
   <passive name="The Manuscript" description="It's about cards?" gfx="collectibles_manuscript.png" cache="tearcolor"/>
-  <passive name="Lawful" description="Take that you want, alright?" gfx="collectibles_lawful.png"/>
+  <passive name="Lawful" description="Take that you want, alright?" gfx="collectibles_lawful.png" cache="tearcolor"/>
   <passive name="Danger Room" description="Perfect for thrill-seekers" gfx="collectibles_dangerRoom.png" cache="tearcolor"/>
+  <passive name="Sinister Shalk" description="For sinister friendship" gfx="collectibles_sinisterShalk.png"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>

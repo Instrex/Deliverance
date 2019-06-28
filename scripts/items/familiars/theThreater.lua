@@ -69,7 +69,7 @@ function this.shot(fam)
        if gD == Direction.LEFT then angle = 180 end
        if gD == Direction.UP then angle = 270 end
        for e, entity in pairs(Isaac.GetRoomEntities()) do 
-          if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then 
+          if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:HasEntityFlags(EntityFlag.FLAG_NO_TARGET) and entity:IsVulnerableEnemy() then 
              if (gD == Direction.RIGHT and entity.Position.X>fam.Position.X and entity.Position.Y<fam.Position.Y+64 and entity.Position.Y>fam.Position.Y-64) or
                 (gD == Direction.DOWN and entity.Position.Y>fam.Position.Y and entity.Position.X<fam.Position.X+64 and entity.Position.X>fam.Position.X-64) or
                 (gD == Direction.LEFT and entity.Position.X<fam.Position.X and entity.Position.Y<fam.Position.Y+64 and entity.Position.Y>fam.Position.Y-64) or

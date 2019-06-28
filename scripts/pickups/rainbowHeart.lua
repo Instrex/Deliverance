@@ -27,7 +27,7 @@ function this:updateHeart(pickup)
   if pickup.Variant == PickupVariant.PICKUP_HEART then
       local data = pickup:GetData()
       if data.change == nil then
-       if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED or pickup.SubType == HeartSubType.HEART_HALF then
+       if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED then
          if utils.chancep(1) then
              Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)
              pickup:Remove()

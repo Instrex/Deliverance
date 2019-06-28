@@ -3,6 +3,8 @@
        <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Lighter" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="treasure">
        <Item Name="Sailor Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -23,9 +25,14 @@
       <Item Name="The Covenant" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Adam's Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+    </Pool>
+    <Pool Name="redChest">
+      <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="goldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="shop">
       <Item Name="Golden Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -90,16 +97,20 @@
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
-    <Pool Name="secret">
+    <Pool Name="greedSecret">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedCurse">
       <Item Name="The Covenant" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Adam's Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedGoldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
 </ItemPools>

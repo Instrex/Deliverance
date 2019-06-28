@@ -6,7 +6,7 @@ this.isActive = true
 function this.use()
   sfx:Play(Isaac.GetSoundIdByName("Spawn"), 1, 0, false, 1)
   for e, entity in pairs(Isaac.GetRoomEntities()) do 
-     if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:IsBoss() then 
+     if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:HasEntityFlags(EntityFlag.FLAG_NO_TARGET) and not entity:IsBoss() and entity:IsVulnerableEnemy() then 
         local clone = Game():Spawn(entity.Type, entity.Variant, entity.Position, vectorZero, entity, 0, 1):ToNPC()
 --      clone.HitPoints = entity.HitPoints/1.25
         clone:SetSize(9, Vector(1,1), 12)

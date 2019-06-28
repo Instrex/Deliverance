@@ -52,7 +52,9 @@ deliveranceContent = {
     bileKnight                = require 'scripts.items.familiars.bileKnight',
     dangerRoom                = require 'scripts.items.dangerRoom',
     theThreater               = require 'scripts.items.familiars.theThreater',
-    beanborne                 = require 'scripts.items.familiars.beanborne'
+    beanborne                 = require 'scripts.items.familiars.beanborne',
+    theDivider                = require 'scripts.items.theDivider',
+    sinisterShalk             = require 'scripts.items.sinisterShalk'
   },
 
   trinkets = {
@@ -139,7 +141,8 @@ deliveranceContent = {
     hotmilk                   = utils.getCostume('hotmilk'),
     adamsRib2                 = utils.getCostume('adamsRib2'),
     manuscript                = utils.getCostume('manuscript'),
-    dangerRoom                = utils.getCostume('dangerRoom')
+    dangerRoom                = utils.getCostume('dangerRoom'),
+    lawful                    = utils.getCostume('lawful')
   }
 }
 
