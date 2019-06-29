@@ -22,14 +22,6 @@ end
 function this:onHitNPC(npc,damage,flags,source)
   local player = Isaac.GetPlayer(0)
   if npc:IsVulnerableEnemy() and player:HasCollectible(this.id) then
---     for e, entity in pairs(Isaac.GetRoomEntities()) do 
---        if source.Entity and source.Entity.Index == entity.Index and entity.SpawnerType == 1 then 
---           if math.random(1, 8-(math.min(player.Luck, 6))) == 2 then
---              sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
---              Isaac.Spawn(1000, this.variant, 0, npc.Position, vectorZero, nil)
---           end
---        end
---     end 
      if not npc:GetData().doubleDamaged then
         npc:GetData().doubleDamaged = true
         sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)

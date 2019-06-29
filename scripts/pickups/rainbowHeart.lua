@@ -28,7 +28,8 @@ function this:updateHeart(pickup)
       local data = pickup:GetData()
       if data.change == nil then
        if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED then
-         if utils.chancep(1) and deliveranceData.persistent.awanAchievements[2] then
+         deliveranceData.persistent.awanAchievements=deliveranceData.persistent.awanAchievements or {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+         if utils.chancep(1) and deliveranceData.persistent.awanAchievements[2] == true and deliveranceData.persistent.awanAchievements[2]~=nil then
              Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)
              pickup:Remove()
          end

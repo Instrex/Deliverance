@@ -56,7 +56,7 @@ function this:Update()
 
       if not deliveranceData.temporary.awanStartUp then
          deliveranceData.temporary.materials = deliveranceData.temporary.materials or {0, 0, 0, 0, 0}
-         deliveranceData.persistent.awanAchievements = deliveranceData.persistent.awanAchievements or {0, 0, 0}
+         deliveranceData.persistent.awanAchievements = deliveranceData.persistent.awanAchievements or {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
          player:AddCard(Card.CARD_DICE_SHARD)
          deliveranceData.temporary.awanStartUp=true
          deliveranceDataHandler.directSave() 
@@ -278,7 +278,6 @@ function this:onRender()
          AchSprite:RenderLayer(1, Utils.getScreenCenterPosition()+Vector(0,-30))
          AchSprite:RenderLayer(2, Utils.getScreenCenterPosition()+Vector(0,-30))
       end
-      print(AchTimer)
    end
 end
 
