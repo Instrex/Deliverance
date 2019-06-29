@@ -76,6 +76,7 @@ function this:onRender()
       if deliveranceData.temporary.dangerBar~=nil and deliveranceData.temporary.dangerBar>0 and not player:IsDead() then
          local pos = room:WorldToScreenPosition(player.Position)
          if not this.barOpacity then DangerBar:SetFrame("Idle", deliveranceData.temporary.dangerBar) else DangerBar:SetFrame("IdleTransparent", deliveranceData.temporary.dangerBar) end
+         DangerBar:RenderLayer(2, Vector(pos.X,pos.Y))
          DangerBar:RenderLayer(0, Vector(pos.X,pos.Y))
          DangerBar:RenderLayer(1, Vector(pos.X,pos.Y))
       end

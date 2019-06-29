@@ -30,6 +30,7 @@ function _awan_getCurrentMaterialInfo()
 end
 
 local needToSpawnCauldron = false
+
 function this.checkForCauldron()
   local count = 0
   for _, e in pairs(Isaac.GetRoomEntities()) do
@@ -55,6 +56,7 @@ function this:Update()
 
       if not deliveranceData.temporary.awanStartUp then
          deliveranceData.temporary.materials = deliveranceData.temporary.materials or {0, 0, 0, 0, 0}
+         deliveranceData.persistent.awanAchievements = deliveranceData.persistent.awanAchievements or {0, 0, 0}
          player:AddCard(Card.CARD_DICE_SHARD)
          deliveranceData.temporary.awanStartUp=true
          deliveranceDataHandler.directSave() 
@@ -82,7 +84,7 @@ function this:Update()
       for e, collect in pairs(Isaac.GetRoomEntities()) do 
 
          if collect.Type == 5 then 
-            if (collect.Variant == 150 or collect.Variant == 100) and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
+            if (collect.Variant == 150 or collect.Variant == 100) and room:GetType() ~= RoomType.ROOM_BOSSRUSH and this.checkForCauldron()==0 and collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
                
                Isaac.Spawn(1000, 15, 0, collect.Position, vectorZero, npc)
                sfx:Play(Utils.choose(SoundEffect.SOUND_POWERUP1,SoundEffect.SOUND_POWERUP2,SoundEffect.SOUND_POWERUP3), 0.25, 0, false, 0.825) 
@@ -138,12 +140,23 @@ function this:Update()
 
       if needToSpawnCauldron then 
          if game.Difficulty==0 or game.Difficulty==1 then
-            this.spawnCauldron(Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1))
-            needToSpawnCauldron = false
+            if stage == LevelStage.STAGE4_3 then 
+                this.spawnCauldron(Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(0, 160), 1))
+                needToSpawnCauldron = false
+            else
+                this.spawnCauldron(Isaac.GetFreeNearPosition(room:GetCenterPos() - Vector(100, 80), 1))
+                needToSpawnCauldron = false
+            end
       
-         elseif (game.Difficulty==2 or game.Difficulty==3) and room:GetType() == RoomType.ROOM_TREASURE then
-            this.spawnCauldron(room:GetCenterPos() - Vector(0, 50))
-            needToSpawnCauldron = false
+         elseif (game.Difficulty==2 or game.Difficulty==3) then
+            if stage ~= 6 and stage ~= 7 and room:GetType() == RoomType.ROOM_TREASURE then
+               this.spawnCauldron(room:GetCenterPos() - Vector(0, 50))
+               needToSpawnCauldron = false
+            end
+            if stage == 6 then
+               this.spawnCauldron(room:GetCenterPos() - Vector(133, 250))
+               needToSpawnCauldron = false
+            end
          end
       end
 
@@ -154,9 +167,11 @@ function this:Update()
 
    else
       for e, collect in pairs(Isaac.GetRoomEntities()) do 
-         if collect.Type == 5 and collect.Variant == 350 and isCauldronComponent(collect.SubType) then
-            Isaac.Spawn(5, 350, 0, collect.Position, vectorZero, player)
-            collect:Remove()
+         if collect.Type == 5 then
+            if collect.Variant == 350 and isCauldronComponent(collect.SubType) then
+               Isaac.Spawn(5, 350, 0, collect.Position, vectorZero, player)
+               collect:Remove()
+            end
          end 
       end
    end
@@ -201,25 +216,11 @@ function this:EvaluateCache(player, cacheFlag)
 end
 
 local HudMaterials = Sprite() HudMaterials:Load("gfx/ui/hudMaterials.anm2", true)
-local HudNumbers = Sprite() HudNumbers:Load("gfx/ui/hudNumbers.anm2", true)
 local HudChoose = Sprite() HudChoose:Load("gfx/ui/hudChooseMaterial.anm2", true)
 local HudHint = Sprite() HudHint:Load("gfx/ui/hudHint.anm2", true)
-HudChoose:Play("Idle", false)
-   
-function RenderNumber(n, Position)
-   n = n or 0
-   if n == 0 then 
-      HudNumbers:SetFrame("Idle", 10)
-      HudNumbers:RenderLayer(0,Position)
-      HudNumbers:RenderLayer(0,Position+Vector(6,0))
-
-   else
-      HudNumbers:SetFrame("Idle", math.floor(n/10))
-      HudNumbers:RenderLayer(0,Position)
-      HudNumbers:SetFrame("Idle", n % 10)
-      HudNumbers:RenderLayer(0,Position+Vector(6,0))
-   end
-end
+local AchSprite = Sprite() AchSprite:Load("gfx/ui/achievement/achievement.anm2", true)
+local AchName = "gfx/ui/achievement/achievement_awan1.png"
+local AchTimer = 0
 
 function this:onRender()
    local player = Isaac.GetPlayer(0)
@@ -227,7 +228,7 @@ function this:onRender()
       for i=1, #deliveranceData.temporary.materials do 
         HudMaterials:SetFrame("Idle", i-1)
         HudMaterials:RenderLayer(0, Vector(-8+i*16,226))
-        RenderNumber(deliveranceData.temporary.materials[i], Vector(-7+i*16,244))
+        Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-7+i*16,244))
       end
 
       if this.checkForCauldron()~=0 then
@@ -257,11 +258,52 @@ function this:onRender()
                break
             end
          end
-
          if not selected then 
             HudChoose:Play("None", false)
          end
+      end      
+   
+      if AchName~=nil and AchTimer>0 then
+         AchTimer = AchTimer + 1
+         AchSprite:SetFrame("Appear", AchTimer)
+         AchSprite:ReplaceSpritesheet(2, AchName)
+        
+         AchSprite:LoadGraphics()
+  
+         if AchTimer>=152 then
+            
+            AchTimer=0 
+         end
+         AchSprite:RenderLayer(0, Utils.getScreenCenterPosition()+Vector(0,-30))
+         AchSprite:RenderLayer(1, Utils.getScreenCenterPosition()+Vector(0,-30))
+         AchSprite:RenderLayer(2, Utils.getScreenCenterPosition()+Vector(0,-30))
       end
+      print(AchTimer)
+   end
+end
+
+-- Callbacks --
+
+function this:die(npc) 
+   local player = Isaac.GetPlayer(0)
+   if player:GetPlayerType() == this.playerAwan then 
+      if npc.Type == 45 then
+         this.playAchievement(1)
+      elseif npc.Type == 102 then
+         this.playAchievement(2)
+      elseif npc.Type == 84 then
+         this.playAchievement(3)
+      end
+   end
+end
+
+function this.playAchievement(id)
+   if deliveranceData.persistent.awanAchievements[id]~=1 then
+      sfx:Play(8, 1, 0, false, 1) 
+      AchTimer=1
+      AchName="gfx/ui/achievement/achievement_awan" .. id ..".png"
+      deliveranceData.persistent.awanAchievements[id]=1
+      deliveranceDataHandler.directSave() 
    end
 end
 
@@ -271,7 +313,6 @@ function this.spawnCauldron(pos)
    sfx:Play(SoundEffect.SOUND_SUMMONSOUND, 0.75, 0, false, 1)
 end
 
--- Callbacks --
 function this.onNewFloor()
    needToSpawnCauldron = true
 end
@@ -284,6 +325,14 @@ function this:updateCollectible(collect)
            collect.Visible=false
            collect.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
         end
+        if collect.SubType == Isaac.GetItemIdByName("Mom's Earrings") and not deliveranceData.persistent.awanAchievements[1] then
+           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_TREASURE,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+           collect:Remove()
+        end
+        if collect.SubType == Isaac.GetItemIdByName("Sinister Shalk") and not deliveranceData.persistent.awanAchievements[3] then
+           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_CURSE,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+           collect:Remove()
+        end
      end
   end
 end
@@ -295,6 +344,7 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewFloor)
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.onRender)
   mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.updateCollectible)
+  mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die)
 end
 
 

@@ -94,6 +94,62 @@ function Utils.contains(table, element)
   
   return false
 end
+ 
+function Utils.playAchievement(name)
+         
+  sprite = Sprite()
+        
+  sprite:Load("gfx/ui/achievement/achievement.anm2", true)
+        
+  sprite:ReplaceSpritesheet(2, name)
+        
+  sprite:LoadGraphics()
+        
+    
+end
+    
+
+function Utils.getScreenCenterPosition()
+     
+    local room = Game():GetRoom()
+    local shape = room:GetRoomShape()
+    local centerOffset = (room:GetCenterPos()) - room:GetTopLeftPos()
+    local pos = room:GetCenterPos()
+    if centerOffset.X > 260 then
+        pos.X = pos.X - 260
+    end
+    if shape == RoomShape.ROOMSHAPE_LBL or shape == RoomShape.ROOMSHAPE_LTL then
+        pos.X = pos.X - 260
+    end
+    if centerOffset.Y > 140 then
+        pos.Y = pos.Y - 140
+    end
+    if shape == RoomShape.ROOMSHAPE_LTR or shape == RoomShape.ROOMSHAPE_LTL then
+        pos.Y = pos.Y - 140
+    end
+    return Isaac.WorldToRenderPosition(pos, false)
+end
+
+function Utils.getScreenBottomRight()
+    return Utils.getScreenCenterPosition() * 2
+end
+
+local HudNumbers = Sprite() HudNumbers:Load("gfx/ui/hudNumbers.anm2", true)
+
+function Utils.RenderNumber(n, Position)
+   n = n or 0
+   if n == 0 then 
+      HudNumbers:SetFrame("Idle", 10)
+      HudNumbers:RenderLayer(0,Position)
+      HudNumbers:RenderLayer(0,Position+Vector(6,0))
+
+   else
+      HudNumbers:SetFrame("Idle", math.floor(n/10))
+      HudNumbers:RenderLayer(0,Position)
+      HudNumbers:SetFrame("Idle", n % 10)
+      HudNumbers:RenderLayer(0,Position+Vector(6,0))
+   end
+end
 
 function string:split(sep)
   local sep, fields = sep or ", ", {}

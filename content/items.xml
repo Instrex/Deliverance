@@ -24,7 +24,8 @@
   <passive name="The Manuscript" description="It's about cards?" gfx="collectibles_manuscript.png" cache="tearcolor"/>
   <passive name="Lawful" description="Take that you want, alright?" gfx="collectibles_lawful.png" cache="tearcolor"/>
   <passive name="Danger Room" description="Perfect for thrill-seekers" gfx="collectibles_dangerRoom.png" cache="tearcolor"/>
-  <passive name="Sinister Shalk" description="For sinister friendship" gfx="collectibles_sinisterShalk.png"/>
+  <passive name="Sinister Shalk" description="Behind the shadows" gfx="collectibles_sinisterShalk.png"/>
+  <passive name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>

@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="Unknown" CreatedOn="26.06.2019 17:26:53" Version="33" Fps="30"/>
+	<Info CreatedBy="Unknown" CreatedOn="29.06.2019 13:35:52" Version="36" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="dangerRoom_bar.png" Id="0"/>
@@ -7,6 +7,7 @@
 		<Layers>
 			<Layer Name="" Id="0" SpritesheetId="0"/>
 			<Layer Name="Bar" Id="1" SpritesheetId="0"/>
+			<Layer Name="Back" Id="2" SpritesheetId="0"/>
 		</Layers>
 		<Nulls/>
 		<Events/>
@@ -17,6 +18,10 @@
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
 			<LayerAnimations>
+				<LayerAnimation LayerId="2" Visible="true">
+					<Frame XPosition="0" YPosition="13" XPivot="16" YPivot="7" XCrop="0" YCrop="0" Width="32" Height="16" XScale="200" YScale="200" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="0" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="13" XPivot="16" YPivot="7" XCrop="0" YCrop="0" Width="32" Height="16" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="200" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+				</LayerAnimation>
 				<LayerAnimation LayerId="0" Visible="true">
 					<Frame XPosition="0" YPosition="20" XPivot="16" YPivot="14" XCrop="0" YCrop="0" Width="32" Height="16" XScale="100" YScale="100" Delay="25" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="225" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 				</LayerAnimation>
@@ -33,6 +38,10 @@
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
 			<LayerAnimations>
+				<LayerAnimation LayerId="2" Visible="true">
+					<Frame XPosition="0" YPosition="13" XPivot="16" YPivot="7" XCrop="0" YCrop="0" Width="32" Height="16" XScale="200" YScale="200" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="0" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="13" XPivot="16" YPivot="7" XCrop="0" YCrop="0" Width="32" Height="16" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="50" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+				</LayerAnimation>
 				<LayerAnimation LayerId="0" Visible="true">
 					<Frame XPosition="0" YPosition="20" XPivot="16" YPivot="14" XCrop="0" YCrop="0" Width="32" Height="16" XScale="100" YScale="100" Delay="25" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="50" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 				</LayerAnimation>

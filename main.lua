@@ -54,7 +54,8 @@ deliveranceContent = {
     theThreater               = require 'scripts.items.familiars.theThreater',
     beanborne                 = require 'scripts.items.familiars.beanborne',
     theDivider                = require 'scripts.items.theDivider',
-    sinisterShalk             = require 'scripts.items.sinisterShalk'
+    sinisterShalk             = require 'scripts.items.sinisterShalk',
+    momsEarrings              = require 'scripts.items.momsEarrings'
   },
 
   trinkets = {
@@ -142,7 +143,8 @@ deliveranceContent = {
     adamsRib2                 = utils.getCostume('adamsRib2'),
     manuscript                = utils.getCostume('manuscript'),
     dangerRoom                = utils.getCostume('dangerRoom'),
-    lawful                    = utils.getCostume('lawful')
+    lawful                    = utils.getCostume('lawful'),
+    momsEarrings              = utils.getCostume('momsEarrings')
   }
 }
 
