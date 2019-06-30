@@ -3,7 +3,6 @@ this.costume = Isaac.GetCostumeIdByPath("gfx/characters/costumes/character_awan.
 this.playerAwan = Isaac.GetPlayerTypeByName("Awan")
 
 this.speedBonus = 0
-
 this.currentSlot = 1
 local MaterialMap = {
    [CauldronMaterialID.gunpowder] = 1,
