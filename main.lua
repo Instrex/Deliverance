@@ -55,7 +55,9 @@ deliveranceContent = {
     beanborne                 = require 'scripts.items.familiars.beanborne',
     theDivider                = require 'scripts.items.theDivider',
     sinisterShalk             = require 'scripts.items.sinisterShalk',
-    momsEarrings              = require 'scripts.items.momsEarrings'
+    momsEarrings              = require 'scripts.items.momsEarrings',
+    timeGal                   = require 'scripts.items.timeGal',
+    silverBar                 = require 'scripts.items.silverBar'
   },
 
   trinkets = {

@@ -136,9 +136,9 @@ end
 
 local HudNumbers = Sprite() HudNumbers:Load("gfx/ui/hudNumbers.anm2", true)
 
-function Utils.RenderNumber(n, Position)
+function Utils.RenderNumber(n, Position, blackNil)
    n = n or 0
-   if n == 0 then 
+   if n == 0 and blackNil then 
       HudNumbers:SetFrame("Idle", 10)
       HudNumbers:RenderLayer(0,Position)
       HudNumbers:RenderLayer(0,Position+Vector(6,0))

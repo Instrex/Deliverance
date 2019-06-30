@@ -51,12 +51,14 @@
       <Item Name="Bloody Stream" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Gasoline" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Time Gal" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="angel">
       <Item Name="Good Old Friend" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Time Gal" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
 
     <!-- Greed Itempools -->
@@ -85,6 +87,7 @@
        <Item Name="Dr. Medicine" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Edgeless Cube Battery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Manuscript" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedDevil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

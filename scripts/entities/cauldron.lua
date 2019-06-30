@@ -119,9 +119,9 @@ function this:behaviour(npc)
     end
 
     if sprite:IsEventTriggered("CauldronProcess") then
-      --sfx:Play(SoundEffect.SOUND_METAL_BLOCKBREAK , 1, 0, false, math.random(7, 9) / 10)
       sfx:Play(Isaac.GetSoundIdByName("CauldronJump"), 0.8, 0, false, 1.2)
       sfx:Play(212, 1.2, 0, false, math.random(7, 9) / 10)
+      Game():ShakeScreen(6)
     end
 
     if sprite:IsFinished("Process") then

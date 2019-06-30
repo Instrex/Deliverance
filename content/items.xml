@@ -26,6 +26,8 @@
   <passive name="Danger Room" description="Perfect for thrill-seekers" gfx="collectibles_dangerRoom.png" cache="tearcolor"/>
   <passive name="Sinister Shalk" description="Behind the shadows" gfx="collectibles_sinisterShalk.png"/>
   <passive name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor"/>
+  <passive name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
+  <passive name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>

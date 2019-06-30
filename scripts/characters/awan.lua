@@ -228,7 +228,7 @@ function this:onRender()
       for i=1, #deliveranceData.temporary.materials do 
         HudMaterials:SetFrame("Idle", i-1)
         HudMaterials:RenderLayer(0, Vector(-8+i*16,226))
-        Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-7+i*16,244))
+        Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-7+i*16,244), true)
       end
 
       if this.checkForCauldron()~=0 then
