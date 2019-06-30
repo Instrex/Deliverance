@@ -148,14 +148,13 @@ function this:Update()
                 needToSpawnCauldron = false
             end
       
-         elseif (game.Difficulty==2 or game.Difficulty==3) then
-            if stage ~= 6 and stage ~= 7 and room:GetType() == RoomType.ROOM_TREASURE then
-               this.spawnCauldron(room:GetCenterPos() - Vector(0, 50))
-               needToSpawnCauldron = false
+         elseif game.Difficulty==2 or game.Difficulty==3 then
+            if stage ~= 6 and stage ~= 7 then
+               this.spawnGreedCauldron(room:GetCenterPos() - Vector(0, 50), 98)
             end
+
             if stage == 6 then
-               this.spawnCauldron(room:GetCenterPos() - Vector(133, 250))
-               needToSpawnCauldron = false
+               this.spawnGreedCauldron(room:GetCenterPos() - Vector(133, 250), game:GetLevel():GetCurrentRoomIndex())
             end
          end
       end
@@ -175,6 +174,11 @@ function this:Update()
          end 
       end
    end
+end
+
+function this.spawnGreedCauldron(pos, room)
+   npcPersistence.addPhantom(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), pos.X, pos.Y, room)
+   needToSpawnCauldron = false
 end
 
 function this.spawnCauldron(pos)
@@ -282,7 +286,6 @@ function this:onRender()
 end
 
 -- Callbacks --
-
 function this:die(npc) 
    local player = Isaac.GetPlayer(0)
    if player:GetPlayerType() == this.playerAwan then 

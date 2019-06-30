@@ -72,6 +72,18 @@ function this.restore()
     end
 end
 
+function this.addPhantom(type, variant, x, y, room, data)
+    table.insert(register, {
+        type = type,
+        variant = variant,
+        x = x,
+        y = y,
+        data = data,
+        room = room,
+        index = math.random(-10000, 10000)
+    })
+end
+
 function this._add(entity)
     local registryData = {
         type = entity.Type,
