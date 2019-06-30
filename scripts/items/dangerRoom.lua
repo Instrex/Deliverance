@@ -84,10 +84,13 @@ function this:onRender()
 end
 
 function this:updateRoom()
+   local player = Isaac.GetPlayer(0)
    local room = game:GetRoom()
-   if room:IsFirstVisit() then
-     deliveranceData.temporary.dangerBarUsed=1
-     deliveranceDataHandler.directSave() 
+   if player:HasCollectible(this.id) then
+     if room:IsFirstVisit() then
+       deliveranceData.temporary.dangerBarUsed=1
+       deliveranceDataHandler.directSave() 
+     end
    end
 end
 

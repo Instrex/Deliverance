@@ -13,8 +13,12 @@ end
 
 -- MC_POST_NEW_LEVEL
 function this.onNewFloor() 
-    deliveranceData.temporary.lawfulPool = math.random(0, ItemPoolType.NUM_ITEMPOOLS)
-    deliveranceDataHandler.directSave()
+   local player = Isaac.GetPlayer(0)
+
+   if player:HasCollectible(this.id) then 
+     deliveranceData.temporary.lawfulPool = math.random(0, ItemPoolType.NUM_ITEMPOOLS)
+     deliveranceDataHandler.directSave()
+   end
 end
 
 --[[
