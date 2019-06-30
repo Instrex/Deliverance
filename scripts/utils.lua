@@ -61,7 +61,7 @@ end
 -- if Utils.switchData('something') then
 --  ...
 -- end
-function Utils.switchData(key, value, type)
+function Utils.switchData(key, type, value)
   type = type or 'temporary'
   value = value or true
   if not deliveranceData[type][key] then 

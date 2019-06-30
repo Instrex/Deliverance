@@ -56,7 +56,6 @@ function this:Update()
       if not deliveranceData.temporary.awanStartUp then
          deliveranceData.temporary.deletedFirstItem = deliveranceData.temporary.deletedFirstItem or false
          deliveranceData.temporary.materials = deliveranceData.temporary.materials or {0, 0, 0, 0, 0}
-         deliveranceData.persistent.awanAchievements = deliveranceData.persistent.awanAchievements or {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
          player:AddCard(Card.CARD_DICE_SHARD)
          deliveranceData.temporary.awanStartUp=true
          deliveranceDataHandler.directSave() 
@@ -304,21 +303,28 @@ function this:die(npc)
    local player = Isaac.GetPlayer(0)
    if player:GetPlayerType() == this.playerAwan then 
       if npc.Type == 45 then
-         this.playAchievement(1)
-      elseif npc.Type == 102 then
-         this.playAchievement(2)
-      elseif npc.Type == 84 then
-         this.playAchievement(3)
+         this.playAchievement('unlockedMomsEarrings',"momsEarrings")
+      elseif npc.Type == 102 and npc.Variant == 0 then
+         this.playAchievement('unlockedSilverBar',"silverBar")
+      elseif npc.Type == 84 and npc.Variant == 10 then
+         this.playAchievement('unlockedSinisterShalk',"sinisterShalk")
+      elseif npc.Type == 102 and npc.Variant == 1 then
+         this.playAchievement('unlockedTimeGal',"timeGal")
+      elseif npc.Type == 273 then
+         this.playAchievement('unlockedTheDivider',"theDivider")
+      elseif npc.Type == 407 then
+         this.playAchievement('unlockedRainbowHearts',"rainbowHearts")
+      elseif npc.Type == 275 then
+         this.playAchievement('unlockedLawful',"lawful")
       end
    end
 end
 
-function this.playAchievement(id)
-   if deliveranceData.persistent.awanAchievements[id]~=1 then
+function this.playAchievement(type, name)
+   if Utils.switchData(type,'persistent') then
       sfx:Play(8, 1, 0, false, 1) 
       AchTimer=1
-      AchName="gfx/ui/achievement/achievement_awan" .. id ..".png"
-      deliveranceData.persistent.awanAchievements[id]=1
+      AchName="gfx/ui/achievement/achievement_" .. name ..".png"
       deliveranceDataHandler.directSave() 
    end
 end
@@ -340,9 +346,9 @@ function this:updateCollectible(collect)
   local level = game:GetLevel()
   local stage = level:GetStage()
   local room = game:GetRoom()
-  if player:GetPlayerType() == this.playerAwan then
-     if collect.Type == 5 then 
-        if (collect.Variant == 150 or collect.Variant == 100) then 
+  if collect.Type == 5 then 
+     if (collect.Variant == 150 or collect.Variant == 100) then 
+        if player:GetPlayerType() == this.playerAwan then
            if room:GetType() ~= RoomType.ROOM_BOSSRUSH then 
               if (this.checkForCauldron()==0 and (game.Difficulty==0 or game.Difficulty==1)) 
                  or ((game.Difficulty==2 or game.Difficulty==3) and (level:GetCurrentRoomIndex() ~= 98 or (level:GetCurrentRoomIndex() == 98 and not deliveranceData.temporary.deletedFirstItem))) then
@@ -356,12 +362,28 @@ function this:updateCollectible(collect)
               end
            end
         end
-        if collect.SubType == Isaac.GetItemIdByName("Mom's Earrings") and not deliveranceData.persistent.awanAchievements[1] then
+        if collect.SubType == Isaac.GetItemIdByName("Mom's Earrings") and not deliveranceData.persistent.unlockedMomsEarrings then
            Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_TREASURE,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
            collect:Remove()
         end
-        if collect.SubType == Isaac.GetItemIdByName("Sinister Shalk") and not deliveranceData.persistent.awanAchievements[3] then
+        if collect.SubType == Isaac.GetItemIdByName("Sinister Shalk") and not deliveranceData.persistent.unlockedSinisterShalk then
            Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_CURSE,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+           collect:Remove()
+        end
+        if collect.SubType == Isaac.GetItemIdByName("Time Gal") and not deliveranceData.persistent.unlockedTimeGal then
+           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_DEVIL,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+           collect:Remove()
+        end
+        if collect.SubType == Isaac.GetItemIdByName("Lawful") and not deliveranceData.persistent.unlockedLawful then
+           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_ANGEL,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+           collect:Remove()
+        end
+        if collect.SubType == Isaac.GetItemIdByName("The Divider") and not deliveranceData.persistent.unlockedTheDivider then
+           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_SECRET,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+           collect:Remove()
+        end
+        if collect.SubType == Isaac.GetItemIdByName("Silver Bar") and not deliveranceData.persistent.unlockedSilverBar then
+           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_TREASURE,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
            collect:Remove()
         end
      end
