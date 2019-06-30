@@ -38,6 +38,7 @@ function this:Update()
             poof:GetSprite():ReplaceSpritesheet(0,"gfx/effects/effect_poof2.png")
             poof:GetSprite():LoadGraphics()
             local pos = Isaac.GetFreeNearPosition(player.Position, 1)
+            --[[
             if utils.chancep(60) then
                if utils.chancep(30) then
                    Isaac.Spawn(3, 43, 0, pos, vectorZero, nil)
@@ -56,6 +57,8 @@ function this:Update()
                   end
                end
             end
+            ]]--
+            player:UseActiveItem(97,false,false,false,false)
             sfx:Play(SoundEffect.SOUND_THUMBSUP, 1, 0, false, 1.125)
             --player:AnimateHappy()
             this.backTimer3=60

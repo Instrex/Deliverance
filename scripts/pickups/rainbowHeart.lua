@@ -19,6 +19,7 @@ function this:updateHeart(pickup)
            local poof = Isaac.Spawn(1000, 14, 0, pickup.Position, vectorZero, nil)
            poof:GetSprite():ReplaceSpritesheet(0,"gfx/effects/effect_poof.png")
            poof:GetSprite():LoadGraphics()
+           player:UseActiveItem(58,false,false,false,false)
            player:AddHearts(20)
            pickup:Remove()
         end
