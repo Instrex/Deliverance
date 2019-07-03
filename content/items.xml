@@ -10,6 +10,7 @@
   <active name="Battle Royale" description="'My life is nothing but spectacle'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
   <active name="Air Strike!" description="Incoming!" gfx="collectibles_airStrike.png" maxcharges="4"/>
   <active name="The Divider" description="Divides into elementary particles" gfx="collectibles_theDivider.png" maxcharges="3"/>
+  <active name="Urn of Want" description="Pay blood for dark reward" gfx="collectibles_urnOfWant.png" maxcharges="12" discharged="true"/>
 
   <passive name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="tearcolor" />
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
@@ -28,6 +29,7 @@
   <passive name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor"/>
   <passive name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
   <passive name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>
+  <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>

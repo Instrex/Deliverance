@@ -61,7 +61,7 @@ function this:behaviour(npc)
 
     npc.StateFrame = npc.StateFrame + 1
 
-    if npc.StateFrame>=32 then
+    if npc.StateFrame>=24 then
        npc.State = NpcState.STATE_MOVE
        if data.parent:Exists() and not data.parent:IsDead() then
           data.target2 = room:FindFreePickupSpawnPosition((data.parent.Position+Vector(math.random(-24, 24),math.random(-24, 24))), 32, true)

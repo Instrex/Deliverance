@@ -12,6 +12,7 @@ local this = {
 
 function this:updateHeart(pickup)
   local player = Isaac.GetPlayer(0)
+  local room = game:GetRoom()
   if pickup.Variant == this.variant and pickup.SubType == this.subtype then 
      if player:GetHearts() < player:GetMaxHearts() then
         if (pickup.Position - player.Position):Length() <= pickup.Size + player.Size and not pickup:GetSprite():IsPlaying("Collect") then
@@ -30,7 +31,14 @@ function this:updateHeart(pickup)
       if data.change == nil then
        if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED then
          if utils.chancep(1) and deliveranceData.persistent.unlockedRainbowHearts then
-             Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)
+            
+             if room:GetType() == RoomType.ROOM_SHOP then
+                local pick = Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)
+                pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
+              else
+                Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)
+             end
+             
              pickup:Remove()
          end
        end

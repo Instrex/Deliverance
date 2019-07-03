@@ -5,6 +5,7 @@
        <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Urn Of Want" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="treasure">
        <Item Name="Sailor Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -18,6 +19,7 @@
        <Item Name="Scaredy-shroom" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Beanborne" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Mom's Earrings" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Encharmed Penny" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -40,6 +42,7 @@
       <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Lighter" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Edgeless Cube Battery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Danger Room" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="boss">
       <Item Name="Salty Soup" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -88,6 +91,8 @@
        <Item Name="Edgeless Cube Battery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Manuscript" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Encharmed Penny" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Danger Room" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedDevil">
       <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -107,6 +112,7 @@
       <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Urn Of Want" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedCurse">
       <Item Name="The Covenant" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

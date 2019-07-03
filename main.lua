@@ -57,7 +57,9 @@ deliveranceContent = {
     sinisterShalk             = require 'scripts.items.sinisterShalk',
     momsEarrings              = require 'scripts.items.momsEarrings',
     timeGal                   = require 'scripts.items.timeGal',
-    silverBar                 = require 'scripts.items.silverBar'
+    silverBar                 = require 'scripts.items.silverBar',
+    urnOfWant                 = require 'scripts.items.urnOfWant',
+    encharmedPenny            = require 'scripts.items.encharmedPenny'
   },
 
   trinkets = {

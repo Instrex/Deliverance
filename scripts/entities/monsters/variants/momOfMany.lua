@@ -11,6 +11,7 @@ function this.checkEnemies()
 end
 
 function this:behaviour(npc)
+  local target = npc:GetPlayerTarget()
   if npc.Variant == this.variant or npc.Variant == this.variant2 then
   local sprite = npc:GetSprite()
   if npc.Variant == this.variant2 then
@@ -52,7 +53,7 @@ function this:behaviour(npc)
        end
         for e, gappy in pairs(Isaac.FindInRadius(npc.Position, 128, EntityPartition.ENEMY)) do
            if gappy.Type == Isaac.GetEntityTypeByName("Gappy") and gappy.Variant == Isaac.GetEntityVariantByName("Gappy") then
-              gappy.Velocity = (gappy.Position - npc.Position):Resized(36)
+              gappy.Velocity = (gappy.Position - npc.Position):Resized(42)
            end
         end
     end

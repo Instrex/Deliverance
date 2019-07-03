@@ -21,7 +21,7 @@ function this:Update()
       if deliveranceData.temporary.dangerBarUsed == nil then deliveranceData.temporary.dangerBarUsed = 1 end
       if deliveranceData.temporary.dangerBar == nil then deliveranceData.temporary.dangerBar = 0 end
       for i,proj in ipairs(Isaac.FindByType(EntityType.ENTITY_PROJECTILE, -1, -1, true)) do
-         if ((player.Position):Distance(proj.Position) < proj.Size*7 + player.Size) and not room:IsClear() and this.backTimer3==0 and not player:IsDead() and deliveranceData.temporary.dangerBarUsed<4 then
+         if ((player.Position):Distance(proj.Position) < proj.Size*7 + player.Size) and not room:IsClear() and this.backTimer3==0 and not player:IsDead() and deliveranceData.temporary.dangerBarUsed<11 then
             this.barOpacity=false
             this.backTimer2=10
   	    deliveranceData.temporary.dangerBar=deliveranceData.temporary.dangerBar+1
@@ -61,7 +61,7 @@ function this:Update()
             player:UseActiveItem(97,false,false,false,false)
             sfx:Play(SoundEffect.SOUND_THUMBSUP, 1, 0, false, 1.125)
             --player:AnimateHappy()
-            this.backTimer3=60
+            this.backTimer3=30*deliveranceData.temporary.dangerBarUsed
             deliveranceData.temporary.dangerBar=0
             deliveranceData.temporary.dangerBarUsed=deliveranceData.temporary.dangerBarUsed+1
             deliveranceDataHandler.directSave() 
@@ -86,14 +86,11 @@ function this:onRender()
    end
 end
 
-function this:updateRoom()
+function this:updateStage()
    local player = Isaac.GetPlayer(0)
-   local room = game:GetRoom()
    if player:HasCollectible(this.id) then
-     if room:IsFirstVisit() then
        deliveranceData.temporary.dangerBarUsed=1
        deliveranceDataHandler.directSave() 
-     end
    end
 end
 
@@ -101,7 +98,7 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.onRender)
-  mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.updateRoom)
+  mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.updateStage)
 end
 
 return this

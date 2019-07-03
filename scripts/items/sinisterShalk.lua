@@ -79,6 +79,38 @@ function this:updateRoom()
    end
 end
 
+function this.checkForSilhouette()
+  local count = 0
+  for _, e in pairs(Isaac.GetRoomEntities()) do
+    if e.Type == 1000 and e.Variant == this.silhouette2 then count = count + 1 end
+  end
+
+  return count
+end
+
+function this:Update()
+  local player = Isaac.GetPlayer(0)
+  local level = game:GetLevel()
+  local stage = level:GetStage()
+  local room = game:GetRoom()
+  if player:HasCollectible(this.id) then
+     if deliveranceData.temporary.sinisterTimer==nil then
+        deliveranceData.temporary.sinisterTimer=0
+        deliveranceDataHandler.directSave() 
+     end
+     if deliveranceData.temporary.sinisterTimer<500 and not room:IsClear() and (game.Difficulty==2 or game.Difficulty==3 or room:GetType() == RoomType.ROOM_BOSSRUSH) and this.checkForSilhouette()<=0 then
+        deliveranceData.temporary.sinisterTimer=deliveranceData.temporary.sinisterTimer+1
+     end
+     if deliveranceData.temporary.sinisterTimer>=500 then
+        local pos = Isaac.GetFreeNearPosition(room:GetCenterPos()+Vector(math.random(-250,250),math.random(-250,250)), 1)  
+        Isaac.Spawn(1000, this.silhouette2, 0, pos, vectorZero, nil)
+        Isaac.Spawn(1000, 15, 0, pos, vectorZero, nil)
+        deliveranceData.temporary.sinisterTimer=0
+        deliveranceDataHandler.directSave() 
+     end
+  end
+end
+
 local ShalkBar = Sprite() ShalkBar:Load("gfx/ui/sinisterShalk_bar.anm2", true)
 function this:onRender()
    local player = Isaac.GetPlayer(0)
@@ -99,6 +131,7 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.updateRoom)
   mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateSilhouette)
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.onRender)
+  mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
 end
 
 return this
