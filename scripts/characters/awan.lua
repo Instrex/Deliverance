@@ -86,7 +86,8 @@ function this:Update()
             if (collect.Variant == 150 or collect.Variant == 100) then 
                if room:GetType() ~= RoomType.ROOM_BOSSRUSH then 
                   if (this.checkForCauldron()==0 and (game.Difficulty==0 or game.Difficulty==1)) 
-                  or ((game.Difficulty==2 or game.Difficulty==3) and (level:GetCurrentRoomIndex() ~= 98 or (level:GetCurrentRoomIndex() == 98 and not deliveranceData.temporary.deletedFirstItem))) then
+                  or ((game.Difficulty==2 or game.Difficulty==3) and stage ~= 7 and 
+                    ((stage < 6 and (level:GetCurrentRoomIndex() ~= 98 or (level:GetCurrentRoomIndex() == 98 and not deliveranceData.temporary.deletedFirstItem)))) or (stage == 6 and this.checkForCauldron()==0)) then
                      if collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and 
                      collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and 
                      collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and 
@@ -223,7 +224,7 @@ function this:EvaluateCache(player, cacheFlag)
      if cacheFlag == CacheFlag.CACHE_SPEED then
 	player.MoveSpeed = player.MoveSpeed * this.speedBonus
      elseif cacheFlag == CacheFlag.CACHE_DAMAGE then
-        player.Damage = player.Damage + 0.54
+        player.Damage = player.Damage + 0.94
      elseif cacheFlag == CacheFlag.CACHE_LUCK then
         player.Luck = player.Luck - 1
      --elseif cacheFlag == CacheFlag.CACHE_FIREDELAY then 
@@ -349,9 +350,10 @@ function this:updateCollectible(collect)
   if collect.Type == 5 then 
      if (collect.Variant == 150 or collect.Variant == 100) then 
         if player:GetPlayerType() == this.playerAwan then
-           if room:GetType() ~= RoomType.ROOM_BOSSRUSH then 
-              if (this.checkForCauldron()==0 and (game.Difficulty==0 or game.Difficulty==1)) 
-                 or ((game.Difficulty==2 or game.Difficulty==3) and (level:GetCurrentRoomIndex() ~= 98 or (level:GetCurrentRoomIndex() == 98 and not deliveranceData.temporary.deletedFirstItem))) then
+               if room:GetType() ~= RoomType.ROOM_BOSSRUSH then 
+                  if (this.checkForCauldron()==0 and (game.Difficulty==0 or game.Difficulty==1)) 
+                  or ((game.Difficulty==2 or game.Difficulty==3) and stage ~= 7 and 
+                    ((stage < 6 and (level:GetCurrentRoomIndex() ~= 98 or (level:GetCurrentRoomIndex() == 98 and not deliveranceData.temporary.deletedFirstItem)))) or (stage == 6 and this.checkForCauldron()==0)) then
                      if collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and 
                      collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and 
                      collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and 
