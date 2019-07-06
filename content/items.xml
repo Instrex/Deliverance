@@ -30,6 +30,7 @@
   <passive name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
   <passive name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>
   <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
+  <passive name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>

@@ -317,6 +317,12 @@ function this:die(npc)
          this.playAchievement('unlockedRainbowHearts',"rainbowHearts")
       elseif npc.Type == 275 then
          this.playAchievement('unlockedLawful',"lawful")
+      elseif npc.Type == 406 and npc.Variant == 0 and game.Difficulty==2 then
+         this.playAchievement('unlockedEncharmedPenny',"encharmedPenny")
+      elseif npc.Type == 406 and npc.Variant == 1 and game.Difficulty==3 then
+         this.playAchievement('unlockedUrnOfWant',"urnOfWant")
+      elseif npc.Type == 412 then
+         this.playAchievement('unlockedObituary',"obituary")
       end
    end
 end
@@ -364,30 +370,36 @@ function this:updateCollectible(collect)
               end
            end
         end
+        local changedPool = ItemPoolType.POOL_TREASURE
         if collect.SubType == Isaac.GetItemIdByName("Mom's Earrings") and not deliveranceData.persistent.unlockedMomsEarrings then
-           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_TREASURE,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
-           collect:Remove()
+           changedPool = ItemPoolType.POOL_TREASURE
         end
         if collect.SubType == Isaac.GetItemIdByName("Sinister Shalk") and not deliveranceData.persistent.unlockedSinisterShalk then
-           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_CURSE,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
-           collect:Remove()
+           changedPool = ItemPoolType.POOL_CURSE
         end
         if collect.SubType == Isaac.GetItemIdByName("Time Gal") and not deliveranceData.persistent.unlockedTimeGal then
-           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_DEVIL,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
-           collect:Remove()
+           changedPool = ItemPoolType.POOL_DEVIL
         end
         if collect.SubType == Isaac.GetItemIdByName("Lawful") and not deliveranceData.persistent.unlockedLawful then
-           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_ANGEL,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
-           collect:Remove()
+           changedPool = ItemPoolType.POOL_ANGEL
         end
         if collect.SubType == Isaac.GetItemIdByName("The Divider") and not deliveranceData.persistent.unlockedTheDivider then
-           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_SECRET,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
-           collect:Remove()
+           changedPool = ItemPoolType.POOL_SECRET
         end
         if collect.SubType == Isaac.GetItemIdByName("Silver Bar") and not deliveranceData.persistent.unlockedSilverBar then
-           Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(ItemPoolType.POOL_TREASURE,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
-           collect:Remove()
+           changedPool = ItemPoolType.POOL_TREASURE
         end
+        if collect.SubType == Isaac.GetItemIdByName("Encharmed Penny") and not deliveranceData.persistent.unlockedEncharmedPenny then
+           changedPool = ItemPoolType.POOL_TREASURE
+        end
+        if collect.SubType == Isaac.GetItemIdByName("Urn Of Want") and not deliveranceData.persistent.unlockedUrnOfWant then
+           changedPool = ItemPoolType.POOL_SECRET
+        end
+        if collect.SubType == Isaac.GetItemIdByName("Obituary") and not deliveranceData.persistent.unlockedObituary then
+           changedPool = ItemPoolType.POOL_LIBRARY
+        end
+        Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(changedPool,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+        collect:Remove()
      end
   end
 end

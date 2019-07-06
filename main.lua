@@ -59,7 +59,8 @@ deliveranceContent = {
     timeGal                   = require 'scripts.items.timeGal',
     silverBar                 = require 'scripts.items.silverBar',
     urnOfWant                 = require 'scripts.items.urnOfWant',
-    encharmedPenny            = require 'scripts.items.encharmedPenny'
+    encharmedPenny            = require 'scripts.items.encharmedPenny',
+    obituary                  = require 'scripts.items.obituary'
   },
 
   trinkets = {
