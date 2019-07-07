@@ -238,7 +238,10 @@ local HudChoose = Sprite() HudChoose:Load("gfx/ui/hudChooseMaterial.anm2", true)
 local HudHint = Sprite() HudHint:Load("gfx/ui/hudHint.anm2", true)
 local AchSprite = Sprite() AchSprite:Load("gfx/ui/achievement/achievement.anm2", true)
 local AchName = "gfx/ui/achievement/achievement_awan1.png"
+local Completion_Widget = Sprite() Completion_Widget:Load("gfx/ui/achievement/completion_widget.anm2", true)
+local Completion_Icons = Sprite() Completion_Icons:Load("gfx/ui/achievement/completion_icons.anm2", true)
 local AchTimer = 0
+local Completion_Y = 0
 
 function this:onRender()
    local player = Isaac.GetPlayer(0)
@@ -247,6 +250,85 @@ function this:onRender()
         HudMaterials:SetFrame("Idle", i-1)
         HudMaterials:RenderLayer(0, Vector(-8+i*16,226))
         Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-7+i*16,244), true)
+      end
+
+      Completion_Widget:SetFrame("Idle", 0)
+      Completion_Widget:RenderLayer(0, Vector(40,-120+Completion_Y))
+      
+      if (deliveranceData.persistent.unlockedTimeGal) then
+         Completion_Icons:SetFrame("Idle", 1)
+      else
+         Completion_Icons:SetFrame("Idle", 0)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+17,-120+Completion_Y+15))
+
+      if (deliveranceData.persistent.unlockedTheDivider) then
+         Completion_Icons:SetFrame("Idle", 3)
+      else
+         Completion_Icons:SetFrame("Idle", 2)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+31,-120+Completion_Y+9))
+
+      if (deliveranceData.persistent.unlockedSilverBar) then
+         Completion_Icons:SetFrame("Idle", 5)
+      else
+         Completion_Icons:SetFrame("Idle", 4)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+46,-120+Completion_Y+13))
+
+      if (deliveranceData.persistent.unlockedSinisterShalk) then
+         Completion_Icons:SetFrame("Idle", 7)
+      else
+         Completion_Icons:SetFrame("Idle", 6)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+55,-120+Completion_Y+24))
+
+      if (deliveranceData.persistent.unlockedMomsEarrings) then
+         Completion_Icons:SetFrame("Idle", 9)
+      else
+         Completion_Icons:SetFrame("Idle", 8)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+13,-120+Completion_Y+33))
+
+      if (deliveranceData.persistent.unlockedLawful) then
+         Completion_Icons:SetFrame("Idle", 11)
+      else
+         Completion_Icons:SetFrame("Idle", 10)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+21,-120+Completion_Y+47))
+
+      if (deliveranceData.persistent.unlockedObituary) then
+         Completion_Icons:SetFrame("Idle", 13)
+      else
+         Completion_Icons:SetFrame("Idle", 12)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+27,-120+Completion_Y+29))
+
+      if (deliveranceData.persistent.unlockedRainbowHearts) then
+         Completion_Icons:SetFrame("Idle", 15)
+      else
+         Completion_Icons:SetFrame("Idle", 14)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+41,-120+Completion_Y+32))
+
+      if (deliveranceData.persistent.unlockedEncharmedPenny) then
+         Completion_Icons:SetFrame("Idle", 17)
+      else
+         Completion_Icons:SetFrame("Idle", 16)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+38,-120+Completion_Y+50))
+
+      if (deliveranceData.persistent.unlockedUrnOfWant) then
+         Completion_Icons:SetFrame("Idle", 19)
+      else
+         Completion_Icons:SetFrame("Idle", 18)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+53,-120+Completion_Y+40))
+
+      if not game:IsPaused() and Input.IsActionPressed(ButtonAction.ACTION_MAP, 0) then
+         if Completion_Y<150 then Completion_Y=Completion_Y+25 end
+      else
+         if Completion_Y>0 then Completion_Y=Completion_Y-25 end
       end
 
       if this.checkForCauldron()~=0 then
