@@ -4,6 +4,7 @@ this.description = "Makes rewards from red chests much more exciting"
 
 function this:trigger(pickup, col)
   local player = Isaac.GetPlayer(0)
+  local room = Game():GetRoom()
   if col:ToPlayer() ~= nil and player:HasTrinket(this.id) then
     local data = pickup:GetData()
 

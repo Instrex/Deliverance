@@ -32,10 +32,10 @@ function this:behaviour(npc)
   --local room = game:GetRoom()
 
   function this.replaceItem()
-  if player:GetActiveItem()~=0 then
-    sprite:ReplaceSpritesheet(5, Isaac.GetItemConfig():GetCollectible(player:GetActiveItem()).GfxFileName)
-    sprite:LoadGraphics()
-  end
+    if player:GetActiveItem()~=0 then
+      sprite:ReplaceSpritesheet(5, Isaac.GetItemConfig():GetCollectible(player:GetActiveItem()).GfxFileName)
+      sprite:LoadGraphics()
+    end
   end
 
   if sprite:IsEventTriggered("ChestOpen") then
@@ -64,6 +64,7 @@ function this:behaviour(npc)
       if (npc.Position - player.Position):Length() <= 150 then
           npc.State = 4
       end
+
     this.replaceItem()
 
   elseif npc.State == 4 then
@@ -73,6 +74,7 @@ function this:behaviour(npc)
     if sprite:IsFinished("IdleToMouth") then
        npc.State = 5
     end
+    
     this.replaceItem()
 
   elseif npc.State == 5 then

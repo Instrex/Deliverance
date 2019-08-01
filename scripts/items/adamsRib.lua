@@ -32,8 +32,8 @@ function this:onHitNPC(npc,damage,flags,source)
 end
 
 function this:update(npc)
-  local data = npc:GetData()
   if npc.Variant == this.variant then
+    local data = npc:GetData()
     local sprite = npc:GetSprite()
 
     if sprite:IsEventTriggered("Attack") then

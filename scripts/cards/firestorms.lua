@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetCardIdByName("Firestorms")
 this.description = "Sets all enemies on fire#Sets fire on all enemies#Grants Fire Mind effect for one room"
+this.cardImage = 'gfx/items/pick ups/pickup_card_firestorms.png'
 this.isActive = false
 
 function this:cardCallback(cardId)

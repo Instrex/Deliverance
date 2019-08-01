@@ -41,6 +41,7 @@ function this:onHitNPC(npc)
   end
 end
 
+local updateIndex = 0
 function this:updateFire(npc)
   if npc.Variant == this.variant then
     local player = Isaac.GetPlayer(0)
@@ -55,9 +56,14 @@ function this:updateFire(npc)
 
     if sprite:IsFinished("End") then npc:Remove() end
 
-    for e, enemies in pairs(Isaac.FindInRadius(npc.Position, data.radius, EntityPartition.ENEMY)) do
-      enemies:TakeDamage(data.dmg, 0, EntityRef(nil), 0)
+    updateIndex = updateIndex - 1
+    if updateIndex <= 0 then 
+      updateIndex = 10
+      for e, enemies in pairs(Isaac.FindInRadius(npc.Position, data.radius, EntityPartition.ENEMY)) do
+        enemies:TakeDamage(data.dmg, 0, EntityRef(nil), 0)
+      end
     end
+    
   end
 end
 
