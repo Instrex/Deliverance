@@ -431,60 +431,64 @@ function this.onNewFloor()
 end
 
 function this:updateCollectible(collect)
-  local player = Isaac.GetPlayer(0)
-  local level = game:GetLevel()
-  local stage = level:GetStage()
-  local room = game:GetRoom()
-  if collect.Type == 5 then 
-     if (collect.Variant == 150 or collect.Variant == 100) then 
-        if player:GetPlayerType() == this.playerAwan then
-               if room:GetType() ~= RoomType.ROOM_BOSSRUSH then 
-                  if (this.checkForCauldron()==0 and (game.Difficulty==0 or game.Difficulty==1)) 
-                  or ((game.Difficulty==2 or game.Difficulty==3) and stage ~= 7 and 
-                    ((stage < 6 and (level:GetCurrentRoomIndex() ~= 98 or (level:GetCurrentRoomIndex() == 98 and not deliveranceData.temporary.deletedFirstItem)))) or (stage == 6 and this.checkForCauldron()==0)) then
-                     if collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and 
-                     collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and 
-                     collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and 
-                     collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
-                         collect.Visible=false
-                         collect.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
-                     end
-              end
-           end
-        end
-        local changedPool = ItemPoolType.POOL_TREASURE
-        if collect.SubType == Isaac.GetItemIdByName("Mom's Earrings") and not deliveranceData.persistent.unlockedMomsEarrings then
-           changedPool = ItemPoolType.POOL_TREASURE
-        end
-        if collect.SubType == Isaac.GetItemIdByName("Sinister Shalk") and not deliveranceData.persistent.unlockedSinisterShalk then
-           changedPool = ItemPoolType.POOL_CURSE
-        end
-        if collect.SubType == Isaac.GetItemIdByName("Time Gal") and not deliveranceData.persistent.unlockedTimeGal then
-           changedPool = ItemPoolType.POOL_DEVIL
-        end
-        if collect.SubType == Isaac.GetItemIdByName("Lawful") and not deliveranceData.persistent.unlockedLawful then
-           changedPool = ItemPoolType.POOL_ANGEL
-        end
-        if collect.SubType == Isaac.GetItemIdByName("The Divider") and not deliveranceData.persistent.unlockedTheDivider then
-           changedPool = ItemPoolType.POOL_SECRET
-        end
-        if collect.SubType == Isaac.GetItemIdByName("Silver Bar") and not deliveranceData.persistent.unlockedSilverBar then
-           changedPool = ItemPoolType.POOL_TREASURE
-        end
-        if collect.SubType == Isaac.GetItemIdByName("Encharmed Penny") and not deliveranceData.persistent.unlockedEncharmedPenny then
-           changedPool = ItemPoolType.POOL_TREASURE
-        end
-        if collect.SubType == Isaac.GetItemIdByName("Urn Of Want") and not deliveranceData.persistent.unlockedUrnOfWant then
-           changedPool = ItemPoolType.POOL_SECRET
-        end
-        if collect.SubType == Isaac.GetItemIdByName("Obituary") and not deliveranceData.persistent.unlockedObituary then
-           changedPool = ItemPoolType.POOL_LIBRARY
-        end
-        Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(changedPool,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
-        collect:Remove()
-     end
-  end
-end
+   local player = Isaac.GetPlayer(0)
+   local level = game:GetLevel()
+   local stage = level:GetStage()
+   local room = game:GetRoom()
+   if collect.Type == 5 then 
+      if (collect.Variant == 150 or collect.Variant == 100) then 
+         if player:GetPlayerType() == this.playerAwan then
+                if room:GetType() ~= RoomType.ROOM_BOSSRUSH then 
+                   if (this.checkForCauldron()==0 and (game.Difficulty==0 or game.Difficulty==1)) 
+                   or ((game.Difficulty==2 or game.Difficulty==3) and stage ~= 7 and 
+                     ((stage < 6 and (level:GetCurrentRoomIndex() ~= 98 or (level:GetCurrentRoomIndex() == 98 and not deliveranceData.temporary.deletedFirstItem)))) or (stage == 6 and this.checkForCauldron()==0)) then
+                      if collect.SubType ~= CollectibleType.COLLECTIBLE_POLAROID and 
+                      collect.SubType ~= CollectibleType.COLLECTIBLE_NEGATIVE and 
+                      collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_1 and 
+                      collect.SubType ~= CollectibleType.COLLECTIBLE_KEY_PIECE_2 then
+                          collect.Visible=false
+                          collect.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+                      end
+               end
+            end
+         end
+
+         local changedPool = nil
+         if collect.SubType == Isaac.GetItemIdByName("Mom's Earrings") and not deliveranceData.persistent.unlockedMomsEarrings then
+            changedPool = ItemPoolType.POOL_TREASURE
+         end
+         if collect.SubType == Isaac.GetItemIdByName("Sinister Shalk") and not deliveranceData.persistent.unlockedSinisterShalk then
+            changedPool = ItemPoolType.POOL_CURSE
+         end
+         if collect.SubType == Isaac.GetItemIdByName("Time Gal") and not deliveranceData.persistent.unlockedTimeGal then
+            changedPool = ItemPoolType.POOL_DEVIL
+         end
+         if collect.SubType == Isaac.GetItemIdByName("Lawful") and not deliveranceData.persistent.unlockedLawful then
+            changedPool = ItemPoolType.POOL_ANGEL
+         end
+         if collect.SubType == Isaac.GetItemIdByName("The Divider") and not deliveranceData.persistent.unlockedTheDivider then
+            changedPool = ItemPoolType.POOL_SECRET
+         end
+         if collect.SubType == Isaac.GetItemIdByName("Silver Bar") and not deliveranceData.persistent.unlockedSilverBar then
+            changedPool = ItemPoolType.POOL_TREASURE
+         end
+         if collect.SubType == Isaac.GetItemIdByName("Encharmed Penny") and not deliveranceData.persistent.unlockedEncharmedPenny then
+            changedPool = ItemPoolType.POOL_TREASURE
+         end
+         if collect.SubType == Isaac.GetItemIdByName("Urn Of Want") and not deliveranceData.persistent.unlockedUrnOfWant then
+            changedPool = ItemPoolType.POOL_SECRET
+         end
+         if collect.SubType == Isaac.GetItemIdByName("Obituary") and not deliveranceData.persistent.unlockedObituary then
+            changedPool = ItemPoolType.POOL_LIBRARY
+         end
+
+         if changedPool ~= nil then
+            Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(changedPool,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+            collect:Remove()
+         end
+      end
+   end
+ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
