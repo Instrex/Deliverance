@@ -20,6 +20,7 @@
        <Item Name="Beanborne" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Mom's Earrings" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Encharmed Penny" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Silver Bar" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -36,6 +37,7 @@
     <Pool Name="goldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Silver Bar" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="shop">
       <Item Name="Golden Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
