@@ -84,11 +84,6 @@ deliveranceContent = {
     glitch                    = require 'scripts.cards.glitch',
     abyss                     = require 'scripts.cards.abyss',
   },
-
-  characters = {
-    awan                      = require 'scripts.characters.awan',
-  },
-
   pills = {
     dissReaction              = require 'scripts.pills.dissReaction'
   },
@@ -107,7 +102,6 @@ deliveranceContent = {
   entities = {
     persistent = {
       chestBoy                = require 'scripts.entities.chestBoy',
-      cauldron                = require 'scripts.entities.cauldron' 
     },
 
     raga                      = require 'scripts.entities.monsters.raga',
