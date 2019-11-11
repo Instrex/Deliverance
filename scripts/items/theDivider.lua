@@ -18,6 +18,7 @@ function this:updateHammer(npc)
   end
 end
 
+-- TODO: rewrite this mess
 function this.use()
   local player = Isaac.GetPlayer(0)
   for _, e in pairs(Isaac:GetRoomEntities()) do
@@ -29,11 +30,13 @@ function this.use()
                Isaac.Spawn(5, 20, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+
          elseif pickup.Variant==20 and (pickup.SubType==2 or pickup.SubType==6) then --nickel
             for i=1, 5 do
                Isaac.Spawn(5, 20, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+
          elseif pickup.Variant==20 and pickup.SubType==3 then --dime
             if utils.chancep(50) then
                for i=1, 5 do
@@ -52,78 +55,94 @@ function this.use()
                end
             end
             this.divide(pickup)
+
          elseif pickup.Variant==40 and pickup.SubType==2 then --double bomb
             for i=1, 2 do
                Isaac.Spawn(5, 40, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+
          elseif pickup.Variant==10 and (pickup.SubType==1 or pickup.SubType==9) then --red hearts
             for i=1, 2 do
                Isaac.Spawn(5, 10, 2, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+
          elseif pickup.Variant==10 and pickup.SubType==5 then --double hearts
             for i=1, 2 do
                Isaac.Spawn(5, 10, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+
          elseif pickup.Variant==10 and pickup.SubType==4000 then --rainbow hearts
             for i=1, 3 do
                Isaac.Spawn(5, 10, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+
          elseif pickup.Variant==10 and pickup.SubType==3 then --soul hearts
             for i=1, 2 do
                Isaac.Spawn(5, 10, 8, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+
          elseif pickup.Variant==10 and pickup.SubType==10 then --blended hearts
             Isaac.Spawn(5, 10, 2, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             Isaac.Spawn(5, 10, 8, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             this.divide(pickup)
+
          elseif pickup.Variant==10 and pickup.SubType==6 then --black hearts
             for i=1, 2 do
                Isaac.Spawn(5, 10, 3, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+
          elseif pickup.Variant==10 and pickup.SubType==6 then --gold heart
             for i=1, 5 do
                Isaac.Spawn(5, 20, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             Isaac.Spawn(5, 10, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             this.divide(pickup)
+
          elseif pickup.Variant==40 and pickup.SubType==4 then --golden bomb
             for i=1, 5 do
                Isaac.Spawn(5, 20, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             Isaac.Spawn(5, 40, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             this.divide(pickup)
-         elseif pickup.Variant==30 and pickup.SubType==3 then --key ring
+
+         elseif pickup.Variant == 30 and pickup.SubType == 3 then --key ring
+            Isaac.Spawn(5, 30, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             Isaac.Spawn(5, 30, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             this.divide(pickup)
+
          elseif pickup.Variant==30 and pickup.SubType==2 then --golden key
             for i=1, 5 do
                Isaac.Spawn(5, 20, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             Isaac.Spawn(5, 30, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             this.divide(pickup)
+
          elseif pickup.Variant==60 then --golden chest
             for i=1, 5 do
                Isaac.Spawn(5, 20, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             Isaac.Spawn(5, 50, 0, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             this.divide(pickup)
+
          elseif pickup.Variant==51 or pickup.Variant==52 or pickup.Variant==54 then --bomb chest, spiked chest, mimic chest
             for i=1, 2 do
                Isaac.Spawn(5, 50, 0, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+            
          elseif pickup.Variant==360 then --red chest
             Isaac.Spawn(5, 50, 0, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             for i=1, Utils.choose(1,2) do
                Isaac.Spawn(5, 10, 1, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+            
          elseif pickup.Variant==53 then --eternal chest
             for i=1, 2 do
                Isaac.Spawn(5, 60, 0, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
