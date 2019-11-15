@@ -3,6 +3,8 @@ game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
 
+deliveranceVersion = "2.2"
+
 utils = require 'scripts.utils'
 require 'scripts.enumerations'
 
@@ -19,7 +21,7 @@ deliveranceData = {
   }
 }
 
- -- Register mod content here --
+-- Register mod content here --
 deliveranceContent = {
   items = {
     sistersKey                = require 'scripts.items.sistersKey',
@@ -60,7 +62,8 @@ deliveranceContent = {
     silverBar                 = require 'scripts.items.silverBar',
     urnOfWant                 = require 'scripts.items.urnOfWant',
     encharmedPenny            = require 'scripts.items.encharmedPenny',
-    obituary                  = require 'scripts.items.obituary'
+    obituary                  = require 'scripts.items.obituary',
+    shamrockLeaf              = require 'scripts.items.shamrockLeaf'
   },
 
   trinkets = {
@@ -84,6 +87,7 @@ deliveranceContent = {
     glitch                    = require 'scripts.cards.glitch',
     abyss                     = require 'scripts.cards.abyss',
   },
+
   pills = {
     dissReaction              = require 'scripts.pills.dissReaction'
   },
@@ -147,7 +151,7 @@ deliveranceContent = {
   }
 }
 
-deliveranceDataHandler = require('scripts.deliveranceDataHandler')
+deliveranceDataHandler = require 'scripts.deliveranceDataHandler'
 deliveranceDataHandler.init()
 
 npcPersistence = require 'scripts.npcPersistenceHandler'
@@ -172,4 +176,4 @@ for type, r in pairs(deliveranceContent) do
   end
 end
 
-print("tBoI Deliverance: Successfully initialized! Have a nice run :)")
+print("tBoI Deliverance v"..deliveranceVersion..": Successfully initialized! Have a nice run :)")

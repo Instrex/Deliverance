@@ -35,4 +35,10 @@
 	<sound name="Urn">
 		<sample weight="1" path="Urn.wav"/>
 	</sound>
+	<sound name="Ding">
+		<sample weight="1" path="Ding.wav"/>
+	</sound>
+	<sound name="Swish">
+		<sample weight="1" path="Swish.wav"/>
+	</sound>
 </sounds>
