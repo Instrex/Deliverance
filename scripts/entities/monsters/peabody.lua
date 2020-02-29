@@ -24,6 +24,7 @@ function this:behaviour(npc)
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+    npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_NONE
     npc.State = NpcState.STATE_MOVE
     npc.StateFrame = Utils.choose(-12, -8, -4)
 
@@ -52,6 +53,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Smack") then
 	npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
+  npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_GROUND
     npc.StateFrame = npc.StateFrame - Utils.choose(20, 15, 10)
     if not npc:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then
         local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
@@ -95,6 +97,7 @@ function this:behaviour(npc)
     sprite:Play("StunEnd")
     if sprite:IsEventTriggered("GetUp") then
       npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+      npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_NONE
     end
 	  if sprite:IsFinished("StunEnd") then
 		  npc.State = NpcState.STATE_MOVE
