@@ -44,7 +44,6 @@ function this:autodead(_, npc) --thx tem (again)
     	end
 	end
 end
-end
 	
 
 function this.Init()
