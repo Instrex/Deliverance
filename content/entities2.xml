@@ -143,7 +143,7 @@
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 	
-	<entity anm2path="stonelet.anm2" baseHP="50" boss="0" champion="0" collisionDamage="0" collisionMass="15" collisionRadius="13" friction="1" id="765" name="Stonelet" numGridCollisionPoints="12" shadowSize="14" shutdoors="false" stageHP="0" variant="4000">
+	<entity anm2path="stonelet.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="15" collisionRadius="13" friction="1" id="765" name="Stonelet" numGridCollisionPoints="12" shadowSize="16" shutdoors="false" stageHP="0" variant="4000">
 		<gibs amount="6" blood="0" bone="0" eye="0" gut="0" large="0" rock="1" />
 	</entity>
 
