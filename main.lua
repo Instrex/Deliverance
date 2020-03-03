@@ -130,7 +130,8 @@ deliveranceContent = {
     lilbonydies               = require 'scripts.entities.monsters.lilbonydies',
     rosenbergspit             = require 'scripts.entities.monsters.rosenbergspit',
     creampile                 = require 'scripts.entities.monsters.creampile',
-    gappy                     = require 'scripts.entities.monsters.gappy'
+    gappy                     = require 'scripts.entities.monsters.gappy',
+	stonelet                  = require 'scripts.entities.monsters.stonelet'
   },
 
   costumes = {
