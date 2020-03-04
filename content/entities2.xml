@@ -139,6 +139,10 @@
         <gibs amount="20" blood="0" bone="1" eye="1" gut="1" large="0" />
     </entity>
 
+    <entity id="764" variant="4000" anm2path="reaper.anm2" baseHP="30" boss="0" champion="0" collisionDamage="1" collisionMass="75" collisionRadius="10" friction="1" name="Reaper" numGridCollisionPoints="15" shadowSize="26" stageHP="3">
+        <gibs amount="12" blood="0" bone="1" eye="0" gut="0" large="0" />
+    </entity>
+
     <entity anm2path="alchemicCauldron.anm2" baseHP="1" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="15" friction="1" id="764" name="Cauldron" numGridCollisionPoints="24" shadowSize="50" stageHP="0" variant="4000" shutdoors="false">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
