@@ -131,7 +131,8 @@ deliveranceContent = {
     rosenbergspit             = require 'scripts.entities.monsters.rosenbergspit',
     creampile                 = require 'scripts.entities.monsters.creampile',
     gappy                     = require 'scripts.entities.monsters.gappy',
-    reaper                    = require 'scripts.entities.monsters.reaper'
+    reaper                    = require 'scripts.entities.monsters.reaper',
+    stonelet                  = require 'scripts.entities.monsters.stonelet'
   },
 
   costumes = {

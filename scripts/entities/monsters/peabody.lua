@@ -23,6 +23,8 @@ function this:behaviour(npc)
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
+    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+    npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_NONE
     npc.State = NpcState.STATE_MOVE
     npc.StateFrame = Utils.choose(-12, -8, -4)
 
@@ -47,15 +49,17 @@ function this:behaviour(npc)
     npc.Velocity = npc.Velocity * 0.9
     if npc.StateFrame<66 then
       npc.StateFrame = npc.StateFrame - 1
-      if utils.chancep(80) and not npc:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then
-        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
-        if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then RCreep.SpriteScale = Vector(1.25,1.25) else RCreep.SpriteScale = Vector(0.75,0.75) end
-        RCreep:Update()
-      end
     end
 
     if sprite:IsEventTriggered("Smack") then
+	npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
+  npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_GROUND
     npc.StateFrame = npc.StateFrame - Utils.choose(20, 15, 10)
+    if not npc:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then
+        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
+        if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then RCreep.SpriteScale = Vector(1.50,1.50) else RCreep.SpriteScale = Vector(1.25,1.25) end
+        RCreep:Update()
+      end
        for i=1, 4 do
           if npc.Variant == Isaac.GetEntityVariantByName("Peabody") then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(i*90):Resized(10), npc) end
           if npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then Isaac.Spawn(9, 0, 0, npc.Position, Vector.FromAngle(45+i*90):Resized(10), npc) end
@@ -75,10 +79,33 @@ function this:behaviour(npc)
     end
 
     if sprite:IsFinished("Attack") then
-      npc.State = NpcState.STATE_MOVE
+      npc.State = NpcState.STATE_ATTACK2
     end
-  end
+  elseif npc.State == NpcState.STATE_ATTACK2 then
+    npc.StateFrame = npc.StateFrame - Utils.choose(0, 1)
+    sprite:Play("StunIdle")
+    local RCreep2 = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
+    if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then RCreep2.SpriteScale = Vector(0.75,0.75) end
+    RCreep2:Update()
+    npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (0.55) + npc.Velocity
+	if npc.StateFrame == -45 then
+      npc.State = NpcState.STATE_ATTACK3
+      npc.StateFrame = math.random(-20,8)
+    end
+  elseif npc.State == NpcState.STATE_ATTACK3 then
+	  npc.Velocity = vectorZero
+    sprite:Play("StunEnd")
+    if sprite:IsEventTriggered("GetUp") then
+      npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+      npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_NONE
+    end
+	  if sprite:IsFinished("StunEnd") then
+		  npc.State = NpcState.STATE_MOVE
+	  end
+	end
  end
+    
+
 end
 
 function this.Init()
