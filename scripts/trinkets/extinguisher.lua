@@ -5,7 +5,7 @@ local this = {
 
 function this:update(player)
     if player:HasTrinket(this.id) then 
-        for entity in Isaac.FindInRadius(player.Position, 10.0, EntityPartition.ENEMY) do
+        for e, entity in pairs(Isaac.FindInRadius(player.Position, 22.0, EntityPartition.ENEMY)) do
             if entity.Type == EntityType.ENTITY_FIREPLACE then
                 if entity.Variant == 2 or entity.Variant == 3 then
                     Isaac.Explode(player.Position, player, 55)
