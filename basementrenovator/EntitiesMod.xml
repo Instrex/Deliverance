@@ -8,6 +8,7 @@
 	<entity BaseHP="30" Group="Deliverance" ID="745" Image="deliverance/745.4000.00 - Beamo.png" Kind="Enemies" Name="Beamo" Subtype="0" Variant="4000" />
 	<entity BaseHP="25" Group="Deliverance" ID="746" Image="deliverance/746.4000.00 - Peabody.png" Kind="Enemies" Name="Peabody" Subtype="0" Variant="4000" />
 	<entity BaseHP="22" Group="Deliverance" ID="746" Image="deliverance/746.4001.00 - Peabody.png" Kind="Enemies" Name="Peabody X" Subtype="0" Variant="4001" />
+	<entity BaseHP="25" Group="Deliverance" ID="746" Image="deliverance/peamonger.png" Kind="Enemies" Name="Peamonger" Subtype="0" Variant="4002" />
 	<entity BaseHP="15" Group="Deliverance" ID="747" Image="deliverance/747.4000.00 - Rosenberg.png" Kind="Enemies" Name="Rosenberg" Subtype="0" Variant="4000" />
 	<entity BaseHP="30" Group="Deliverance" ID="748" Image="deliverance/748.4000.00 - Shroomeo.png" Kind="Enemies" Name="Shroomeo" Subtype="0" Variant="4000" />
 	<entity BaseHP="25" Group="Deliverance" ID="749" Image="deliverance/749.4000.00 - Tinhorn.png" Kind="Enemies" Name="Tinhorn" Subtype="0" Variant="4000" />
@@ -29,6 +30,5 @@
 	<entity BaseHP="25" Group="Deliverance" ID="208" Image="deliverance/MotherOfMany.png" Kind="Enemies" Name="Mother Of Many" Subtype="0" Variant="4000" />
 	<entity BaseHP="25" Group="Deliverance" ID="208" Image="deliverance/PalemotherOfMany.png" Kind="Enemies" Name="Pale Mother Of Many" Subtype="0" Variant="4001" />
 	<entity BaseHP="45" Group="Deliverance" ID="762" Image="deliverance/Creampile.png" Kind="Enemies" Name="Creampile" Subtype="0" Variant="4000" />
-	<entity BaseHP="0" Group="Deliverance" ID="765" Image="deliverance/stonelet.png" Kind="Enemies" Name="Stonelet" Subtype="0" Variant="4000" />
-	<entity BaseHP="25" Group="Deliverance" ID="746" Image="deliverance/peamonger.png" Kind="Enemies" Name="Peamonger" Subtype="0" Variant="4002" />
+	<entity BaseHP="0" Group="Deliverance" ID="766" Image="deliverance/stonelet.png" Kind="Enemies" Name="Stonelet" Subtype="0" Variant="4000" />
 </data>

@@ -59,7 +59,20 @@ function this:behaviour(npc)
         sfx:Play(SoundEffect.SOUND_POT_BREAK, 0.5, 0, false, math.random(10, 20) / 10)
 
         for e, food in pairs(Isaac.FindInRadius(npc.Position, 30, EntityPartition.ENEMY)) do
-           if food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 or food.Type == 85 or food.Type == 94 then
+           if food.Type == 10 or food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 or food.Type == 85 or food.Type == 94 then
+            if food.Type == 10 then
+                food.HitPoints = npc.MaxHitPoints
+                food:ToNPC():Morph(11, 0, 0,-1)
+                 for j=1, 9 do
+                  local params = ProjectileParams() 
+                  params.FallingSpeedModifier = math.random(-28, -4) 
+                  params.FallingAccelModifier = 1.2 
+                  params.Variant = Utils.choose(0, 1)
+
+                  local velocity = Vector(Utils.choose(math.random(-5, -1), math.random(1, 5)), Utils.choose(math.random(-5, -1), math.random(1, 5)))
+                  npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
+                  end
+                end
                food:TakeDamage(10, 0, EntityRef(nil), 0)
                Isaac.Spawn(1000, 49, 0, Vector(npc.Position.X,npc.Position.Y-16), vectorZero, nil)
                sfx:Play(SoundEffect.SOUND_VAMP_GULP , 1.25, 0, false, 0.8)
@@ -89,7 +102,7 @@ end
 --  end
 --end
 
-function this:die(npc) 
+--[[function this:die(npc) 
     sfx:Play(SoundEffect.SOUND_MEAT_IMPACTS, 0.9, 0, false, 1)
     for j=1, 9 do
        local params = ProjectileParams() 
@@ -100,12 +113,12 @@ function this:die(npc)
        local velocity = Vector(Utils.choose(math.random(-5, -1), math.random(1, 5)), Utils.choose(math.random(-5, -1), math.random(1, 5)))
        npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
     end
-end
+end--]]
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
 --  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 16)
-  mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
+--  mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
 end
 
 return this
