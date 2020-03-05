@@ -87,7 +87,7 @@ function this:behaviour(npc)
     local RCreep2 = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
     if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then RCreep2.SpriteScale = Vector(0.75,0.75) end
     RCreep2:Update()
-    npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (0.55) + npc.Velocity
+    npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 1 + npc.Velocity *0.5
 	if npc.StateFrame == -45 then
       npc.State = NpcState.STATE_ATTACK3
       npc.StateFrame = math.random(-20,8)
