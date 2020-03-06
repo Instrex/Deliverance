@@ -35,6 +35,31 @@ function this.reset()
     this.isActive = false
 end
 
+if MinimapAPI then
+
+	local minimapIcons = Sprite()
+	minimapIcons:Load("gfx/ui/minimapapi/deliverance_icons.anm2", true)
+	minimapIcons:Play("DeliveranceIconFarewellStoneCard", true)
+	
+	MinimapAPI:AddIcon(
+		"DeliveranceFirestormsCardIcon",
+		minimapIcons,
+		"DeliveranceIconFirestormsCard",
+		0
+	)
+	
+	MinimapAPI:AddPickup(
+		"DeliveranceFirestormsCard",
+		"DeliveranceFirestormsCardIcon",
+		EntityType.ENTITY_PICKUP,
+		PickupVariant.PICKUP_TAROTCARD,
+		this.id,
+		MinimapAPI.PickupNotCollected,
+		"deliveranvecards",
+		1040
+	)
+end
+
 function this.Init()
     mod:AddCallback(ModCallbacks.MC_USE_CARD, this.cardCallback, this.id)
     mod:AddCallback(ModCallbacks.MC_POST_FIRE_TEAR, this.onTear)

@@ -23,6 +23,31 @@ function this.cardCallback(cardId)
     Isaac.GetPlayer(0):UseCard(math.random(1, 21))
 end
 
+if MinimapAPI then
+
+	local minimapIcons = Sprite()
+	minimapIcons:Load("gfx/ui/minimapapi/deliverance_icons.anm2", true)
+	minimapIcons:Play("DeliveranceIconFarewellStoneCard", true)
+	
+	MinimapAPI:AddIcon(
+		"DeliveranceGlitchCardIcon",
+		minimapIcons,
+		"DeliveranceIconGlitchCard",
+		0
+	)
+	
+	MinimapAPI:AddPickup(
+		"DeliveranceGlitchCard",
+		"DeliveranceGlitchCardIcon",
+		EntityType.ENTITY_PICKUP,
+		PickupVariant.PICKUP_TAROTCARD,
+		this.id,
+		MinimapAPI.PickupNotCollected,
+		"deliveranvecards",
+		1040
+	)
+end
+
 function this.Init()
     mod:AddCallback(ModCallbacks.MC_USE_CARD, this.cardCallback, this.id)
 end

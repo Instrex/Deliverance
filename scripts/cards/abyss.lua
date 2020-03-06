@@ -30,6 +30,31 @@ function this.cardCallback()
     deliveranceDataHandler.directSave()
 end
 
+if MinimapAPI then
+
+	local minimapIcons = Sprite()
+	minimapIcons:Load("gfx/ui/minimapapi/deliverance_icons.anm2", true)
+	minimapIcons:Play("DeliveranceIconFarewellStoneCard", true)
+	
+	MinimapAPI:AddIcon(
+		"DeliveranceAbyssCardIcon",
+		minimapIcons,
+		"DeliveranceIconAbussCard",
+		0
+	)
+	
+	MinimapAPI:AddPickup(
+		"DeliveranceAbyssCard",
+		"DeliveranceAbyssCardIcon",
+		EntityType.ENTITY_PICKUP,
+		PickupVariant.PICKUP_TAROTCARD,
+		this.id,
+		MinimapAPI.PickupNotCollected,
+		"deliveranvecards",
+		1040
+	)
+end
+
 function this.Init()
     mod:AddCallback(ModCallbacks.MC_USE_CARD, this.cardCallback, this.id)
 end

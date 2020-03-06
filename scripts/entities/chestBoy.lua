@@ -171,6 +171,31 @@ function this:onHitNPC(npc)
  end
 end
 
+if MinimapAPI then
+
+	local minimapIcons = Sprite()
+	minimapIcons:Load("gfx/ui/minimapapi/deliverance_icons.anm2", true)
+	minimapIcons:Play("DeliveranceIconFarewellStoneCard", true)
+	
+	MinimapAPI:AddIcon(
+		"DeliveranceMunchubusIcon",
+		minimapIcons,
+		"DeliveranceIconChestBoy",
+		0
+	)
+	
+	MinimapAPI:AddPickup(
+		"DeliveranceMunchubus",
+		"DeliveranceMunchubusIcon",
+		this.id,
+		this.variant,
+		-1,
+		nil,
+		"deliveranvemisc",
+		4000
+	)
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)

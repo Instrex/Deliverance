@@ -30,7 +30,7 @@ function this:updateHeart(pickup)
       local data = pickup:GetData()
       if data.change == nil then
        if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED then
-         if utils.chancep(2.15) then
+         if utils.chancep(1) and deliveranceData.persistent.unlockedRainbowHearts then
             
              if room:GetType() == RoomType.ROOM_SHOP then
                 local pick = Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)
@@ -45,6 +45,31 @@ function this:updateHeart(pickup)
        data.change = true
       end
   end
+end
+
+if MinimapAPI then
+
+	local minimapIcons = Sprite()
+	minimapIcons:Load("gfx/ui/minimapapi/deliverance_icons.anm2", true)
+	minimapIcons:Play("DeliveranceIconFarewellStoneCard", true)
+	
+	MinimapAPI:AddIcon(
+		"DeliveranceRainbowHeartIcon",
+		minimapIcons,
+		"DeliveranceIconRainbowHeart",
+		0
+	)
+	
+	MinimapAPI:AddPickup(
+		"DeliveranceRainbowHeart",
+		"DeliveranceRainbowHeartIcon",
+		EntityType.ENTITY_PICKUP,
+		this.variant,
+		this.subtype,
+		MinimapAPI.PickupNotCollected,
+		"deliveranvecards",
+		14000
+	)
 end
 
 function this.Init() 
