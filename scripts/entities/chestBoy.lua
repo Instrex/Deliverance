@@ -191,7 +191,7 @@ if MinimapAPI then
 		this.variant,
 		-1,
 		nil,
-		"deliveranvemisc",
+		"deliverancemisc",
 		4000
 	)
 end

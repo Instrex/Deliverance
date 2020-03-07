@@ -55,7 +55,7 @@ if MinimapAPI then
 		PickupVariant.PICKUP_TAROTCARD,
 		this.id,
 		MinimapAPI.PickupNotCollected,
-		"deliveranvecards",
+		"deliverancecards",
 		1040
 	)
 end
