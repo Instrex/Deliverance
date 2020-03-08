@@ -9,6 +9,7 @@ function this:behaviour(npc)
     local data = npc:GetData()
     local room = game:GetRoom()
     if data.goreTimer == nil then data.goreTimer = 0 end
+    if data.projectilemode == nil then data.projectilemode = 0 end
 
     -- Begin --
     if npc.State == NpcState.STATE_INIT then
@@ -62,7 +63,9 @@ function this:behaviour(npc)
 
         for e, food in pairs(Isaac.FindInRadius(npc.Position, 30, EntityPartition.ENEMY)) do
           if food.Type == 10 or food.Type == 13 or food.Type == 18 or food.Type == 222 or food.Type == 256 or food.Type == 281 or food.Type == 296 or food.Type == 80 or food.Type == 14 or food.Type == 85 or food.Type == 94 then
+            data.projectilemode = 0
             if food.Type == 10 then
+              data.projectilemode = 1
               food.HitPoints = npc.MaxHitPoints
               food:ToNPC():Morph(11, 0, 0,-1)
               for j=1, 9 do
@@ -101,7 +104,11 @@ function this:behaviour(npc)
             local params = ProjectileParams()
             params.FallingSpeedModifier = math.random(-28, -4)
             params.FallingAccelModifier = 1.2
-            params.Variant = Utils.choose(0, 1)
+            if data.projectilemode == 1 then
+              params.Variant = Utils.choose(0, 1)
+            elseif data.projectilemode == 0 then
+              params.Scale = 0.5
+            end
 
             local velocity = Vector(Utils.choose(math.random(-5, -1), math.random(1, 5)), Utils.choose(math.random(-5, -1), math.random(1, 5)))
             npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
