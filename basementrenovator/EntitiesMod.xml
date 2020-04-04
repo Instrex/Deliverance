@@ -31,6 +31,6 @@
 	<entity BaseHP="25" Group="Deliverance" ID="208" Image="deliverance/MotherOfMany.png" Kind="Enemies" Name="Mother Of Many" Subtype="0" Variant="4000" />
 	<entity BaseHP="25" Group="Deliverance" ID="208" Image="deliverance/PalemotherOfMany.png" Kind="Enemies" Name="Pale Mother Of Many" Subtype="0" Variant="4001" />
 	<entity BaseHP="45" Group="Deliverance" ID="762" Image="deliverance/Creampile.png" Kind="Enemies" Name="Creampile" Subtype="0" Variant="4000" />
-	<entity BaseHP="0" Group="Deliverance" ID="766" Image="deliverance/stonelet.png" Kind="Enemies" Name="Stonelet" Subtype="0" Variant="4000" />
+	<entity BaseHP="0" Group="Deliverance" ID="765" Image="deliverance/stonelet.png" Kind="Enemies" Name="Stonelet" Subtype="0" Variant="4000" />
 	<entity BaseHP="0" Group="Deliverance" ID="212" Image="deliverance/reaper.png" Kind="Enemies" Name="Reaper" Subtype="0" Variant="4000" />
 </data>
