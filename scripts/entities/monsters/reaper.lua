@@ -1,7 +1,20 @@
 local this = {
     id = Isaac.GetEntityTypeByName("Reaper"),
-    variant = Isaac.GetEntityVariantByName("Reaper")
+    variant = Isaac.GetEntityVariantByName("Reaper"),
+	effect = Isaac.GetEntityVariantByName("Reaper Cape")
 }
+function this:updateEffect(npc)
+ if npc.Variant == this.effect then
+    local player = Isaac.GetPlayer(0)
+    local sprite = npc:GetSprite()
+    local data = npc:GetData()
+    sprite:Play("Extra")
+    
+    if sprite:IsFinished("Extra") then 
+      npc:Remove()
+    end
+  end
+end
 
 function this:behaviour(npc) -- MC_NPC_UPDATE (this.id)
     if npc.Variant ~= this.variant then return end -- vibe check
@@ -18,6 +31,7 @@ function this:behaviour(npc) -- MC_NPC_UPDATE (this.id)
             npc.Velocity = vectorZero
             sprite:Play("Death");
             if sprite:IsFinished("Death") then
+				local cape = Isaac.Spawn(1000, this.effect, 0, npc.Position, vectorZero, nil)
                 npc:Kill()
             end
         end
@@ -116,6 +130,7 @@ end
 
 function this.Init()
     mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
+	mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateEffect)
     mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC,this.id)
 end
