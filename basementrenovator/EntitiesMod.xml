@@ -18,6 +18,7 @@
 	<entity BaseHP="30" Group="Deliverance" ID="751" Image="deliverance/751.4001.00 - Red Fat Host.png" Kind="Enemies" Name="Red Fat Host" Subtype="0" Variant="4001" />
 	<entity BaseHP="32" Group="Deliverance" ID="752" Image="deliverance/752.4000.0 - Gelatino.png" Kind="Enemies" Name="Gelatino" Subtype="0" Variant="4000" />
 	<entity BaseHP="22" Group="Deliverance" ID="752" Image="deliverance/752.4001.0 - Mini Gelatino.png" Kind="Enemies" Name="Mini Gelatino" Subtype="0" Variant="4001" />
+	<entity BaseHP="12" Group="Deliverance" ID="753" Image="deliverance/753.4003.0 - Cadaver (random).png" Kind="Enemies" Name="Cadaver (random)" Subtype="0" Variant="4003" />
 	<entity BaseHP="12" Group="Deliverance" ID="753" Image="deliverance/753.4000.0 - Cadaver.png" Kind="Enemies" Name="Cadaver" Subtype="0" Variant="4000" />
 	<entity BaseHP="12" Group="Deliverance" ID="753" Image="deliverance/753.4001.0 - Wicked Cadaver.png" Kind="Enemies" Name="Wicked Cadaver" Subtype="0" Variant="4001" />
 	<entity BaseHP="15" Group="Deliverance" ID="753" Image="deliverance/753.4002.0 - Sluggish Cadaver.png" Kind="Enemies" Name="Sluggish Cadaver" Subtype="0" Variant="4002" />

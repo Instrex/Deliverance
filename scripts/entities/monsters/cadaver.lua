@@ -2,6 +2,9 @@ local this = {}
 this.id = Isaac.GetEntityTypeByName("Cadaver")
 
 function this:behaviour(npc)
+  if npc.Variant == 4003 then
+    npc:Morph(this.id,Utils.choose(4000,4001,4002),0,-1)
+  end
  if npc.Variant == Isaac.GetEntityVariantByName("Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Wicked Cadaver") or npc.Variant == Isaac.GetEntityVariantByName("Sluggish Cadaver") then
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()

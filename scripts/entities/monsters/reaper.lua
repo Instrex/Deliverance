@@ -12,12 +12,14 @@ function this:behaviour(npc) -- MC_NPC_UPDATE (this.id)
     if data.teleportDelay == nil then data.teleportDelay = 30 end
     if data.teleportDelay > 0 then
         data.teleportDelay = data.teleportDelay - 1
-        print(data.teleportDelay)
     end
     if data.dead then
-            npc.State = NpcState.STATE_DEATH;
+            npc.State = NpcState.STATE_UNIQUE_DEATH;
             npc.Velocity = vectorZero
             sprite:Play("Death");
+            if sprite:IsFinished("Death") then
+                npc:Kill()
+            end
         end
 
     -- AI
@@ -43,6 +45,7 @@ function this:behaviour(npc) -- MC_NPC_UPDATE (this.id)
         npc.Velocity = npc.Velocity * 0.96
         if sprite:IsEventTriggered("Spawn") then 
             npc.StateFrame = 0
+            sfx:Play(104, 1.5, 0, false, 1)
             local thing = Isaac.Spawn(66, 10, 0, npc.Position, utils.vecToPos(target.Position, npc.Position) * 13, nil)
             sfx:Play(265, 0.9, 0, false, 1)
             thing.Parent = thing
@@ -54,7 +57,7 @@ function this:behaviour(npc) -- MC_NPC_UPDATE (this.id)
     elseif npc.State == 400 then
         npc.StateFrame = npc.StateFrame + 1
         sprite:Play("TeleportStart")
-        npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+        npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
         if sprite:IsEventTriggered("TeleportStart") then
             sfx:Play(215, 1,0, false, 1)
         end
