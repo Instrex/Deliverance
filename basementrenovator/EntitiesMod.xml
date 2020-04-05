@@ -1,5 +1,6 @@
 <data>
     <!-- Enemies -->
+	<entity BaseHP="1" Group="Deliverance" ID="761" Image="deliverance/761.4000.0 - Munchubus.png" Kind="Stage" Name="Munchubus" Subtype="0" Variant="4000" />
 	<entity BaseHP="50" Group="Deliverance" ID="740" Image="deliverance/740.4000.00 - Raga.png" Kind="Enemies" Name="Raga" Subtype="0" Variant="4000" />
 	<entity BaseHP="30" Group="Deliverance" ID="741" Image="deliverance/741.4000.00 - Cracker.png" Kind="Enemies" Name="Cracker" Subtype="0" Variant="4000" />
 	<entity BaseHP="40" Group="Deliverance" ID="742" Image="deliverance/742.4000.00 - Jester.png" Kind="Enemies" Name="Jester" Subtype="0" Variant="4000" />
