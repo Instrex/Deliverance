@@ -15,9 +15,11 @@ function this:behaviour(npc)
     sprite:LoadGraphics()
   elseif npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody_x.png")
+    sprite:ReplaceSpritesheet(1,"gfx/monsters/peabody_x.png")
     sprite:LoadGraphics()
   elseif npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/peamonger.png")
+    sprite:ReplaceSpritesheet(1,"gfx/monsters/peamonger.png")
     sprite:LoadGraphics()
   end
 
