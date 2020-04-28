@@ -32,6 +32,7 @@
   <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
   <passive name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png"/>
   <passive name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/>
+  <passive name="Mystery Bag" description="Gives 3 runes" gfx="collectibles_mysteryBag.png" cache="tearcolor"/>
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>
@@ -50,12 +51,4 @@
   <trinket name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
   <trinket name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
   <trinket name="Extinguisher" description="Cool down" gfx="trinket_extinguisher.png" />
-
-  <!-- Awan Content 
-  <trinket name="Gunpowder" description="That's what bombs are made of" gfx="trinket_gunPowder.png" />
-  <trinket name="Piece of Paper" description="Nothing here" gfx="trinket_pieceOfPaper.png" />
-  <trinket name="Bottled Blood" description="For dark recipes" gfx="trinket_bottledBlood.png" />
-  <trinket name="Wooden Rib" description="Something evil" gfx="trinket_woodenRib.png" />
-  <trinket name="Glowing Feather" description="Glows with potential" gfx="trinket_glowingFeather.png" />
-  -->
 </items>

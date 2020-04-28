@@ -63,7 +63,8 @@ deliveranceContent = {
     urnOfWant                 = require 'scripts.items.urnOfWant',
     encharmedPenny            = require 'scripts.items.encharmedPenny',
     obituary                  = require 'scripts.items.obituary',
-    shamrockLeaf              = require 'scripts.items.shamrockLeaf'
+    shamrockLeaf              = require 'scripts.items.shamrockLeaf',
+	mysteryBag                = require 'scripts.items.mysteryBag'
   },
 
   trinkets = {
