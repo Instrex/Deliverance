@@ -64,7 +64,8 @@ deliveranceContent = {
     encharmedPenny            = require 'scripts.items.encharmedPenny',
     obituary                  = require 'scripts.items.obituary',
     shamrockLeaf              = require 'scripts.items.shamrockLeaf',
-	mysteryBag                = require 'scripts.items.mysteryBag'
+	mysteryBag                = require 'scripts.items.mysteryBag',
+	glassCrown               = require 'scripts.items.glassCrown'
   },
 
   trinkets = {
@@ -134,7 +135,8 @@ deliveranceContent = {
     creampile                 = require 'scripts.entities.monsters.creampile',
     gappy                     = require 'scripts.entities.monsters.gappy',
     reaper                    = require 'scripts.entities.monsters.reaper',
-    stonelet                  = require 'scripts.entities.monsters.stonelet'
+    stonelet                  = require 'scripts.entities.monsters.stonelet',
+	grilly                    = require 'scripts.entities.monsters.grilly'
   },
 
   costumes = {

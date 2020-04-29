@@ -32,7 +32,9 @@
   <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
   <passive name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png"/>
   <passive name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/>
-  <passive name="Mystery Bag" description="Gives 3 runes" gfx="collectibles_mysteryBag.png" cache="tearcolor"/>
+  <passive name="Mystery Bag" description="Gives 3 runes" gfx="collectibles_mysteryBag.png"/>
+  <passive name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/>
+  
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>

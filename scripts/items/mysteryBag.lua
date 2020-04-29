@@ -4,10 +4,7 @@ this.description = "Gives 3 runes."
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-      if flag == CacheFlag.CACHE_TEARCOLOR then
-  
-     end
+  if player:HasCollectible(this.id) then 
   end
 end
 

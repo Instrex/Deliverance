@@ -59,12 +59,13 @@
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Time Gal" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
-    <Pool Name="angel">
+    <Pool Name="angel"> 
       <Item Name="Good Old Friend" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Lawful" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	  <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="library">
       <Item Name="Obituary" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
