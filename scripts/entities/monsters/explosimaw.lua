@@ -49,6 +49,13 @@ function this:behaviour(npc)
     if sprite:IsEventTriggered("Explode") then
        npc.Velocity = npc.Velocity * (5+math.random(1, 3)) + Vector.FromAngle(math.random(0, 360))
        Isaac.Explode(npc.Position, npc, 1.0)
+	     for i=1, math.random(2,8) do
+		    local fire = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.RED_CANDLE_FLAME, 0, npc.Position, Vector.FromAngle(i*math.random(0,360)):Resized(9), npc)
+        if(fire.Position - target.Position):Length()<25 then
+          target:TakeDamage(1,0,EntityRef(fire),0)
+        end
+		    --prj:AddProjectileFlags(ProjectileFlags.HIT_ENEMIES)
+	     end
        sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
        Game():ShakeScreen(16)
        data.Smol = true
