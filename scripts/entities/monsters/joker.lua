@@ -116,9 +116,24 @@ function this:behaviour(npc)
  end
 end
 
+--[[function this:boneprojupdate(proj)
+  local data = proj:GetData()
+  local spawner = proj.SpawnerEntity
+  for _, e in pairs(Isaac.GetRoomEntities()) do
+    if e:GetData().bsmol and e.SpawnerType == 743 and e.SpawnerVariant == 4000 then 
+      sprite = proj:GetSprite()
+      sprite:ReplaceSpritesheet(0,"gfx/projectiles/lilboney_projectile.png")
+      sprite:LoadGraphics()
+    end
+  end
+end--]]
+
 function this:onHitNPC(npc, dmgAmount, flags, source, frames)
  if npc.Variant == this.variant then
   local data = npc:GetData()
+  if flags == DamageFlag.DAMAGE_EXPLOSION and Utils.chancep(25) then
+    return false
+  end
   if npc.Type == this.id then
     if data.RealHp == nil then
       data.RealHp = npc.HitPoints
@@ -140,6 +155,7 @@ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
+--  mod:AddCallback(ModCallbacks.MC_POST_PROJECTILE_INIT, this.boneprojupdate, 1)
 --  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
 end

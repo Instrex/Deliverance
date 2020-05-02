@@ -6,6 +6,7 @@ function this.checkEnemies()
   local count = 0
   for _, e in pairs(Isaac.GetRoomEntities()) do
     if e:GetData().smol then count = count + 1 end
+    --if data.boneupd == nil then data.boneupd = 0 end
   end
 
   return count
@@ -127,6 +128,19 @@ function this:behaviour(npc)
  end
 end
 
+--[[function this:boneprojupdate(proj)
+-- you'll need to manually set SpawnerEntity in the parent entity's code because this API is fucked up
+    local spawner = proj.SpawnerEntity
+    -- this code will also continuously replace the spritesheet for a single entity which has perf implications; you should add a field on GetData indicating you've already checked this projectile
+    --[[ spawner.Type == 227 and spawner.SpawnerType == 742 then
+          local sprite = proj:GetSprite()
+          sprite:ReplaceSpritesheet(0,"gfx/projectiles/lilboney_projectile.png")
+          sprite:LoadGraphics()
+    end--]]
+end--]]
+
+
+
 function this:onHitNPC(npc, dmgAmount, flags, source, frames)
  if npc.Variant == this.variant then
   local data = npc:GetData()
@@ -151,6 +165,7 @@ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
+--  mod:AddCallback(ModCallbacks.MC_POST_PROJECTILE_UPDATE, this.boneprojupdate, 1)
 --  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
 end
