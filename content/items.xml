@@ -34,6 +34,7 @@
   <passive name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/>
   <passive name="Mystery Bag" description="Gives 3 runes" gfx="collectibles_mysteryBag.png"/>
   <passive name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/>
+  <passive name="Corrosive Bombs" description="sex" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
   
 
   <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>

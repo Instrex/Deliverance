@@ -65,7 +65,8 @@ deliveranceContent = {
     obituary                  = require 'scripts.items.obituary',
     shamrockLeaf              = require 'scripts.items.shamrockLeaf',
 	mysteryBag                = require 'scripts.items.mysteryBag',
-	glassCrown               = require 'scripts.items.glassCrown'
+	glassCrown                = require 'scripts.items.glassCrown',
+    corrosiveBombs            = require 'scripts.items.corrosiveBombs'
   },
 
   trinkets = {
