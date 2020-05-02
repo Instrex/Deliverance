@@ -2,10 +2,31 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Corrosive Bombs")
 this.description = "+3 Bombs"
 
-function this:cache(bomb, pickup)
-  local player = Isaac.GetPlayer(0)
+function this:cache(bomb)
+  local player = Isaac.GetPlayer(0) --Курочка обидется...
   if player:HasCollectible(this.id) then
-  local entities = Isaac.GetRoomEntities()
+	local room = Game():GetRoom()
+	local bombsprite = bomb:GetSprite()
+	--update sprite--
+	if (bomb.Variant > 4 or bomb.Variant < 3) then
+		if bomb.FrameCount < 2 and bomb.Variant ~= 2 then
+			bombsprite:Load("gfx/items/effects/corrosive_bomb.anm2",true)
+			bombsprite:LoadGraphics()
+		end
+	end
+	--unlock doors--
+	for i = 0, 7 do
+		local door = room:GetDoor(i)
+		if door ~= nil and door:IsLocked(i) then
+			if bomb.Position:DistanceSquared(door.Position) <= 55 ^ 2 and bombsprite:IsPlaying("Explode") then
+				if door:TryUnlock(true) then
+					door:SpawnDust()
+				end
+			end
+		end
+	end
+end
+  --[[local entities = Isaac.GetRoomEntities()
    for ent = 1, #entities do
 	local entity = entities[ent]
     if entity:GetSprite():IsPlaying("Explode") and entity:GetSprite():GetFrame() == 1 then
@@ -38,13 +59,13 @@ end
 	            end  
 			end
 		end	
-    end
+    end--]]
 end
  
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_BOMB_UPDATE, this.cache) 
-  mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.cache, PickupVariant.PICKUP_LOCKEDCHEST)
-  mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.cache, PickupVariant.PICKUP_ETERNALCHEST)
+  --mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.cache, PickupVariant.PICKUP_LOCKEDCHEST)
+  --mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.cache, PickupVariant.PICKUP_ETERNALCHEST)
 end
 
 return this

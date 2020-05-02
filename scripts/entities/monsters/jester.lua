@@ -129,14 +129,14 @@ function this:behaviour(npc)
 end
 
 --[[function this:boneprojupdate(proj)
--- you'll need to manually set SpawnerEntity in the parent entity's code because this API is fucked up
+you'll need to manually set SpawnerEntity in the parent entity's code because this API is fucked up
     local spawner = proj.SpawnerEntity
-    -- this code will also continuously replace the spritesheet for a single entity which has perf implications; you should add a field on GetData indicating you've already checked this projectile
-    --[[ spawner.Type == 227 and spawner.SpawnerType == 742 then
+ this code will also continuously replace the spritesheet for a single entity which has perf implications; you should add a field on GetData indicating you've already checked this projectile
+ spawner.Type == 227 and spawner.SpawnerType == 742 then
           local sprite = proj:GetSprite()
           sprite:ReplaceSpritesheet(0,"gfx/projectiles/lilboney_projectile.png")
           sprite:LoadGraphics()
-    end--]]
+    end
 end--]]
 
 
