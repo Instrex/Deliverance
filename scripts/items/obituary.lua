@@ -7,12 +7,23 @@ this.superObituaryBonus=1
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-      if flag == CacheFlag.CACHE_DAMAGE then
-         if deliveranceData.temporary.damageBonus~=nil then
-	    player.Damage = player.Damage * deliveranceData.temporary.damageBonus * this.superObituaryBonus
-         end
-      end
+ if flag == CacheFlag.CACHE_DAMAGE then
+  if deliveranceData.temporary.damageBonus~=nil then
+    player.Damage = player.Damage * deliveranceData.temporary.damageBonus * this.superObituaryBonus
   end
+
+elseif flag == CacheFlag.CACHE_TEARCOLOR then
+  player:AddNullCostume(deliveranceContent.costumes.obituary)
+        end
+    end
+end
+
+function this:playerUpdate(player)
+    if player:HasCollectible(this.id) then
+            if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
+                player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.obituary), "gfx/characters/costumes_forgotten/sheet_costume_obituary_forgotten.png", 0)
+            end
+    end
 end
 
 function this:update(player)
@@ -55,6 +66,7 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, this.update)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.trigger, EntityType.ENTITY_PLAYER)
+  mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, this.playerUpdate)
 end
 
 return this

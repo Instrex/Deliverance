@@ -154,7 +154,8 @@ deliveranceContent = {
     manuscript                = utils.getCostume('manuscript'),
     dangerRoom                = utils.getCostume('dangerRoom'),
     lawful                    = utils.getCostume('lawful'),
-    momsEarrings              = utils.getCostume('momsEarrings')
+    momsEarrings              = utils.getCostume('momsEarrings'),
+	obituary                  = utils.getCostume('obituary')
   }
 }
 

@@ -33,6 +33,8 @@
     </Pool>
     <Pool Name="redChest">
       <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	  <Item Name="Obituary" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	  
     </Pool>
     <Pool Name="goldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -58,6 +60,7 @@
       <Item Name="Gasoline" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Time Gal" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	  <Item Name="Obituary" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="angel"> 
       <Item Name="Good Old Friend" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -66,9 +69,6 @@
       <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Lawful" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	  <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-    </Pool>
-    <Pool Name="library">
-      <Item Name="Obituary" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
 
     <!-- Greed Itempools -->
@@ -107,6 +107,7 @@
       <Item Name="Gasoline" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Adam's Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	  <Item Name="Obituary" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedAngel">
       <Item Name="Good Old Friend" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -130,8 +131,5 @@
     <Pool Name="greedGoldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-    </Pool>
-    <Pool Name="greedLibrary">
-      <Item Name="Obituary" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
 </ItemPools>

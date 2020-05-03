@@ -30,8 +30,8 @@
   <passive name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
   <passive name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>
   <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
-  <passive name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png"/>
-  <passive name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/>
+  <passive name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png" cache="tearcolor" devilprice="1"/>
+  <passive name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/> 
   <passive name="Mystery Bag" description="Gives 3 runes" gfx="collectibles_mysteryBag.png"/>
   <passive name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/>
   <passive name="Corrosive Bombs" description="sex" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
