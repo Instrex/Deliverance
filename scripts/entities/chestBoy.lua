@@ -192,7 +192,7 @@ if MinimapAPI then
 		-1,
 		nil,
 		"deliverancemisc",
-		4000
+		40000
 	)
 end
 
