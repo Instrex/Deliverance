@@ -10,10 +10,7 @@ function this:cache(player, flag)
     --   deliveranceDataHandler.directSave()
     --end
 --  if flag == CacheFlag.CACHE_TEARCOLOR then player.TearColor = Color(219, 231, 251, 1, 0, 0, 0) end
-    if flag == CacheFlag.CACHE_DAMAGE then player.Damage = player.Damage + 0.45
-    elseif flag == CacheFlag.CACHE_TEARCOLOR then
-       player:AddNullCostume(deliveranceContent.costumes.hotmilk)
-    end
+    if flag == CacheFlag.CACHE_DAMAGE then player.Damage = player.Damage + 0.45 end
   end
 end
 

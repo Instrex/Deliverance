@@ -2,30 +2,6 @@ local this = {}
 this.id = Isaac.GetItemIdByName("The Covenant")
 this.description = "Devil room contain more things, but all hearts are replaced by other pickups"
 
-function this:cache(player, flag)
-    local player = Isaac.GetPlayer(0)
-    if player:HasCollectible(this.id) then
-        --if not deliveranceData.temporary.hasCovenant then
-            --deliveranceData.temporary.devilPrize=false
-            --deliveranceData.temporary.hasCovenant = true
-            --deliveranceDataHandler.directSave()
-            --sfx:Play(SoundEffect.SOUND_SATAN_GROW , 0.6, 0, false, math.random(10, 12) / 10)
-
-            if flag == CacheFlag.CACHE_TEARCOLOR then
-                 player:AddNullCostume(deliveranceContent.costumes.theCovenant)
-            end
-        --end
-    end
-end
-
-function this:playerUpdate(player)
-    if player:HasCollectible(this.id) then
-            if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
-                player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.theCovenant), "gfx/characters/costumes_forgotten/sheet_costume_theCovenant_forgotten.png", 0)
-            end
-    end
-end
-
 -- Replace all hearts to their corresponding reward --
 function this:pickupMorph(pickup)
     local player = Isaac.GetPlayer(0)
@@ -120,11 +96,9 @@ function this:nullDevilPrize()
 end
 
 function this.Init()
-    mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
     mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.pickupMorph)
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.update)
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.nullDevilPrize)
-    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, this.playerUpdate)
 end
 
 return this

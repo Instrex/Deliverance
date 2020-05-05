@@ -2,15 +2,6 @@ local this = {}
 this.id = Isaac.GetItemIdByName("The Manuscript")
 this.description = "Gives half of an soul heart each time you use a card/rune"
 
-function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-      if flag == CacheFlag.CACHE_TEARCOLOR then
-         player:AddNullCostume(deliveranceContent.costumes.manuscript)
-      end
-  end
-end
-
 function this:useCard(card)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
@@ -32,7 +23,6 @@ function this:dropCard()
 end
 
 function this.Init()
-  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_USE_CARD, this.useCard)
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.dropCard)
 end

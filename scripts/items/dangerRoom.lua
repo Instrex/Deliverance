@@ -1,16 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Danger Room")
 this.description = "Tracks nearby enemy projectiles, filling the scale of danger#After filling the scale gives a random pick-up item"
-
-function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-      if flag == CacheFlag.CACHE_TEARCOLOR then
-         player:AddNullCostume(deliveranceContent.costumes.dangerRoom)
-      end
-  end
-end
-
 this.barOpacity=true
 this.backTimer=0 this.backTimer2=0 this.backTimer3=0
 
@@ -96,7 +86,6 @@ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
-  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.onRender)
   mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.updateStage)
 end

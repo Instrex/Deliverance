@@ -10,8 +10,8 @@ function this:cache(player, flag)
     --  deliveranceDataHandler.directSave()
       if flag == CacheFlag.CACHE_SPEED then
         player.MoveSpeed = player.MoveSpeed + 0.2
-      elseif flag == CacheFlag.CACHE_TEARCOLOR then
-         player:AddNullCostume(deliveranceContent.costumes.sailorHat)
+      --[[elseif flag == CacheFlag.CACHE_TEARCOLOR then
+         player:AddNullCostume(deliveranceContent.costumes.sailorHat)--]]
       end
     --end
   end

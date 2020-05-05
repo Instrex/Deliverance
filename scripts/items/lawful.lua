@@ -2,24 +2,6 @@
 this.id = Isaac.GetItemIdByName('Lawful')
 this.description = 'All items on floors will be of same item pool#Item pool is randomly choosen at the start of level'
 
-function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-      if flag == CacheFlag.CACHE_TEARCOLOR then
-         player:AddNullCostume(deliveranceContent.costumes.lawful)
-      end
-  end
-end
-
-function this:update(player)
-  if player:HasCollectible(this.id) then
-     if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
-        player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetNullItem(deliveranceContent.costumes.lawful), "gfx/characters/costumes_forgotten/sheet_costume_lawful_forgotten.png", 0)
-     end
-  end
-end
-
-
 -- MC_POST_NEW_LEVEL
 function this.onNewFloor() 
    local player = Isaac.GetPlayer(0)
@@ -76,8 +58,6 @@ function this:preGetCollectible(pool, decrease, seed)
 end
 
 function this.Init()
-    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, this.update)
-    mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewFloor)
     --mod:AddCallback(ModCallbacks.MC_POST_PICKUP_SELECTION, this.postPickupSelection)
     mod:AddCallback(ModCallbacks.MC_PRE_GET_COLLECTIBLE, this.preGetCollectible)

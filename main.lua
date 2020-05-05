@@ -145,19 +145,19 @@ deliveranceContent = {
   costumes = {
     noAutoload = true,
 
-    sailorHat                 = utils.getCostume('sailorhat'),
-    saltySoup                 = utils.getCostume('saltySoup'),
-    gasoline                  = utils.getCostume('gasoline'),
+    --sailorHat                 = utils.getCostume('sailorhat'),
+    --saltySoup                 = utils.getCostume('saltySoup'),
+    --gasoline                  = utils.getCostume('gasoline'),
     luckySaucer               = utils.getCostume('luckySaucer'),
-    theCovenant               = utils.getCostume('theCovenant'),
+    --theCovenant               = utils.getCostume('theCovenant'),
     adamsRib                  = utils.getCostume('adamsRib'),
-    hotmilk                   = utils.getCostume('hotmilk'),
-    adamsRib2                 = utils.getCostume('adamsRib2'),
-    manuscript                = utils.getCostume('manuscript'),
-    dangerRoom                = utils.getCostume('dangerRoom'),
-    lawful                    = utils.getCostume('lawful'),
-    momsEarrings              = utils.getCostume('momsEarrings'),
-	obituary                  = utils.getCostume('obituary')
+    --hotmilk                   = utils.getCostume('hotmilk'),
+    adamsRib2                 = utils.getCostume('adamsRib2')
+    --manuscript                = utils.getCostume('manuscript'),
+    --dangerRoom                = utils.getCostume('dangerRoom'),
+    --lawful                    = utils.getCostume('lawful'),
+    --momsEarrings              = utils.getCostume('momsEarrings')
+	--obituary                  = utils.getCostume('obituary')
   }
 }
 

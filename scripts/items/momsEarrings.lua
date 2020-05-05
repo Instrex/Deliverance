@@ -8,10 +8,7 @@ function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
       if flag == CacheFlag.CACHE_DAMAGE then
-	 player.Damage = player.Damage * this.damageBonus
-      elseif flag == CacheFlag.CACHE_TEARCOLOR then
-         player:AddNullCostume(deliveranceContent.costumes.momsEarrings)
-      end
+	 player.Damage = player.Damage * this.damageBonus end
   end
 end
 
