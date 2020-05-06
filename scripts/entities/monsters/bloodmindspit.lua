@@ -31,14 +31,22 @@ function this:behaviour(npc)
 	
 	if sprite:IsFinished("Start") then
        npc:Remove()
-	   sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 1.2, 0, false, 1)
+	   Isaac.Spawn(1000, 2, 0, npc.Position, vectorZero, player)
+	   sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 0.7, 0, false, 1)
 	   elseif npc:CollidesWithGrid() then
+	   Isaac.Spawn(1000, 2, 0, npc.Position, vectorZero, player)
+	   for i = 30, 360, 30 do
+	   params.FallingSpeedModifier = -38 + math.random(5);
+	   params.FallingAccelModifier = 1.2 
+	   npc:FireProjectiles(npc.Position, Vector(0, 2):Rotated(i - 40 + (npc:GetDropRNG():RandomFloat()) * 80), 0, params)
        npc:Remove()
-       sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 1.2, 0, false, 1)
+       sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 0.7, 0, false, 1)
        Game():ShakeScreen(5)
 	  end
-   end
- end
+    end
+  end
+end
+
 function this:onHitNPC(npc)
   if npc.Type == Isaac.GetEntityTypeByName("Bloodmind Spit") and npc.Variant == Isaac.GetEntityVariantByName("Bloodmind Spit") then
     return false

@@ -54,10 +54,10 @@ function this:behaviour(npc)
     if sprite:IsEventTriggered("Roar") then
         sfx:Play(Isaac.GetSoundIdByName("Fistulauncher"), 0.7, 0, false, 1)
     end
-
     if sprite:IsEventTriggered("Shoot") then
         npc.Velocity = vectorZero
-        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 0.7, 0, false, 1)
+        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 1.2, 0, false, 1)
+		Isaac.Spawn(1000, 2, 0, npc.Position, vectorZero, player)
         Game():Spawn(Isaac.GetEntityTypeByName("Bloodmind Spit"), Isaac.GetEntityVariantByName("Bloodmind Spit"), npc.Position, vectorZero, npc, 0, 1)
     end
 

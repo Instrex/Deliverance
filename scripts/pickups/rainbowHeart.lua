@@ -26,6 +26,7 @@ function this:updateHeart(pickup)
         end
      end
   end
+  if Game():GetLevel():GetCurrentRoom():IsFirstVisit() then
   if pickup.Variant == PickupVariant.PICKUP_HEART then
       local data = pickup:GetData()
       if data.change == nil then
@@ -44,9 +45,9 @@ function this:updateHeart(pickup)
        end
        data.change = true
       end
+    end
   end
 end
-
 if MinimapAPI then
 
 	local minimapIcons = Sprite()
