@@ -34,4 +34,5 @@
 	<entity BaseHP="45" Group="Deliverance" ID="762" Image="deliverance/Creampile.png" Kind="Enemies" Name="Creampile" Subtype="0" Variant="4000" />
 	<entity BaseHP="0" Group="Deliverance" ID="765" Image="deliverance/stonelet.png" Kind="Enemies" Name="Stonelet" Subtype="0" Variant="4000" />
 	<entity BaseHP="0" Group="Deliverance" ID="212" Image="deliverance/reaper.png" Kind="Enemies" Name="Reaper" Subtype="0" Variant="4000" />
+    <entity BaseHP="0" Group="Deliverance" ID="767" Image="deliverance/bloodmind.png" Kind="Enemies" Name="Bloodmind" Subtype="0" Variant="4000" />
 </data>

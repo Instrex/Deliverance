@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="06.05.2020 15:42:28" Version="122" Fps="30"/>
+	<Info CreatedBy="robot" CreatedOn="08.05.2020 9:52:53" Version="123" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="monsters\bloodmind_body.png" Id="0"/>
@@ -173,7 +173,7 @@
 			</NullAnimations>
 			<Triggers>
 				<Trigger EventId="1" AtFrame="7"/>
-				<Trigger EventId="0" AtFrame="25"/>
+				<Trigger EventId="0" AtFrame="24"/>
 			</Triggers>
 		</Animation>
 	</Animations>

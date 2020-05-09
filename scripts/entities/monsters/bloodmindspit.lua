@@ -13,7 +13,7 @@ function this:behaviour(npc)
   -- Begin--
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_IDLE
-    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
+    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY 
     npc:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
  
   -- Move and wait for player to get closer--
@@ -22,12 +22,12 @@ function this:behaviour(npc)
     sprite:Play("Start")
 	
         params.FallingSpeedModifier = math.random(-28, -4) 
-        params.FallingAccelModifier = 1.2 
+        params.FallingAccelModifier = 0.6
 		
         local velocity = (target.Position - npc.Position):Rotated(math.random(-18, -18)) * 0.01 * math.random(6, 13) * 0.1
         npc:FireProjectiles(npc.Position + utils.vecToPos(target.Position, npc.Position, 10), velocity, 0, params)
         end
-	npc.Velocity = utils.vecToPos(target.Position, npc.Position) * 0.2 + npc.Velocity 	
+	npc.Velocity = (npc.Velocity):Normalized() * 5
 	
 	if sprite:IsFinished("Start") then
        npc:Remove()
@@ -35,10 +35,12 @@ function this:behaviour(npc)
 	   sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 0.7, 0, false, 1)
 	   elseif npc:CollidesWithGrid() then
 	   Isaac.Spawn(1000, 2, 0, npc.Position, vectorZero, player)
-	   for i = 30, 360, 30 do
-	   params.FallingSpeedModifier = -38 + math.random(5);
-	   params.FallingAccelModifier = 1.2 
-	   npc:FireProjectiles(npc.Position, Vector(0, 2):Rotated(i - 40 + (npc:GetDropRNG():RandomFloat()) * 80), 0, params)
+	   for i= 10, 20 do
+	   params.FallingSpeedModifier = math.random(-28, -4) 
+       params.FallingAccelModifier = 0.6
+	   
+	   local velocity = (target.Position - npc.Position):Rotated(math.random(-18, -18)) * 0.01 * math.random(4, 10) * 0.1
+	   npc:FireProjectiles(npc.Position + utils.vecToPos(target.Position, npc.Position, 10), velocity, 0, params)
        npc:Remove()
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 0.7, 0, false, 1)
        Game():ShakeScreen(5)
