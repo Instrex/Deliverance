@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Lighter")
 this.description = "Sets all enemies on fire"
+this.rusdescription ={"Lighter /Зажигалка", "Поджигает всех врагов в комнате"}
 this.isActive = true
 
 function this.use()

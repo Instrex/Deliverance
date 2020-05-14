@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("The Covenant")
 this.description = "Devil room contain more things, but all hearts are replaced by other pickups"
+this.rusdescription ={"The Covenant /Завет", "Комната дьявола содержит больше наград, но все сердца заменяются на другие подбираемые предметы"}
 
 -- Replace all hearts to their corresponding reward --
 function this:pickupMorph(pickup)

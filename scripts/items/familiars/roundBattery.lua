@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Edgeless Cube Battery")
 this.variant = Isaac.GetEntityVariantByName("Round Battery")
 this.description = "Shoots lasers every time enemy projectile hit it"
+this.rusdescription ={"Edgeless Cube Battery /Скругленная кубическая батарея", "Стреляет мощными лазерами в противников каждый раз, когда в неё попадает вражеская слеза"}
 
 function this:behaviour(fam)
   local sprite = fam:GetSprite()

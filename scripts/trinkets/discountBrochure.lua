@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Discount Brochure")
 this.description = "Makes the shop your starting room#\3Will teleport into the random room if location has no shops"
+this.rusdescription ={"Discount Brochure /Скидочная Брошюра", "Телепортирует в магазин в начале каждого этажа#Телепортирует в случайную комнату если в этаже нет магазинов"}
 
 function this.onNewFloor()
     local player = Isaac.GetPlayer(0)

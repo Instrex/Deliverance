@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Salty Soup")
 this.description = "\1 Tears up#Slightly higher chance to miss"
+this.rusdescription ={"Salty Soup /Пересоленная похлёбка", "©Увеличивает скорострельность#Шанс промахнуться немного выше"}
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

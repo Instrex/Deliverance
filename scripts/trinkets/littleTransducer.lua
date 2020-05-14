@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Lil Transducer")
 this.description = "Charges active item even if room doesn't contain any enemies"
+this.rusdescription ={"Lil Transducer /Маленький преобразователь", "Заряжает активный предмет даже если в комнате не было врагов"}
 
 function this.onNewRoom()
     local player = Isaac.GetPlayer(0)

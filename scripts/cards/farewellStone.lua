@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetCardIdByName("FarewellStone")
 this.description = "Turns your red hearts into souls hearts in a 1:2 ratio#Grants 1 soul heart if you have no red hearts"
+this.rusdescription ={"Farewell Stone /Прощальный камень", "Превращает все красные сердца в сердца души в соотношении 1:2#Даёт одно сердце души если у персонажа нет красных сердец"}
 
 function this:cardCallback(cardId)
     local player = Isaac.GetPlayer(0)

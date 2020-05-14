@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Shamrock Leaf")
 this.variant = Isaac.GetEntityVariantByName("Shamrock Leaf Effect")
 this.description = "Grants prizes upon defeating the boss without being hit"
+this.rusdescription ={"Shamrock Leaf /Трилистник", "-"}
 
 -- ITEM LOGIC
 function this.onRoomEnter() -- MC_POST_NEW_ROOM

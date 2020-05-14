@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetCardIdByName("Firestorms")
 this.description = "Sets all enemies on fire#Sets fire on all enemies#Grants Fire Mind effect for one room"
+this.rusdescription ={"Firestorms /Огненные бури", "Поджигает всех врагов в комнате#Даёт эффект Огненного разума до конца комнаты"}
 this.cardImage = 'gfx/items/pick ups/pickup_card_firestorms.png'
 this.isActive = false
 

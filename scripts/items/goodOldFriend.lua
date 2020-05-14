@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Good Old Friend")
 this.variant = Isaac.GetEntityVariantByName("Good Old Friend")
 this.description = "Revives you once, dealing damage to all enemies in the room"
+this.rusdescription ={"Good Old Friend /Старый добрый друг", "Воскрешает один раз, нанося урон всем врагам в комнате"}
 
 function this:update()
 

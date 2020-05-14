@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetCardIdByName("Glitch")
 this.description = "Triggers random tarot card effect"
-
+this.rusdescription ={"Glitch /Глюк", "Вызывает эффект случайной карты таро"}
 function this.getFrame() 
     if utils.chancep(35) then
         return utils.choose('gfx/items/pick ups/glitch/pickup_card_glitch2.png',

@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Battle Royale")
 this.description = "Summons a friendly copy of every enemy in the room, making them fight each other"
+this.rusdescription ={"Battle Royale / оролевска€ битва", "ѕризывает дружественные копии врагов, заставл€€ их дратьс€ друг с другом"}
 this.isActive = true
 
 function this.use()

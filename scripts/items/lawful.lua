@@ -1,7 +1,7 @@
-п»їlocal this = {}
+local this = {}
 this.id = Isaac.GetItemIdByName('Lawful')
 this.description = 'All items on floors will be of same item pool#Item pool is randomly choosen at the start of level'
-
+this.rusdescription ={"Lawful /-", "-"}
 -- MC_POST_NEW_LEVEL
 function this.onNewFloor() 
    local player = Isaac.GetPlayer(0)
@@ -21,7 +21,7 @@ function this:postPickupSelection(pickup, variant, subtype)
         pool:AddRoomBlacklist(CollectibleType.COLLECTIBLE_CHAOS)
 
         if player:HasCollectible(CollectibleType.COLLECTIBLE_CHAOS) and subtype == this.id then
-            -- Р·Р°РјРµРЅРёС‚СЊ POOL_SHOP РЅР° РїСѓР» Р»Р°РІС„СѓР»Р°
+            -- заменить POOL_SHOP на пул лавфула
             return { variant, pool:GetCollectible(ItemPoolType.POOL_SHOP, true, math.random(0, 10000))}
         end
 

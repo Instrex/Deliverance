@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Golden Apple")
 this.description = "Fully restores health, then turns into Apple core"
+this.rusdescription ={"Golden Apple /Золотое яблоко", "Полностью восстанавливает здоровье, затем превращается в огрызок"}
 
 function this.use()
   local player = Isaac.GetPlayer(0)

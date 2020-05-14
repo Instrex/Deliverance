@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Captain's Brooch")
 this.description = "Creates a treasure chest nearby"
+this.rusdescription ={"Captain's Brooch /Капитанская брошь", "Создает сундук рядом"}
 this.isActive = true
 
 function this.use()

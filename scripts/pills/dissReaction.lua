@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetPillEffectByName("Dissociative Reaction")
 this.description = "Drops all of your soul hearts on floor"
+this.rusdescription ={"Dissociative Reaction /Диссоциативная реакция", "Бросает все сердца души персонажа на пол"}
 
 function this:soultesPill(soultemesisPill)
   local player = Isaac.GetPlayer(0)

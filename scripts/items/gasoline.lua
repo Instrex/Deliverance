@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Gasoline")
 this.variant = Isaac.GetEntityVariantByName("Gasoline Fire")
 this.description = "Lights up damaging fires when enemies die"
+this.rusdescription ={"Gasoline /÷истерна", "–азводит повреждающий врагов огонь под убитыми противниками"}
 
 function this:onHitNPC(npc)
   local player = Isaac.GetPlayer(0)

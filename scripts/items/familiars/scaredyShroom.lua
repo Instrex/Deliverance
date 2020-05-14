@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Scaredy-shroom")
 this.variant = Isaac.GetEntityVariantByName("Scaredy-shroom")
 this.description = "Shoots tears, but hides when enemies get near"
+this.rusdescription ={"Scaredy-shroom /Трусогриб", "Стреляет, но прячется когда враги к нему приближаются"}
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()

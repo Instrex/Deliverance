@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Rotten Pork Chop")
 this.variant = Isaac.GetEntityVariantByName("Rotten Fart")
 this.description = "Chance for a powerful fart during shot"
+this.rusdescription ={"Rotten Pork Chop /√нила€ котлета", "Ўанс мощно пукнуть при выстреле"}
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)

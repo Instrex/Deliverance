@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Sage")
 this.variant = Isaac.GetEntityVariantByName("Sage")
 this.description = "Shoots tears at enemies, increasing number of tears fired when damage taken"
+this.rusdescription ={"Sage /Шалфей", "Стреляет во врагов пурпурными слезами, количество которых увеличивается каждый раз, когда вы получаете урон"}
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()

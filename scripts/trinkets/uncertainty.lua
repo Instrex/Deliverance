@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Uncertainty")
 this.description = "Changes your stats each time you take damage"
+this.rusdescription ={"Uncertainty /Ќеопределенность", "»змен€ет характеристики персонажа каждый раз, когда он получает урон"}
 
 function this.trigger()
   local player = Isaac.GetPlayer(0)

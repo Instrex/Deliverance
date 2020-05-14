@@ -51,6 +51,11 @@ function this:behaviour(npc)
           sfx:Play(SoundEffect.SOUND_MONSTER_YELL_A, 1, 0, false, 1)
         end
         if sprite:IsEventTriggered("Shoot") then
+          if (target.Position - npc.Position).X > 0 then
+            npc:GetSprite().FlipX = true
+          else
+            npc:GetSprite().FlipX = false
+          end
           npc.Velocity = vectorZero
       for i= 1,3 do
       local prj = Isaac.Spawn(9,0,0,Vector(npc.Position.X, npc.Position.Y),(utils.vecToPos(target.Position, npc.Position) * math.random(5,13)):Rotated(math.random(-16, 16)),npc):ToProjectile()
@@ -87,6 +92,7 @@ end)
 mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, function(_, effect) --taked from REVELATIONS mod :v
   local data = effect:GetData()
   if data.damageFire then
+    effect:GetSprite().Color = Color(1,0.65,0.32,1,0,0,0)
     if effect.FrameCount == 360 then
       effect:Remove()
     end

@@ -1,9 +1,10 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Corrosive Bombs")
 this.description = "+3 Bombs"
+this.rusdescription ={"Corrosive Bombs /Разъедающие бомбы", "-"}
 
 function this:cache(bomb)
-  local player = Isaac.GetPlayer(0) --РљСѓСЂРѕС‡РєР° РѕР±РёРґРµС‚СЃСЏ...
+  local player = Isaac.GetPlayer(0) --Курочка обидется...
   if player:HasCollectible(this.id) then
 	local room = Game():GetRoom()
 	local bombsprite = bomb:GetSprite()

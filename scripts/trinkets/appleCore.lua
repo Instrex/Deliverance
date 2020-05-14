@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Apple Core")
 this.description = "Chance to restore all health when taking damage#One-time"
+this.rusdescription ={"Apple Core /Огрызок Яблока", "Шанс восстанивить всё здоровье при получении урона#Одноразовый"}
 
 function this.trigger(id)
   local player = Isaac.GetPlayer(0)

@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Glass Crown")
 this.description = "Don't drop it"
+this.rusdescription ={"Glass Crown /Стеклянная корона", "-"}
 
  local bonus = {
   speed = 0.5,

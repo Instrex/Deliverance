@@ -2,6 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("The Threater")
 this.variant = Isaac.GetEntityVariantByName("The Threater")
 this.description = "Strikes groups of enemies with lightning#Lightning shifts between enemies"
+this.rusdescription ={"The Threater /-", "-"}
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()

@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Lucky Saucer")
 this.description = "\1 +3 Luck up"
+this.rusdescription ={"Lucky Saucer /—частливое блюдце", "©+3 к удаче"}
 
 this.luckBonus = 3
 

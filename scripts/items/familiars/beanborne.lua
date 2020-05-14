@@ -3,6 +3,7 @@ this.id = Isaac.GetItemIdByName("Beanborne")
 this.variant = Isaac.GetEntityVariantByName("Beanborne")
 this.projectile = Isaac.GetEntityVariantByName("Rotten Fart")
 this.description = "Intensely farts, poisoning enemies#Creates a fly in every room you visit for the first time"
+this.rusdescription ={"Beanborne /-", "-"}
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()

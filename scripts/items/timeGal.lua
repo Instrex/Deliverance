@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Time Gal")
 this.description = "A ghost spawns in each room holding a pickup#If you clean room in time, he will give that pickup"
+this.rusdescription ={"Time Gal /-", "-"}
 this.timeGal = Isaac.GetEntityVariantByName("Time Gal")
 
 this.timer=32

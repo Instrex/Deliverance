@@ -5,6 +5,10 @@ function this.init()
     __eidTrinketDescriptions = __eidTrinketDescriptions or {}
     __eidCardDescriptions = __eidCardDescriptions or {}
     __eidPillDescriptions = __eidPillDescriptions or {}
+    __eidRusItemDescriptions = __eidRusItemDescriptions or {}
+    __eidRusTrinketDescriptions = __eidRusTrinketDescriptions or {}
+    __eidRusCardDescriptions = __eidRusCardDescriptions or {}
+    __eidRusPillDescriptions = __eidRusPillDescriptions or {}
 end
 
 local function checkTypeName(type)
@@ -25,13 +29,14 @@ local function checkTypeName(type)
 end
 
 function this.tryAddDescription(type, class)
-    if (not class) or (not class.id) or (not class.description) then
+    if (not class) or (not class.id) or (not class.description) or (not class.rusdescription) then
         return false
     end
 
     local convType = checkTypeName(type)
     if convType then 
         _G['__eid'..convType..'Descriptions'][class.id] = class.description
+        _G['__eidRus'..convType..'Descriptions'][class.id] = class.rusdescription
     end
 end
 

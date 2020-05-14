@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Urn of Want")
 this.description = "Charging by killing monsters#Upon using gives effects of random pill and random card, #and spawns random pickup"
+this.rusdescription ={"Urn of Want /-", "-"}
 this.isActive = true
 
 this.effect = Isaac.GetEntityVariantByName("Urn of Want Effect")

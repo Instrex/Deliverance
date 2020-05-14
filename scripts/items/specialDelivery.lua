@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Special Delivery")
 this.description = "Summons a box with random things"
+this.rusdescription ={"Special Delivery /Специальная доставка", "Призывает коробку с разными вещами"}
 this.isActive = true
 
 local specialDel_target = Isaac.GetEntityVariantByName("Special Delivery Target")

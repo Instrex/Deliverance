@@ -1,6 +1,7 @@
 local this = {
     id = Isaac.GetTrinketIdByName("Extinguisher"),
-    description = "Extinguishes nearby fireplaces"
+    description = "Extinguishes nearby fireplaces",
+    rusdescription ={"Extinguisher /Огнетушитель", "Тушит ближайшие костры"}
 }
 
 function this:update(player)

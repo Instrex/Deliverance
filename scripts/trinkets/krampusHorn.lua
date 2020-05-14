@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Krampus' Horn")
 this.description = "Chance to teleport to the Devil Room when taking damage"
-
+this.rusdescription ={"Krampus' Horn /Рог Крампуса", "Шанс телепортироваться в комнату дьявола при получении урона"}
 function this.trigger(id)
   local player = Isaac.GetPlayer(0)
   if player:HasTrinket(this.id) then

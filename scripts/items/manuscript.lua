@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("The Manuscript")
 this.description = "Gives half of an soul heart each time you use a card/rune"
+this.rusdescription ={"The Manuscript /Манускрипт", "Дает половину сердца души за каждую использованную карту/руну"}
 
 function this:useCard(card)
   local player = Isaac.GetPlayer(0)

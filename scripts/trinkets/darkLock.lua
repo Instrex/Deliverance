@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Dark Lock")
 this.description = "Makes rewards from red chests much more exciting"
+this.rusdescription ={"Dark Lock /Тёмный замок", "Улучшает награды, полученные с красных сундуков"}
 
 function this:trigger(pickup, col)
   local player = Isaac.GetPlayer(0)

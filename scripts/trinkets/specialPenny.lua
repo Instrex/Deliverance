@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetTrinketIdByName("Special Penny")
 this.description = "Shopkeepers now always have coins in their eyes"
+this.rusdescription ={"Special Penny /ќсоба€ монета", "Ћавочники всегда по€вл€ютс€ с монеткой в глазах"}
 
 function this.special()
   local player = Isaac.GetPlayer(0)

@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Danger Room")
 this.description = "Tracks nearby enemy projectiles, filling the scale of danger#After filling the scale gives a random pick-up item"
+this.rusdescription ={"Danger Room /Опасная комната(?)", "-"}
 this.barOpacity=true
 this.backTimer=0 this.backTimer2=0 this.backTimer3=0
 

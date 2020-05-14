@@ -1,6 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Silver Bar")
 this.description = "Gives a laser shot that wraps around character and deals damage"
+this.rusdescription ={"Silver Bar /Серебряный слиток", "-"}
 this.bTimer = 0
 
 function this:cache(player, flag)
