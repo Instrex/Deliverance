@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Encharmed Penny")
 this.description = "Increases health and damage of every friendly/charmed monsters#Gives you a chance to charm a random monster when entering the room"
-this.rusdescription ={"Encharmed Penny /Зачарованный пенни", "-"}
+this.rusdescription ={"Encharmed Penny /Зачарованный пенни", "Увеличивает здоровье и урон каждому дружелюбному/очарованному монстру#Дает шанс очаровать случайного врага при входе в комнату"}
 
 function this:update(entity)
     local data = entity:GetData()

@@ -2,7 +2,7 @@ local this = {}
 this.id = Isaac.GetItemIdByName("Bile Knight")
 this.variant = Isaac.GetEntityVariantByName("Bile Knight")
 this.description = "Rapidly shoots tears at enemies, hides till the end of the floor when taking damage"
-this.rusdescription ={"Bile Knight /-", "-"}
+this.rusdescription ={"Bile Knight /–аздражительный рыцарь", "Ѕыстро стрел€ет слезами в сторону врагов, пр€четс€ до конца этажа, когда спутник сам попадает под вражескую слезу."}
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()

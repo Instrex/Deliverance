@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("The Divider")
 this.description = "Brings pickups lying on floor to their simplest form - #Nickel turns into five coins, hearts - into two halves, etc"
-this.rusdescription ={"The Divider /-", "-"}
+this.rusdescription ={"The Divider /Делитель", "Доводит лежащие на полу подбираемые предметы до их примитивного уровня#Пятак превращается в пять монет, сердце - в две половинки и т.д"}
 this.isActive = true
 
 this.hammer = Isaac.GetEntityVariantByName("The Divider")

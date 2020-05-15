@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Mom's Earrings")
 this.description = "Increases your damage in proportion to number of enemies in the room"
-this.rusdescription ={"Mom's Earrings /Мамины серёжки", "-"}
+this.rusdescription ={"Mom's Earrings /Мамины серёжки", "Увеличивает ваш урон пропорционально количеству врагов в комнате"}
 
 this.damageBonus = 0
 

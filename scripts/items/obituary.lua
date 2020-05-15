@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Obituary")
 this.description = "Gives a huge damage bonus after killing the enemy, which quickly disappears#Gives you a small damage bonus for each monster you kill"
-this.rusdescription ={"Obituary /Некролог", "-"}
+this.rusdescription ={"Obituary /Некролог", "Дает огромный, временный бонус при убийстве врага#Немного увеличивает постоянный урон при убийстве"}
 
 this.superObituaryBonus=1
 

@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName('Lawful')
 this.description = 'All items on floors will be of same item pool#Item pool is randomly choosen at the start of level'
-this.rusdescription ={"Lawful /-", "-"}
+this.rusdescription ={"Lawful /Законный", "Все предметы на этажах будут из одного пула предметов#Пул предметов выбирается случайно в начале уровня"}
 -- MC_POST_NEW_LEVEL
 function this.onNewFloor() 
    local player = Isaac.GetPlayer(0)

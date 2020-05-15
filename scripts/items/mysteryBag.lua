@@ -1,7 +1,7 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Mystery Bag")
-this.description = "Gives 3 runes."
-this.rusdescription ={"Mystery Bag /Загадочный мешочек", "Даёт 3 руны"}
+this.description = "Gives three random runes"
+this.rusdescription ={"Mystery Bag /Загадочный мешочек", "Даёт три случайные руны"}
 
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
