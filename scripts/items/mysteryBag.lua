@@ -15,8 +15,8 @@ function this:dropRune()
   if player:HasCollectible(this.id) and not deliveranceData.temporary.runeDropped then
       for i = 1,3 do
       local rune = Isaac.Spawn(5, 300, math.random (32,41), Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
-	  end
       deliveranceData.temporary.runeDropped=true
+	end
   deliveranceDataHandler.directSave()
   end
 end
