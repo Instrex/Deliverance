@@ -47,7 +47,11 @@ function this:behaviour(npc)
     if sprite:IsEventTriggered("Wave") then 
        sfx:Play(SoundEffect.SOUND_ROCK_CRUMBLE, 1, 0, false, 1) 
        local t = Isaac.Spawn(1000, 1, 0, npc.Position+Vector(math.cos(math.rad((target.Position-npc.Position):GetAngleDegrees()))*15,math.sin(math.rad((target.Position-npc.Position):GetAngleDegrees()))*15-20), Vector(math.cos(math.rad((target.Position-npc.Position):GetAngleDegrees()))*15,math.sin(math.rad((target.Position-npc.Position):GetAngleDegrees()))*15), npc) 
-       t.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY 
+       if npc:HasEntityFlags(EntityFlag.FLAG_CHARM) then
+         t.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ENEMIES 
+      else
+         t.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
+      end
        t.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_GROUND 
        t:GetData().Shroomwave = true 
        t.Visible = false 
@@ -96,8 +100,15 @@ function this:shroomBreakUpdate()
                   if sbreak:GetSprite():IsFinished("Break") then
                   	sbreak:Remove()
                   end
-                  if (player.Position-sbreak.Position):Length() <= 30 then
-                      player:TakeDamage(1,EntityFlag.FLAG_POISON,EntityRef(sbreak),0)
+                  for _, shroom in ipairs(Isaac.FindByType(this.id,this.variant,-1,false,false)) do
+                     local npc = shroom:ToNPC()
+                     local target = npc:GetPlayerTarget()
+                     print(target)
+                     if npc:HasEntityFlags(EntityFlag.FLAG_CHARM) then
+                        if (target.Position-sbreak.Position):Length() <= 30 then
+                           target:TakeDamage(1,EntityFlag.FLAG_POISON,EntityRef(sbreak),0)
+                        end
+                     end
                   end
                   for i = 1, room:GetGridSize() do
                       local grid = room:GetGridEntity(i)

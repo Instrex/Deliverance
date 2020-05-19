@@ -5,7 +5,7 @@
      <costume id="17" anm2path="animation_costume_gasoline.anm2" priority="96" type="passive" hasSkinAlt="true" />
      <costume id="13" anm2path="animation_costume_theCovenant.anm2" priority="96" type="passive" hasSkinAlt="true" />
      <costume id="24" anm2path="animation_costume_lawful.anm2" priority="96" type="passive" hasSkinAlt="true" />
-     <costume anm2path="animation_costume_adamsRib.anm2" priority="96" type="none" hasSkinAlt="true" />
+     <costume id="22"anm2path="animation_costume_adamsRib.anm2" priority="96" type="passive" hasSkinAlt="true" />
      <costume id="27" anm2path="animation_costume_momsEarrings.anm2" priority="96" type="passive" />
      <costume anm2path="animation_costume_adamsRib2.anm2" priority="96" type="none" />
      <costume id="20" anm2path="animation_costume_hotmilk.anm2" priority="96" type="passive" />

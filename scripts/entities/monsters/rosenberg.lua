@@ -50,7 +50,7 @@ function this:behaviour(npc)
 
     if sprite:IsFinished("DigInIdle") then
       npc.State = utils.choose(NpcState.STATE_ATTACK, NpcState.STATE_ATTACK, NpcState.STATE_ATTACK3) 
-      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
+      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150)),(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150))))), 75, true)
     end
 
   elseif npc.State == NpcState.STATE_ATTACK then
@@ -124,7 +124,7 @@ function this:behaviour(npc)
 
       local attempts = 0
       while target.Position:Distance(npc.Position) < 100 and attempts < 50 do
-        npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
+        npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150)),(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150))))), 75, true)
         attempts = attempts + 1
       end
     end
@@ -138,7 +138,7 @@ function this:behaviour(npc)
     npc.StateFrame = npc.StateFrame + 1
     if npc.StateFrame>=30 then
       npc.State = utils.choose(NpcState.STATE_ATTACK, NpcState.STATE_ATTACK, NpcState.STATE_ATTACK3) 
-      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
+      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150)),(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150))))), 75, true)
     end
   end
  end

@@ -81,7 +81,11 @@ function this:behaviour(npc)
   elseif npc.State == NpcState.STATE_ATTACK2 then
 
     sprite:Play("DigOut2")
+    if sprite:IsEventTriggered("ChangeCol") then
+      npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
+    end
     if sprite:IsFinished("DigOut2") then
+      npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
       npc.State = NpcState.STATE_ATTACK3
       npc.StateFrame = Utils.choose(0, 5, 10)
     end
@@ -95,7 +99,7 @@ function this:behaviour(npc)
 
     npc.StateFrame = npc.StateFrame + 1
     if npc.StateFrame>=30 then
-      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
+      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150)),(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150))))), 75, true)
       if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
          npc.State = NpcState.STATE_ATTACK
       else
