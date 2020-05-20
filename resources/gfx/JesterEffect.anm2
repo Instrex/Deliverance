@@ -1,8 +1,8 @@
 <AnimatedActor>
-	<Info CreatedBy="Unknown" CreatedOn="14.04.2019 19:34:11" Version="2" Fps="40"/>
+	<Info CreatedBy="Unknown" CreatedOn="15.05.2020 13:00:00" Version="4" Fps="30"/>
 	<Content>
 		<Spritesheets>
-			<Spritesheet Path="Jester_effect.png" Id="0"/>
+			<Spritesheet Path="monsters\Jester_effect.png" Id="0"/>
 		</Spritesheets>
 		<Layers>
 			<Layer Name="effect" Id="0" SpritesheetId="0"/>
