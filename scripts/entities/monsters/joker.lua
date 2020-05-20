@@ -131,6 +131,7 @@ end--]]
 function this:onHitNPC(npc, dmgAmount, flags, source, frames)
  if npc.Variant == this.variant then
   local data = npc:GetData()
+  if npc.Type == this.id then
   if flags == DamageFlag.DAMAGE_EXPLOSION and Utils.chancep(25) then
     return false
   end
@@ -151,6 +152,7 @@ function this:onHitNPC(npc, dmgAmount, flags, source, frames)
     end
   end
  end
+end
 end
 
 function this.Init()

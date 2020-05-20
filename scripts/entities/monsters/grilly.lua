@@ -106,14 +106,16 @@ mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, function(_, effect) --taked 
 end)
 
 function this:onHitNPC(npc, dmgAmount, flags, source, frames)
-  if npc.Variant == this.variant then
+  if npc.Variant == Isaac.GetEntityVariantByName("Grilly") then
    local data = npc:GetData()
+   if npc.Type == this.id then
    if flags == DamageFlag.DAMAGE_EXPLOSION then
      return false
    elseif flags == DamageFlag.DAMAGE_FIRE then
     return false
    end
   end
+end
 end
 
 function this.Init()

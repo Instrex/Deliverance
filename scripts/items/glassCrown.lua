@@ -28,7 +28,7 @@ end
 
 function this:update(player)
   local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) and not deliveranceData.temporary.pickedup then
+  if player:HasCollectible(this.id) and deliveranceData.temporary.pickedup==nil then
       this.bonusMulti = 3
       deliveranceData.temporary.pickedup = true
   end
