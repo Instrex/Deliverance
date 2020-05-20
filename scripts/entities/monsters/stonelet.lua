@@ -10,7 +10,7 @@ function this:behaviour(npc)
 		local room = game:GetRoom()
 
 		--Start--
-		if room:IsClear() then
+		if room:IsClear() and Isaac.CountEnemies() <= 0 and npc.Variant == this.variant then
 				npc.State = NpcState.STATE_UNIQUE_DEATH
 			end
 		if npc.State == NpcState.STATE_INIT then

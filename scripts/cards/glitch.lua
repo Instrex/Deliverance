@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetCardIdByName("Glitch")
+this.effect = Isaac.GetEntityVariantByName("Urn of Want Effect")
 this.description = "%D@#$FHFXZQ@@*@)"
 this.rusdescription ={"Glitch /Ãëþê", "%D@#$FHFXZQ@@*@"}
 function this.getFrame() 

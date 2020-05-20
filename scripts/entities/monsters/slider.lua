@@ -31,15 +31,14 @@ function this:behaviour(npc)
       sprite:Play("Attack") 
       if sprite:IsEventTriggered("Shoot") then
           npc.Velocity = vectorZero
-		  path:FindGridPath(target.Position, 0.1, 0, true)
-		  local params = ProjectileParams() 
-		      params.BulletFlags = ProjectileFlags.CREEP_BROWN 			
-	        params.FallingSpeedModifier = 0
-           params.FallingAccelModifier = 0
-	     velocity = (target.Position - npc.Position), Vector.FromAngle(0)
-        velocity = (target.Position - npc.Position), Vector.FromAngle(40)
-       velocity = (target.Position - npc.Position), Vector.FromAngle(80)
-	  npc:FireProjectiles(npc.Position + utils.vecToPos(target.Position, npc.Position, 0), velocity, 0, params)
+          path:FindGridPath(target.Position, 0.1, 0, true)
+          local degree = -7.5
+          for i=1,3 do
+            degree = degree + 7.5
+            local prj = Isaac.Spawn(9, 0, 0, Vector(npc.Position.X, npc.Position.Y), (utils.vecToPos(target.Position, npc.Position)*10):Rotated(degree), npc):ToProjectile()
+            prj:SetColor(Color(1, 1, 1, 1, 155, 155, 155), 0, 1, false, false)
+            prj:AddProjectileFlags(ProjectileFlags.CREEP_BROWN)
+          end
          end
 	    if sprite:IsFinished("Attack") then 
 	    npc.State = 400 end
@@ -69,7 +68,11 @@ function this:behaviour(npc)
       end
    end
 end
-
+mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, function(_,eff)
+    if eff.Variant == 56 and eff.SpawnerType == 9 then
+        eff:GetSprite().Color = Color(0,0,0,1,255,255,255)
+    end
+end)
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
 end
