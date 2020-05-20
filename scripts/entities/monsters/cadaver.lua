@@ -18,38 +18,53 @@ function this:behaviour(npc)
   if npc.State == NpcState.STATE_INIT then
   if (stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2) and level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
     sprite:ReplaceSpritesheet(0,"gfx/monsters/cadaver_flooded.png")
-    sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_flooded.png")
+    --sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_flooded.png")
     sprite:ReplaceSpritesheet(3,"gfx/monsters/cadaver_flooded.png")
     sprite:ReplaceSpritesheet(5,"gfx/monsters/cadaver_flooded.png")
+    --sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver_flooded.png")
     if npc.Variant == 4000 then
         sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver_flooded.png")
     elseif npc.Variant == 4001 then
         sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver2_flooded.png")
+        sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver2_flooded.png")
+        sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver2_flooded.png")
     elseif npc.Variant == 4002 then
         sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver3_flooded.png")
+        sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver3_flooded.png")
+        sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver3_flooded.png")
     end
   elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
     if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
         sprite:ReplaceSpritesheet(0,"gfx/monsters/cadaver_scarred.png")
-        sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_scarred.png")
+        --sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_scarred.png")
         sprite:ReplaceSpritesheet(3,"gfx/monsters/cadaver_scarred.png")
+        --sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver_scarred.png")
         if npc.Variant == 4000 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver_scarred.png")
         elseif npc.Variant == 4001 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver2_scarred.png")
+           sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver2_scarred.png")
+           sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver2_scarred.png")
         elseif npc.Variant == 4002 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver3_scarred.png")
+           sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver3_scarred.png")
+           sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver3_scarred.png")
         end
     else
         sprite:ReplaceSpritesheet(0,"gfx/monsters/cadaver_womb.png")
-        sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_womb.png")
+        --sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver_womb.png")
         sprite:ReplaceSpritesheet(3,"gfx/monsters/cadaver_womb.png")
+        --sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver_womb.png")
         if npc.Variant == 4000 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver_womb.png")
         elseif npc.Variant == 4001 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver2_womb.png")
+           sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver2_womb.png")
+           sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver2_womb.png")
         elseif npc.Variant == 4002 then
            sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver3_womb.png")
+           sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver3_womb.png")
+           sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver3_womb.png")
         end
     end
   else
@@ -57,8 +72,12 @@ function this:behaviour(npc)
       sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver.png")
     elseif npc.Variant == 4001 then
       sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver2.png")
+      sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver2.png")
+      sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver2.png")
     elseif npc.Variant == 4002 then
       sprite:ReplaceSpritesheet(1,"gfx/monsters/cadaver3.png")
+      sprite:ReplaceSpritesheet(2,"gfx/monsters/cadaver3.png")
+      sprite:ReplaceSpritesheet(6,"gfx/monsters/cadaver3.png")
     end
   end
   sprite:LoadGraphics()

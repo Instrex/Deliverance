@@ -14,6 +14,7 @@ function this:behaviour(npc)
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_IDLE
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY 
+    npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_WALLS
     npc:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
  
   -- Move and wait for player to get closer--

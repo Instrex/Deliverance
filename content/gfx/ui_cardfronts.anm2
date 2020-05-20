@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="Unknown" CreatedOn="12.06.2019 1:01:00" Version="15" Fps="30"/>
+	<Info CreatedBy="Unknown" CreatedOn="30.04.2020 7:08:02" Version="16" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="ui_CardFronts.png" Id="0"/>
