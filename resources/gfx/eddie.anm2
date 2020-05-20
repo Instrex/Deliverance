@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="25.02.2020 14:34:33" Version="192" Fps="45"/>
+	<Info CreatedBy="robot" CreatedOn="20.05.2020 9:07:17" Version="193" Fps="45"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="monsters\eddie.png" Id="0"/>
@@ -119,7 +119,6 @@
 				<Trigger EventId="1" AtFrame="43"/>
 				<Trigger EventId="0" AtFrame="44"/>
 				<Trigger EventId="0" AtFrame="47"/>
-				<Trigger EventId="0" AtFrame="50"/>
 				<Trigger EventId="0" AtFrame="78"/>
 				<Trigger EventId="0" AtFrame="81"/>
 				<Trigger EventId="0" AtFrame="84"/>

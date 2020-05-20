@@ -137,9 +137,10 @@ deliveranceContent = {
     gappy                     = require 'scripts.entities.monsters.gappy',
     reaper                    = require 'scripts.entities.monsters.reaper',
     stonelet                  = require 'scripts.entities.monsters.stonelet',
-	  grilly                    = require 'scripts.entities.monsters.grilly',
-	  bloodmind                 = require 'scripts.entities.monsters.bloodmind',
-	  bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit'
+	grilly                    = require 'scripts.entities.monsters.grilly',
+	bloodmind                 = require 'scripts.entities.monsters.bloodmind',
+	bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
+	slider                    = require 'scripts.entities.monsters.slider'
   },
 
   costumes = {
