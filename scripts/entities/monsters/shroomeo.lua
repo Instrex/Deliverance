@@ -103,7 +103,6 @@ function this:shroomBreakUpdate()
                   for _, shroom in ipairs(Isaac.FindByType(this.id,this.variant,-1,false,false)) do
                      local npc = shroom:ToNPC()
                      local target = npc:GetPlayerTarget()
-                     print(target)
                      if npc:HasEntityFlags(EntityFlag.FLAG_CHARM) then
                         if (target.Position-sbreak.Position):Length() <= 30 then
                            target:TakeDamage(1,EntityFlag.FLAG_POISON,EntityRef(sbreak),0)
