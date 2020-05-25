@@ -14,7 +14,7 @@ function this:updateHeart(pickup)
   local player = Isaac.GetPlayer(0)
   local room = game:GetRoom()
   if pickup.Variant == this.variant and pickup.SubType == this.subtype then 
-     if player:GetHearts() < player:GetMaxHearts() then
+     if player:GetHearts() < player:GetEffectiveMaxHearts() then
         if (pickup.Position - player.Position):Length() <= pickup.Size + player.Size and not pickup:GetSprite():IsPlaying("Collect") then
            sfx:Play(SoundEffect.SOUND_THUMBSUP , 0.8, 0, false, 1.2)
            local poof = Isaac.Spawn(1000, 14, 0, pickup.Position, vectorZero, nil)

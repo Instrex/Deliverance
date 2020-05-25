@@ -64,7 +64,11 @@ function this:behaviour(npc)
         end
         prj.Scale = math.random(80, 160) * 0.01
         prj.FallingSpeed = -4
-		prj:SetColor(Color(1, 1, 1, 2, 255, 140, 0), 10, 10, true, false)
+        if prj.ProjectileFlags == ProjectileFlags.EXPLODE then
+          prj:SetColor(Color(1, 1, 1, 1, 255, 140, 0), 0, 10, true, false)
+        else
+          prj:SetColor(Color(1, 1, 1, 2, 255, 140, 0), 10, 10, true, false)
+        end
         sfx:Play(SoundEffect.SOUND_BOSS2_BUBBLES, ((math.random(170, 190))/180), 0, false, ((math.random(220, 240))/180))
        end 
       end  

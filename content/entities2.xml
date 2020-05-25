@@ -35,7 +35,7 @@
         <gibs amount="25" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 
-    <entity id="747" variant="4000" anm2path="rosenberg.anm2" baseHP="16" boss="0" champion="1" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Rosenberg" numGridCollisionPoints="0" shadowSize="0" stageHP="4">
+    <entity id="747" variant="4000" anm2path="rosenberg.anm2" baseHP="16" boss="0" champion="1" collisionDamage="1" collisionMass="100" collisionRadius="13" friction="1" name="Rosenberg" numGridCollisionPoints="12" shadowSize="0" stageHP="4">
         <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity>
 

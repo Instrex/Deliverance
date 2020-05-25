@@ -1,8 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-	<name>tBoI:Deliverance</name>
-	<directory>deliverance</directory>
-	<description/>
-	<version>1.33</version>
-	<visibility/>
-</metadata>
+    <name>TBoI:Deliverance</name>
+    <directory>deliverance</directory>
+    <id>1762369129</id>
+    <description>[img]https://i.imgur.com/7Jc9ctD.png[/img]
+No, this mod doesn’t add any [i]new floors[/i], [i]huge bosses[/i] or [i]anything like that[/i]. We’ve put some cute monsters and items which we'd like to see in the game!
+In general, [b]Deliverance [/b]adds:
+[b]39[/b] new [b]items[/b]!
+[b]7[/b] [b]trinkets[/b], [b]3 cards[/b], [b]new heart[/b] and a [b]new pill[/b]!
+[b]20+[/b] new [b]enemies[/b]!
+[b]900+[/b] new [b]rooms[/b]!
+[b]Secrets![/b]
+External item descriptions [url=https://steamcommunity.com/sharedfiles/filedetails/?id=836319872]compatibility![/url]
 
+
+
+[img]https://i.imgur.com/EaCyIkj.png[/img] [b]Also[/b] We've finally finished the [b]tBoI: Deliverance Manual[/b], containing information about all content! [b]We'll be adding new information and update the manual as new updates are released![/b]
+[url=https://docs.google.com/document/d/e/2PACX-1vSZee5gnxBuuNmVaKBklB0OJ-43BUhWKkCSi2qDJXiT-F1ruCfz6EhKjs-hQeTn6Jo1u2w9680h8WOB/pub?embedded=true]ENG[/url]
+[url=https://docs.google.com/document/d/e/2PACX-1vQHE9UWX5IS6o7y7nu7Qo9SUiOt761zK9j3_f283lFydhhTBcgVEJjHJUSgbPRz1WdKORXdcfhGMFpI/pub?embedded=true]RU[/url]
+
+Feel free to join our [url=discord.gg/PKgV5nf]discord server![/url]
+
+[h1]Credits[/h1]
+[b]Doctor Hummer:[/b] programmer, artist and room designer.
+[b]Baicherra: [/b]incredible artist, room designer.
+[b]Instrex: [/b]awesome programmer
+[b]Kovadon: [/b]artist, the guy who made an amazing logo you can see above!
+
+[h1]Special thanks[/h1]
+To [b]AgentCucco[/b], [b]Budjmt[/b], [b]BogdanRudyka[/b], [b]Minichibis[/b], [b]Der Clown[/b], [b]Eternal Necromancer[/b], [b]Modding of Isaac Community[/b] and [b]You[/b]!
+[img]https://i.imgur.com/cAYjYgW.png[/img]
+</description>
+    <version>2.5.1</version>
+    <visibility>Public</visibility>
+    <tag id="Lua"/>
+    <tag id="Items"/>
+    <tag id="Active Items"/>
+    <tag id="Trinkets"/>
+    <tag id="Pills"/>
+    <tag id="Cards"/>
+    <tag id="Pickups"/>
+    <tag id="Familiars"/>
+    <tag id="Rooms"/>
+    <tag id="Enemies"/>
+    <tag id="Tweaks"/>
+    <tag id="Sound Effects"/>
+</metadata>

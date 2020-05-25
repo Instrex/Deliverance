@@ -3,7 +3,7 @@ game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
 
-deliveranceVersion = "2.2"
+deliveranceVersion = "2.5.1"
 
 utils = require 'scripts.utils'
 require 'scripts.enumerations'
