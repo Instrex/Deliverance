@@ -8,6 +8,7 @@ function this:behaviour(npc)
 		local data = npc:GetData()
 		local sprite = npc:GetSprite()
 		local room = game:GetRoom()
+		npc:AddEntityFlags(EntityFlag.FLAG_NO_STATUS_EFFECTS)
 
 		--Start--
 		if room:IsClear() and Isaac.CountEnemies() <= 0 and npc.Variant == this.variant then
