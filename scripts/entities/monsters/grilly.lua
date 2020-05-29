@@ -48,7 +48,7 @@ function this:behaviour(npc)
           sfx:Play(SoundEffect.SOUND_MONSTER_GRUNT_2 , 1.2, 0, false, 1)
         end
 		 if sprite:IsEventTriggered("Roar") then
-          sfx:Play(SoundEffect.SOUND_MONSTER_YELL_A, 1, 0, false, 1)
+          sfx:Play(SoundEffect.SOUND_MONSTER_GRUNT_4, 1, 0, false, 1)
         end
         if sprite:IsEventTriggered("Shoot") then
           if (target.Position - npc.Position).X > 0 then

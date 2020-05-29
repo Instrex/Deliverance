@@ -3,7 +3,7 @@ game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
 
-deliveranceVersion = "2.5.1"
+deliveranceVersion = "2.5.2"
 
 utils = require 'scripts.utils'
 require 'scripts.enumerations'
@@ -66,7 +66,8 @@ deliveranceContent = {
     shamrockLeaf              = require 'scripts.items.shamrockLeaf',
 	mysteryBag                = require 'scripts.items.mysteryBag',
 	--glassCrown                = require 'scripts.items.glassCrown',
-    corrosiveBombs            = require 'scripts.items.corrosiveBombs'
+    corrosiveBombs            = require 'scripts.items.corrosiveBombs',
+	yumRib            		  = require 'scripts.items.yumrib'
   },
 
   trinkets = {
@@ -139,8 +140,8 @@ deliveranceContent = {
     stonelet                  = require 'scripts.entities.monsters.stonelet',
 	grilly                    = require 'scripts.entities.monsters.grilly',
 	bloodmind                 = require 'scripts.entities.monsters.bloodmind',
-	bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
-	slider                    = require 'scripts.entities.monsters.slider'
+    bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
+    slider                    = require 'scripts.entities.monsters.slider'
   },
 
   costumes = {

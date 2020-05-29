@@ -29,6 +29,7 @@ function this:behaviour(npc)
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
+    npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_NOPITS
     npc.State = NpcState.STATE_IDLE;
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
@@ -48,8 +49,8 @@ function this:behaviour(npc)
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
     if sprite:IsFinished("DigInIdle") then
-      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
-      if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
+      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150),Utils.choose(-125,-40),Utils.choose(40,125)),(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150),Utils.choose(-125,-40),Utils.choose(40,125))))), 75, true)
+      if room:CheckLine(npc.Position,target.Position,3,1,false,true) then
          npc.State = NpcState.STATE_ATTACK
       else
          npc.State = NpcState.STATE_ATTACK2
@@ -99,8 +100,8 @@ function this:behaviour(npc)
 
     npc.StateFrame = npc.StateFrame + 1
     if npc.StateFrame>=30 then
-      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150)),(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150))))), 75, true)
-      if room:CheckLine(npc.Position,target.Position,0,1,false,false) then
+      npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150),Utils.choose(-125,-40),Utils.choose(40,125)),(Utils.choose(Utils.choose(-150, -15),Utils.choose(15,150),Utils.choose(-125,-40),Utils.choose(40,125))))), 75, true)
+      if room:CheckLine(npc.Position,target.Position,3,1,false,true) then
          npc.State = NpcState.STATE_ATTACK
       else
          npc.State = NpcState.STATE_ATTACK2

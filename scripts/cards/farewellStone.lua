@@ -5,9 +5,9 @@ this.rusdescription ={"Farewell Stone /Прощальный камень", "Превращает все красн
 
 function this:cardCallback(cardId)
     local player = Isaac.GetPlayer(0)
-    local hearts = player:GetMaxHearts()
+	local hearts = player:GetMaxHearts()
+	player:AddMaxHearts(0 - hearts)
     player:AddSoulHearts(math.max(2, hearts * 2))
-    player:AddMaxHearts(0 - hearts)
     sfx:Play(SoundEffect.SOUND_HOLY, 1, 0, false, 1.05)
 end
 
