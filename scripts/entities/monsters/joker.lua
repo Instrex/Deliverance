@@ -54,6 +54,7 @@ function this:behaviour(npc)
         local urod = Game():Spawn(277, 0, npc.Position, vectorZero, npc, 0, 1):ToNPC()
            urod.HitPoints = 4
            urod.State = 0
+           urod.Variant = 4000
            urod:SetSize(9, Vector(1,1), 12)
            urod.Scale = 0.75
            urod:GetData().bsmol = true
@@ -116,17 +117,13 @@ function this:behaviour(npc)
  end
 end
 
---[[function this:boneprojupdate(proj)
-  local data = proj:GetData()
-  local spawner = proj.SpawnerEntity
-  for _, e in pairs(Isaac.GetRoomEntities()) do
-    if e:GetData().bsmol and e.SpawnerType == 743 and e.SpawnerVariant == 4000 then 
-      sprite = proj:GetSprite()
-      sprite:ReplaceSpritesheet(0,"gfx/projectiles/lilboney_projectile.png")
-      sprite:LoadGraphics()
+function this:boneprojupdate(proj)
+  if proj.SpawnerType == 277 and proj.SpawnerVariant == 4000 then
+    local sprite = proj:GetSprite()
+    sprite:ReplaceSpritesheet(0,"gfx/projectiles/lilboney_projectile.png")
+    sprite:LoadGraphics()
     end
-  end
-end--]]
+end
 
 function this:onHitNPC(npc, dmgAmount, flags, source, frames)
  if npc.Variant == this.variant then
@@ -157,7 +154,7 @@ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
---  mod:AddCallback(ModCallbacks.MC_POST_PROJECTILE_INIT, this.boneprojupdate, 1)
+  mod:AddCallback(ModCallbacks.MC_POST_PROJECTILE_UPDATE, this.boneprojupdate, 1)
 --  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
 end

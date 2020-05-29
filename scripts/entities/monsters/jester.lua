@@ -60,6 +60,7 @@ function this:behaviour(npc)
            local urod = Game():Spawn(227, 0, npc.Position, vectorZero, npc, 0, 1):ToNPC()
            urod.HitPoints = 4
            urod.State = 0
+           urod.Variant = 4000
            urod:SetSize(9, Vector(1,1), 12)
            urod.Scale = 0.75
            urod:GetData().smol = true
@@ -128,16 +129,13 @@ function this:behaviour(npc)
  end
 end
 
---[[function this:boneprojupdate(proj)
-you'll need to manually set SpawnerEntity in the parent entity's code because this API is fucked up
-    local spawner = proj.SpawnerEntity
- this code will also continuously replace the spritesheet for a single entity which has perf implications; you should add a field on GetData indicating you've already checked this projectile
- spawner.Type == 227 and spawner.SpawnerType == 742 then
-          local sprite = proj:GetSprite()
-          sprite:ReplaceSpritesheet(0,"gfx/projectiles/lilboney_projectile.png")
-          sprite:LoadGraphics()
+function this:boneprojupdate(proj)
+ if proj.SpawnerType == 227 and proj.SpawnerVariant == 4000 then
+    local sprite = proj:GetSprite()
+    sprite:ReplaceSpritesheet(0,"gfx/projectiles/lilboney_projectile.png")
+    sprite:LoadGraphics()
     end
-end--]]
+end
 
 
 
@@ -165,7 +163,7 @@ end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
---  mod:AddCallback(ModCallbacks.MC_POST_PROJECTILE_UPDATE, this.boneprojupdate, 1)
+  mod:AddCallback(ModCallbacks.MC_POST_PROJECTILE_UPDATE, this.boneprojupdate, 1)
 --  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.transformation, 27)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
 end
