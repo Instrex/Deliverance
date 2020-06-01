@@ -28,6 +28,9 @@ function this:behaviour(npc)
   
   -- Seek for a moment to attack --
   elseif npc.State == NpcState.STATE_IDLE then
+    if npc.Variant == 4000 then
+      npc:AddEntityFlags(EntityFlag.FLAG_NO_TARGET)
+    end
     sprite:Play("Idle");
     if npc.Position:Distance(target.Position) <= 320 then
        data.HTimer = data.HTimer + 1
@@ -38,7 +41,9 @@ function this:behaviour(npc)
     end
 
   elseif npc.State == NpcState.STATE_ATTACK then
-
+    if npc.Variant == 4000 then
+      npc:ClearEntityFlags(EntityFlag.FLAG_NO_TARGET)
+    end
     sprite:Play("Shoot")
 
     if sprite:IsEventTriggered("CanBeAttacked") then

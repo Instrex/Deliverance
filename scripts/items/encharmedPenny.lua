@@ -3,6 +3,15 @@ this.id = Isaac.GetItemIdByName("Encharmed Penny")
 this.description = "Increases health and damage of every friendly/charmed monsters#Gives you a chance to charm a random monster when entering the room"
 this.rusdescription ={"Encharmed Penny /«ачарованный пенни", "”величивает здоровье и урон каждому дружелюбному/очарованному монстру#ƒает шанс очаровать случайного врага при входе в комнату"}
 
+this.blacklist = {
+   [EntityType.ENTITY_STONEHEAD] = true,
+   [EntityType.ENTITY_STONEY] = true,
+   [EntityType.ENTITY_CONSTANT_STONE_SHOOTER] = true,
+   [EntityType.ENTITY_GAPING_MAW] = true,
+   [EntityType.ENTITY_BROKEN_GAPING_MAW] = true,
+   [EntityType.ENTITY_BRIMSTONE_HEAD] = true,
+   [765] = true
+}
 function this:update(entity)
     local data = entity:GetData()
     local player = Isaac.GetPlayer(0)
@@ -25,7 +34,7 @@ function this:updateRoom()
         local enemies = {}
         local et = nil
         for _, entity in pairs(Isaac.GetRoomEntities()) do
-           if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:IsBoss() then
+           if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:IsBoss() and not this.blacklist[entity.Type] then
               table.insert(enemies,entity)
               et = enemies[math.random(#enemies)]
            end
@@ -39,6 +48,7 @@ function this:updateRoom()
      end
    end
 end
+
 
 function this:dropPennies()
   local player = Isaac.GetPlayer(0)

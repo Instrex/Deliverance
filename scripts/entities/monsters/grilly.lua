@@ -113,7 +113,7 @@ function this:onHitNPC(npc, dmgAmount, flags, source, frames)
   if npc.Variant == Isaac.GetEntityVariantByName("Grilly") then
    local data = npc:GetData()
    if npc.Type == this.id then
-   if flags == DamageFlag.DAMAGE_EXPLOSION then
+   if flags == DamageFlag.DAMAGE_EXPLOSION and source.Type == EntityType.ENTITY_PROJECTILE then
      return false
    elseif flags == DamageFlag.DAMAGE_FIRE then
     return false

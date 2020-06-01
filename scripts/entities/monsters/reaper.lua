@@ -79,7 +79,7 @@ function this:behaviour(npc) -- MC_NPC_UPDATE (this.id)
             npc.Velocity = Vector.FromAngle(data.degree):Resized(5)
         end
         if sprite:IsFinished("TeleportStart") then
-            npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-150, 150),Utils.choose(-150, 150))), 75, true)
+            npc.Position = room:FindFreePickupSpawnPosition((target.Position+Vector(Utils.choose(-215, 215),Utils.choose(-215, 215))), 75, true)
             npc.State = 401
         end
     elseif npc.State == 401 then

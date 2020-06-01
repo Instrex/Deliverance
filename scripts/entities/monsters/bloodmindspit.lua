@@ -24,6 +24,7 @@ function this:behaviour(npc)
 	
         params.FallingSpeedModifier = math.random(-28, -4) 
         params.FallingAccelModifier = 0.6
+        params.Scale = Utils.choose(0.5,0.75,1)
 		
         local velocity = (target.Position - npc.Position):Rotated(math.random(-18, -18)) * 0.01 * math.random(6, 13) * 0.1
         npc:FireProjectiles(npc.Position + utils.vecToPos(target.Position, npc.Position, 10), velocity, 0, params)
@@ -39,6 +40,7 @@ function this:behaviour(npc)
 	   for i= 10, 20 do
 	   params.FallingSpeedModifier = math.random(-28, -4) 
        params.FallingAccelModifier = 0.6
+
 	   
 	   local velocity = (target.Position - npc.Position):Rotated(math.random(-18, -18)) * 0.01 * math.random(4, 10) * 0.1
 	   npc:FireProjectiles(npc.Position + utils.vecToPos(target.Position, npc.Position, 10), velocity, 0, params)
