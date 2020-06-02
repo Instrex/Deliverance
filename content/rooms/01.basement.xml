@@ -6933,7 +6933,7 @@
 			<entity type="1000" variant="0" subtype="0" weight="0.0"/>
 		</spawn>
 	</room>
-	<room variant="9098" name="New Room" type="1" subtype="0" shape="1" width="13" height="7" difficulty="5" weight="1.25">
+	<room variant="9098" name="New Room" type="1" subtype="0" shape="1" width="13" height="7" difficulty="5" weight="0.25">
 		<door exists="True" x="-1" y="3"/>
 		<door exists="True" x="6" y="-1"/>
 		<door exists="False" x="6" y="7"/>
@@ -7008,7 +7008,7 @@
 			<entity type="1000" variant="0" subtype="0" weight="0.0"/>
 		</spawn>
 	</room>
-	<room variant="9099" name="New Room (copy)" type="1" subtype="0" shape="1" width="13" height="7" difficulty="5" weight="1.25">
+	<room variant="9099" name="New Room (copy)" type="1" subtype="0" shape="1" width="13" height="7" difficulty="5" weight="0.25">
 		<door exists="True" x="-1" y="3"/>
 		<door exists="True" x="6" y="-1"/>
 		<door exists="False" x="6" y="7"/>
@@ -7083,7 +7083,7 @@
 			<entity type="1000" variant="0" subtype="0" weight="0.0"/>
 		</spawn>
 	</room>
-	<room variant="9100" name="New Room (copy) (copy)" type="1" subtype="0" shape="1" width="13" height="7" difficulty="5" weight="1.25">
+	<room variant="9100" name="New Room (copy) (copy)" type="1" subtype="0" shape="1" width="13" height="7" difficulty="5" weight="0.25">
 		<door exists="True" x="-1" y="3"/>
 		<door exists="True" x="6" y="-1"/>
 		<door exists="False" x="6" y="7"/>
@@ -17080,7 +17080,7 @@
 			<entity type="1000" variant="0" subtype="0" weight="0.0"/>
 		</spawn>
 	</room>
-	<room variant="9229" name="New Room" type="1" subtype="0" shape="5" width="13" height="14" difficulty="5" weight="1.25">
+	<room variant="9229" name="New Room" type="1" subtype="0" shape="5" width="13" height="14" difficulty="5" weight="0.25">
 		<door exists="True" x="6" y="-1"/>
 		<door exists="True" x="6" y="14"/>
 		<spawn x="4" y="0">
@@ -17283,10 +17283,10 @@
 		</spawn>
 	</room>
 	<room variant="9232" name="New Room" type="1" subtype="0" shape="1" width="13" height="7" difficulty="5" weight="1.25">
-		<door exists="False" x="-1" y="3"/>
+		<door exists="True" x="-1" y="3"/>
 		<door exists="True" x="6" y="-1"/>
 		<door exists="True" x="6" y="7"/>
-		<door exists="True" x="13" y="3"/>
+		<door exists="False" x="13" y="3"/>
 		<spawn x="10" y="1">
 			<entity type="208" variant="0" subtype="0" weight="0.0"/>
 		</spawn>
