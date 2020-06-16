@@ -52,7 +52,7 @@ function this:trigger(pickup, col)
         if utils.chancep(5) then
           --pickup:Kill()
           --Isaac.Explode(pickup.Position, pickup, 1.0)
-          game:StartRoomTransition(level:QueryRoomTypeIndex(RoomType.ROOM_BOSS, false, RNG()), Direction.NO_DIRECTION, "3")
+          game:StartRoomTransition(game:GetLevel():QueryRoomTypeIndex(RoomType.ROOM_BOSS, false, RNG()), Direction.NO_DIRECTION, "3")
 
         -- Spawn many troll bombs with 5% chance --
         elseif utils.chancep(5) then

@@ -3,7 +3,7 @@ game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
 
-deliveranceVersion = "2.5.2"
+deliveranceVersion = "2.5.4 (dev)"
 
 utils = require 'scripts.utils'
 require 'scripts.enumerations'
@@ -174,6 +174,7 @@ cardHandler.init(deliveranceContent.cards)
 
 -- Content Initialization --
 local eid = require 'scripts.eidHandler'
+local coh = require 'scripts.customOverHandler'
 eid.init()
 
 for type, r in pairs(deliveranceContent) do

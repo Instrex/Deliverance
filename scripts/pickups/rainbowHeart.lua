@@ -33,9 +33,9 @@ function this:updateHeart(pickup)
        if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED then
          if utils.chancep(2.15) then
             
-             if room:GetType() == RoomType.ROOM_SHOP and pickup:ToPickup().Price == 3 then
+             if pickup:IsShopItem() then
                 local pick = Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)
-                pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
+                pick:ToPickup().Price = 5
               else
                 Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)
              end
@@ -48,6 +48,7 @@ function this:updateHeart(pickup)
     end
   end
 end
+
 if MinimapAPI then
 
 	local minimapIcons = Sprite()
