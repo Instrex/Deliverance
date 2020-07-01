@@ -64,10 +64,10 @@ deliveranceContent = {
     encharmedPenny            = require 'scripts.items.encharmedPenny',
     obituary                  = require 'scripts.items.obituary',
     shamrockLeaf              = require 'scripts.items.shamrockLeaf',
-	mysteryBag                = require 'scripts.items.mysteryBag',
+	  mysteryBag                = require 'scripts.items.mysteryBag',
 	--glassCrown                = require 'scripts.items.glassCrown',
     corrosiveBombs            = require 'scripts.items.corrosiveBombs',
-	yumRib            		  = require 'scripts.items.yumrib'
+	  yumRib                    = require 'scripts.items.yumrib'
   },
 
   trinkets = {
@@ -138,10 +138,11 @@ deliveranceContent = {
     gappy                     = require 'scripts.entities.monsters.gappy',
     reaper                    = require 'scripts.entities.monsters.reaper',
     stonelet                  = require 'scripts.entities.monsters.stonelet',
-	grilly                    = require 'scripts.entities.monsters.grilly',
-	bloodmind                 = require 'scripts.entities.monsters.bloodmind',
+	  grilly                    = require 'scripts.entities.monsters.grilly',
+	  bloodmind                 = require 'scripts.entities.monsters.bloodmind',
     bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
     slider                    = require 'scripts.entities.monsters.slider'
+    --teslacock                 = require 'scripts.entities.monsters.teslacock'
   },
 
   costumes = {
@@ -150,16 +151,16 @@ deliveranceContent = {
     --sailorHat                 = utils.getCostume('sailorhat'),
     --saltySoup                 = utils.getCostume('saltySoup'),
     --gasoline                  = utils.getCostume('gasoline'),
-    luckySaucer               = utils.getCostume('luckySaucer'),
+    --luckySaucer               = utils.getCostume('luckySaucer'),
     --theCovenant               = utils.getCostume('theCovenant'),
-    adamsRib                  = utils.getCostume('adamsRib'),
+    --adamsRib                  = utils.getCostume('adamsRib'),
     --hotmilk                   = utils.getCostume('hotmilk'),
-    adamsRib2                 = utils.getCostume('adamsRib2')
+    --adamsRib2                 = utils.getCostume('adamsRib2')
     --manuscript                = utils.getCostume('manuscript'),
     --dangerRoom                = utils.getCostume('dangerRoom'),
     --lawful                    = utils.getCostume('lawful'),
     --momsEarrings              = utils.getCostume('momsEarrings')
-	--obituary                  = utils.getCostume('obituary')
+	  --obituary                  = utils.getCostume('obituary')
   }
 }
 
