@@ -31,7 +31,7 @@ function this:updateHeart(pickup)
       local data = pickup:GetData()
       if data.change == nil then
        if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED then
-         if utils.chancep(2.15) then
+         if utils.chancep(1) and pickup.FrameCount == 1 then
             
              if pickup:IsShopItem() then
                 local pick = Isaac.Spawn(5, 10, 4000, pickup.Position, vectorZero, nil)

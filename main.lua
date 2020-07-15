@@ -64,10 +64,10 @@ deliveranceContent = {
     encharmedPenny            = require 'scripts.items.encharmedPenny',
     obituary                  = require 'scripts.items.obituary',
     shamrockLeaf              = require 'scripts.items.shamrockLeaf',
-	  mysteryBag                = require 'scripts.items.mysteryBag',
+	mysteryBag                = require 'scripts.items.mysteryBag',
 	--glassCrown                = require 'scripts.items.glassCrown',
     corrosiveBombs            = require 'scripts.items.corrosiveBombs',
-	  yumRib                    = require 'scripts.items.yumrib'
+	yumRib                    = require 'scripts.items.yumrib'
   },
 
   trinkets = {
@@ -105,7 +105,8 @@ deliveranceContent = {
   },
 
   pickups = {
-    rainbowHeart              = require 'scripts.pickups.rainbowHeart'
+    rainbowHeart              = require 'scripts.pickups.rainbowHeart',
+    chargedPenny              = require 'scripts.pickups.chargedPenny'
   },
   
   entities = {
@@ -138,11 +139,10 @@ deliveranceContent = {
     gappy                     = require 'scripts.entities.monsters.gappy',
     reaper                    = require 'scripts.entities.monsters.reaper',
     stonelet                  = require 'scripts.entities.monsters.stonelet',
-	  grilly                    = require 'scripts.entities.monsters.grilly',
-	  bloodmind                 = require 'scripts.entities.monsters.bloodmind',
+	grilly                    = require 'scripts.entities.monsters.grilly',
+	bloodmind                 = require 'scripts.entities.monsters.bloodmind',
     bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
     slider                    = require 'scripts.entities.monsters.slider'
-    --teslacock                 = require 'scripts.entities.monsters.teslacock'
   },
 
   costumes = {
@@ -181,7 +181,7 @@ eid.init()
 for type, r in pairs(deliveranceContent) do
   if r.noAutoload == nil then
     for name, class in pairs(r) do
-      --      print("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
+      --Isaac.DebugString("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
       eid.tryAddDescription(type, class)
       if class.Init then
         class.Init()
