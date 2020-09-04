@@ -78,12 +78,12 @@ deliveranceContent = {
     darkLock                  = require 'scripts.trinkets.darkLock',
     specialPenny              = require 'scripts.trinkets.specialPenny',
     littleTransducer          = require 'scripts.trinkets.littleTransducer',
-    extinguisher              = require 'scripts.trinkets.extinguisher'
-    -- gunPowder                 = require 'scripts.trinkets.gunPowder',
-    -- pieceOfPaper              = require 'scripts.trinkets.pieceOfPaper',
-    -- bottledBlood              = require 'scripts.trinkets.bottledBlood',
-    -- woodenRib                 = require 'scripts.trinkets.woodenRib',
-    -- glowingFeather            = require 'scripts.trinkets.glowingFeather'
+    extinguisher              = require 'scripts.trinkets.extinguisher',
+    gunPowder                 = require 'scripts.trinkets.gunPowder',
+    pieceOfPaper              = require 'scripts.trinkets.pieceOfPaper',
+    bottledBlood              = require 'scripts.trinkets.bottledBlood',
+    woodenRib                 = require 'scripts.trinkets.woodenRib',
+    glowingFeather            = require 'scripts.trinkets.glowingFeather'
   },
 
   cards = {
@@ -91,6 +91,10 @@ deliveranceContent = {
     firestorms                = require 'scripts.cards.firestorms',
     glitch                    = require 'scripts.cards.glitch',
     abyss                     = require 'scripts.cards.abyss',
+  },
+  
+  characters = {
+    awan                      = require 'scripts.characters.awan',
   },
 
   pills = {
@@ -112,6 +116,7 @@ deliveranceContent = {
   entities = {
     persistent = {
       chestBoy                = require 'scripts.entities.chestBoy',
+	  cauldron                = require 'scripts.entities.cauldron'
     },
 
     raga                      = require 'scripts.entities.monsters.raga',

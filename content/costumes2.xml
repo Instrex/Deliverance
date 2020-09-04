@@ -12,4 +12,5 @@
      <costume id="23" anm2path="animation_costume_manuscript.anm2"  type="passive" />
      <costume id="25" anm2path="animation_costume_dangerRoom.anm2"  type="passive" />
 	<costume id="31" anm2path="animation_costume_obituary.anm2"  type="passive" />
+	<costume anm2path="character_awan.anm2" priority="99" type="none" />
 </costumes>

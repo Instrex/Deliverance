@@ -1,0 +1,10 @@
+<players root="gfx/characters/costumes/" 
+         portraitroot="gfx/ui/boss/" 
+         nameimageroot="gfx/ui/boss/" 
+         bigportraitroot="gfx/ui/stage/">
+	<player name="Awan" skin="Character_Awan.png" black="2" hp="2" bombs="3"
+          nameimage="PlayerName_Awan.png" 
+          portrait="PlayerPortrait_Awan.png" 
+          bigportrait="PlayerPortraitBig_Awan.png"
+          skinColor="0" />
+</players>
