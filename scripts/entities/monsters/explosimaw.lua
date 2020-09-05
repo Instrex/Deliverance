@@ -74,6 +74,9 @@ mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, function(_, effect) --taked 
   local data = effect:GetData()
   if data.hurtFire then
     effect:GetSprite().Color = Color(1,0.65,0.32,1,0,0,0)
+    if effect.FrameCount == 240 then
+      effect:Remove()
+    end
     local player = Isaac.GetPlayer(0)
     local dis = player.Position:Distance(effect.Position)
     local sizeCheck = player.Size + effect.Size
