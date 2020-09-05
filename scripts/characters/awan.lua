@@ -236,12 +236,12 @@ end
 local HudMaterials = Sprite() HudMaterials:Load("gfx/ui/hudMaterials.anm2", true)
 local HudChoose = Sprite() HudChoose:Load("gfx/ui/hudChooseMaterial.anm2", true)
 local HudHint = Sprite() HudHint:Load("gfx/ui/hudHint.anm2", true)
-local AchSprite = Sprite() AchSprite:Load("gfx/ui/achievement/achievement.anm2", true)
-local AchName = "gfx/ui/achievement/achievement_awan1.png"
-local Completion_Widget = Sprite() Completion_Widget:Load("gfx/ui/achievement/completion_widget.anm2", true)
-local Completion_Icons = Sprite() Completion_Icons:Load("gfx/ui/achievement/completion_icons.anm2", true)
-local AchTimer = 0
-local Completion_Y = 0
+-- local AchSprite = Sprite() AchSprite:Load("gfx/ui/achievement/achievement.anm2", true)
+-- local AchName = "gfx/ui/achievement/achievement_awan1.png"
+-- local Completion_Widget = Sprite() Completion_Widget:Load("gfx/ui/achievement/completion_widget.anm2", true)
+-- local Completion_Icons = Sprite() Completion_Icons:Load("gfx/ui/achievement/completion_icons.anm2", true)
+-- local AchTimer = 0
+-- local Completion_Y = 0
 
 function this:onRender()
    local player = Isaac.GetPlayer(0)
@@ -252,84 +252,84 @@ function this:onRender()
         Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-7+i*16,244), true)
       end
 
-      Completion_Widget:SetFrame("Idle", 0)
-      Completion_Widget:RenderLayer(0, Vector(40,-120+Completion_Y))
-      
-      if (deliveranceData.persistent.unlockedTimeGal) then
-         Completion_Icons:SetFrame("Idle", 1)
-      else
-         Completion_Icons:SetFrame("Idle", 0)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+17,-120+Completion_Y+15))
+--      Completion_Widget:SetFrame("Idle", 0)
+--      Completion_Widget:RenderLayer(0, Vector(40,-120+Completion_Y))
+     
+--      if (deliveranceData.persistent.unlockedTimeGal) then
+--         Completion_Icons:SetFrame("Idle", 1)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 0)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+17,-120+Completion_Y+15))
 
-      if (deliveranceData.persistent.unlockedTheDivider) then
-         Completion_Icons:SetFrame("Idle", 3)
-      else
-         Completion_Icons:SetFrame("Idle", 2)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+31,-120+Completion_Y+9))
+      -- if (deliveranceData.persistent.unlockedTheDivider) then
+         -- Completion_Icons:SetFrame("Idle", 3)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 2)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+31,-120+Completion_Y+9))
 
-      if (deliveranceData.persistent.unlockedSilverBar) then
-         Completion_Icons:SetFrame("Idle", 5)
-      else
-         Completion_Icons:SetFrame("Idle", 4)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+46,-120+Completion_Y+13))
+      -- if (deliveranceData.persistent.unlockedSilverBar) then
+         -- Completion_Icons:SetFrame("Idle", 5)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 4)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+46,-120+Completion_Y+13))
 
-      if (deliveranceData.persistent.unlockedSinisterShalk) then
-         Completion_Icons:SetFrame("Idle", 7)
-      else
-         Completion_Icons:SetFrame("Idle", 6)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+55,-120+Completion_Y+24))
+      -- if (deliveranceData.persistent.unlockedSinisterShalk) then
+         -- Completion_Icons:SetFrame("Idle", 7)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 6)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+55,-120+Completion_Y+24))
 
-      if (deliveranceData.persistent.unlockedMomsEarrings) then
-         Completion_Icons:SetFrame("Idle", 9)
-      else
-         Completion_Icons:SetFrame("Idle", 8)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+13,-120+Completion_Y+33))
+      -- if (deliveranceData.persistent.unlockedMomsEarrings) then
+         -- Completion_Icons:SetFrame("Idle", 9)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 8)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+13,-120+Completion_Y+33))
 
-      if (deliveranceData.persistent.unlockedLawful) then
-         Completion_Icons:SetFrame("Idle", 11)
-      else
-         Completion_Icons:SetFrame("Idle", 10)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+21,-120+Completion_Y+47))
+      -- if (deliveranceData.persistent.unlockedLawful) then
+         -- Completion_Icons:SetFrame("Idle", 11)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 10)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+21,-120+Completion_Y+47))
 
-      if (deliveranceData.persistent.unlockedObituary) then
-         Completion_Icons:SetFrame("Idle", 13)
-      else
-         Completion_Icons:SetFrame("Idle", 12)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+27,-120+Completion_Y+29))
+      -- if (deliveranceData.persistent.unlockedObituary) then
+         -- Completion_Icons:SetFrame("Idle", 13)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 12)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+27,-120+Completion_Y+29))
 
-      if (deliveranceData.persistent.unlockedRainbowHearts) then
-         Completion_Icons:SetFrame("Idle", 15)
-      else
-         Completion_Icons:SetFrame("Idle", 14)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+41,-120+Completion_Y+32))
+      -- if (deliveranceData.persistent.unlockedRainbowHearts) then
+         -- Completion_Icons:SetFrame("Idle", 15)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 14)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+41,-120+Completion_Y+32))
 
-      if (deliveranceData.persistent.unlockedEncharmedPenny) then
-         Completion_Icons:SetFrame("Idle", 17)
-      else
-         Completion_Icons:SetFrame("Idle", 16)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+38,-120+Completion_Y+50))
+      -- if (deliveranceData.persistent.unlockedEncharmedPenny) then
+         -- Completion_Icons:SetFrame("Idle", 17)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 16)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+38,-120+Completion_Y+50))
 
-      if (deliveranceData.persistent.unlockedUrnOfWant) then
-         Completion_Icons:SetFrame("Idle", 19)
-      else
-         Completion_Icons:SetFrame("Idle", 18)
-      end
-      Completion_Icons:RenderLayer(0, Vector(40+53,-120+Completion_Y+40))
+      -- if (deliveranceData.persistent.unlockedUrnOfWant) then
+         -- Completion_Icons:SetFrame("Idle", 19)
+      -- else
+         -- Completion_Icons:SetFrame("Idle", 18)
+      -- end
+      -- Completion_Icons:RenderLayer(0, Vector(40+53,-120+Completion_Y+40))
 
-      if not game:IsPaused() and Input.IsActionPressed(ButtonAction.ACTION_MAP, player.ControllerIndex) then
-         if Completion_Y<150 then Completion_Y=Completion_Y+25 end
-      else
-         if Completion_Y>0 then Completion_Y=Completion_Y-25 end
-      end
+      -- if not game:IsPaused() and Input.IsActionPressed(ButtonAction.ACTION_MAP, player.ControllerIndex) then
+         -- if Completion_Y<150 then Completion_Y=Completion_Y+25 end
+      -- else
+         -- if Completion_Y>0 then Completion_Y=Completion_Y-25 end
+      -- end
 
       if this.checkForCauldron()~=0 then
          HudHint:SetFrame("Idle", 0)
@@ -363,60 +363,61 @@ function this:onRender()
          end
       end      
    
-      if AchName~=nil and AchTimer>0 then
-         AchTimer = AchTimer + 1
-         AchSprite:SetFrame("Appear", AchTimer)
-         AchSprite:ReplaceSpritesheet(2, AchName)
+      -- if AchName~=nil and AchTimer>0 then
+         -- AchTimer = AchTimer + 1
+         -- AchSprite:SetFrame("Appear", AchTimer)
+         -- AchSprite:ReplaceSpritesheet(2, AchName)
         
-         AchSprite:LoadGraphics()
+         -- AchSprite:LoadGraphics()
   
-         if AchTimer>=152 then
+         -- if AchTimer>=152 then
             
-            AchTimer=0 
-         end
-         AchSprite:RenderLayer(0, Utils.getScreenCenterPosition()+Vector(0,-30))
-         AchSprite:RenderLayer(1, Utils.getScreenCenterPosition()+Vector(0,-30))
-         AchSprite:RenderLayer(2, Utils.getScreenCenterPosition()+Vector(0,-30))
-      end
+            -- AchTimer=0 
+         -- end
+         -- AchSprite:RenderLayer(0, Utils.getScreenCenterPosition()+Vector(0,-30))
+         -- AchSprite:RenderLayer(1, Utils.getScreenCenterPosition()+Vector(0,-30))
+         -- AchSprite:RenderLayer(2, Utils.getScreenCenterPosition()+Vector(0,-30))
+      -- end
    end
 end
+
 
 -- Callbacks --
-function this:die(npc) 
-   local player = Isaac.GetPlayer(0)
-   if player:GetPlayerType() == this.playerAwan then 
-      if npc.Type == 45 then
-         this.playAchievement('unlockedMomsEarrings',"momsEarrings")
-      elseif npc.Type == 102 and npc.Variant == 0 then
-         this.playAchievement('unlockedSilverBar',"silverBar")
-      elseif npc.Type == 84 and npc.Variant == 10 then
-         this.playAchievement('unlockedSinisterShalk',"sinisterShalk")
-      elseif npc.Type == 102 and npc.Variant == 1 then
-         this.playAchievement('unlockedTimeGal',"timeGal")
-      elseif npc.Type == 273 then
-         this.playAchievement('unlockedTheDivider',"theDivider")
-      elseif npc.Type == 407 then
-         this.playAchievement('unlockedRainbowHearts',"rainbowHearts")
-      elseif npc.Type == 275 then
-         this.playAchievement('unlockedLawful',"lawful")
-      elseif npc.Type == 406 and npc.Variant == 0 and game.Difficulty==2 then
-         this.playAchievement('unlockedEncharmedPenny',"encharmedPenny")
-      elseif npc.Type == 406 and npc.Variant == 1 and game.Difficulty==3 then
-         this.playAchievement('unlockedUrnOfWant',"urnOfWant")
-      elseif npc.Type == 412 then
-         this.playAchievement('unlockedObituary',"obituary")
-      end
-   end
-end
+-- function this:die(npc) 
+   -- local player = Isaac.GetPlayer(0)
+   -- if player:GetPlayerType() == this.playerAwan then 
+      -- if npc.Type == 45 then
+         -- this.playAchievement('unlockedMomsEarrings',"momsEarrings")
+      -- elseif npc.Type == 102 and npc.Variant == 0 then
+         -- this.playAchievement('unlockedSilverBar',"silverBar")
+      -- elseif npc.Type == 84 and npc.Variant == 10 then
+         -- this.playAchievement('unlockedSinisterShalk',"sinisterShalk")
+      -- elseif npc.Type == 102 and npc.Variant == 1 then
+         -- this.playAchievement('unlockedTimeGal',"timeGal")
+      -- elseif npc.Type == 273 then
+         -- this.playAchievement('unlockedTheDivider',"theDivider")
+      -- elseif npc.Type == 407 then
+         -- this.playAchievement('unlockedRainbowHearts',"rainbowHearts")
+      -- elseif npc.Type == 275 then
+         -- this.playAchievement('unlockedLawful',"lawful")
+      -- elseif npc.Type == 406 and npc.Variant == 0 and game.Difficulty==2 then
+         -- this.playAchievement('unlockedEncharmedPenny',"encharmedPenny")
+      -- elseif npc.Type == 406 and npc.Variant == 1 and game.Difficulty==3 then
+         -- this.playAchievement('unlockedUrnOfWant',"urnOfWant")
+      -- elseif npc.Type == 412 then
+         -- this.playAchievement('unlockedObituary',"obituary")
+      -- end
+   -- end
+-- end
 
-function this.playAchievement(type, name)
-   if Utils.switchData(type,'persistent') then
-      sfx:Play(8, 1, 0, false, 1) 
-      AchTimer=1
-      AchName="gfx/ui/achievement/achievement_" .. name ..".png"
-      deliveranceDataHandler.directSave() 
-   end
-end
+-- function this.playAchievement(type, name)
+   -- if Utils.switchData(type,'persistent') then
+      -- sfx:Play(8, 1, 0, false, 1) 
+      -- AchTimer=1
+      -- AchName="gfx/ui/achievement/achievement_" .. name ..".png"
+      -- deliveranceDataHandler.directSave() 
+   -- end
+-- end
 
 function this.spawnCauldron(pos) 
    Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, pos, vectorZero, player)
@@ -453,39 +454,39 @@ function this:updateCollectible(collect)
             end
          end
 
-         local changedPool = nil
-         if collect.SubType == Isaac.GetItemIdByName("Mom's Earrings") and not deliveranceData.persistent.unlockedMomsEarrings then
-            changedPool = ItemPoolType.POOL_TREASURE
-         end
-         if collect.SubType == Isaac.GetItemIdByName("Sinister Shalk") and not deliveranceData.persistent.unlockedSinisterShalk then
-            changedPool = ItemPoolType.POOL_CURSE
-         end
-         if collect.SubType == Isaac.GetItemIdByName("Time Gal") and not deliveranceData.persistent.unlockedTimeGal then
-            changedPool = ItemPoolType.POOL_DEVIL
-         end
-         if collect.SubType == Isaac.GetItemIdByName("Lawful") and not deliveranceData.persistent.unlockedLawful then
-            changedPool = ItemPoolType.POOL_ANGEL
-         end
-         if collect.SubType == Isaac.GetItemIdByName("The Divider") and not deliveranceData.persistent.unlockedTheDivider then
-            changedPool = ItemPoolType.POOL_SECRET
-         end
-         if collect.SubType == Isaac.GetItemIdByName("Silver Bar") and not deliveranceData.persistent.unlockedSilverBar then
-            changedPool = ItemPoolType.POOL_TREASURE
-         end
-         if collect.SubType == Isaac.GetItemIdByName("Encharmed Penny") and not deliveranceData.persistent.unlockedEncharmedPenny then
-            changedPool = ItemPoolType.POOL_TREASURE
-         end
-         if collect.SubType == Isaac.GetItemIdByName("Urn Of Want") and not deliveranceData.persistent.unlockedUrnOfWant then
-            changedPool = ItemPoolType.POOL_SECRET
-         end
-         if collect.SubType == Isaac.GetItemIdByName("Obituary") and not deliveranceData.persistent.unlockedObituary then
-            changedPool = ItemPoolType.POOL_LIBRARY
-         end
+         -- local changedPool = nil
+         -- if collect.SubType == Isaac.GetItemIdByName("Mom's Earrings") and not deliveranceData.persistent.unlockedMomsEarrings then
+            -- changedPool = ItemPoolType.POOL_TREASURE
+         -- end
+         -- if collect.SubType == Isaac.GetItemIdByName("Sinister Shalk") and not deliveranceData.persistent.unlockedSinisterShalk then
+            -- changedPool = ItemPoolType.POOL_CURSE
+         -- end
+         -- if collect.SubType == Isaac.GetItemIdByName("Time Gal") and not deliveranceData.persistent.unlockedTimeGal then
+            -- changedPool = ItemPoolType.POOL_DEVIL
+         -- end
+         -- if collect.SubType == Isaac.GetItemIdByName("Lawful") and not deliveranceData.persistent.unlockedLawful then
+            -- changedPool = ItemPoolType.POOL_ANGEL
+         -- end
+         -- if collect.SubType == Isaac.GetItemIdByName("The Divider") and not deliveranceData.persistent.unlockedTheDivider then
+            -- changedPool = ItemPoolType.POOL_SECRET
+         -- end
+         -- if collect.SubType == Isaac.GetItemIdByName("Silver Bar") and not deliveranceData.persistent.unlockedSilverBar then
+            -- changedPool = ItemPoolType.POOL_TREASURE
+         -- end
+         -- if collect.SubType == Isaac.GetItemIdByName("Encharmed Penny") and not deliveranceData.persistent.unlockedEncharmedPenny then
+            -- changedPool = ItemPoolType.POOL_TREASURE
+         -- end
+         -- if collect.SubType == Isaac.GetItemIdByName("Urn Of Want") and not deliveranceData.persistent.unlockedUrnOfWant then
+            -- changedPool = ItemPoolType.POOL_SECRET
+         -- end
+         -- if collect.SubType == Isaac.GetItemIdByName("Obituary") and not deliveranceData.persistent.unlockedObituary then
+            -- changedPool = ItemPoolType.POOL_LIBRARY
+         -- end
 
-         if changedPool ~= nil then
-            Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(changedPool,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
-            collect:Remove()
-         end
+         -- if changedPool ~= nil then
+            -- Isaac.Spawn(5, 100, game:GetItemPool():GetCollectible(changedPool,false,math.random(1,RNG():GetSeed())), collect.Position, vectorZero, nil)
+            -- collect:Remove()
+         -- end
       end
    end
  end
