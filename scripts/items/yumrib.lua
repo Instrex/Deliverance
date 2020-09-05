@@ -7,7 +7,7 @@ this.isActive = true
 function this.use()
 	local player = Isaac.GetPlayer(0)
 	player:AddBoneHearts(1)
-	sfx:Play(SoundEffect.SOUND_BONE_HEART, 0.8, 0, false, 1)
+        sfx:Play(461, 0.8, 0, false, 1)
 	return true
 end
 
