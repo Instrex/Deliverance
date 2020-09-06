@@ -125,7 +125,7 @@ function this:Update()
                 
                         if room:GetType() == RoomType.ROOM_SHOP then
                             local pick = Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
-                            pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
+                            pick:ToPickup().Price = 5
                         else
                             for i=1, #loot do Isaac.Spawn(5, 350, loot[i], collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect) end
                         end
@@ -142,7 +142,7 @@ function this:Update()
             if collect.Variant == 350 and not isCauldronComponent(collect.SubType) then
                if room:GetType() == RoomType.ROOM_SHOP then
                   local pick = Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
-                  pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
+                  pick:ToPickup().Price = 5
                else
                   Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, vectorZero, npc)
                end
@@ -408,27 +408,27 @@ function this:die(npc)
    if player:GetPlayerType() == this.playerAwan then 
        if npc.Type==17 then 
            if npc.Variant == 0 then
-                if npc:GetSprite():IsPlaying("Shopkeeper 1") then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 2") then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 3") then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 4") then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 5") then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 6") then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 7") then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 8") then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 9") then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 1 then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 2 then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 3 then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 4 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 5 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 6 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 7 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 8 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 9 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
            end
            if npc.Variant == 3 then
              for i=1,2 do 
-                if npc:GetSprite():IsPlaying("Shopkeeper 1") then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 2") then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 3") then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 4") then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 5") then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 6") then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 7") then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 8") then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc:GetSprite():IsPlaying("Shopkeeper 9") then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 1 then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 2 then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 3 then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 4 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 5 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 6 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 7 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 8 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc.SubType == 9 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
              end
            end
        end
