@@ -246,10 +246,18 @@ local HudHint = Sprite() HudHint:Load("gfx/ui/hudHint.anm2", true)
 function this:onRender()
    local player = Isaac.GetPlayer(0)
    if player:GetPlayerType() == this.playerAwan and deliveranceData.temporary.awanStartUp then 
+
+      if this.checkForCauldron()~=0 then
+         HudHint:SetFrame("Idle", 0)
+         HudHint:RenderLayer(0, Vector(97,231))
+      end
+
+      HudHint:RenderLayer(1, Vector(97,231))
+
       for i=1, #deliveranceData.temporary.materials do 
         HudMaterials:SetFrame("Idle", i-1)
-        HudMaterials:RenderLayer(0, Vector(-8+i*16,226))
-        Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-7+i*16,244), true)
+        HudMaterials:RenderLayer(0, Vector(-5+i*17,225))
+        Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-6+i*17,240), true)
       end
 
 --      Completion_Widget:SetFrame("Idle", 0)
@@ -331,16 +339,11 @@ function this:onRender()
          -- if Completion_Y>0 then Completion_Y=Completion_Y-25 end
       -- end
 
-      if this.checkForCauldron()~=0 then
-         HudHint:SetFrame("Idle", 0)
-         HudHint:RenderLayer(0, Vector(97,231))
-      end
-
       if HudChoose:IsFinished("Select") then
          HudChoose:Play("Idle", false)
       end
 
-      HudChoose:RenderLayer(0, Vector(this.currentSlot*16+1,238))
+      HudChoose:RenderLayer(0, Vector(this.currentSlot*17+1,235))
       HudChoose:Update()
       if not game:IsPaused() and (deliveranceData.temporary.materials[this.currentSlot] == 0 or Input.IsActionTriggered(ButtonAction.ACTION_DROP, player.ControllerIndex)) then
          local selected = false
