@@ -236,6 +236,7 @@ end
 local HudMaterials = Sprite() HudMaterials:Load("gfx/ui/hudMaterials.anm2", true)
 local HudChoose = Sprite() HudChoose:Load("gfx/ui/hudChooseMaterial.anm2", true)
 local HudHint = Sprite() HudHint:Load("gfx/ui/hudHint.anm2", true)
+local hint = 0
 -- local AchSprite = Sprite() AchSprite:Load("gfx/ui/achievement/achievement.anm2", true)
 -- local AchName = "gfx/ui/achievement/achievement_awan1.png"
 -- local Completion_Widget = Sprite() Completion_Widget:Load("gfx/ui/achievement/completion_widget.anm2", true)
@@ -248,10 +249,13 @@ function this:onRender()
    if player:GetPlayerType() == this.playerAwan and deliveranceData.temporary.awanStartUp then 
 
       if this.checkForCauldron()~=0 then
-         HudHint:SetFrame("Idle", 0)
-         HudHint:RenderLayer(0, Vector(97,231))
+         if hint < 13 then hint = hint + 1 end
+      else
+         if hint > 0 then hint = hint - 1 end
       end
 
+      HudHint:SetFrame("Appear", hint)
+      HudHint:RenderLayer(0, Vector(97,231))
       HudHint:RenderLayer(1, Vector(97,231))
 
       for i=1, #deliveranceData.temporary.materials do 
@@ -386,9 +390,12 @@ end
 
 
 -- Callbacks --
--- function this:die(npc) 
-   -- local player = Isaac.GetPlayer(0)
-   -- if player:GetPlayerType() == this.playerAwan then 
+function this:die(npc) 
+   local player = Isaac.GetPlayer(0)
+   if player:GetPlayerType() == this.playerAwan then 
+       if npc.Type==17 then 
+           Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc)
+       end
       -- if npc.Type == 45 then
          -- this.playAchievement('unlockedMomsEarrings',"momsEarrings")
       -- elseif npc.Type == 102 and npc.Variant == 0 then
@@ -410,8 +417,8 @@ end
       -- elseif npc.Type == 412 then
          -- this.playAchievement('unlockedObituary',"obituary")
       -- end
-   -- end
--- end
+   end
+end
 
 -- function this.playAchievement(type, name)
    -- if Utils.switchData(type,'persistent') then
