@@ -151,6 +151,19 @@ function this:Update()
          end 
       end
 
+      for e, entity in pairs(Isaac.GetRoomEntities()) do 
+        if entity.Type == 17 then 
+           if entity.Variant == 0 then
+              entity:GetSprite():ReplaceSpritesheet(0,"gfx/effects/awanShopkeeper.png")
+              entity:GetSprite():LoadGraphics()
+           end
+           if entity.Variant == 3 then
+              entity:GetSprite():ReplaceSpritesheet(0,"gfx/effects/awanShopkeeper2.png")
+              entity:GetSprite():LoadGraphics()
+           end
+        end 
+      end
+
       if needToSpawnCauldron then 
          if game.Difficulty==0 or game.Difficulty==1 then
             if stage == LevelStage.STAGE4_3 then 
@@ -394,7 +407,30 @@ function this:die(npc)
    local player = Isaac.GetPlayer(0)
    if player:GetPlayerType() == this.playerAwan then 
        if npc.Type==17 then 
-           Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc)
+           if npc.Variant == 0 then
+                if npc:GetSprite():IsPlaying("Shopkeeper 1") then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 2") then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 3") then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 4") then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 5") then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 6") then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 7") then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 8") then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 9") then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+           end
+           if npc.Variant == 3 then
+             for i=1,2 do 
+                if npc:GetSprite():IsPlaying("Shopkeeper 1") then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 2") then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 3") then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 4") then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 5") then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 6") then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 7") then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 8") then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+                if npc:GetSprite():IsPlaying("Shopkeeper 9") then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+             end
+           end
        end
       -- if npc.Type == 45 then
          -- this.playAchievement('unlockedMomsEarrings',"momsEarrings")
