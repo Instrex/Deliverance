@@ -19,7 +19,7 @@ function this:updateCoin(pickup)
       local data = pickup:GetData()
       if data.change == nil then
         if pickup.SubType == CoinSubType.COIN_PENNY then
-          if utils.chancep(50) and pickup.FrameCount == 1 then
+          if utils.chancep(1) and pickup.FrameCount == 1 then
             pickup:Morph(5, 20, 4000, false)
           end
         end

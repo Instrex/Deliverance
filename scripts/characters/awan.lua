@@ -123,7 +123,7 @@ function this:Update()
                           for i=1,2 do table.insert(loot, Utils.chooset(CauldronMaterialID)) end
                         end
                 
-                        if room:GetType() == RoomType.ROOM_SHOP then
+                        if collect:ToPickup():IsShopItem() then
                             local pick = Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
                             pick:ToPickup().Price = 5
                         else
@@ -140,7 +140,7 @@ function this:Update()
                end
             end
             if collect.Variant == 350 and not isCauldronComponent(collect.SubType) then
-               if room:GetType() == RoomType.ROOM_SHOP then
+               if collect:ToPickup():IsShopItem() then
                   local pick = Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), collect)
                   pick:ToPickup().Price = 5
                else
