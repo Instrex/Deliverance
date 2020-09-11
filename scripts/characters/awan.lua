@@ -537,6 +537,50 @@ function this:updateCollectible(collect)
    end
  end
 
+--[[Awan_Cock = { do you like what you see?
+	Name = "Awan",
+    Type = PlayerType.PLAYER_ISAAC,
+    SelectionGfx = "gfx/truecoop/awan.png",
+    GhostCostume = this.costume,
+    MaxHearts = 2,
+    Hearts = 2,
+    BlackHearts = 2,
+    Card = 49,
+    Bombs = 3,
+    OnStart = function(player)
+		--player:GetSprite():Load("gfx/characters/costumes/character_awan.anm2", true)
+		player:AddNullCostume(this.costume)
+		local sprite = player:GetSprite()
+		sprite:ReplaceSpritesheet(1, "gfx/characters/costumes/Character_Awan.png")
+		sprite:ReplaceSpritesheet(4, "gfx/characters/costumes/Character_Awan.png")
+		sprite:ReplaceSpritesheet(12, "gfx/characters/costumes/Character_Awan.png")
+		sprite:LoadGraphics()
+	end,
+    AllowHijacking = true,
+    ActualType = this.playerAwan,
+    --FetusSprite = "gfx/truecoop/foetus_mammon.anm2",
+    BossPortrait = "gfx/ui/boss/playerportrait_awan.png",
+    BossName = "gfx/ui/boss/playername_awan.png",
+    GhostPortrait = "gfx/ui/boss/playerportrait_awan.png",
+    GhostName = "gfx/ui/boss/playername_awan.png",
+}
+
+local function onTrueCoopInit()
+    InfinityTrueCoopInterface.AddCharacter(Awan_Cock)
+    InfinityTrueCoopInterface.AddCharacterToWheel("Awan")
+    InfinityTrueCoopInterface.AssociatePlayerTypeName(this.playerAwan, "Awan")
+end
+
+if InfinityTrueCoopInterface then
+    onTrueCoopInit()
+else
+    if not __infinityTrueCoop then
+        __infinityTrueCoop = {}
+    end
+
+    __infinityTrueCoop[#__infinityTrueCoop + 1] = onTrueCoopInit
+end--]]
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
   mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, this.PostInit)
@@ -546,6 +590,5 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.updateCollectible)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die)
 end
-
 
 return this

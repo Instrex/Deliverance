@@ -4,25 +4,32 @@ local this = {
 }
 
 -- MC_PRE_PICKUP_COLLISION 
---function this:collision(pickup, collider, low)
---    if pickup.Variant == this.variant and pickup.SubType == this.subtype then 
---        pickup:GetSprite():Play('Collect')
---    end
---end
+function this:collision(pickup, collider, low)
+    if collider.Type == 1 and pickup.SubType == this.subtype then
+      local sprite = pickup:GetSprite()
+      if sprite:IsPlaying("Idle") or sprite:IsFinished("Idle") or (sprite:IsPlaying("Appear") and sprite:WasEventTriggered("DropSound")) then
+        sprite:Play("Collect")
+        pickup.EntityCollisionClass = 0
+        return true
+      end
+    end
+end
 
 function this:updateHeart(pickup)
   local player = Isaac.GetPlayer(0)
   local room = game:GetRoom()
   if pickup.Variant == this.variant and pickup.SubType == this.subtype then 
+    if pickup:GetSprite():IsFinished("Collect") then
+      pickup:Remove()
+     end
      if player:GetHearts() < player:GetEffectiveMaxHearts() then
-        if (pickup.Position - player.Position):Length() <= pickup.Size + player.Size and not pickup:GetSprite():IsPlaying("Collect") then
+        if (pickup.Position - player.Position):Length() <= pickup.Size + player.Size then
            sfx:Play(SoundEffect.SOUND_THUMBSUP , 0.8, 0, false, 1.2)
            local poof = Isaac.Spawn(1000, 14, 0, pickup.Position, vectorZero, nil)
            poof:GetSprite():ReplaceSpritesheet(0,"gfx/effects/effect_poof.png")
            poof:GetSprite():LoadGraphics()
            player:UseActiveItem(58,false,false,false,false)
            player:AddHearts(20)
-           pickup:Remove()
         end
      end
   end
@@ -75,7 +82,7 @@ if MinimapAPI then
 end
 
 function this.Init() 
-    --mod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, this.collision, this.variant)
+    mod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, this.collision, this.variant)
     mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.updateHeart)
 end
 
