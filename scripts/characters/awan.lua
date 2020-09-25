@@ -258,6 +258,12 @@ local hint = 0
 -- local Completion_Y = 0
 
 function this:onRender()
+
+   local r = Game():GetRoom()
+	if r:GetFrameCount() == 0 and r:GetType() == RoomType.ROOM_BOSS and not r:IsClear() then
+		return
+   end
+   
    local player = Isaac.GetPlayer(0)
    if player:GetPlayerType() == this.playerAwan and deliveranceData.temporary.awanStartUp then 
 

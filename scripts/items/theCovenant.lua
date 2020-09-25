@@ -14,7 +14,7 @@ function this:pickupMorph(pickup)
         pickup.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
         if data.time <= 40 then data.time = data.time + 1
-        else local variant, subType = getSubstitution(pickup)
+        else local variant, subType = this:getSubstitution(pickup)
             if variant > -1 then
                 Isaac.Spawn(5, variant, subType, pickup.Position, vectorZero, nil)
 
@@ -27,7 +27,7 @@ function this:pickupMorph(pickup)
     end
 end
 
-local function getSubstitution(pickup)
+function this:getSubstitution(pickup)
     if pickup.SubType == HeartSubType.HEART_FULL or
         pickup.SubType == HeartSubType.HEART_SCARED or
         pickup.SubType == HeartSubType.HEART_HALF then return 20, 1
