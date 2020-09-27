@@ -22,8 +22,25 @@ local OutcomeIcon = {
     Angel       = 7,
     DemonAngel  = 8
 }
-
+if Game():IsGreedMode() then	
 this.recipes = {
+    [{ gunpowder = 1, rib = 1, blood = 1, feather = 1, paper = 1}] = { OutcomeType.Pool, OutcomeIcon.Unknown, ItemPoolType.POOL_GREED_BOSS },
+    [{ rib = 2, blood = 2, precision = 1.0 }]          = { OutcomeType.Pool, OutcomeIcon.Devil, ItemPoolType.POOL_GREED_DEVIL },
+    [{ paper = 2, gunpowder = 2, precision = 1.0 }]    = { OutcomeType.Pool, OutcomeIcon.Shop, ItemPoolType.POOL_GREED_SHOP },
+    [{ feather = 2, blood = 2, precision = 1.0 }]      = { OutcomeType.Function, OutcomeIcon.DemonAngel,
+        function() 
+            return { OutcomeType.Pool, OutcomeIcon.DemonAngel, utils.choose(ItemPoolType.POOL_GREED_ANGEL, ItemPoolType.POOL_GREED_DEVIL) }
+        end 
+    },
+
+    [{ gunpowder = 3 }]               = { OutcomeType.Pool, OutcomeIcon.Bomb, ItemPoolType.POOL_BOMB_BUM },
+    [{ paper = 3 }]                   = { OutcomeType.Pool, OutcomeIcon.Book, ItemPoolType.POOL_GREED_LIBRARY },
+    [{ blood = 3 }]                   = { OutcomeType.Pool, OutcomeIcon.Curse, ItemPoolType.POOL_GREED_CURSE },
+    [{ rib = 3 }]                     = { OutcomeType.Pool, OutcomeIcon.Secret, ItemPoolType.POOL_GREED_SECRET  },
+    [{ feather = 3 }]                 = { OutcomeType.Pool, OutcomeIcon.Angel, ItemPoolType.POOL_GREED_ANGEL }
+}
+else
+	this.recipes = {
     [{ gunpowder = 1, rib = 1, blood = 1, feather = 1, paper = 1}] = { OutcomeType.Pool, OutcomeIcon.Unknown, ItemPoolType.POOL_BOSS },
     [{ rib = 2, blood = 2, precision = 1.0 }]          = { OutcomeType.Pool, OutcomeIcon.Devil, ItemPoolType.POOL_DEVIL },
     [{ paper = 2, gunpowder = 2, precision = 1.0 }]    = { OutcomeType.Pool, OutcomeIcon.Shop, ItemPoolType.POOL_SHOP },
@@ -39,7 +56,7 @@ this.recipes = {
     [{ rib = 3 }]                     = { OutcomeType.Pool, OutcomeIcon.Secret, ItemPoolType.POOL_SECRET  },
     [{ feather = 3 }]                 = { OutcomeType.Pool, OutcomeIcon.Angel, ItemPoolType.POOL_ANGEL }
 }
-
+end
 -- Convert trinket IDs to brewable ingredients --
 function this.evaluateIngredients(table)
     local ingredients = {}
