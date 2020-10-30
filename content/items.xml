@@ -33,8 +33,8 @@
   <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
   <passive id="31" name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png" cache="tearcolor" devilprice="1"/>
   <passive name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/> 
-  <passive name="Mystery Bag" description="Gives 3 runes" gfx="collectibles_mysteryBag.png"/>
-  <!-- <passive name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/> Not working yet... -->
+  <passive name="Mystery Bag" description="Throws runes" gfx="collectibles_mysteryBag.png"/>
+  <passive name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/>
   <passive name="Corrosive Bombs" description="Acid Explosions + 3 Bombs" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
   
 

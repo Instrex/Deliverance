@@ -70,7 +70,7 @@
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Lawful" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-	  <!-- <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/> --Not working yet... -->
+	  <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
 	<Pool Name="bombBum">
 		<Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
