@@ -22,6 +22,7 @@
        <Item Name="Encharmed Penny" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Silver Bar" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	   <Item Name="Shamrock Leaf" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Yum Rib" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">

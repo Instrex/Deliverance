@@ -15,17 +15,16 @@ this.rusdescription ={"Glass Crown /Стеклянная корона", "Даёт бонус к характерис
   tears = 1
 }
 
-function this:update(player)
+function this:update(continue)
   local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) and deliveranceData.temporary.pickedup == nil then
-      deliveranceData.temporary.pickedup = true
+  if player:HasCollectible(this.id) and continue then
 	  deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
+	  player:AddCacheFlags(CacheFlag.CACHE_ALL)
+	  player:EvaluateItems()
 	  
 	elseif not player:HasCollectible(this.id) then
 		deliveranceData.temporary.glasscounter = nil
   end
-  player:AddCacheFlags(CacheFlag.CACHE_ALL)
-  player:EvaluateItems()
   deliveranceDataHandler.directSave()
 end
 
@@ -33,7 +32,7 @@ function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
 	deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
-    if flag == CacheFlag.CACHE_SPEED then player.MoveSpeed = player.MoveSpeed + (bonus.speed * deliveranceData.temporary.glasscounter)
+    if flag == CacheFlag.CACHE_SPEED 		 then player.MoveSpeed = player.MoveSpeed + (bonus.speed * deliveranceData.temporary.glasscounter)
 	elseif flag	== CacheFlag.CACHE_DAMAGE    then player.Damage = player.Damage + (bonus.damage * deliveranceData.temporary.glasscounter)
 	elseif flag == CacheFlag.CACHE_LUCK      then player.Luck = player.Luck + (bonus.luck * deliveranceData.temporary.glasscounter)
 	elseif flag == CacheFlag.CACHE_RANGE     then player.TearHeight = player.TearHeight - (bonus.range * deliveranceData.temporary.glasscounter)
@@ -47,13 +46,15 @@ function this:trigger(player)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
   deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
-  print(deliveranceData.temporary.glasscounter)
 	if deliveranceData.temporary.glasscounter then
       deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter - 1
+	  player:AddCacheFlags(CacheFlag.CACHE_ALL)
+	  player:EvaluateItems()
     deliveranceDataHandler.directSave()
 	end
 	if deliveranceData.temporary.glasscounter <= 0 then
 		player:RemoveCollectible(this.id)
+		deliveranceData.temporary.glasscounter = nil
 	end
   end
 end
@@ -71,7 +72,7 @@ end
 end--]]
 
 function this.Init()
-  mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.update)
+  mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, this.update)
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   --mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.updateFloor)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.trigger, EntityType.ENTITY_PLAYER)

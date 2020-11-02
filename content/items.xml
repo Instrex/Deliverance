@@ -11,7 +11,7 @@
   <active name="Air Strike!" description="Incoming!" gfx="collectibles_airStrike.png" maxcharges="4"/>
   <active name="The Divider" description="Divides into elementary particles" gfx="collectibles_theDivider.png" maxcharges="3"/>
   <active name="Urn of Want" description="Pay blood for dark reward" gfx="collectibles_urnOfWant.png" maxcharges="12" discharged="true"/>
-  <active name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="12" discharged="true"/>
+  <active name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="6" discharged="true"/>
 
   <passive id="13"name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="tearcolor" />
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
