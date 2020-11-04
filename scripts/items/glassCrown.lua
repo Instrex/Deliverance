@@ -32,7 +32,7 @@ function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
 	deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
-    if flag == CacheFlag.CACHE_SPEED 		 then player.MoveSpeed = player.MoveSpeed + (bonus.speed * deliveranceData.temporary.glasscounter)
+    if 	   flag == CacheFlag.CACHE_SPEED     then player.MoveSpeed = player.MoveSpeed + (bonus.speed * deliveranceData.temporary.glasscounter)
 	elseif flag	== CacheFlag.CACHE_DAMAGE    then player.Damage = player.Damage + (bonus.damage * deliveranceData.temporary.glasscounter)
 	elseif flag == CacheFlag.CACHE_LUCK      then player.Luck = player.Luck + (bonus.luck * deliveranceData.temporary.glasscounter)
 	elseif flag == CacheFlag.CACHE_RANGE     then player.TearHeight = player.TearHeight - (bonus.range * deliveranceData.temporary.glasscounter)
@@ -59,6 +59,19 @@ function this:trigger(player)
   end
 end
 
+function this:crownrender()
+	local player = Isaac.GetPlayer(0)
+	if player:HasCollectible(this.id) then
+		if crown ==nil then
+		crown = Sprite()
+		crown:Load("gfx/glassCrown.anm2", true)
+		crown:Play("Idle",true)
+	elseif crown then
+		crown:Update()
+	end
+	crown:Render(Isaac.WorldToScreen(player.Position + Vector(0, player.Size)), vectorZero,vectorZero)
+	end
+end
 --[[function this:updateFloor()
   local player = Isaac.GetPlayer(0)
   local room = game:GetRoom()
@@ -76,6 +89,7 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   --mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.updateFloor)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.trigger, EntityType.ENTITY_PLAYER)
+  mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.crownrender)
 end
   
 return this
