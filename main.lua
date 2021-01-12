@@ -3,7 +3,7 @@ game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
 
-deliveranceVersion = "2.5.4 (dev)"
+deliveranceVersion = "2.5.4"
 
 utils = require 'scripts.utils'
 require 'scripts.enumerations'
@@ -147,7 +147,7 @@ deliveranceContent = {
 	grilly                    = require 'scripts.entities.monsters.grilly',
 	bloodmind                 = require 'scripts.entities.monsters.bloodmind',
     bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
-    slider                    = require 'scripts.entities.monsters.slider'
+    --slider                    = require 'scripts.entities.monsters.slider'
   },
 
   costumes = {
