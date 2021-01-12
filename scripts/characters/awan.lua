@@ -587,6 +587,103 @@ else
     __infinityTrueCoop[#__infinityTrueCoop + 1] = onTrueCoopInit
 end--]]
 
+local function makeMissingStageAPIFloorEffectFunctions()
+    if not StageAPI then
+        StageAPI = {Loaded = false, ToCall = {}}
+    end
+	
+	StageAPI.E = StageAPI.E or {}
+	StageAPI.E.FloorEffect = StageAPI.E.FloorEffect or {
+		T = EntityType.ENTITY_EFFECT,
+		V = 3917,
+		S = 0
+	}
+	StageAPI.E.FloorEffectCreep = StageAPI.E.FloorEffectCreep or {
+		T = EntityType.ENTITY_EFFECT,
+		V = EffectVariant.CREEP_RED,
+		S = 117
+	}
+
+	function StageAPI.SpawnFloorEffect(pos, velocity, spawner, anm2, loadGraphics, variant)
+		local eff = Isaac.Spawn(StageAPI.E.FloorEffectCreep.T, StageAPI.E.FloorEffectCreep.V, StageAPI.E.FloorEffectCreep.S, pos or vectorZero, velocity or vectorZero, spawner)
+		eff.Variant = variant or StageAPI.E.FloorEffect.V
+		if anm2 then
+			eff:GetSprite():Load(anm2, loadGraphics)
+		end
+
+		return eff
+	end
+end
+
+local burningBasementColor = Color(0.5,0.5,0.5,1,0,0,0)
+local function spawnStartingRoomControls()
+
+	local playerType = Isaac.GetPlayer(0):GetPlayerType()
+	
+	if playerType ~= PlayerType.PLAYER_THEFORGOTTEN
+	and playerType ~= PlayerType.PLAYER_THESOUL
+	and (not REVEL or (REVEL and playerType ~= Isaac.GetPlayerTypeByName("Dante"))) then
+	
+		local animation = "gfx/backdrop/controls.anm2"
+		if playerType == this.playerAwan then
+			animation = "gfx/backdrop/controls_awan.anm2"
+		elseif REVEL then
+			return
+		end
+		
+		if not StageAPI or (StageAPI and not StageAPI.SpawnFloorEffect) then
+			makeMissingStageAPIFloorEffectFunctions()
+		end
+		
+		local room = game:GetRoom()
+		local level = game:GetLevel()
+		
+		local controlsEffect = StageAPI.SpawnFloorEffect(room:GetCenterPos(), vectorZero, nil, animation, true)
+		local controlsSprite = controlsEffect:GetSprite()
+		controlsSprite:Play("Idle")
+
+		if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
+			controlsSprite.Color = burningBasementColor
+		end
+		
+	end
+	
+end
+
+local replacedRev = false
+local function replaceRevelControls()
+	if not replacedRev and REVEL and REVEL.SpawnStartingRoomControls then
+		REVEL.SpawnStartingRoomControlsReal = REVEL.SpawnStartingRoomControls
+		REVEL.SpawnStartingRoomControls = function()
+			local playerType = Isaac.GetPlayer(0):GetPlayerType()
+			if playerType == this.playerAwan then
+				return
+			else
+				REVEL.SpawnStartingRoomControlsReal()
+			end
+		end
+		replacedRev = true
+	end
+end
+replaceRevelControls()
+
+mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, function()
+
+	local game = Game()
+	local level = game:GetLevel()
+
+	replaceRevelControls()
+	
+	if not game:IsGreedMode() and level:GetCurrentRoomIndex() == level:GetStartingRoomIndex() and level:GetStage() == 1 then
+		spawnStartingRoomControls()
+	end
+	
+end)
+
+mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, function(_, isSaveGame)
+	replaceRevelControls()
+end)
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
   mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, this.PostInit)
