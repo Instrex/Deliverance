@@ -181,6 +181,8 @@ cardHandler.init(deliveranceContent.cards)
 -- Content Initialization --
 local eid = require 'scripts.eidHandler'
 local coh = require 'scripts.customOverHandler'
+local dss = require 'scripts.deadseascrolls'
+local logs = require 'scripts.changelogs'
 eid.init()
 
 for type, r in pairs(deliveranceContent) do
