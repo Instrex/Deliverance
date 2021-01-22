@@ -36,4 +36,5 @@
 	<entity BaseHP="30" Group="Deliverance" ID="212" Image="deliverance/reaper.png" Kind="Enemies" Name="Reaper" Subtype="0" Variant="4000" />
 	<entity BaseHP="40" Group="Deliverance" ID="766" Image="deliverance/766.4000.0 - Grilly.png" Kind="Enemies" Name="Grilly" Subtype="0" Variant="4000" />
     <entity BaseHP="20" Group="Deliverance" ID="767" Image="deliverance/bloodmind.png" Kind="Enemies" Name="Bloodmind" Subtype="0" Variant="4000" />
+	<entity BaseHP="50" Group="Deliverance" ID="34" Image="deliverance/34.4000.0 - Fat Hopper.png" Kind="Enemies" Name="Fat Hopper" Subtype="0" Variant="4000" />
 </data>

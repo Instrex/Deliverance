@@ -2691,6 +2691,7 @@ local deliverancedirectory = {
         buttons = {
             {str = 'resume game', action = 'resume'},
             {str = 'settings', dest = 'settings'},
+			{str = 'awan settings', dest = 'awansettings', cursoroff = Vector(6, 0)},
 			{str = 'credits', dest = 'credits'},
             changelogsButton,
         },
@@ -2706,6 +2707,19 @@ local deliverancedirectory = {
         },
         tooltip = menuOpenToolTip
     },
+	awansettings = {
+		title = 'awan settings',
+		buttons = {
+		{
+			str = 'resource counter',
+			choices = {'enabled','show only with cauldron', 'disable'},
+			variable = "ResourceCounter",
+			setting = 1,
+				
+		},
+		tooltip = {strset = {'awan edit'}}
+		},
+	},
 	credits = {
         title = 'credits',
         fsize = 1,

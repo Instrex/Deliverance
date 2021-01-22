@@ -3,7 +3,8 @@ DeadSeaScrollsMenu.AddChangelog("Deliverance", "Update 24 (v.2.5.4)",  [[ - Adde
 
 - Bottom Text
 
-- Actual changelog will be writed on 2.5.4 release
+- Actual changelog will be
+writed on 2.5.4 release
 
-]], false, false, true)
+]], {"=)"}, false, true)
 DeadSeaScrollsMenu.AddChangelog("Deliverance", "D Dev Version", [[test]])
