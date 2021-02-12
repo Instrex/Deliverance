@@ -1,10 +1,10 @@
 <AnimatedActor>
-	<Info CreatedBy="Unknown" CreatedOn="29.06.2019 19:03:45" Version="10" Fps="30"/>
+	<Info CreatedBy="Unknown" CreatedOn="24.01.2021 16:47:55" Version="11" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="bgblack.png" Id="0"/>
-			<Spritesheet Path="Paper.png" Id="1"/>
-			<Spritesheet Path="Paper.png" Id="2"/>
+			<Spritesheet Path="paper2.png" Id="1"/>
+			<Spritesheet Path="paper2.png" Id="2"/>
 		</Spritesheets>
 		<Layers>
 			<Layer Name="Background" Id="0" SpritesheetId="0"/>

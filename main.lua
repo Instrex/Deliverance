@@ -1,4 +1,4 @@
-mod = RegisterMod("tBoi: Deliverance", 1)
+mod = RegisterMod("Deliverance", 1)
 game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
@@ -184,6 +184,7 @@ local eid = require 'scripts.eidHandler'
 local coh = require 'scripts.customOverHandler'
 local dss = require 'scripts.deadseascrolls'
 local logs = require 'scripts.changelogs'
+pd = require 'scripts.progressdata'
 eid.init()
 
 for type, r in pairs(deliveranceContent) do

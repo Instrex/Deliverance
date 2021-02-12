@@ -52,6 +52,21 @@ function this:Update()
 
    if player:GetPlayerType() == this.playerAwan then 
     if not player:IsDead() then
+	
+	if deliveranceData.persistent and not deliveranceData.persistent.completiondata then
+		deliveranceData.persistent.completiondata = {
+			[0] = 0, -- Paper/Delirium
+			[1] = 0, -- Mom's Heart
+			[2] = 0, -- Isaac
+			[3] = 0, -- Satan
+			[4] = 0, -- Boss Rush
+			[5] = 0, -- ???
+			[6] = 0, -- The Lamb
+			[7] = 0, -- Mega Satan
+			[8] = 0, -- Greed/Greedier
+			[9] = 0, -- Hush
+		}
+		end
 
       if not deliveranceData.temporary.awanStartUp then
          deliveranceData.temporary.deletedFirstItem = deliveranceData.temporary.deletedFirstItem or false
@@ -252,10 +267,10 @@ local HudHint = Sprite() HudHint:Load("gfx/ui/hudHint.anm2", true)
 local hint = 0
 -- local AchSprite = Sprite() AchSprite:Load("gfx/ui/achievement/achievement.anm2", true)
 -- local AchName = "gfx/ui/achievement/achievement_awan1.png"
--- local Completion_Widget = Sprite() Completion_Widget:Load("gfx/ui/achievement/completion_widget.anm2", true)
--- local Completion_Icons = Sprite() Completion_Icons:Load("gfx/ui/achievement/completion_icons.anm2", true)
+local Completion_Widget = Sprite() Completion_Widget:Load("gfx/ui/achievement/completion_widget.anm2", true)
+local Completion_Icons = Sprite() Completion_Icons:Load("gfx/ui/achievement/completion_icons.anm2", true)
 -- local AchTimer = 0
--- local Completion_Y = 0
+local Completion_Y = 0
 
 function this:onRender()
 
@@ -283,84 +298,84 @@ function this:onRender()
         Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-6+i*17,240), true)
       end
 
---      Completion_Widget:SetFrame("Idle", 0)
---      Completion_Widget:RenderLayer(0, Vector(40,-120+Completion_Y))
+     Completion_Widget:SetFrame("Idle", 0)
+     Completion_Widget:RenderLayer(0, Vector(40,-120+Completion_Y))
      
---      if (deliveranceData.persistent.unlockedTimeGal) then
---         Completion_Icons:SetFrame("Idle", 1)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 0)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+17,-120+Completion_Y+15))
+     if (deliveranceData.persistent.completiondata[5]>1) then
+        Completion_Icons:SetFrame("Idle", 1)
+      else
+         Completion_Icons:SetFrame("Idle", 0)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+17,-120+Completion_Y+15))
 
-      -- if (deliveranceData.persistent.unlockedTheDivider) then
-         -- Completion_Icons:SetFrame("Idle", 3)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 2)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+31,-120+Completion_Y+9))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 3)
+      else
+         Completion_Icons:SetFrame("Idle", 2)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+31,-120+Completion_Y+9))
 
-      -- if (deliveranceData.persistent.unlockedSilverBar) then
-         -- Completion_Icons:SetFrame("Idle", 5)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 4)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+46,-120+Completion_Y+13))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 5)
+      else
+         Completion_Icons:SetFrame("Idle", 4)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+46,-120+Completion_Y+13))
 
-      -- if (deliveranceData.persistent.unlockedSinisterShalk) then
-         -- Completion_Icons:SetFrame("Idle", 7)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 6)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+55,-120+Completion_Y+24))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 7)
+      else
+         Completion_Icons:SetFrame("Idle", 6)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+55,-120+Completion_Y+24))
 
-      -- if (deliveranceData.persistent.unlockedMomsEarrings) then
-         -- Completion_Icons:SetFrame("Idle", 9)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 8)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+13,-120+Completion_Y+33))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 9)
+      else
+         Completion_Icons:SetFrame("Idle", 8)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+13,-120+Completion_Y+33))
 
-      -- if (deliveranceData.persistent.unlockedLawful) then
-         -- Completion_Icons:SetFrame("Idle", 11)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 10)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+21,-120+Completion_Y+47))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 11)
+      else
+         Completion_Icons:SetFrame("Idle", 10)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+21,-120+Completion_Y+47))
 
-      -- if (deliveranceData.persistent.unlockedObituary) then
-         -- Completion_Icons:SetFrame("Idle", 13)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 12)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+27,-120+Completion_Y+29))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 13)
+      else
+         Completion_Icons:SetFrame("Idle", 12)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+27,-120+Completion_Y+29))
 
-      -- if (deliveranceData.persistent.unlockedRainbowHearts) then
-         -- Completion_Icons:SetFrame("Idle", 15)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 14)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+41,-120+Completion_Y+32))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 15)
+      else
+         Completion_Icons:SetFrame("Idle", 14)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+41,-120+Completion_Y+32))
 
-      -- if (deliveranceData.persistent.unlockedEncharmedPenny) then
-         -- Completion_Icons:SetFrame("Idle", 17)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 16)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+38,-120+Completion_Y+50))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 17)
+      else
+         Completion_Icons:SetFrame("Idle", 16)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+38,-120+Completion_Y+50))
 
-      -- if (deliveranceData.persistent.unlockedUrnOfWant) then
-         -- Completion_Icons:SetFrame("Idle", 19)
-      -- else
-         -- Completion_Icons:SetFrame("Idle", 18)
-      -- end
-      -- Completion_Icons:RenderLayer(0, Vector(40+53,-120+Completion_Y+40))
+      if (deliveranceData.persistent.completiondata[5]>1) then
+         Completion_Icons:SetFrame("Idle", 19)
+      else
+         Completion_Icons:SetFrame("Idle", 18)
+      end
+      Completion_Icons:RenderLayer(0, Vector(40+53,-120+Completion_Y+40))
 
-      -- if not game:IsPaused() and Input.IsActionPressed(ButtonAction.ACTION_MAP, player.ControllerIndex) then
-         -- if Completion_Y<150 then Completion_Y=Completion_Y+25 end
-      -- else
-         -- if Completion_Y>0 then Completion_Y=Completion_Y-25 end
-      -- end
+      if not game:IsPaused() and Input.IsActionPressed(ButtonAction.ACTION_MAP, player.ControllerIndex) then
+         if Completion_Y<150 then Completion_Y=Completion_Y+25 end
+      else
+         if Completion_Y>0 then Completion_Y=Completion_Y-25 end
+      end
 
       if HudChoose:IsFinished("Select") then
          HudChoose:Play("Idle", false)
@@ -409,67 +424,97 @@ end
 
 
 -- Callbacks --
-function this:die(npc) 
-   local player = Isaac.GetPlayer(0)
-   if player:GetPlayerType() == this.playerAwan then 
-       if npc.Type==17 then 
-           if npc.Variant == 0 then
-                if npc.SubType == 1 then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 2 then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 3 then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 4 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 5 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 6 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 7 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 8 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 9 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-           end
-           if npc.Variant == 3 then
-             for i=1,2 do 
-                if npc.SubType == 1 then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 2 then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 3 then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 4 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 5 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 6 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 7 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 8 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-                if npc.SubType == 9 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
-             end
-           end
-       end
-      -- if npc.Type == 45 then
-         -- this.playAchievement('unlockedMomsEarrings',"momsEarrings")
-      -- elseif npc.Type == 102 and npc.Variant == 0 then
-         -- this.playAchievement('unlockedSilverBar',"silverBar")
-      -- elseif npc.Type == 84 and npc.Variant == 10 then
-         -- this.playAchievement('unlockedSinisterShalk',"sinisterShalk")
-      -- elseif npc.Type == 102 and npc.Variant == 1 then
-         -- this.playAchievement('unlockedTimeGal',"timeGal")
-      -- elseif npc.Type == 273 then
-         -- this.playAchievement('unlockedTheDivider',"theDivider")
-      -- elseif npc.Type == 407 then
-         -- this.playAchievement('unlockedRainbowHearts',"rainbowHearts")
-      -- elseif npc.Type == 275 then
-         -- this.playAchievement('unlockedLawful',"lawful")
-      -- elseif npc.Type == 406 and npc.Variant == 0 and game.Difficulty==2 then
-         -- this.playAchievement('unlockedEncharmedPenny',"encharmedPenny")
-      -- elseif npc.Type == 406 and npc.Variant == 1 and game.Difficulty==3 then
-         -- this.playAchievement('unlockedUrnOfWant',"urnOfWant")
-      -- elseif npc.Type == 412 then
-         -- this.playAchievement('unlockedObituary',"obituary")
-      -- end
-   end
-end
+function this:die(npc)
+  local player = Isaac.GetPlayer(0)
+  if player:GetPlayerType() == this.playerAwan then
+    if npc.Type==17 then
+      if npc.Variant == 0 then
+        if npc.SubType == 1 then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        if npc.SubType == 2 then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        if npc.SubType == 3 then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        if npc.SubType == 4 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        if npc.SubType == 5 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        if npc.SubType == 6 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        if npc.SubType == 7 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        if npc.SubType == 8 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        if npc.SubType == 9 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+      end
+      if npc.Variant == 3 then
+        for i=1,2 do
+          if npc.SubType == 1 then Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+          if npc.SubType == 2 then Isaac.Spawn(5, 350, CauldronMaterialID.gunpowder, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+          if npc.SubType == 3 then Isaac.Spawn(5, 350, CauldronMaterialID.paper, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+          if npc.SubType == 4 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+          if npc.SubType == 5 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+          if npc.SubType == 6 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+          if npc.SubType == 7 then Isaac.Spawn(5, 350, CauldronMaterialID.blood, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+          if npc.SubType == 8 then Isaac.Spawn(5, 350, CauldronMaterialID.rib, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+          if npc.SubType == 9 then Isaac.Spawn(5, 350, CauldronMaterialID.feather, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), npc) end
+        end
+      end
+    end
+	
+    local diff = 2 - (game.Difficulty + 1) % 2
+	
+    if npc.Type == 45 then
+      if diff >= 1 and deliveranceData.persistent.completiondata[1] < 1 then
+        pd.playAchievement("momsEarrings")
+	  end
+        deliveranceData.persistent.completiondata[1] = math.max(deliveranceData.persistent.completiondata[1],diff)
+        deliveranceDataHandler.directSave()
+    elseif npc.Type == 102 then
+      if npc.Variant == 0 then
+        if diff >= 1 and deliveranceData.persistent.completiondata[2] < 1 then
+          pd.playAchievement("silverBar")
+        end
+        deliveranceData.persistent.completiondata[2] = math.max(deliveranceData.persistent.completiondata[2],diff)
+        deliveranceDataHandler.directSave()
+      elseif npc.Variant == 1 then
+        if diff >= 1 and deliveranceData.persistent.completiondata[5] < 1 then
+          pd.playAchievement("timeGal")
+        end
+        deliveranceData.persistent.completiondata[5] = math.max(deliveranceData.persistent.completiondata[5],diff)
+        deliveranceDataHandler.directSave()
+      end
 
--- function this.playAchievement(type, name)
-   -- if Utils.switchData(type,'persistent') then
-      -- sfx:Play(8, 1, 0, false, 1) 
-      -- AchTimer=1
-      -- AchName="gfx/ui/achievement/achievement_" .. name ..".png"
-      -- deliveranceDataHandler.directSave() 
-   -- end
--- end
+    elseif npc.Type == 84 and npc.Variant == 10 then
+      if diff >= 1 and deliveranceData.persistent.completiondata[3] < 1 then
+        pd.playAchievement("sinisterShalk")
+      end
+      deliveranceData.persistent.completiondata[3] = math.max(deliveranceData.persistent.completiondata[3],diff)
+      deliveranceDataHandler.directSave()
+    elseif npc.Type == 273 then
+      if diff >= 1 and deliveranceData.persistent.completiondata[6] < 1 then
+        pd.playAchievement("theDivider")
+      end
+      deliveranceData.persistent.completiondata[6] = math.max(deliveranceData.persistent.completiondata[6],diff)
+      deliveranceDataHandler.directSave()
+    elseif npc.Type == 407 then
+      if diff >= 1 and deliveranceData.persistent.completiondata[9] < 1 then
+        pd.playAchievement("rainbowHearts")
+      end
+      deliveranceData.persistent.completiondata[9] = math.max(deliveranceData.persistent.completiondata[9],diff)
+      deliveranceDataHandler.directSave()
+    elseif npc.Type == 275 then
+      if diff >= 1 and deliveranceData.persistent.completiondata[7] < 1 then
+        pd.playAchievement("lawful")
+      end
+      deliveranceData.persistent.completiondata[7] = math.max(deliveranceData.persistent.completiondata[7],diff)
+      deliveranceDataHandler.directSave()
+      --[[elseif npc.Type == 406 and npc.Variant == 0 and game.Difficulty==2 then
+      pd.playAchievement("encharmedPenny")
+    elseif npc.Type == 406 and npc.Variant == 1 and game.Difficulty==3 then
+      pd.playAchievement("urnOfWant")--]]
+    elseif npc.Type == 412 then
+      if diff >= 1 and deliveranceData.persistent.completiondata[7] < 1 then
+        pd.playAchievement("obituary")
+      end
+      deliveranceData.persistent.completiondata[0] = math.max(deliveranceData.persistent.completiondata[0],diff)
+      deliveranceDataHandler.directSave()
+    end
+
+  end
+end
 
 function this.spawnCauldron(pos) 
    Isaac.Spawn(Isaac.GetEntityTypeByName("Cauldron"), Isaac.GetEntityVariantByName("Cauldron"), 0, pos, vectorZero, player)
