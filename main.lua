@@ -185,6 +185,7 @@ local coh = require 'scripts.customOverHandler'
 local dss = require 'scripts.deadseascrolls'
 local logs = require 'scripts.changelogs'
 pd = require 'scripts.progressdata'
+local encyclopedia = require 'scripts.encyclopedia'
 eid.init()
 
 for type, r in pairs(deliveranceContent) do

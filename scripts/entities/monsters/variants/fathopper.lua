@@ -7,9 +7,17 @@ function this:behaviour(npc)
 	local sprite = npc:GetSprite()
 		if npc.State == 6 and (not sprite:IsFinished("BigJumpUp") or sprite:IsPlaying("BigJumpUp")) then
 			sprite:Play("BigJumpUp")
+			npc.StateFrame = 0
+		elseif npc.State == 7 and sprite:IsPlaying("BigJumpDown") then
+			npc.StateFrame = 40
+		elseif npc.State == 4 then
+			if sprite:GetFrame() < 7 then
+				npc.Velocity = vectorZero
+				npc.StateFrame = 0
+			end
 		end
 		
-		if sprite:IsEventTriggered("Land")  then
+		if sprite:IsEventTriggered("Land") then
 			game:ShakeScreen(5)
 			sfx:Play(139, 0.8, 1, false, 0.5)
 		end
@@ -42,19 +50,19 @@ function this:behaviour(npc)
 	end
 end
 
---[[function this:testrender()
+function this:testrender()
 	 for _, ent in ipairs(Isaac.GetRoomEntities()) do
 		if ent.Type == 34 and ent.Variant == this.variant then
 			
 			Isaac.RenderText("STATE FRAME ".. ent:ToNPC().StateFrame, 125, 200, 1, 1, 1, 1)
-			Isaac.RenderText("STATE ".. ent:ToNPC().State, 125, 225, 1, 1, 1, 1)
+			Isaac.RenderText("STATE ".. ent:ToNPC().State, 125, 215, 1, 1, 1, 1)
 		end
 	end
-end--]]
+end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, 34)
-  --mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.testrender)
+  mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.testrender)
 end
 
 return this
