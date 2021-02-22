@@ -55,6 +55,7 @@
   <trinket name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
   <trinket name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
   <trinket name="Extinguisher" description="Cool down" gfx="trinket_extinguisher.png" />
+  <trinket name="Bloated Capacitor" description="-" gfx="trinket_swollencapacitor.png" />
   
   <!-- Awan Content -->
   <trinket name="Gunpowder" description="That's what bombs are made of" gfx="trinket_gunPowder.png" />

@@ -66,11 +66,37 @@ function this:die(npc)
    end
 end
 
+local function checkroomsize()
+	local room = game:GetRoom()
+	local shape = room:GetRoomShape()
+	if shape == RoomShape.ROOMSHAPE_2x2 or shape == RoomShape.ROOMSHAPE_LTL or shape == RoomShape.ROOMSHAPE_LTR or shape == RoomShape.ROOMSHAPE_LBL or shape == RoomShape.ROOMSHAPE_LBR then
+		return 2
+	end
+	return 1
+end
+
+function this:decreasecharge()
+	local player = Isaac.GetPlayer(0)
+	if player:HasCollectible(this.id) and player:NeedsCharge() then
+		if sfx:IsPlaying(171) then
+			sfx:Stop(171)
+		end
+		if player:GetBatteryCharge() > 0 then
+			local charge = player:GetActiveCharge() + player:GetBatteryCharge()
+			player:DischargeActiveItem()
+			player:SetActiveCharge(charge-checkroomsize())
+		else
+			player:SetActiveCharge(player:GetActiveCharge()-checkroomsize())
+		end
+	end
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_USE_ITEM, this.use, this.id)
   mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.updateCollectible)
   mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateEffect)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die)
+  mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, this.decreasecharge)
 end
 
 return this

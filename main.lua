@@ -83,7 +83,8 @@ deliveranceContent = {
     pieceOfPaper              = require 'scripts.trinkets.pieceOfPaper',
     bottledBlood              = require 'scripts.trinkets.bottledBlood',
     woodenRib                 = require 'scripts.trinkets.woodenRib',
-    glowingFeather            = require 'scripts.trinkets.glowingFeather'
+    glowingFeather            = require 'scripts.trinkets.glowingFeather',
+	bloatedcapacitor          = require 'scripts.trinkets.bloatedcapacitor'
   },
 
   cards = {

@@ -2734,6 +2734,7 @@ local credits = {
 	{"instrex", "coder"},
 	{"baicherra", "artist"},
 	{"fly6", "coder"},
+	{"pixeloman", "room desinger"},
 	{"kovadon", "promotional art"}
 }
 

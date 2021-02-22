@@ -11,9 +11,14 @@ function this:behaviour(npc)
 		elseif npc.State == 7 and sprite:IsPlaying("BigJumpDown") then
 			npc.StateFrame = 40
 		elseif npc.State == 4 then
-			if sprite:GetFrame() < 7 then
+			if sfx:IsPlaying(69) then
+				sfx:Stop(69)
+			end
+			if sprite:GetFrame() < 7 and not sprite:IsEventTriggered("Jump") then
 				npc.Velocity = vectorZero
 				npc.StateFrame = 0
+			elseif sprite:GetFrame() > 19 then
+				npc.StateFrame = npc.StateFrame - Utils.choose(0,1)
 			end
 		end
 		
