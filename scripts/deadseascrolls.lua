@@ -2711,9 +2711,9 @@ local deliverancedirectory = {
 		title = 'awan settings',
 		buttons = {
 		{
-			str = 'resource counter',
-			choices = {'enabled','show only with cauldron', 'disable'},
-			variable = "ResourceCounter",
+			str = 'ingredient counter',
+			choices = {'enable','on cauldron', 'disable'},
+			variable = "IngredientCounter",
 			setting = 1,
 				
 		},
@@ -2787,5 +2787,3 @@ dssmenu.AddPalettes({
         {250, 150, 5}, -- Highlight Text
     },
 })
-
---FiendFolio:ForceError() --this function doesn't exist, we do this to cause an error intentionally

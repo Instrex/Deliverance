@@ -63,7 +63,7 @@ mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, function(_)
   if greed < hard then
     i:RemoveCollectible(deliveranceContent.items.urnOfWant.id)
   end
-  if shock = 0 then
+  if shock == 0 then
 	i:RemoveTrinket(deliveranceContent.trinkets.bloatedcapacitor.id)
   end
 end)
