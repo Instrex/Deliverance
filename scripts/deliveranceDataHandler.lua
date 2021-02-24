@@ -31,6 +31,7 @@ function this.directSave()
     deliveranceData.persistent.megasatancomp = deliveranceData.persistent.completiondata[7]
     deliveranceData.persistent.greedcomp = deliveranceData.persistent.completiondata[8]
     deliveranceData.persistent.hushcomp = deliveranceData.persistent.completiondata[9]
+	deliveranceData.persistent.shockcomp = deliveranceData.persistent.completiondata[10]
   end
 end
 

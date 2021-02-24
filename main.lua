@@ -168,6 +168,9 @@ deliveranceContent = {
     --lawful                    = utils.getCostume('lawful'),
     --momsEarrings              = utils.getCostume('momsEarrings')
 	  --obituary                  = utils.getCostume('obituary')
+  },
+  challenges = {
+	shocktherapy =  require 'scripts.challenges.shocktherapy'
   }
 }
 

@@ -4,7 +4,7 @@ local AchSprite = Sprite() AchSprite:Load("gfx/ui/achievement/achievement.anm2",
 local AchName = "gfx/ui/achievement/achievement_awan1.png"
 local AchTimer = 0
 	
-	mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, function(_)
+mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, function(_)
 	
 	
   deliveranceData.persistent.completiondata = {
@@ -18,6 +18,7 @@ local AchTimer = 0
     [7] = deliveranceData.persistent.megasatancomp or 0, -- Mega Satan
     [8] = deliveranceData.persistent.greedcompn or 0, -- Greed/Greedier
     [9] = deliveranceData.persistent.hushcomp or 0, -- Hush
+	[10] = deliveranceData.persistent.shockcomp or 0, -- Shock Therapy
   }
   
    local i = game:GetItemPool()
@@ -32,7 +33,8 @@ local AchTimer = 0
   local megasatan = deliveranceData.persistent.completiondata[7]
   local greed = deliveranceData.persistent.completiondata[8]
   local hush = deliveranceData.persistent.completiondata[9]
-
+  local shock = deliveranceData.persistent.completiondata[10]
+  
   local normal = 1
   local hard = 2
 
@@ -60,6 +62,9 @@ local AchTimer = 0
 
   if greed < hard then
     i:RemoveCollectible(deliveranceContent.items.urnOfWant.id)
+  end
+  if shock = 0 then
+	i:RemoveTrinket(deliveranceContent.trinkets.bloatedcapacitor.id)
   end
 end)
  
