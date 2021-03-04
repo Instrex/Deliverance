@@ -106,8 +106,7 @@ deliveranceContent = {
     dukie                     = require 'scripts.entities.monsters.variants.dukie',
     greenLevel2Fly            = require 'scripts.entities.monsters.variants.greenLevel2Fly',
     greenLevel2Spider         = require 'scripts.entities.monsters.variants.greenLevel2Spider',
-    momOfMany                 = require 'scripts.entities.monsters.variants.momOfMany',
-	fathopper 				  = require 'scripts.entities.monsters.variants.fathopper',
+    momOfMany                 = require 'scripts.entities.monsters.variants.momOfMany'
   },
 
   pickups = {
@@ -150,6 +149,7 @@ deliveranceContent = {
 	bloodmind                 = require 'scripts.entities.monsters.bloodmind',
     bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
     --slider                    = require 'scripts.entities.monsters.slider'
+	fathopper 				  = require 'scripts.entities.monsters.fathopper',
   },
 
   costumes = {

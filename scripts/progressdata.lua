@@ -94,5 +94,19 @@ function this.playAchievement(name)
     AchName="gfx/ui/achievement/achievement_" .. name ..".png"
 end
 
+mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, function(_, c, p)
+	c = string.lower(c)
+	p = string.lower(p)
+	
+	if c == "resetdeliverancecomp" then
+		for i = 0, 10 do
+			deliveranceData.persistent.completiondata[i] = 0
+		end
+		print("Complete reset")
+
+		deliveranceDataHandler.directSave()
+	end
+end)
+
 print("save loaded deliverance")
 return this
