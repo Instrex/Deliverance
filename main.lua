@@ -2,6 +2,7 @@ mod = RegisterMod("Deliverance", 1)
 game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
+delivRNG = RNG()
 
 deliveranceVersion = "2.5.4"
 

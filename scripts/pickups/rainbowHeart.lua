@@ -3,8 +3,6 @@ local this = {
     subtype = 4000
 }
 
-local rng=RNG() 
-
 -- MC_PRE_PICKUP_COLLISION 
 function this:collision(pickup, collider, low)
     if collider.Type == 1 and pickup.SubType == this.subtype then
@@ -37,8 +35,8 @@ end
 
 function this:pickupinit(pickup)
   if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED then
-    rng:SetSeed(pickup.InitSeed, 0)
-      if rng:RandomInt(25) == 1 then
+    delivRNG:SetSeed(pickup.InitSeed, 0)
+      if delivRNG:RandomInt(25) == 1 then
         pickup:Morph(5,this.variant,this.subtype,false)
       end
     end

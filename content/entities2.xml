@@ -171,7 +171,7 @@
         <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
     </entity> -->
 	
-	<entity id="770" variant="4000" anm2path="fathopper.anm2" baseHP="50" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="13" friction="1" name="Fat Hopper" numGridCollisionPoints="12" shadowSize="32" stageHP="0" shutdoors="false">
+	<entity id="770" variant="4000" anm2path="fathopper.anm2" baseHP="35" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="13" friction="1" name="Fat Hopper" numGridCollisionPoints="24" shadowSize="32" stageHP="0">
         <gibs amount="8" blood="1" bone="1" eye="0" gut="1" large="1" />
     </entity>
 

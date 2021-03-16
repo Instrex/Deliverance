@@ -41,7 +41,7 @@ function this:behaviour(npc)
     
   elseif npc.State == NpcState.STATE_IDLE then
       sprite:Play("Idle")
-      npc.State = Utils.chance(10,NpcState.STATE_JUMP,NpcState.STATE_MOVE)
+      npc.State = Utils.chance(5,NpcState.STATE_JUMP,NpcState.STATE_MOVE)
   elseif npc.State == NpcState.STATE_JUMP then
     sprite:Play("BigJumpUp")
     if sprite:IsFinished("BigJumpUp") then
@@ -70,7 +70,7 @@ function this:behaviour(npc)
 		end
 		if sprite:IsEventTriggered("BigLand") then
       npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_ALL
-      npc.GridCollisionClass = GridCollisionClass.COLLISION_SOLID
+      npc.GridCollisionClass = GridCollisionClass.COLLISION_WALL_EXCEPT_PLAYER
 			game:ShakeScreen(15)
 			sfx:Play(52, 1, 1, false, 1)
 			local wave = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.SHOCKWAVE, 0, npc.Position, vectorZero, npc):ToEffect()
@@ -80,7 +80,7 @@ function this:behaviour(npc)
 		
     if sprite:IsEventTriggered("BigJump") then
       npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
-      npc.GridCollisionClass = GridCollisionClass.COLLISION_NONE
+      npc.GridCollisionClass = GridCollisionClass.COLLISION_PIT
     end
     
 		if sprite:IsEventTriggered("Shoot") then
@@ -98,10 +98,11 @@ end
 
 function this:testrender()
 	 for _, ent in ipairs(Isaac.GetRoomEntities()) do
-		if ent.Type == this.id and ent.Variant == this.variant then
+		if ent.Type == 34 and ent.Variant == 0 then
 			
 			Isaac.RenderText("STATE FRAME ".. ent:ToNPC().StateFrame, 125, 200, 1, 1, 1, 1)
 			Isaac.RenderText("STATE ".. ent:ToNPC().State, 125, 215, 1, 1, 1, 1)
+      Isaac.RenderText(ent.GridCollisionClass,125,230,1,1,1,1)
 		end
 	end
 end
