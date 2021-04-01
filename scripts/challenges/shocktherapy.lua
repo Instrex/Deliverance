@@ -15,7 +15,7 @@ end
 
 function this:challengeunlock(pickup, collider,low)
 	if pickup.Variant == 370 and collider.Type == 1 and deliveranceData.persistent.completiondata[10] == 0 and Isaac.GetChallenge() == this.id then
-		pd.playAchievement("silverBar") -- swipe sprite later
+		pd.playAchievement("bloatedcapacitor") -- swipe sprite later
 		deliveranceData.persistent.completiondata[10] = 1
 		deliveranceDataHandler.directSave()
 	end
