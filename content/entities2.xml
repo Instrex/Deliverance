@@ -1,5 +1,5 @@
 <entities anm2root="gfx/" version="5">
-    <entity id="740" variant="4000" anm2path="raga.anm2" baseHP="45" boss="0" bossID = "612" champion="1" collisionDamage="1" collisionMass="100" collisionRadius="13" friction="1" name="Raga" numGridCollisionPoints="0" shadowSize="25" stageHP="3">
+    <entity id="740" variant="4000" anm2path="raga.anm2" baseHP="45" boss="0" champion="1" collisionDamage="1" collisionMass="100" collisionRadius="13" friction="1" name="Raga" numGridCollisionPoints="0" shadowSize="25" stageHP="3">
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="1" />
     </entity>
 

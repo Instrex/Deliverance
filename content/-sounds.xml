@@ -1,0 +1,52 @@
+<sounds root="sfx/">
+	<sound name="Spawn">
+		<sample weight="1" path="Spawn.wav"/>
+	</sound>
+	<sound name="Firestarter">
+		<sample weight="1" path="Firestarter.wav"/>
+	</sound>
+	<sound name="Whoosh">
+		<sample weight="1" path="Whoosh.wav"/>
+	</sound>
+	<sound name="Charge">
+		<sample weight="1" path="Charge.wav"/>
+	</sound>
+	<sound name="Yuck">
+		<sample weight="1" path="Yuck.wav"/>
+	</sound>
+	<sound name="Firethrower">
+		<sample weight="1" path="Firethrower.wav"/>
+	</sound>
+	<sound name="Fistulauncher1">
+		<sample weight="1" path="Fistulauncher1.wav"/>
+	</sound>
+	<sound name="Fistulauncher2">
+		<sample weight="1" path="Fistulauncher2.wav"/>
+	</sound>
+	<sound name="BombWhistle">
+		<sample weight="1" path="BombWhistle.wav"/>
+	</sound>
+	<sound name="Bomber">
+		<sample weight="1" path="Bomber.wav"/>
+	</sound>
+	<sound name="CauldronJump">
+		<sample weight="1" path="CauldronJump.wav"/>
+	</sound>
+	<sound name="Urn">
+		<sample weight="1" path="Urn.wav"/>
+	</sound>
+	<sound name="Ding">
+		<sample weight="1" path="Ding.wav"/>
+	</sound>
+	<sound name="Swish">
+		<sample weight="1" path="Swish.wav"/>
+	</sound>
+	
+	<!-- Dead Sea Scrolls Menu -->
+	<sound name="deadseascrolls_pop">
+		<sample weight="1" path="deadseascrolls/pop.wav"/>
+	</sound>
+	<sound name="deadseascrolls_whoosh">
+		<sample weight="1" path="deadseascrolls/whoosh.wav"/>
+	</sound>
+</sounds>

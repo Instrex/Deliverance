@@ -77,5 +77,5 @@ function this.getCard(rng)
         return deliveranceContent.cards.abyss.id
     end
 end
-
+print("card loaded")
 return this

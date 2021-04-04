@@ -1,8 +1,7 @@
-mod = RegisterMod("Deliverance", 1)
+mod = RegisterMod("Deliverance Repentance", 1)
 game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
-delivRNG = RNG()
 
 deliveranceVersion = "2.5.4"
 
@@ -24,7 +23,7 @@ deliveranceData = {
 
 -- Register mod content here --
 deliveranceContent = {
-  items = {
+	items = {
     sistersKey                = require 'scripts.items.sistersKey',
     sistersHeart              = require 'scripts.items.familiars.sistersHeart',
     specialDelivery           = require 'scripts.items.specialDelivery',
@@ -70,50 +69,12 @@ deliveranceContent = {
     corrosiveBombs            = require 'scripts.items.corrosiveBombs',
 	yumRib                    = require 'scripts.items.yumrib'
   },
-
-  trinkets = {
-    uncertainty               = require 'scripts.trinkets.uncertainty',
-    appleCore                 = require 'scripts.trinkets.appleCore',
-    krampusHorn               = require 'scripts.trinkets.krampusHorn',
-    discountBrochure          = require 'scripts.trinkets.discountBrochure',
-    darkLock                  = require 'scripts.trinkets.darkLock',
-    specialPenny              = require 'scripts.trinkets.specialPenny',
-    littleTransducer          = require 'scripts.trinkets.littleTransducer',
-    extinguisher              = require 'scripts.trinkets.extinguisher',
-    gunPowder                 = require 'scripts.trinkets.gunPowder',
-    pieceOfPaper              = require 'scripts.trinkets.pieceOfPaper',
-    bottledBlood              = require 'scripts.trinkets.bottledBlood',
-    woodenRib                 = require 'scripts.trinkets.woodenRib',
-    glowingFeather            = require 'scripts.trinkets.glowingFeather',
-	bloatedcapacitor          = require 'scripts.trinkets.bloatedcapacitor'
-  },
-
-  cards = {
+	cards = {
     farewellStone             = require 'scripts.cards.farewellStone',
     firestorms                = require 'scripts.cards.firestorms',
     glitch                    = require 'scripts.cards.glitch',
     abyss                     = require 'scripts.cards.abyss',
-  },
-  
-  characters = {
-    awan                      = require 'scripts.characters.awan',
-  },
-
-  pills = {
-    dissReaction              = require 'scripts.pills.dissReaction'
-  },
-
-  entityVariants = {
-    dukie                     = require 'scripts.entities.monsters.variants.dukie',
-    greenLevel2Fly            = require 'scripts.entities.monsters.variants.greenLevel2Fly',
-    greenLevel2Spider         = require 'scripts.entities.monsters.variants.greenLevel2Spider',
-    momOfMany                 = require 'scripts.entities.monsters.variants.momOfMany'
-  },
-
-  pickups = {
-    rainbowHeart              = require 'scripts.pickups.rainbowHeart',
-    chargedPenny              = require 'scripts.pickups.chargedPenny'
-  },
+	},
   
   entities = {
     persistent = {
@@ -151,27 +112,6 @@ deliveranceContent = {
     bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
     --slider                    = require 'scripts.entities.monsters.slider'
 	fathopper 				  = require 'scripts.entities.monsters.fathopper',
-  },
-
-  costumes = {
-    noAutoload = true,
-
-    --sailorHat                 = utils.getCostume('sailorhat'),
-    --saltySoup                 = utils.getCostume('saltySoup'),
-    --gasoline                  = utils.getCostume('gasoline'),
-    --luckySaucer               = utils.getCostume('luckySaucer'),
-    --theCovenant               = utils.getCostume('theCovenant'),
-    --adamsRib                  = utils.getCostume('adamsRib'),
-    --hotmilk                   = utils.getCostume('hotmilk'),
-    --adamsRib2                 = utils.getCostume('adamsRib2')
-    --manuscript                = utils.getCostume('manuscript'),
-    --dangerRoom                = utils.getCostume('dangerRoom'),
-    --lawful                    = utils.getCostume('lawful'),
-    --momsEarrings              = utils.getCostume('momsEarrings')
-	  --obituary                  = utils.getCostume('obituary')
-  },
-  challenges = {
-	shocktherapy =  require 'scripts.challenges.shocktherapy'
   }
 }
 
@@ -184,20 +124,10 @@ npcPersistence.init(deliveranceContent.entities.persistent)
 cardHandler = require 'scripts.cardHandler'
 cardHandler.init(deliveranceContent.cards)
 
--- Content Initialization --
-local eid = require 'scripts.eidHandler'
-local coh = require 'scripts.customOverHandler'
-local dss = require 'scripts.deadseascrolls'
-local logs = require 'scripts.changelogs'
-pd = require 'scripts.progressdata'
-local encyclopedia = require 'scripts.encyclopedia'
-eid.init()
-
 for type, r in pairs(deliveranceContent) do
   if r.noAutoload == nil then
     for name, class in pairs(r) do
       --Isaac.DebugString("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
-      eid.tryAddDescription(type, class)
       if class.Init then
         class.Init()
       end
@@ -205,4 +135,4 @@ for type, r in pairs(deliveranceContent) do
   end
 end
 
-print("tBoI Deliverance v"..deliveranceVersion..": Successfully initialized! Have a nice run :)")
+print("Deliverance Repentance v"..deliveranceVersion..": Successfully initialized! Have a nice run :)")
