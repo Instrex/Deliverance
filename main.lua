@@ -6,7 +6,7 @@ vectorZero = Vector(0,0)
 deliveranceVersion = "2.5.4"
 
 utils = require 'scripts.utils'
-require 'scripts.enumerations'
+--require 'scripts.enumerations'
 
 -- Mod data --
 deliveranceData = {

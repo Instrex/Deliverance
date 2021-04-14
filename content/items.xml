@@ -27,7 +27,7 @@
   <passive id="24" name="Lawful" description="Take that you want, alright?" gfx="collectibles_lawful.png" cache="tearcolor"/>
   <passive id="25" name="Danger Room" description="Perfect for thrill-seekers" gfx="collectibles_dangerRoom.png" cache="tearcolor"/>
   <passive name="Sinister Shalk" description="Behind the shadows" gfx="collectibles_sinisterShalk.png"/>
-  <passive id="27" name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor"/>
+  <passive id="27" name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor" tags="mom"/>
   <passive name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
   <passive name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>
   <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
