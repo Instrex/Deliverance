@@ -15,7 +15,7 @@
         <gibs amount="12" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="744" variant="4000" anm2path="glutty.anm2" baseHP="25" boss="0" champion="1" collisionDamage="1" collisionMass="50" collisionRadius="10" friction="1" name="Nutcracker" numGridCollisionPoints="9" shadowSize="18" stageHP="4">
+    <entity id="744" variant="4000" anm2path="glutty.anm2" hasFloorAlts="true" baseHP="25" boss="0" champion="1" collisionDamage="1" collisionMass="50" collisionRadius="10" friction="1" name="Nutcracker" numGridCollisionPoints="9" shadowSize="18" stageHP="4">
         <gibs amount="16" blood="1" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
@@ -71,19 +71,19 @@
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="753" variant="4000" anm2path="cadaver.anm2" baseHP="10" boss="0" champion="1" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Cadaver" numGridCollisionPoints="12" shadowSize="0" stageHP="0">
+    <entity id="753" variant="4000" anm2path="cadaver.anm2" hasFloorAlts="true" baseHP="10" boss="0" champion="1" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Cadaver" numGridCollisionPoints="12" shadowSize="0" stageHP="0">
          <gibs amount="12" blood="0" bone="1" eye="1" gut="1" large="0" />
     </entity>
 
-    <entity id="753" variant="4001" anm2path="cadaver.anm2" baseHP="12" boss="0" champion="1" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Wicked Cadaver" numGridCollisionPoints="12" shadowSize="0" stageHP="0">
+    <entity id="753" variant="4001" anm2path="cadaver.anm2" hasFloorAlts="true" baseHP="12" boss="0" champion="1" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Wicked Cadaver" numGridCollisionPoints="12" shadowSize="0" stageHP="0">
          <gibs amount="12" blood="0" bone="1" eye="1" gut="1" large="0" />
     </entity>
 
-    <entity id="753" variant="4002" anm2path="cadaver.anm2" baseHP="12" boss="0" champion="1" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Sluggish Cadaver" numGridCollisionPoints="12" shadowSize="0" stageHP="0">
+    <entity id="753" variant="4002" anm2path="cadaver.anm2" hasFloorAlts="true" baseHP="12" boss="0" champion="1" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Sluggish Cadaver" numGridCollisionPoints="12" shadowSize="0" stageHP="0">
          <gibs amount="12" blood="0" bone="1" eye="1" gut="1" large="0" />
     </entity>
 	
-	 <entity id="753" variant="4003" anm2path="cadaver.anm2" baseHP="12" boss="0" champion="1" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Cadaver (random)" numGridCollisionPoints="12" shadowSize="0" stageHP="0">
+	 <entity id="753" variant="4003" anm2path="cadaver.anm2" hasFloorAlts="true" baseHP="12" boss="0" champion="1" collisionDamage="1" collisionMass="70" collisionRadius="9" friction="1" name="Cadaver (random)" numGridCollisionPoints="12" shadowSize="0" stageHP="0">
          <gibs amount="12" blood="0" bone="1" eye="1" gut="1" large="0" />
     </entity>
 

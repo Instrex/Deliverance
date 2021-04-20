@@ -74,8 +74,8 @@ function this:behaviour(npc)
     if sprite:IsFinished("Explode") then
 --     Isaac.Explode(npc.Position, npc, 1.0)
 
-       Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 217, 2, 24)
---     Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player)
+       Isaac.Spawn(1000, 16, 3, npc.Position, vectorZero, player)
+       Isaac.Spawn(1000, 16, 4, npc.Position, vectorZero, player)
        sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
        RCreep.SpriteScale = Vector(2.1,2.1) 

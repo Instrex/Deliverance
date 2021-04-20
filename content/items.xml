@@ -3,15 +3,15 @@
   <active name="Sister's Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
   <active name="D<3" description="Life will change!" gfx="collectibles_dheart.png" maxcharges="6"/>
   <active name="Special Delivery" description="Re-supply!" gfx="collectibles_special_delivery.png" maxcharges="4"/>
-  <active name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="x"/>
+  <active name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="0"/>
   <active name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
   <active name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="3"/>
   <active name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
   <active name="Battle Royale" description="'My life is nothing but spectacle'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
   <active name="Air Strike!" description="Incoming!" gfx="collectibles_airStrike.png" maxcharges="4"/>
   <active name="The Divider" description="Divides into elementary particles" gfx="collectibles_theDivider.png" maxcharges="3"/>
-  <active name="Urn of Want" description="Pay blood for dark reward" gfx="collectibles_urnOfWant.png" maxcharges="12" discharged="true"/>
-  <active name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="6" discharged="true"/>
+  <active name="Urn of Want" description="Pay blood for dark reward" gfx="collectibles_urnOfWant.png" maxcharges="12" initcharge="0"/>
+  <active name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="6" initcharge="0"/>
 
   <passive id="13"name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="tearcolor" />
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
