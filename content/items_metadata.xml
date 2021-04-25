@@ -1,3 +1,55 @@
 <items>
-	<item id="25" quality="1" tags="mom"/>
+	<item id="1" quality="2" tags="mom"/>
+	<item id="2" quality="2" tags="mom"/>
+	<item id="3" quality="2" tags="mom"/>
+	<item id="4" quality="2" tags="mom"/>
+	<item id="5" quality="2" tags="mom"/>
+	<item id="6" quality="2" tags="mom"/>
+	<item id="7" quality="2" tags="mom"/>
+	<item id="8" quality="2" tags="summonable offensive"/>
+	<item id="9" quality="2" tags="mom"/>
+	<item id="10" quality="2" tags="mom"/>
+	<item id="11" quality="2" tags="mom"/>
+	<item id="12" quality="2" tags="poop summonable"/>
+	<item id="13" quality="2" tags="mom"/>
+	<item id="14" quality="2" tags="mom"/>
+	<item id="15" quality="2" tags="mom"/>
+	<item id="16" quality="2" tags="mom"/>
+	<item id="17" quality="2" tags="mom"/>
+	<item id="18" quality="2" tags="mom"/>
+	<item id="19" quality="2" tags="summonable baby monstermanual offensive"/>
+	<item id="20" quality="2" tags="food"/>
+	<item id="21" quality="2" tags="summonable baby monstermanual offensive"/>
+	<item id="22" quality="2" tags="summonable baby monstermanual offensive"/>
+	<item id="23" quality="2" tags="mom"/>
+	<item id="24" quality="2" tags="mom"/>
+	<item id="25" quality="2" tags="battery summonable offensive"/>
+	<item id="26" quality="2" tags="mom"/>
+	<item id="27" quality="2" tags="summonable offensive"/>
+	<item id="28" quality="2" tags="summonable baby monstermanual offensive"/>
+	<item id="29" quality="2" tags="mom"/>
+	<item id="30" quality="2" tags="summonable baby monstermanual offensive"/>
+	<item id="31" quality="2" tags="summonable baby monstermanual offensive"/>
+	<item id="32" quality="2" tags="mom"/>
+	<item id="33" quality="2" tags="mom"/>
+	<item id="34" quality="2" tags="mom"/>
+	<item id="35" quality="2" tags="mom"/>
+	<item id="36" quality="2" tags="mom"/>
+	<item id="37" quality="2" tags="mom"/>
+	<item id="38" quality="2" tags="mom"/>
+	<item id="39" quality="2" tags="mom"/>
+	<item id="40" quality="2" tags="mom"/>
+	<item id="41" quality="2" tags="mom"/>
+	<item id="42" quality="2" tags="mom"/>
+	<item id="43" quality="2" tags="mom"/>
+	<item id="44" quality="2" tags="mom"/>
+	<trinket id="1" quality="0" tags=""/>
+	<trinket id="2" quality="0" tags=""/>
+	<trinket id="3" quality="0" tags=""/>
+	<trinket id="4" quality="0" tags=""/>
+	<trinket id="5" quality="0" tags=""/>
+	<trinket id="6" quality="0" tags=""/>
+	<trinket id="7" quality="0" tags=""/>
+	<trinket id="8" quality="0" tags=""/>
+	<trinket id="9" quality="0" tags=""/>
 </items>

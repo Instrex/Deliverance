@@ -74,13 +74,17 @@ deliveranceContent = {
     firestorms                = require 'scripts.cards.firestorms',
     glitch                    = require 'scripts.cards.glitch',
     abyss                     = require 'scripts.cards.abyss',
-	},
+  },
+	
+	pills = {
+    dissReaction              = require 'scripts.pills.dissReaction'
+  },
   
   entities = {
     persistent = {
       chestBoy                = require 'scripts.entities.chestBoy',
 	  cauldron                = require 'scripts.entities.cauldron'
-    },
+  },
 
     raga                      = require 'scripts.entities.monsters.raga',
     nutcracker                = require 'scripts.entities.monsters.nutcracker',

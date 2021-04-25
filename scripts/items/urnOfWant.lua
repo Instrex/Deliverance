@@ -96,7 +96,7 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.updateCollectible)
   mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateEffect)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die)
-  mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, this.decreasecharge)
+  --mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, this.decreasecharge)
 end
 
 return this

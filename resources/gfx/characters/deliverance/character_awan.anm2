@@ -1,9 +1,9 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="16.06.2019 9:54:40" Version="112" Fps="30"/>
+	<Info CreatedBy="robot" CreatedOn="25.04.2021 18:59:46" Version="113" Fps="30"/>
 	<Content>
 		<Spritesheets>
-			<Spritesheet Path="character_Awan_Head.png" Id="0"/>
-			<Spritesheet Path="Character_Awan.png" Id="1"/>
+			<Spritesheet Path="costumes\character_Awan_Head.png" Id="0"/>
+			<Spritesheet Path="costumes\Character_Awan.png" Id="1"/>
 		</Spritesheets>
 		<Layers>
 			<Layer Name="head0" Id="0" SpritesheetId="0"/>

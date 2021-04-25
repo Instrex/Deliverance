@@ -1,8 +1,8 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="27.11.2018 6:57:13" Version="114" Fps="30"/>
+	<Info CreatedBy="robot" CreatedOn="25.04.2021 18:59:15" Version="116" Fps="30"/>
 	<Content>
 		<Spritesheets>
-			<Spritesheet Path="sheet_costume_adamsRib.png" Id="0"/>
+			<Spritesheet Path="costumes\sheet_costume_theCovenant.png" Id="0"/>
 		</Spritesheets>
 		<Layers>
 			<Layer Name="head" Id="0" SpritesheetId="0"/>

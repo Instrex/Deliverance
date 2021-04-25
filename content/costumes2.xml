@@ -1,16 +1,17 @@
-<costumes anm2root="gfx/characters/costumes/">
-     <costume id="16" anm2path="animation_costume_sailorhat.anm2"  type="passive" />
-     <costume id="19" anm2path="animation_costume_luckySaucer.anm2"  type="passive" />
-     <costume id="18" anm2path="animation_costume_saltySoup.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="17" anm2path="animation_costume_gasoline.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="13" anm2path="animation_costume_theCovenant.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="24" anm2path="animation_costume_lawful.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="22" anm2path="animation_costume_adamsRib.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="27" anm2path="animation_costume_momsEarrings.anm2"  type="passive" />
-     <costume id="15" anm2path="animation_costume_adamsRib2.anm2"  type="passive" />
-     <costume id="20" anm2path="animation_costume_hotmilk.anm2"  type="passive" />
-     <costume id="23" anm2path="animation_costume_manuscript.anm2"  type="passive" />
-     <costume id="25" anm2path="animation_costume_dangerRoom.anm2"  type="passive" />
-	<costume id="31" anm2path="animation_costume_obituary.anm2"  type="passive" />
-	<costume anm2path="character_awan.anm2" priority="99" type="none" />
+<costumes anm2root="gfx/characters/">
+     <costume id="8"  anm2path="deliverance/animation_costume_sailorhat.anm2"  type="passive" />
+	 <costume id="10" anm2path="deliverance/animation_costume_saltySoup.anm2"  type="passive" hasSkinAlt="true" />
+	 <costume id="11" anm2path="deliverance/animation_costume_gasoline.anm2"  type="passive" hasSkinAlt="true" />
+     <costume id="12" anm2path="deliverance/animation_costume_luckySaucer.anm2"  type="passive" />
+     <costume id="14" anm2path="deliverance/animation_costume_theCovenant.anm2"  type="passive" hasSkinAlt="true" />
+	 <costume id="15" anm2path="deliverance/animation_costume_adamsRib2.anm2"  type="passive" />
+	 <costume id="17" anm2path="deliverance/animation_costume_hotmilk.anm2"  type="passive" />
+	 <costume id="23" anm2path="deliverance/animation_costume_adamsRib.anm2"  type="passive" hasSkinAlt="true" />
+	 <costume id="24" anm2path="deliverance/animation_costume_manuscript.anm2"  type="passive" />
+     <costume id="27" anm2path="deliverance/animation_costume_lawful.anm2"  type="passive" hasSkinAlt="true" />
+	 <costume id="29" anm2path="deliverance/animation_costume_dangerRoom.anm2"  type="passive" />
+     <costume id="34" anm2path="deliverance/animation_costume_momsEarrings.anm2"  type="passive" />
+	 <costume id="39" anm2path="deliverance/animation_costume_obituary.anm2"  type="passive" hasSkinAlt="true" />
+	 
+	 <costume anm2path="deliverance/character_awan.anm2" type="none" />
 </costumes>
