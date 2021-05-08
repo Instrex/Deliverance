@@ -16,10 +16,10 @@ function this:behaviour(npc)
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
-    if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+    --[[if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
       sprite:ReplaceSpritesheet(0, "gfx/monsters/shroomeo_depths.png")
       sprite:LoadGraphics()
-    end
+    end--]]
     npc.State = NpcState.STATE_IDLE;
     npc.StateFrame = Utils.choose(10, 15, 20)
   
@@ -145,10 +145,22 @@ function this:shroomBreakUpdate()
 	end
 end
 
+function this:replacesprite(npc)
+	local sprite = npc:GetSprite()
+	local level = game:GetLevel()
+	local stage = level:GetStage()
+	
+	if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
+      sprite:ReplaceSpritesheet(0, "gfx/monsters/shroomeo_depths.png")
+      sprite:LoadGraphics()
+    end
+end
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.shroomBreakUpdate)
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
+  mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, this.replacesprite,this.id)
 end
 
 return this

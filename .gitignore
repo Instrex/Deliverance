@@ -6,3 +6,4 @@ save2.dat
 disable.it
 *.code-workspace
 resources/gfx/ui/achievement/completion_icons.anm2
+*.pdn

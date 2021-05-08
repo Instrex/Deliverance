@@ -1,4 +1,5 @@
 <entities anm2root="gfx/" version="5">
+	<!-- Monsters -->
     <entity id="740" variant="4000" anm2path="raga.anm2" baseHP="45" boss="0" champion="1" collisionDamage="1" collisionMass="100" collisionRadius="13" friction="1" name="Raga" numGridCollisionPoints="0" shadowSize="25" stageHP="3">
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="1" />
     </entity>
@@ -43,7 +44,7 @@
         <gibs amount="20" blood="0" bone="1" eye="1" gut="1" large="0" />
     </entity>
 
-    <entity id="749" variant="4000" anm2path="tinhorn.anm2" baseHP="25" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Tinhorn" numGridCollisionPoints="0" shadowSize="0" stageHP="3">
+    <entity id="749" variant="4000" anm2path="tinhorn.anm2" baseHP="25" boss="0" champion="1" collisionDamage="1" collisionMass="100" collisionRadius="15" friction="1" name="Tinhorn" numGridCollisionPoints="0" shadowSize="0" stageHP="3">
         <gibs amount="20" blood="0" bone="1" eye="0" gut="0" large="0" />
     </entity>
 
@@ -216,6 +217,11 @@
 	
 	<entity id="5" variant="20" subtype="4000" anm2path="chargedPenny.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" numGridCollisionPoints="24" shadowSize="17" stageHP="0" name="Charged Penny">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+    </entity>
+	
+	<!-- Cards -->
+	<entity anm2path="card_farewell_stone.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" id="5" name="Farewell Stone" numGridCollisionPoints="24" shadowSize="16" stageHP="0" variant="300" subtype="4000">
+	    <preload-snd id="8" /> <!-- BOOK_PAGE_TURN_12 -->
     </entity>
 	
     <!-- Effects -->
