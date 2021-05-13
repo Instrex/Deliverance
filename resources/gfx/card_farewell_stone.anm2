@@ -1,9 +1,9 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="08.05.2021 17:55:53" Version="105" Fps="30"/>
+	<Info CreatedBy="robot" CreatedOn="13.05.2021 11:39:42" Version="107" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="items\pick ups\pickup_card_deliverance.png" Id="0"/>
-			<Spritesheet Path="..\..\content\gfx\ui_cardspills.png" Id="1"/>
+			<Spritesheet Path="ui\ui_cardspills_deliverance.png" Id="1"/>
 			<Spritesheet Path="Effects\Effect_023_StarFlash.png" Id="2"/>
 		</Spritesheets>
 		<Layers>

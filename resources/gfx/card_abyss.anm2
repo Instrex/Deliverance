@@ -1,9 +1,9 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="08.05.2021 17:52:14" Version="106" Fps="30"/>
+	<Info CreatedBy="robot" CreatedOn="13.05.2021 16:53:25" Version="108" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="items\pick ups\pickup_card_deliverance.png" Id="0"/>
-			<Spritesheet Path="..\..\content\gfx\ui_cardspills.png" Id="1"/>
+			<Spritesheet Path="ui\ui_cardspills_deliverance.png" Id="1"/>
 			<Spritesheet Path="Effects\Effect_023_StarFlash.png" Id="2"/>
 		</Spritesheets>
 		<Layers>
@@ -105,7 +105,7 @@
 			</RootAnimation>
 			<LayerAnimations>
 				<LayerAnimation LayerId="1" Visible="true">
-					<Frame XPosition="0" YPosition="0" XPivot="16" YPivot="16" XCrop="0" YCrop="64" Width="32" Height="32" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
+					<Frame XPosition="0" YPosition="0" XPivot="16" YPivot="16" XCrop="0" YCrop="96" Width="32" Height="32" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 				</LayerAnimation>
 			</LayerAnimations>
 			<NullAnimations/>

@@ -44,6 +44,11 @@
   <passive id="43" name="Corrosive Bombs" description="Acid Explosions + 3 Bombs" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
   <active id="44" name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="6" initcharge="0"/>
   <!-- <passive id="45" name="Scampoo" description="-" gfx="-"/> -->
+  <active id="46" name="Chaotic D6" description="Reroll your destiny!" gfx="collectibles_chaotic_D6.png" maxcharges="6"/>
+ <!--  <active id="47" name="Equivalent Exchange" description="-" gfx="-" maxcharges="6"/> -->
+  <active id="48" name="Smelly Pot" description="-" gfx="collectibles_smellyPot.png" maxcharges="6"/>
+  <!-- <active id="49" name="Exchange Journal" description="-" gfx="-" maxcharges="6"/> -->
+  
  
 
   <trinket id="1" name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
@@ -55,7 +60,9 @@
   <trinket id="7" name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
   <trinket id="8" name="Extinguisher" description="Cool down" gfx="trinket_extinguisher.png" />
   <trinket id="9" name="Bloated Capacitor" description="-" gfx="trinket_swollencapacitor.png" />
-  
+  <!-- <trinket id="10" name="Perfectionism" description="-" gfx="-.png" /> -->
+  <!-- <trinket id="11" name="Beggar's Plate" description="-" gfx="-.png" /> -->
+
   <!-- Awan Content -->
   <trinket name="Gunpowder" description="That's what bombs are made of" gfx="trinket_gunPowder.png" />
   <trinket name="Piece of Paper" description="Nothing here" gfx="trinket_pieceOfPaper.png" />

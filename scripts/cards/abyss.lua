@@ -2,7 +2,6 @@ local this = {}
 this.id = Isaac.GetCardIdByName("Abyss")
 this.description = "Consumes all the cards and drops itself#Will trigger the effect of all consumed cards if used in a room without any cards#\3Will reset all the effects upon use"
 this.rusdescription ={"Abyss /Бездна", "Втягивает в себя все карты и падает на пол#Вызовет эффекты всех втянутых карт если использована в комнате без карт#Сбросит все эффекты при использовании"}
-this.cardImage = 'gfx/items/pick ups/pickup_card_abyss.png'
 
 function this.cardCallback()
     deliveranceData.temporary.abyssCard = deliveranceData.temporary.abyssCard or {}

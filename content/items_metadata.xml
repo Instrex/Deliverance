@@ -8,41 +8,46 @@
 	<item id="7" quality="2" tags=""/>
 	<item id="8" quality="2" tags="summonable offensive"/>
 	<item id="9" quality="2" tags=""/>
-	<item id="10" quality="2" tags="mom"/>
+	<item id="10" quality="2" tags=""/>
 	<item id="11" quality="2" tags="summonable offensive"/>
 	<item id="12" quality="2" tags="poop summonable"/>
-	<item id="13" quality="2" tags="mom"/>
-	<item id="14" quality="2" tags="mom"/>
-	<item id="15" quality="2" tags="mom"/>
-	<item id="16" quality="2" tags="mom"/>
-	<item id="17" quality="2" tags="mom"/>
-	<item id="18" quality="2" tags="mom"/>
+	<item id="13" quality="2" tags=""/>
+	<item id="14" quality="2" tags=""/>
+	<item id="15" quality="2" tags=""/>
+	<item id="16" quality="2" tags=""/>
+	<item id="17" quality="2" tags=""/>
+	<item id="18" quality="2" tags=""/>
 	<item id="19" quality="2" tags="summonable baby monstermanual offensive"/>
 	<item id="20" quality="2" tags="food"/>
 	<item id="21" quality="2" tags="summonable baby monstermanual offensive"/>
 	<item id="22" quality="2" tags="summonable baby monstermanual offensive"/>
-	<item id="23" quality="2" tags="mom"/>
-	<item id="24" quality="2" tags="mom"/>
+	<item id="23" quality="2" tags=""/>
+	<item id="24" quality="2" tags=""/>
 	<item id="25" quality="2" tags="battery summonable offensive"/>
-	<item id="26" quality="2" tags="mom"/>
+	<item id="26" quality="2" tags=""/>
 	<item id="27" quality="2" tags="summonable offensive"/>
 	<item id="28" quality="2" tags="summonable baby monstermanual offensive"/>
-	<item id="29" quality="2" tags="mom"/>
+	<item id="29" quality="2" tags=""/>
 	<item id="30" quality="2" tags="summonable baby monstermanual offensive"/>
 	<item id="31" quality="2" tags="summonable baby monstermanual offensive"/>
-	<item id="32" quality="2" tags="mom"/>
-	<item id="33" quality="2" tags="mom"/>
+	<item id="32" quality="2" tags=""/>
+	<item id="33" quality="2" tags=""/>
 	<item id="34" quality="2" tags="mom"/>
-	<item id="35" quality="2" tags="mom"/>
-	<item id="36" quality="2" tags="mom"/>
-	<item id="37" quality="2" tags="mom"/>
-	<item id="38" quality="2" tags="mom"/>
+	<item id="35" quality="2" tags=""/>
+	<item id="36" quality="2" tags=""/>
+	<item id="37" quality="2" tags=""/>
+	<item id="38" quality="2" tags=""/>
 	<item id="39" quality="2" tags="summonable offensive"/>
-	<item id="40" quality="2" tags="mom"/>
-	<item id="41" quality="2" tags="mom"/>
-	<item id="42" quality="2" tags="mom"/>
-	<item id="43" quality="2" tags="mom"/>
+	<item id="40" quality="2" tags=""/>
+	<item id="41" quality="2" tags=""/>
+	<item id="42" quality="2" tags=""/>
+	<item id="43" quality="2" tags=""/>
 	<item id="44" quality="2" tags=""/>
+	<!-- <item id="45" quality="2" tags=""/> -->
+	<!-- <item id="46" quality="2" tags="offensive nocantrip"/> -->
+	<!-- <item id="47" quality="2" tags=""/> -->
+	<!-- <item id="48" quality="2" tags=""/> -->
+	<!-- <item id="49" quality="2" tags=""/> -->
 	<trinket id="1" quality="0" tags=""/>
 	<trinket id="2" quality="0" tags=""/>
 	<trinket id="3" quality="0" tags=""/>
@@ -52,4 +57,6 @@
 	<trinket id="7" quality="0" tags=""/>
 	<trinket id="8" quality="0" tags=""/>
 	<trinket id="9" quality="0" tags=""/>
+	<trinket id="10" quality="0" tags=""/>
+	<trinket id="11" quality="0" tags=""/>
 </items>
