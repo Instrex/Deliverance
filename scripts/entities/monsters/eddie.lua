@@ -10,23 +10,7 @@ function this:behaviour(npc)
   local room = game:GetRoom()
 
   npc.Velocity = vectorZero
-
-  local level = game:GetLevel()
-  local stage = level:GetStage()
-  if stage == LevelStage.STAGE2_1 or stage == LevelStage.STAGE2_2 then
-    if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/eddie_flooded.png")
-        sprite:LoadGraphics()
-    end
-  elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-    if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/eddie_scarred.png")
-    else
-        sprite:ReplaceSpritesheet(0, "gfx/monsters/eddie_womb.png")
-    end
-    sprite:LoadGraphics()
-  end
-
+  
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
     npc.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_NOPITS
