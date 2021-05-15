@@ -5,6 +5,5 @@
 	<player name="Awan" skin="Character_Awan.png" black="2" hp="2" bombs="3"
           nameimage="PlayerName_Awan.png" 
           portrait="PlayerPortrait_Awan.png" 
-          bigportrait="PlayerPortraitBig_Awan.png"
           skinColor="0" />
 </players>

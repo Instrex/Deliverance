@@ -1,5 +1,5 @@
 local this = {}
-this.costume = Isaac.GetCostumeIdByPath("gfx/characters/costumes/character_awan.anm2")
+this.costume = Isaac.GetCostumeIdByPath("gfx/characters/deliverance/character_awan.anm2")
 this.playerAwan = Isaac.GetPlayerTypeByName("Awan")
 
 this.speedBonus = 0

@@ -2,12 +2,12 @@ mod = RegisterMod("Deliverance", 1)
 game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
-delivRNG = RNG()
+--delivRNG = RNG()
 
-deliveranceVersion = "2.5.4"
+deliveranceVersion = "3.0.0"
 
-utils = require 'scripts.utils'
-require 'scripts.enumerations'
+utils = include ('scripts.utils')
+include ('scripts.enumerations')
 
 -- Mod data --
 deliveranceData = {
@@ -25,132 +25,132 @@ deliveranceData = {
 -- Register mod content here --
 deliveranceContent = {
   items = {
-    sistersKey                = require 'scripts.items.sistersKey',
-    sistersHeart              = require 'scripts.items.familiars.sistersHeart',
-    specialDelivery           = require 'scripts.items.specialDelivery',
-    capBrooch                 = require 'scripts.items.captainsBrooch',
-    theApple                  = require 'scripts.items.theApple',
-    lighter                   = require 'scripts.items.lighter',
-    shrinkRay                 = require 'scripts.items.shrinkRay',
-    sailorHat                 = require 'scripts.items.sailorHat',
-    dheart                    = require 'scripts.items.dheart',
-    saltySoup                 = require 'scripts.items.saltySoup',
-    gasoline                  = require 'scripts.items.gasoline',
-    luckySaucer               = require 'scripts.items.luckySaucer',
-    bloodyStream              = require 'scripts.items.bloodyStream',
-    theCovenant               = require 'scripts.items.theCovenant',
-    adamsRib                  = require 'scripts.items.adamsRib',
-    goodOldFriend             = require 'scripts.items.goodOldFriend',
-    hotMilk                   = require 'scripts.items.hotMilk',
-    battleRoyale              = require 'scripts.items.battleRoyale',
-    sage                      = require 'scripts.items.familiars.sage',
-    rottenPorkChop            = require 'scripts.items.rottenPorkChop',
-    lilTummy                  = require 'scripts.items.familiars.lilTummy',
-    scaredyShroom             = require 'scripts.items.familiars.scaredyShroom',
-    drMedicine                = require 'scripts.items.drMedicine',
-    manuscript                = require 'scripts.items.manuscript',
-    roundBattery              = require 'scripts.items.familiars.roundBattery',
-    airStrike                 = require 'scripts.items.airStrike',
-    lawful                    = require 'scripts.items.lawful',
-    bileKnight                = require 'scripts.items.familiars.bileKnight',
-    dangerRoom                = require 'scripts.items.dangerRoom',
-    theThreater               = require 'scripts.items.familiars.theThreater',
-    beanborne                 = require 'scripts.items.familiars.beanborne',
-    theDivider                = require 'scripts.items.theDivider',
-    sinisterShalk             = require 'scripts.items.sinisterShalk',
-    momsEarrings              = require 'scripts.items.momsEarrings',
-    timeGal                   = require 'scripts.items.timeGal',
-    silverBar                 = require 'scripts.items.silverBar',
-    urnOfWant                 = require 'scripts.items.urnOfWant',
-    encharmedPenny            = require 'scripts.items.encharmedPenny',
-    obituary                  = require 'scripts.items.obituary',
-    shamrockLeaf              = require 'scripts.items.shamrockLeaf',
-	mysteryBag                = require 'scripts.items.mysteryBag',
-	glassCrown                = require 'scripts.items.glassCrown',
-    corrosiveBombs            = require 'scripts.items.corrosiveBombs',
-	yumRib                    = require 'scripts.items.yumrib'
+    sistersKey                = include('scripts.items.sistersKey'),
+    sistersHeart              = include('scripts.items.familiars.sistersHeart'),
+    specialDelivery           = include('scripts.items.specialDelivery'),
+    capBrooch                 = include('scripts.items.captainsBrooch'),
+    theApple                  = include('scripts.items.theApple'),
+    lighter                   = include('scripts.items.lighter'),
+    shrinkRay                 = include('scripts.items.shrinkRay'),
+    sailorHat                 = include('scripts.items.sailorHat'),
+    dheart                    = include('scripts.items.dheart'),
+    saltySoup                 = include('scripts.items.saltySoup'),
+    gasoline                  = include('scripts.items.gasoline'),
+    luckySaucer               = include('scripts.items.luckySaucer'),
+    bloodyStream              = include('scripts.items.bloodyStream'),
+    theCovenant               = include('scripts.items.theCovenant'),
+    adamsRib                  = include('scripts.items.adamsRib'),
+    goodOldFriend             = include('scripts.items.goodOldFriend'),
+    hotMilk                   = include('scripts.items.hotMilk'),
+    battleRoyale              = include('scripts.items.battleRoyale'),
+    sage                      = include('scripts.items.familiars.sage'),
+    rottenPorkChop            = include('scripts.items.rottenPorkChop'),
+    lilTummy                  = include('scripts.items.familiars.lilTummy'),
+    scaredyShroom             = include('scripts.items.familiars.scaredyShroom'),
+    drMedicine                = include('scripts.items.drMedicine'),
+    manuscript                = include('scripts.items.manuscript'),
+    roundBattery              = include('scripts.items.familiars.roundBattery'),
+    airStrike                 = include('scripts.items.airStrike'),
+    lawful                    = include('scripts.items.lawful'),
+    bileKnight                = include('scripts.items.familiars.bileKnight'),
+    dangerRoom                = include('scripts.items.dangerRoom'),
+    theThreater               = include('scripts.items.familiars.theThreater'),
+    beanborne                 = include('scripts.items.familiars.beanborne'),
+    theDivider                = include('scripts.items.theDivider'),
+    sinisterShalk             = include('scripts.items.sinisterShalk'),
+    momsEarrings              = include('scripts.items.momsEarrings'),
+    timeGal                   = include('scripts.items.timeGal'),
+    silverBar                 = include('scripts.items.silverBar'),
+    urnOfWant                 = include('scripts.items.urnOfWant'),
+    encharmedPenny            = include('scripts.items.encharmedPenny'),
+    obituary                  = include('scripts.items.obituary'),
+    shamrockLeaf              = include('scripts.items.shamrockLeaf'),
+	mysteryBag                = include('scripts.items.mysteryBag'),
+	glassCrown                = include('scripts.items.glassCrown'),
+    corrosiveBombs            = include('scripts.items.corrosiveBombs'),
+	yumRib                    = include('scripts.items.yumrib')
   },
-
+  
   trinkets = {
-    uncertainty               = require 'scripts.trinkets.uncertainty',
-    appleCore                 = require 'scripts.trinkets.appleCore',
-    krampusHorn               = require 'scripts.trinkets.krampusHorn',
-    discountBrochure          = require 'scripts.trinkets.discountBrochure',
-    darkLock                  = require 'scripts.trinkets.darkLock',
-    specialPenny              = require 'scripts.trinkets.specialPenny',
-    littleTransducer          = require 'scripts.trinkets.littleTransducer',
-    extinguisher              = require 'scripts.trinkets.extinguisher',
-    gunPowder                 = require 'scripts.trinkets.gunPowder',
-    pieceOfPaper              = require 'scripts.trinkets.pieceOfPaper',
-    bottledBlood              = require 'scripts.trinkets.bottledBlood',
-    woodenRib                 = require 'scripts.trinkets.woodenRib',
-    glowingFeather            = require 'scripts.trinkets.glowingFeather',
-	bloatedcapacitor          = require 'scripts.trinkets.bloatedcapacitor'
+    uncertainty               = include('scripts.trinkets.uncertainty'),
+    appleCore                 = include('scripts.trinkets.appleCore'),
+    krampusHorn               = include('scripts.trinkets.krampusHorn'),
+    discountBrochure          = include('scripts.trinkets.discountBrochure'),
+    darkLock                  = include('scripts.trinkets.darkLock'),
+    specialPenny              = include('scripts.trinkets.specialPenny'),
+    littleTransducer          = include('scripts.trinkets.littleTransducer'),
+    extinguisher              = include('scripts.trinkets.extinguisher'),
+	bloatedcapacitor          = include('scripts.trinkets.bloatedcapacitor'),
+    gunPowder                 = include('scripts.trinkets.gunPowder'),
+    pieceOfPaper              = include('scripts.trinkets.pieceOfPaper'),
+    bottledBlood              = include('scripts.trinkets.bottledBlood'),
+    woodenRib                 = include('scripts.trinkets.woodenRib'),
+    glowingFeather            = include('scripts.trinkets.glowingFeather')
   },
 
   cards = {
-    farewellStone             = require 'scripts.cards.farewellStone',
-    firestorms                = require 'scripts.cards.firestorms',
-    glitch                    = require 'scripts.cards.glitch',
-    abyss                     = require 'scripts.cards.abyss',
+    farewellStone             = include('scripts.cards.farewellStone'),
+    firestorms                = include('scripts.cards.firestorms'),
+    glitch                    = include('scripts.cards.glitch'),
+    abyss                     = include('scripts.cards.abyss'),
   },
   
-  -- characters = {
-    -- awan                      = require 'scripts.characters.awan',
-  -- },
+  characters = {
+    awan                      = include('scripts.characters.awan'),
+  },
 
   pills = {
-    dissReaction              = require 'scripts.pills.dissReaction'
+    dissReaction              = include('scripts.pills.dissReaction')
   },
 
   entityVariants = {
-    dukie                     = require 'scripts.entities.monsters.variants.dukie',
-    greenLevel2Fly            = require 'scripts.entities.monsters.variants.greenLevel2Fly',
-    greenLevel2Spider         = require 'scripts.entities.monsters.variants.greenLevel2Spider',
-    momOfMany                 = require 'scripts.entities.monsters.variants.momOfMany'
+    dukie                     = include('scripts.entities.monsters.variants.dukie'),
+    greenLevel2Fly            = include('scripts.entities.monsters.variants.greenLevel2Fly'),
+    greenLevel2Spider         = include('scripts.entities.monsters.variants.greenLevel2Spider'),
+    momOfMany                 = include('scripts.entities.monsters.variants.momOfMany')
   },
 
   pickups = {
-    rainbowHeart              = require 'scripts.pickups.rainbowHeart',
-    chargedPenny              = require 'scripts.pickups.chargedPenny'
+    rainbowHeart              = include('scripts.pickups.rainbowHeart'),
+    chargedPenny              = include('scripts.pickups.chargedPenny')
   },
   
   entities = {
     persistent = {
-      chestBoy                = require 'scripts.entities.chestBoy',
-	  cauldron                = require 'scripts.entities.cauldron'
+      chestBoy                = include('scripts.entities.chestBoy'),
+	  cauldron                = include('scripts.entities.cauldron')
     },
 
-    raga                      = require 'scripts.entities.monsters.raga',
-    nutcracker                = require 'scripts.entities.monsters.nutcracker',
-    jester                    = require 'scripts.entities.monsters.jester',
-    joker                     = require 'scripts.entities.monsters.joker',
-    beamo                     = require 'scripts.entities.monsters.beamo',
-    cracker                   = require 'scripts.entities.monsters.cracker',
-    peabody                   = require 'scripts.entities.monsters.peabody',
-    rosenberg                 = require 'scripts.entities.monsters.rosenberg',
-    shroomeo                  = require 'scripts.entities.monsters.shroomeo',
-    tinhorn                   = require 'scripts.entities.monsters.tinhorn',
-    musk                      = require 'scripts.entities.monsters.musk',
-    gelatino                  = require 'scripts.entities.monsters.gelatino',
-    fathost                   = require 'scripts.entities.monsters.fathost',
-    cadaver                   = require 'scripts.entities.monsters.cadaver',
-    eddie                     = require 'scripts.entities.monsters.eddie',
-    explosimaw                = require 'scripts.entities.monsters.explosimaw',
-    seraphim                  = require 'scripts.entities.monsters.seraphim',
-    fistubomb                 = require 'scripts.entities.monsters.fistubomb',
-    fistulauncher             = require 'scripts.entities.monsters.fistulauncher',
-    lilbonydies               = require 'scripts.entities.monsters.lilbonydies',
-    rosenbergspit             = require 'scripts.entities.monsters.rosenbergspit',
-    creampile                 = require 'scripts.entities.monsters.creampile',
-    gappy                     = require 'scripts.entities.monsters.gappy',
-    reaper                    = require 'scripts.entities.monsters.reaper',
-    stonelet                  = require 'scripts.entities.monsters.stonelet',
-	grilly                    = require 'scripts.entities.monsters.grilly',
-	bloodmind                 = require 'scripts.entities.monsters.bloodmind',
-    bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
-    --slider                    = require 'scripts.entities.monsters.slider'
-	fathopper 				  = require 'scripts.entities.monsters.fathopper',
+    raga                      = include('scripts.entities.monsters.raga'),
+    nutcracker                = include('scripts.entities.monsters.nutcracker'),
+    jester                    = include('scripts.entities.monsters.jester'),
+    joker                     = include('scripts.entities.monsters.joker'),
+    beamo                     = include('scripts.entities.monsters.beamo'),
+    cracker                   = include('scripts.entities.monsters.cracker'),
+    peabody                   = include('scripts.entities.monsters.peabody'),
+    rosenberg                 = include('scripts.entities.monsters.rosenberg'),
+    shroomeo                  = include('scripts.entities.monsters.shroomeo'),
+    tinhorn                   = include('scripts.entities.monsters.tinhorn'),
+    musk                      = include('scripts.entities.monsters.musk'),
+    gelatino                  = include('scripts.entities.monsters.gelatino'),
+    fathost                   = include('scripts.entities.monsters.fathost'),
+    cadaver                   = include('scripts.entities.monsters.cadaver'),
+    eddie                     = include('scripts.entities.monsters.eddie'),
+    explosimaw                = include('scripts.entities.monsters.explosimaw'),
+    seraphim                  = include('scripts.entities.monsters.seraphim'),
+    fistubomb                 = include('scripts.entities.monsters.fistubomb'),
+    fistulauncher             = include('scripts.entities.monsters.fistulauncher'),
+    lilbonydies               = include('scripts.entities.monsters.lilbonydies'),
+    rosenbergspit             = include('scripts.entities.monsters.rosenbergspit'),
+    creampile                 = include('scripts.entities.monsters.creampile'),
+    gappy                     = include('scripts.entities.monsters.gappy'),
+    reaper                    = include('scripts.entities.monsters.reaper'),
+    stonelet                  = include('scripts.entities.monsters.stonelet'),
+	grilly                    = include('scripts.entities.monsters.grilly'),
+	bloodmind                 = include('scripts.entities.monsters.bloodmind'),
+    bloodmindspit             = include('scripts.entities.monsters.bloodmindspit'),
+    --slider                    = include('scripts.entities.monsters.slider')
+	fathopper 				  = include('scripts.entities.monsters.fathopper'),
   },
 
   costumes = {
@@ -171,26 +171,26 @@ deliveranceContent = {
 	  --obituary                  = utils.getCostume('obituary')
   },
   challenges = {
-	shocktherapy =  require 'scripts.challenges.shocktherapy'
+	shocktherapy =  include('scripts.challenges.shocktherapy')
   }
 }
 
-deliveranceDataHandler = require 'scripts.deliveranceDataHandler'
+deliveranceDataHandler = include('scripts.deliveranceDataHandler')
 deliveranceDataHandler.init()
 
-npcPersistence = require 'scripts.npcPersistenceHandler'
+npcPersistence = include('scripts.npcPersistenceHandler')
 npcPersistence.init(deliveranceContent.entities.persistent)
 
-cardHandler = require 'scripts.cardHandler'
+cardHandler = include('scripts.cardHandler')
 cardHandler.init(deliveranceContent.cards)
 
 -- Content Initialization --
-local eid = require 'scripts.eidHandler'
-local coh = require 'scripts.customOverHandler'
-local dss = require 'scripts.deadseascrolls'
-local logs = require 'scripts.changelogs'
-pd = require 'scripts.progressdata'
-local encyclopedia = require 'scripts.encyclopedia'
+local eid = include('scripts.eidHandler')
+local coh = include('scripts.customOverHandler')
+local dss = include('scripts.deadseascrolls')
+local logs = include('scripts.changelogs')
+pd = include('scripts.progressdata')
+--local encyclopedia = include('scripts.encyclopedia')
 eid.init()
 
 for type, r in pairs(deliveranceContent) do
@@ -205,4 +205,4 @@ for type, r in pairs(deliveranceContent) do
   end
 end
 
-print("tBoI Deliverance v"..deliveranceVersion..": Successfully initialized! Have a nice run :)")
+print("Deliverance Repentance v"..deliveranceVersion..": Successfully initialized! Have a nice run :)")
