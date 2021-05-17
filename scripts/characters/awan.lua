@@ -479,7 +479,7 @@ function this:die(npc)
 
     elseif npc.Type == 84 and npc.Variant == 10 then
       if diff >= 1 and deliveranceData.persistent.completiondata[3] < 1 then
-        pd.playAchievement("sinisterShalk")
+        pd.playAchievement("sinisterChalk")
       end
       deliveranceData.persistent.completiondata[3] = math.max(deliveranceData.persistent.completiondata[3],diff)
       deliveranceDataHandler.directSave()

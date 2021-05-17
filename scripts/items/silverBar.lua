@@ -7,7 +7,7 @@ this.bTimer = 0
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
     if flag == CacheFlag.CACHE_TEARCOLOR and player:HasCollectible(this.id) then
-        player.Color = Color(0.6,0.6,1,1,10,10,10)
+        player.Color = Color(0.6,0.6,1,1,10/255,10/255,10/255)
     end
 end
 

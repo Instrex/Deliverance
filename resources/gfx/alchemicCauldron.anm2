@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="Unknown" CreatedOn="24.06.2019 12:16:29" Version="114" Fps="30"/>
+	<Info CreatedBy="Unknown" CreatedOn="16.05.2021 00:37:25" Version="116" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="items\alchemicCauldron.png" Id="0"/>
@@ -22,7 +22,9 @@
 			<Layer Name="DroppedItem" Id="10" SpritesheetId="3"/>
 			<Layer Name="Bulbul" Id="11" SpritesheetId="0"/>
 		</Layers>
-		<Nulls/>
+		<Nulls>
+			<Null Name="*light" Id="0" ShowRect="false"/>
+		</Nulls>
 		<Events>
 			<Event Name="SpawnItem" Id="0"/>
 			<Event Name="CauldronProcess" Id="1"/>
@@ -112,7 +114,19 @@
 				<LayerAnimation LayerId="10" Visible="true"/>
 				<LayerAnimation LayerId="11" Visible="true"/>
 			</LayerAnimations>
-			<NullAnimations/>
+			<NullAnimations>
+				<NullAnimation NullId="0" Visible="true">
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="2" Visible="true" RedTint="140" GreenTint="140" BlueTint="196" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="3" Visible="true" RedTint="140" GreenTint="140" BlueTint="196" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="3" Visible="true" RedTint="240" GreenTint="170" BlueTint="180" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="3" Visible="true" RedTint="210" GreenTint="245" BlueTint="208" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="3" Visible="true" RedTint="210" GreenTint="245" BlueTint="208" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="3" Visible="true" RedTint="210" GreenTint="245" BlueTint="208" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="3" Visible="true" RedTint="210" GreenTint="245" BlueTint="208" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="3" Visible="true" RedTint="210" GreenTint="245" BlueTint="208" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+					<Frame XPosition="0" YPosition="0" XScale="300" YScale="150" Delay="1" Visible="true" RedTint="240" GreenTint="170" BlueTint="180" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
+				</NullAnimation>
+			</NullAnimations>
 			<Triggers/>
 		</Animation>
 		<Animation Name="AddTrinket" FrameNum="15" Loop="false">
@@ -191,7 +205,9 @@
 					<Frame XPosition="0" YPosition="-30" XPivot="36" YPivot="24" XCrop="144" YCrop="205" Width="72" Height="40" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="0" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 				</LayerAnimation>
 			</LayerAnimations>
-			<NullAnimations/>
+			<NullAnimations>
+				<NullAnimation NullId="0" Visible="true"/>
+			</NullAnimations>
 			<Triggers>
 				<Trigger EventId="2" AtFrame="5"/>
 			</Triggers>
@@ -448,7 +464,9 @@
 					<Frame XPosition="0" YPosition="-30" XPivot="36" YPivot="24" XCrop="144" YCrop="205" Width="72" Height="40" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="0" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="true"/>
 				</LayerAnimation>
 			</LayerAnimations>
-			<NullAnimations/>
+			<NullAnimations>
+				<NullAnimation NullId="0" Visible="true"/>
+			</NullAnimations>
 			<Triggers>
 				<Trigger EventId="1" AtFrame="19"/>
 				<Trigger EventId="1" AtFrame="26"/>

@@ -1,7 +1,7 @@
 local this = {}
-this.id = Isaac.GetItemIdByName("Sinister Shalk")
+this.id = Isaac.GetItemIdByName("Sinister Chalk")
 this.description = "Draws silhouettes on the floor in every room#Stand for a second on the silhouette to summon the shadow#Type of shadow depends on the floor you are on#When room is cleaned, the silhouette disappears"
-this.rusdescription ={"Sinister Shalk /Зловещий мел", "Рисует силуэты на полу в каждой комнате#Стоя на силуэтах, вы будете призывать тени.#Тип тени зависит от этажа на котором вы находитесь# Когда комната зачищена, силуэт исчезает"}
+this.rusdescription ={"Sinister Chalk /Зловещий мел", "Рисует силуэты на полу в каждой комнате#Стоя на силуэтах, вы будете призывать тени.#Тип тени зависит от этажа на котором вы находитесь# Когда комната зачищена, силуэт исчезает"}
 this.silhouette = Isaac.GetEntityVariantByName("Silhouette")
 this.silhouette2 = Isaac.GetEntityVariantByName("Silhouette 2")
 

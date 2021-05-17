@@ -31,7 +31,7 @@
   <familiar id="30" name="The Threater" description="Shocking buddy!" gfx="collectibles_theThreater.png"/>
   <familiar id="31" name="Beanborne" description="Real human bean" gfx="collectibles_beanborne.png"/>
   <active id="32" name="The Divider" description="Divides into elementary particles" gfx="collectibles_theDivider.png" maxcharges="3"/>
-  <passive id="33" name="Sinister Shalk" description="Behind the shadows" gfx="collectibles_sinisterShalk.png"/>
+  <passive id="33" name="Sinister Chalk" description="Behind the shadows" gfx="collectibles_sinisterChalk.png"/>
   <passive id="34" name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor" tags="mom"/>
   <passive id="35" name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
   <passive id="36" name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>

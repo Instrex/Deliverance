@@ -2,7 +2,7 @@ mod = RegisterMod("Deliverance", 1)
 game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
---delivRNG = RNG()
+delivRNG = RNG()
 
 deliveranceVersion = "3.0.0"
 
@@ -57,7 +57,7 @@ deliveranceContent = {
     theThreater               = include('scripts.items.familiars.theThreater'),
     beanborne                 = include('scripts.items.familiars.beanborne'),
     theDivider                = include('scripts.items.theDivider'),
-    sinisterShalk             = include('scripts.items.sinisterShalk'),
+    sinisterChalk             = include('scripts.items.sinisterChalk'),
     momsEarrings              = include('scripts.items.momsEarrings'),
     timeGal                   = include('scripts.items.timeGal'),
     silverBar                 = include('scripts.items.silverBar'),
