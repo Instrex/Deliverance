@@ -121,11 +121,22 @@ function this:die(npc)
     local dhVel = (target.Position - npc.Position):Resized(15)
     local length = dhVel:Length()
     local dh = Isaac.Spawn(212, 0, 0, npc.Position - Vector(0, 25), dhVel, npc):ToNPC()
-    dh.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
-    local sprite = dh:GetSprite()
-    sprite:Play("Idle", true)
-    sprite:Update()
-    dh.State = 400
+	local data = dh:GetData()
+	dh.State = 400
+	dh.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
+	data.timeout = 10
+end
+
+function this:reaperhead(npc)
+	local sprite = npc:GetSprite()
+	local data = npc:GetData()
+	if npc.SpawnerType == this.id and npc.SpawnerVariant == this.variant and npc.State == 400 then
+		data.timeout = data.timeout -1
+		sprite:Play("Idle")
+		if data.timeout <= 0 then
+			npc.State = 4
+		end
+	end
 end
 
 function this.Init()
@@ -133,6 +144,7 @@ function this.Init()
 	mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateEffect)
     mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die, this.id)
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC,this.id)
+	mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.reaperhead,212)
 end
 
 return this
