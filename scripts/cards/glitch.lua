@@ -3,7 +3,7 @@ this.id = Isaac.GetCardIdByName("Glitch")
 this.effect = Isaac.GetEntityVariantByName("Urn of Want Effect")
 this.description = "%D@#$FHFXZQ@@*@)"
 this.rusdescription ={"Glitch /Ãëþê", "%D@#$FHFXZQ@@*@"}
-function this.getFrame() 
+--[[function this.getFrame() 
     if utils.chancep(35) then
         return utils.choose('gfx/items/pick ups/glitch/pickup_card_glitch2.png',
         'gfx/items/pick ups/glitch/pickup_card_glitch3.png',
@@ -18,7 +18,7 @@ function this.getFrame()
     else 
         return 'gfx/items/pick ups/glitch/pickup_card_glitch1.png'
     end
-end
+end--]]
 
 function this:updateEffect(npc)
  if npc.Variant == this.effect then
