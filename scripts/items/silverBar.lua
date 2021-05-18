@@ -19,13 +19,14 @@ function this:laserUpdate(player)
       if this.bTimer>=21 then
        this.bTimer=0 
        local angle = 0
+	   local offset = 0
        local gD = player:GetFireDirection()
-       if gD == Direction.RIGHT then angle = 180 end
-       if gD == Direction.DOWN then angle = 270 end
-       if gD == Direction.LEFT then angle = 0 end
-       if gD == Direction.UP then angle = 90 end
-       local laser = EntityLaser.ShootAngle(2, player.Position, angle, 7, Vector(0,-20), player)
-       laser:GetSprite().Color = Color(0,0.5,0,1,225,225,225) laser.TearFlags = TearFlags.TEAR_ORBIT 
+       if gD == Direction.RIGHT then angle = 180 offset = Vector(12,-15) end
+       if gD == Direction.DOWN then angle = 270 offset = Vector(0,-10) end
+       if gD == Direction.LEFT then angle = 0 offset = Vector(-12,-15) end
+       if gD == Direction.UP then angle = 90 offset = Vector(0,-35) end
+       local laser = EntityLaser.ShootAngle(2, player.Position, angle, 7, offset, player)
+       laser:GetSprite().Color = Color(0,0.5,0,1,225/255,225/255,225/255) laser.TearFlags = TearFlags.TEAR_ORBIT 
        laser.CollisionDamage = 0.33*player.Damage
        laser:SetMaxDistance(20)
       end

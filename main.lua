@@ -3,7 +3,7 @@ game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
 
-deliveranceVersion = "2.3.5.5"
+deliveranceVersion = "2.3.6"
 
 utils = include ('scripts.utils')
 include ('scripts.enumerations')
@@ -168,7 +168,6 @@ cardHandler.init(deliveranceContent.cards)
 
 -- Content Initialization --
 local eid = include('scripts.eidHandler')
-local coh = include('scripts.customOverHandler')
 eid.init()
 
 for type, r in pairs(deliveranceContent) do
