@@ -2,17 +2,17 @@ local this = {}
 this.cardSubtypes = {}
 
 function this.init(cards)
-    mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.updateSprites)
-    mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.updateSprites)
+    --mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.updateSprites)
+    --mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.updateSprites)
     mod:AddCallback(ModCallbacks.MC_GET_CARD, this.getCard)
-    for name, class in pairs(cards) do
+    --[[for name, class in pairs(cards) do
         if not class.noCardAppearance then
             table.insert(this.cardSubtypes, {id = class.id, sprite = class.cardImage or 'gfx/items/pick ups/pickup_card.png', animate = class.getFrame})
         end
-    end
+    end--]]
 end
 
-function this.updateSprites()
+--[[function this.updateSprites()
     for i, card in pairs(Isaac.GetRoomEntities()) do
         if card.Type == EntityType.ENTITY_PICKUP and card.Variant == PickupVariant.PICKUP_TAROTCARD then
             for x, cardInfo in pairs(this.cardSubtypes) do
@@ -29,7 +29,7 @@ function this.updateSprites()
             end
         end
     end
-end
+end--]]
 
 local glitchedItems = {
     CollectibleType.COLLECTIBLE_MISSING_NO,
@@ -77,5 +77,4 @@ function this.getCard(rng)
         return deliveranceContent.cards.abyss.id
     end
 end
-
 return this

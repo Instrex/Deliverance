@@ -1,58 +1,57 @@
 ﻿<items gfxroot="gfx/items/" version="1">
-  <active name="Captain's Brooch" description="Creates a chest nearby" gfx="collectibles_capbrooch.png" maxcharges="6"  />
-  <active name="Sister's Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
-  <active name="D<3" description="Life will change!" gfx="collectibles_dheart.png" maxcharges="6"/>
-  <active name="Special Delivery" description="Re-supply!" gfx="collectibles_special_delivery.png" maxcharges="4"/>
-  <active name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="x"/>
-  <active name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
-  <active name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="3"/>
-  <active name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
-  <active name="Battle Royale" description="'My life is nothing but spectacle'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
-  <active name="Air Strike!" description="Incoming!" gfx="collectibles_airStrike.png" maxcharges="4"/>
-  <active name="The Divider" description="Divides into elementary particles" gfx="collectibles_theDivider.png" maxcharges="3"/>
-  <active name="Urn of Want" description="Pay blood for dark reward" gfx="collectibles_urnOfWant.png" maxcharges="12" discharged="true"/>
-  <active name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="12" discharged="true"/>
-
-  <passive id="13"name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="tearcolor" />
-  <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
+  <active id="1" name="Sister's Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
+  <familiar id="2" name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
+  <active id="3" name="Special Delivery" description="Re-supply!" gfx="collectibles_special_delivery.png" maxcharges="4"/>
+  <active id="4" name="Captain's Brooch" description="Creates a chest nearby" gfx="collectibles_capbrooch.png" maxcharges="6"/>
+  <active id="5" name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="0"/>
+  <active id="6" name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
+  <active id="7" name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="3"/>
+  <passive id="8" name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="tearcolor"/>
+  <active id="9" name="D<3" description="Life will change!" gfx="collectibles_dheart.png" maxcharges="6"/>
+  <passive id="10" name="Salty Soup" description="Uh oh..." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
+  <passive id="11" name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="2" cache="tearcolor" />
+  <passive id="12" name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck tearcolor"/>
+  <active id="13" name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
+  <passive id="14" name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="tearcolor" />
   <passive id="15" name="Adam's Rib" devilprice="2" description="Deals double damage on first hit" gfx="collectibles_adamsRib.png" cache="tearcolor"/>
-  <passive id="16" name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="tearcolor"/>
-  <passive id="17" name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="2" cache="tearcolor" />
-  <passive id="18" name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
-  <passive name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck tearcolor"/>
-  <passive id="20" name="Hot Milk" description="DMG up.. down.. whatever." gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" cache="tearcolor"/>
-  <passive name="Rotten Pork Chop" description="Ass killer" gfx="collectibles_rottenPorkChop.png" maxhearts="2" hearts="3" cache="tearcolor"/>
-  <passive id="22" name="Dr. Medicine" description="Pills for breakfast, lunch and dinner" gfx="collectibles_drMedicine.png" cache="tearcolor"/>
-  <passive id="23" name="The Manuscript" description="It's about cards?" gfx="collectibles_manuscript.png" cache="tearcolor"/>
-  <passive id="24" name="Lawful" description="Take that you want, alright?" gfx="collectibles_lawful.png" cache="tearcolor"/>
-  <passive id="25" name="Danger Room" description="Perfect for thrill-seekers" gfx="collectibles_dangerRoom.png" cache="tearcolor"/>
-  <passive name="Sinister Chalk" description="Behind the shadows" gfx="collectibles_sinisterChalk.png"/>
-  <passive id="27" name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor"/>
-  <passive name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
-  <passive name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>
-  <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
-  <passive id="31" name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png" cache="tearcolor" devilprice="1"/>
-  <passive name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/> 
-  <passive name="Mystery Bag" description="Gives 3 runes" gfx="collectibles_mysteryBag.png"/>
-  <!-- <passive name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/> Not working yet... -->
-  <passive name="Corrosive Bombs" description="Acid Explosions + 3 Bombs" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
+  <passive id="16" name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
+  <passive id="17" name="Hot Milk" description="DMG up.. down.. whatever" gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" cache="tearcolor"/>
+  <active id="18" name="Battle Royale" description="'My life is nothing but spectacle'" gfx="collectibles_battle_royale.png" maxcharges="4"/>
+  <familiar id="19" name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>
+  <passive id="20" name="Rotten Pork Chop" description="Ass killer" gfx="collectibles_rottenPorkChop.png" maxhearts="2" hearts="3" cache="tearcolor"/>
+  <familiar id="21" name="Lil Tummy" description="Baa!" gfx="collectibles_lilTummy.png"/>
+  <familiar id="22" name="Scaredy-shroom" description="'Who's there?'" gfx="collectibles_scaredyShroom.png"/>
+  <passive id="23" name="Dr. Medicine" description="Pills for breakfast, lunch and dinner" gfx="collectibles_drMedicine.png" cache="tearcolor"/>
+  <passive id="24" name="The Manuscript" description="It's about cards?" gfx="collectibles_manuscript.png" cache="tearcolor"/>
+  <familiar id="25" name="Edgeless Cube Battery" description="Safe and effective!" gfx="collectibles_roundBattery.png"/>
+  <active id="26"  name="Air Strike!" description="Incoming!" gfx="collectibles_airStrike.png" maxcharges="4"/>
+  <passive id="27" name="Lawful" description="Take that you want, alright?" gfx="collectibles_lawful.png" cache="tearcolor"/>
+  <familiar id="28" name="Bile Knight" description="He has some complexes" gfx="collectibles_bileKnight.png"/>
+  <passive id="29" name="Danger Room" description="Perfect for thrill-seekers" gfx="collectibles_dangerRoom.png" cache="tearcolor"/>
+  <familiar id="30" name="The Threater" description="Shocking buddy!" gfx="collectibles_theThreater.png"/>
+  <familiar id="31" name="Beanborne" description="Real human bean" gfx="collectibles_beanborne.png"/>
+  <active id="32" name="The Divider" description="Divides into elementary particles" gfx="collectibles_theDivider.png" maxcharges="3"/>
+  <passive id="33" name="Sinister Chalk" description="Behind the shadows" gfx="collectibles_sinisterChalk.png"/>
+  <passive id="34" name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor" tags="mom"/>
+  <passive id="35" name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
+  <passive id="36" name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>
+  <active id="37" name="Urn of Want" description="Pay blood for dark reward" gfx="collectibles_urnOfWant.png" maxcharges="12" initcharge="0" chargetype="special"/>
+  <passive id="38" name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
+  <passive id="39" name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png" cache="tearcolor" devilprice="1"/>
+  <passive id="40" name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/> 
+  <passive id="41" name="Mystery Bag" description="Throws runes" gfx="collectibles_mysteryBag.png"/>
+  <!-- <passive id="42" name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/> -->
+  <passive id="43" name="Corrosive Bombs" description="Acid Explosions + 3 Bombs" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
+  <active id="44" name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="12" initcharge="0"/>
   
+ 
 
-  <familiar name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
-  <familiar name="Sage" description="Wisdom Up" gfx="collectibles_sage.png"/>
-  <familiar name="Lil Tummy" description="Baa!" gfx="collectibles_lilTummy.png"/>
-  <familiar name="Scaredy-shroom" description="'Who's there?'" gfx="collectibles_scaredyShroom.png"/>
-  <familiar name="Edgeless Cube Battery" description="Safe and effective!" gfx="collectibles_roundBattery.png"/>
-  <familiar name="Bile Knight" description="He has some complexes" gfx="collectibles_bileKnight.png"/>
-  <familiar name="The Threater" description="Shocking buddy!" gfx="collectibles_theThreater.png"/>
-  <familiar name="Beanborne" description="Real human bean" gfx="collectibles_beanborne.png"/>
-
-  <trinket name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
-  <trinket name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
-  <trinket name="Dark Lock" description="Even darker rewards" gfx="trinket_darklock.png" />
-  <trinket name="Krampus' Horn" description="Cursed as always" gfx="trinket_krampus_horn.png" />
-  <trinket name="Apple Core" description="Someone is eating, but someone has already ate.." gfx="trinket_appleCore.png" />
-  <trinket name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
-  <trinket name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
-  <trinket name="Extinguisher" description="Cool down" gfx="trinket_extinguisher.png" />
+  <trinket id="1" name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
+  <trinket id="2" name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
+  <trinket id="3" name="Dark Lock" description="Even darker rewards" gfx="trinket_darklock.png" />
+  <trinket id="4" name="Krampus' Horn" description="Cursed as always" gfx="trinket_krampus_horn.png" />
+  <trinket id="5" name="Apple Core" description="Someone is eating, but someone has already ate.." gfx="trinket_appleCore.png" />
+  <trinket id="6" name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
+  <trinket id="7" name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
+  <trinket id="8" name="Extinguisher" description="Cool down" gfx="trinket_extinguisher.png" />
 </items>
