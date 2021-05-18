@@ -24,16 +24,16 @@ function this:update(player)
     if deliveranceData.temporary.poopOnHead then
        this.luckBonus = 3
        if player:HasCollectible(202) then  
-          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/costumes/sheet_costume_luckySaucerG.png", 0)
+          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/deliverance/costumes/sheet_costume_luckySaucerG.png", 0)
        else
-          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/costumes/sheet_costume_luckySaucer.png", 0)
+          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/deliverance/costumes/sheet_costume_luckySaucer.png", 0)
        end
     else
        this.luckBonus = 0
        if player:HasCollectible(202) then  
-          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/costumes/sheet_costume_luckySaucerG2.png", 0)
+          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/deliverance/costumes/sheet_costume_luckySaucerG2.png", 0)
        else
-          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/costumes/sheet_costume_luckySaucer2.png", 0)
+          player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/deliverance/costumes/sheet_costume_luckySaucer2.png", 0)
        end
     end
     player:AddCacheFlags(CacheFlag.CACHE_LUCK)
