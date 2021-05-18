@@ -173,8 +173,8 @@ function this:cauldronCmd(cmd, params)
 end
 
 function this.Init()
-  mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
+  --mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
+  --mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
   --mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, this.cauldronCmd)
 end
 

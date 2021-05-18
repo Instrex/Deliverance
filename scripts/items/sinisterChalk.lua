@@ -1,7 +1,7 @@
 local this = {}
-this.id = Isaac.GetItemIdByName("Sinister Shalk")
+this.id = Isaac.GetItemIdByName("Sinister Chalk")
 this.description = "Draws silhouettes on the floor in every room#Stand for a second on the silhouette to summon the shadow#Type of shadow depends on the floor you are on#When room is cleaned, the silhouette disappears"
-this.rusdescription ={"Sinister Shalk /Зловещий мел", "Рисует силуэты на полу в каждой комнате#Стоя на силуэтах, вы будете призывать тени.#Тип тени зависит от этажа на котором вы находитесь# Когда комната зачищена, силуэт исчезает"}
+this.rusdescription ={"Sinister Chalk /Зловещий мел", "Рисует силуэты на полу в каждой комнате#Стоя на силуэтах, вы будете призывать тени.#Тип тени зависит от этажа на котором вы находитесь# Когда комната зачищена, силуэт исчезает"}
 this.silhouette = Isaac.GetEntityVariantByName("Silhouette")
 this.silhouette2 = Isaac.GetEntityVariantByName("Silhouette 2")
 
@@ -48,7 +48,7 @@ function this:updateSilhouette(npc)
           cloneType = Utils.choose(219,224,225,259,285)
        end
        local clone = Game():Spawn(cloneType, 0, npc.Position, vectorZero, npc, 0, 1):ToNPC()
-       clone:AddCharmed(-1)
+       clone:AddCharmed(EntityRef(nil),-1)
        clone:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
        clone:SetColor(Color(0,0,0,0.75,0,0,0),0,0,false,false)
        clone.MaxHitPoints = clone.MaxHitPoints*1
@@ -112,7 +112,7 @@ function this:Update()
   end
 end
 
-local ShalkBar = Sprite() ShalkBar:Load("gfx/ui/sinisterShalk_bar.anm2", true)
+local ShalkBar = Sprite() ShalkBar:Load("gfx/ui/sinisterChalk_bar.anm2", true)
 function this:onRender()
    local player = Isaac.GetPlayer(0)
    local room = game:GetRoom()

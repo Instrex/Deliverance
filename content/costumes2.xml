@@ -1,16 +1,15 @@
 <costumes anm2root="gfx/characters/costumes/">
-     <costume id="16" anm2path="animation_costume_sailorhat.anm2"  type="passive" />
-     <costume id="19" anm2path="animation_costume_luckySaucer.anm2"  type="passive" />
-     <costume id="18" anm2path="animation_costume_saltySoup.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="17" anm2path="animation_costume_gasoline.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="13" anm2path="animation_costume_theCovenant.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="24" anm2path="animation_costume_lawful.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="22" anm2path="animation_costume_adamsRib.anm2"  type="passive" hasSkinAlt="true" />
-     <costume id="27" anm2path="animation_costume_momsEarrings.anm2"  type="passive" />
-     <costume id="15" anm2path="animation_costume_adamsRib2.anm2"  type="passive" />
-     <costume id="20" anm2path="animation_costume_hotmilk.anm2"  type="passive" />
-     <costume id="23" anm2path="animation_costume_manuscript.anm2"  type="passive" />
-     <costume id="25" anm2path="animation_costume_dangerRoom.anm2"  type="passive" />
-	<costume id="31" anm2path="animation_costume_obituary.anm2"  type="passive" />
-	<costume anm2path="character_awan.anm2" priority="99" type="none" />
+     <costume id="16" anm2path="animation_costume_sailorhat.anm2" priority="96" type="passive" />
+     <costume anm2path="animation_costume_luckySaucer.anm2" priority="96" type="none" />
+     <costume id="18" anm2path="animation_costume_saltySoup.anm2" priority="96" type="passive" hasSkinAlt="true" />
+     <costume id="17" anm2path="animation_costume_gasoline.anm2" priority="96" type="passive" hasSkinAlt="true" />
+     <costume id="13" anm2path="animation_costume_theCovenant.anm2" priority="96" type="passive" hasSkinAlt="true" />
+     <costume id="24" anm2path="animation_costume_lawful.anm2" priority="96" type="passive" hasSkinAlt="true" />
+     <costume id="22"anm2path="animation_costume_adamsRib.anm2" priority="96" type="passive" hasSkinAlt="true" />
+     <costume id="27" anm2path="animation_costume_momsEarrings.anm2" priority="96" type="passive" />
+     <costume anm2path="animation_costume_adamsRib2.anm2" priority="96" type="none" />
+     <costume id="20" anm2path="animation_costume_hotmilk.anm2" priority="96" type="passive" />
+     <costume id="23" anm2path="animation_costume_manuscript.anm2" priority="96" type="passive" />
+     <costume id="25" anm2path="animation_costume_dangerRoom.anm2" priority="96" type="passive" />
+	 <costume id="31" anm2path="animation_costume_obituary.anm2" priority="96" type="passive" />
 </costumes>

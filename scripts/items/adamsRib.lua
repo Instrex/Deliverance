@@ -4,9 +4,6 @@ this.variant = Isaac.GetEntityVariantByName("Adam's Knife")
 this.description = "Enemies with full health take extra damage"
 this.rusdescription ={"Adam's Rib /Ребро Адама", "Враги с полным здоровьем получают дополнительный урон"}
 
-local item = Isaac.GetItemIdByName("Dr. Medicine")
-local evecostume = Isaac.GetItemConfig():GetCollectible(item)
-
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
@@ -14,9 +11,9 @@ function this:cache(player, flag)
       --deliveranceData.temporary.hasAdamsRib = true
       --deliveranceDataHandler.directSave()
       if flag == CacheFlag.CACHE_TEARCOLOR then
-      --player:AddNullCostume(deliveranceContent.costumes.adamsRib2)
+      player:AddNullCostume(deliveranceContent.costumes.adamsRib2)
        if player:GetPlayerType() == PlayerType.PLAYER_EVE then
-         player:AddCostume(evecostume, false)
+         player:AddNullCostume(deliveranceContent.costumes.adamsRib)
        end
       end
     --end 

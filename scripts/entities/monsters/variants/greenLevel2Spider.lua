@@ -8,11 +8,8 @@ function this:behaviour(npc)
     for i=1, math.random(1, 2) do
 --    npc:ThrowSpider(npc.Position, npc, vectorZero, false, 0)	
 --    EntityNPC.ThrowSpider(npc.Position, npc, room:FindFreePickupSpawnPosition(npc.Position, 160, true), false, 1.0)
-      local rfly = Game():Spawn(18, 0, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(8), npc, 0, 1):ToNPC()
-      local fly = Game():Spawn(13, 0, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(6), npc, 0, 1):ToNPC()
-	  
-	  rfly:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
-	  fly:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
+      Game():Spawn(18, 0, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(8), npc, 0, 1):ToNPC()
+      Game():Spawn(13, 0, npc.Position, Vector.FromAngle(math.random(0, 360)):Resized(6), npc, 0, 1):ToNPC()
     end
   end
 end

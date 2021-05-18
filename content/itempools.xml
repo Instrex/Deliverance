@@ -4,7 +4,7 @@
        <Item Name="Lighter" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-       <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Sinister Chalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Urn Of Want" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="treasure">
@@ -21,8 +21,8 @@
        <Item Name="Mom's Earrings" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Encharmed Penny" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Silver Bar" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-	   <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Shamrock Leaf" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	   <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Yum Rib" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
@@ -32,10 +32,10 @@
       <Item Name="The Covenant" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Adam's Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sinister Chalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="redChest">
-      <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sinister Chalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	  <Item Name="Obituary" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	  
     </Pool>
@@ -71,7 +71,7 @@
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Lawful" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-	  <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	  <!-- <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/> --Not working yet... -->
     </Pool>
 	<Pool Name="bombBum">
 		<Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -127,14 +127,14 @@
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sinister Chalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Urn Of Want" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedCurse">
       <Item Name="The Covenant" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Adam's Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Sinister Shalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Sinister Chalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedGoldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

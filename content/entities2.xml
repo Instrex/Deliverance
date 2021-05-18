@@ -164,17 +164,12 @@
     </entity>
 	
 	<entity id="768" variant="4000" anm2path="bloodmind_spit.anm2" baseHP="10" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Bloodmind Spit" numGridCollisionPoints="12" shadowSize="14" stageHP="0" shutdoors="false">
-        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
-    </entity>
-	
-	<!-- <entity id="769" variant="4000" anm2path="slider.anm2" baseHP="15" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Slider" numGridCollisionPoints="0" shadowSize="14" stageHP="0"> 
         <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
-    </entity> -->
-	
-	<entity id="770" variant="4000" anm2path="fathopper.anm2" baseHP="35" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="13" friction="1" name="Fat Hopper" numGridCollisionPoints="24" shadowSize="32" stageHP="0">
-        <gibs amount="8" blood="1" bone="1" eye="0" gut="1" large="1" />
     </entity>
-
+	
+	<entity id="769" variant="4000" anm2path="slider.anm2" baseHP="15" boss="0" champion="0" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Slider" numGridCollisionPoints="0" shadowSize="14" stageHP="0"> 
+        <gibs amount="15" blood="1" bone="1" eye="1" gut="0" large="0" />
+    </entity>
 
     <!-- Familiars -->
     <entity id="3" variant="4000" anm2path="familiar_sistersheart.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Sister's Heart" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
@@ -211,10 +206,6 @@
 
     <!-- Pickups -->
     <entity id="5" variant="10" subtype="4000" anm2path="rainbowHeart.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" numGridCollisionPoints="24" shadowSize="17" stageHP="0" name="Rainbow Heart">
-        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
-    </entity>
-	
-	<entity id="5" variant="20" subtype="4000" anm2path="chargedPenny.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" numGridCollisionPoints="24" shadowSize="17" stageHP="0" name="Charged Penny">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 	

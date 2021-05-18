@@ -1,5 +1,6 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Gasoline")
+this.variant = Isaac.GetEntityVariantByName("Gasoline Fire")
 this.description = "Lights up damaging fires when enemies die"
 this.rusdescription ={"Gasoline /÷истерна", "–азводит повреждающий врагов огонь под убитыми противниками"}
 
@@ -11,7 +12,7 @@ function this:onHitNPC(npc)
       creep.SpriteScale = Vector(math.min(1.75, 0.5+npc.MaxHitPoints / 50), math.min(1.75, 0.5+npc.MaxHitPoints / 50))
       creep:Update()
       sfx:Play(43, 0.8, 0, false, 1.2)
-      local fire = Isaac.Spawn(1000, Isaac.GetEntityVariantByName("Gasoline Fire"), 0, npc.Position, vectorZero, player)
+      local fire = Isaac.Spawn(1000, this.variant, 0, npc.Position, vectorZero, player)
       local data = fire:GetData()
       data.time = 0
       fire:GetSprite():Play("Start")
@@ -26,7 +27,7 @@ end
 
 local updateIndex = 0
 function this:updateFire(npc)
-  if npc.Variant == Isaac.GetEntityVariantByName("Gasoline Fire") then
+  if npc.Variant == this.variant then
     local player = Isaac.GetPlayer(0)
     local data = npc:GetData()
     local sprite = npc:GetSprite()

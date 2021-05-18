@@ -6,14 +6,17 @@
     <description>[img]https://i.imgur.com/7Jc9ctD.png[/img]
 No, this mod doesn’t add any [i]new floors[/i], [i]huge bosses[/i] or [i]anything like that[/i]. We’ve put some cute monsters and items which we'd like to see in the game!
 In general, [b]Deliverance [/b]adds:
-[b]39[/b] new [b]items[/b]!
+[b]42[/b] new [b]items[/b]!
 [b]7[/b] [b]trinkets[/b], [b]3 cards[/b], [b]new heart[/b] and a [b]new pill[/b]!
-[b]20+[/b] new [b]enemies[/b]!
+[b]30+[/b] new [b]enemies[/b]!
 [b]900+[/b] new [b]rooms[/b]!
 [b]Secrets![/b]
+
 External item descriptions [url=https://steamcommunity.com/sharedfiles/filedetails/?id=836319872]compatibility![/url]
-
-
+-
+Russian item descriptions [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1552851879]compatibility![/url]
+-
+MiniMAPI [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1978904635]compatibility![/url]
 
 [img]https://i.imgur.com/EaCyIkj.png[/img] [b]Also[/b] We've finally finished the [b]tBoI: Deliverance Manual[/b], containing information about all content! [b]We'll be adding new information and update the manual as new updates are released![/b]
 [url=https://docs.google.com/document/d/e/2PACX-1vSZee5gnxBuuNmVaKBklB0OJ-43BUhWKkCSi2qDJXiT-F1ruCfz6EhKjs-hQeTn6Jo1u2w9680h8WOB/pub?embedded=true]ENG[/url]
@@ -24,6 +27,7 @@ Feel free to join our [url=discord.gg/PKgV5nf]discord server![/url]
 [h1]Credits[/h1]
 [b]Doctor Hummer:[/b] programmer, artist and room designer.
 [b]Baicherra: [/b]incredible artist, room designer.
+[b]fly_6: [/b]wonderful programmer, room designer.
 [b]Instrex: [/b]awesome programmer
 [b]Kovadon: [/b]artist, the guy who made an amazing logo you can see above!
 
@@ -31,7 +35,7 @@ Feel free to join our [url=discord.gg/PKgV5nf]discord server![/url]
 To [b]AgentCucco[/b], [b]Budjmt[/b], [b]BogdanRudyka[/b], [b]Minichibis[/b], [b]Der Clown[/b], [b]Eternal Necromancer[/b], [b]Modding of Isaac Community[/b] and [b]You[/b]!
 [img]https://i.imgur.com/cAYjYgW.png[/img]
 </description>
-    <version>2.5.4</version>
+    <version>2.5.3.4</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Items"/>

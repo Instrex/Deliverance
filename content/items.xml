@@ -11,30 +11,30 @@
   <active name="Air Strike!" description="Incoming!" gfx="collectibles_airStrike.png" maxcharges="4"/>
   <active name="The Divider" description="Divides into elementary particles" gfx="collectibles_theDivider.png" maxcharges="3"/>
   <active name="Urn of Want" description="Pay blood for dark reward" gfx="collectibles_urnOfWant.png" maxcharges="12" discharged="true"/>
-  <active name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="6" discharged="true"/>
+  <active name="Yum Rib" description="Reusable regeneration?" gfx="collectibles_yumRib.png" maxcharges="12" discharged="true"/>
 
   <passive id="13"name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="tearcolor" />
   <passive name="Good Old Friend" description="He remembers you" gfx="collectibles_goodOldFriend.png" />
   <passive id="15" name="Adam's Rib" devilprice="2" description="Deals double damage on first hit" gfx="collectibles_adamsRib.png" cache="tearcolor"/>
   <passive id="16" name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="tearcolor"/>
   <passive id="17" name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="2" cache="tearcolor" />
-  <passive id="18" name="Salty Soup" description="Uh oh..." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
-  <passive id="19" name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck tearcolor"/>
-  <passive id="20" name="Hot Milk" description="DMG up.. down.. whatever" gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" cache="tearcolor"/>
+  <passive id="18" name="Salty Soup" description="Uh oh." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
+  <passive name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck tearcolor"/>
+  <passive id="20" name="Hot Milk" description="DMG up.. down.. whatever." gfx="collectibles_hotMilk.png" maxhearts="2" hearts="2" cache="tearcolor"/>
   <passive name="Rotten Pork Chop" description="Ass killer" gfx="collectibles_rottenPorkChop.png" maxhearts="2" hearts="3" cache="tearcolor"/>
   <passive id="22" name="Dr. Medicine" description="Pills for breakfast, lunch and dinner" gfx="collectibles_drMedicine.png" cache="tearcolor"/>
   <passive id="23" name="The Manuscript" description="It's about cards?" gfx="collectibles_manuscript.png" cache="tearcolor"/>
   <passive id="24" name="Lawful" description="Take that you want, alright?" gfx="collectibles_lawful.png" cache="tearcolor"/>
   <passive id="25" name="Danger Room" description="Perfect for thrill-seekers" gfx="collectibles_dangerRoom.png" cache="tearcolor"/>
-  <passive name="Sinister Shalk" description="Behind the shadows" gfx="collectibles_sinisterShalk.png"/>
+  <passive name="Sinister Chalk" description="Behind the shadows" gfx="collectibles_sinisterChalk.png"/>
   <passive id="27" name="Mom's Earrings" description="Equalizes your chances" gfx="collectibles_momsEarrings.png" cache="tearcolor"/>
   <passive name="Time Gal" description="First come, first serve!" gfx="collectibles_timeGal.png" devilprice="2"/>
   <passive name="Silver Bar" description="Tech.005" gfx="collectibles_silverBar.png" cache="tearcolor"/>
   <passive name="Encharmed Penny" description="You and what army?" gfx="collectibles_encharmedPenny.png" cache="tearcolor"/>
   <passive id="31" name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png" cache="tearcolor" devilprice="1"/>
   <passive name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/> 
-  <passive name="Mystery Bag" description="Throws runes" gfx="collectibles_mysteryBag.png"/>
-  <passive name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/>
+  <passive name="Mystery Bag" description="Gives 3 runes" gfx="collectibles_mysteryBag.png"/>
+  <!-- <passive name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/> Not working yet... -->
   <passive name="Corrosive Bombs" description="Acid Explosions + 3 Bombs" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
   
 
@@ -55,12 +55,4 @@
   <trinket name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
   <trinket name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
   <trinket name="Extinguisher" description="Cool down" gfx="trinket_extinguisher.png" />
-  <trinket name="Bloated Capacitor" description="-" gfx="trinket_swollencapacitor.png" />
-  
-  <!-- Awan Content -->
-  <trinket name="Gunpowder" description="That's what bombs are made of" gfx="trinket_gunPowder.png" />
-  <trinket name="Piece of Paper" description="Nothing here" gfx="trinket_pieceOfPaper.png" />
-  <trinket name="Bottled Blood" description="For dark recipes" gfx="trinket_bottledBlood.png" />
-  <trinket name="Wooden Rib" description="Something evil" gfx="trinket_woodenRib.png" />
-  <trinket name="Glowing Feather" description="Glows with potential" gfx="trinket_glowingFeather.png" />
 </items>

@@ -20,19 +20,6 @@ end
 
 function this.directSave()
   mod:SaveData(json.encode(deliveranceData))
-  if deliveranceData.persistent.completiondata then
-    deliveranceData.persistent.deliriumcomp = deliveranceData.persistent.completiondata[0]
-    deliveranceData.persistent.heartcomp = deliveranceData.persistent.completiondata[1]
-    deliveranceData.persistent.isaaccomp = deliveranceData.persistent.completiondata[2]
-    deliveranceData.persistent.satancomp = deliveranceData.persistent.completiondata[3]
-    deliveranceData.persistent.rushcomp = deliveranceData.persistent.completiondata[4]
-    deliveranceData.persistent.bluebabycomp = deliveranceData.persistent.completiondata[5]
-    deliveranceData.persistent.lambcomp = deliveranceData.persistent.completiondata[6]
-    deliveranceData.persistent.megasatancomp = deliveranceData.persistent.completiondata[7]
-    deliveranceData.persistent.greedcomp = deliveranceData.persistent.completiondata[8]
-    deliveranceData.persistent.hushcomp = deliveranceData.persistent.completiondata[9]
-	deliveranceData.persistent.shockcomp = deliveranceData.persistent.completiondata[10]
-  end
 end
 
 function this:leave(shouldSave)

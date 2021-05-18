@@ -6,10 +6,6 @@ this.rusdescription ={"The Manuscript /Манускрипт", "Дает половину сердца души з
 function this:useCard(card)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    if CommunityRemixRemixed and card == p20Card.DONKEYS_JAWBONE or card == p20Card.APPLE_RED or card == p20Card.APPLE_WHITE or card == p20Card.APPLE_DOUBLE_RED or card == p20Card.APPLE_DOUBLE_WHITE or card == p20Card.APPLE_DOUBLE_REDWHITE or card == p20Card.APPLE_BLENDED or card == p20Card.APPLE_GOLDEN  then -- CRR compatibility
-      return false
-    end
-
      player:AddSoulHearts(1)
      local heart = Isaac.Spawn(1000, 49, 0, Vector(player.Position.X,player.Position.Y-96), vectorZero, nil)
      heart:GetSprite():ReplaceSpritesheet(0,"gfx/effects/hearteffect3.png")

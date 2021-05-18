@@ -2,9 +2,8 @@ mod = RegisterMod("Deliverance", 1)
 game = Game()
 sfx = SFXManager()
 vectorZero = Vector(0,0)
-delivRNG = RNG()
 
-deliveranceVersion = "2.5.4"
+deliveranceVersion = "2.5.3.4"
 
 utils = require 'scripts.utils'
 require 'scripts.enumerations'
@@ -57,7 +56,7 @@ deliveranceContent = {
     theThreater               = require 'scripts.items.familiars.theThreater',
     beanborne                 = require 'scripts.items.familiars.beanborne',
     theDivider                = require 'scripts.items.theDivider',
-    sinisterShalk             = require 'scripts.items.sinisterShalk',
+    sinisterChalk             = require 'scripts.items.sinisterChalk',
     momsEarrings              = require 'scripts.items.momsEarrings',
     timeGal                   = require 'scripts.items.timeGal',
     silverBar                 = require 'scripts.items.silverBar',
@@ -66,9 +65,9 @@ deliveranceContent = {
     obituary                  = require 'scripts.items.obituary',
     shamrockLeaf              = require 'scripts.items.shamrockLeaf',
 	mysteryBag                = require 'scripts.items.mysteryBag',
-	glassCrown                = require 'scripts.items.glassCrown',
+	--glassCrown                = require 'scripts.items.glassCrown',
     corrosiveBombs            = require 'scripts.items.corrosiveBombs',
-	yumRib                    = require 'scripts.items.yumrib'
+	yumRib            		  = require 'scripts.items.yumrib'
   },
 
   trinkets = {
@@ -79,13 +78,12 @@ deliveranceContent = {
     darkLock                  = require 'scripts.trinkets.darkLock',
     specialPenny              = require 'scripts.trinkets.specialPenny',
     littleTransducer          = require 'scripts.trinkets.littleTransducer',
-    extinguisher              = require 'scripts.trinkets.extinguisher',
-    gunPowder                 = require 'scripts.trinkets.gunPowder',
-    pieceOfPaper              = require 'scripts.trinkets.pieceOfPaper',
-    bottledBlood              = require 'scripts.trinkets.bottledBlood',
-    woodenRib                 = require 'scripts.trinkets.woodenRib',
-    glowingFeather            = require 'scripts.trinkets.glowingFeather',
-	bloatedcapacitor          = require 'scripts.trinkets.bloatedcapacitor'
+    extinguisher              = require 'scripts.trinkets.extinguisher'
+    -- gunPowder                 = require 'scripts.trinkets.gunPowder',
+    -- pieceOfPaper              = require 'scripts.trinkets.pieceOfPaper',
+    -- bottledBlood              = require 'scripts.trinkets.bottledBlood',
+    -- woodenRib                 = require 'scripts.trinkets.woodenRib',
+    -- glowingFeather            = require 'scripts.trinkets.glowingFeather'
   },
 
   cards = {
@@ -93,10 +91,6 @@ deliveranceContent = {
     firestorms                = require 'scripts.cards.firestorms',
     glitch                    = require 'scripts.cards.glitch',
     abyss                     = require 'scripts.cards.abyss',
-  },
-  
-  characters = {
-    awan                      = require 'scripts.characters.awan',
   },
 
   pills = {
@@ -111,14 +105,12 @@ deliveranceContent = {
   },
 
   pickups = {
-    rainbowHeart              = require 'scripts.pickups.rainbowHeart',
-    chargedPenny              = require 'scripts.pickups.chargedPenny'
+    rainbowHeart              = require 'scripts.pickups.rainbowHeart'
   },
   
   entities = {
     persistent = {
       chestBoy                = require 'scripts.entities.chestBoy',
-	  cauldron                = require 'scripts.entities.cauldron'
     },
 
     raga                      = require 'scripts.entities.monsters.raga',
@@ -148,9 +140,8 @@ deliveranceContent = {
     stonelet                  = require 'scripts.entities.monsters.stonelet',
 	grilly                    = require 'scripts.entities.monsters.grilly',
 	bloodmind                 = require 'scripts.entities.monsters.bloodmind',
-    bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit',
+    bloodmindspit             = require 'scripts.entities.monsters.bloodmindspit'
     --slider                    = require 'scripts.entities.monsters.slider'
-	fathopper 				  = require 'scripts.entities.monsters.fathopper',
   },
 
   costumes = {
@@ -159,19 +150,16 @@ deliveranceContent = {
     --sailorHat                 = utils.getCostume('sailorhat'),
     --saltySoup                 = utils.getCostume('saltySoup'),
     --gasoline                  = utils.getCostume('gasoline'),
-    --luckySaucer               = utils.getCostume('luckySaucer'),
+    luckySaucer               = utils.getCostume('luckySaucer'),
     --theCovenant               = utils.getCostume('theCovenant'),
-    --adamsRib                  = utils.getCostume('adamsRib'),
+    adamsRib                  = utils.getCostume('adamsRib'),
     --hotmilk                   = utils.getCostume('hotmilk'),
-    --adamsRib2                 = utils.getCostume('adamsRib2')
+    adamsRib2                 = utils.getCostume('adamsRib2')
     --manuscript                = utils.getCostume('manuscript'),
     --dangerRoom                = utils.getCostume('dangerRoom'),
     --lawful                    = utils.getCostume('lawful'),
     --momsEarrings              = utils.getCostume('momsEarrings')
-	  --obituary                  = utils.getCostume('obituary')
-  },
-  challenges = {
-	shocktherapy =  require 'scripts.challenges.shocktherapy'
+	--obituary                  = utils.getCostume('obituary')
   }
 }
 
@@ -186,17 +174,12 @@ cardHandler.init(deliveranceContent.cards)
 
 -- Content Initialization --
 local eid = require 'scripts.eidHandler'
-local coh = require 'scripts.customOverHandler'
-local dss = require 'scripts.deadseascrolls'
-local logs = require 'scripts.changelogs'
-pd = require 'scripts.progressdata'
-local encyclopedia = require 'scripts.encyclopedia'
 eid.init()
 
 for type, r in pairs(deliveranceContent) do
   if r.noAutoload == nil then
     for name, class in pairs(r) do
-      --Isaac.DebugString("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
+      --      print("tBoI Deliverance: Loading " .. k .. " " .. q .. "...")
       eid.tryAddDescription(type, class)
       if class.Init then
         class.Init()
