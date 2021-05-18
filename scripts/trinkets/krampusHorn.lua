@@ -7,7 +7,7 @@ function this.trigger(id)
   if player:HasTrinket(this.id) then
     if utils.chancep(16) then
       local level = game:GetLevel()
-      game:StartRoomTransition(level:QueryRoomTypeIndex(RoomType.ROOM_DEVIL, false, RNG()), Direction.NO_DIRECTION, "3")
+      game:StartRoomTransition(level:QueryRoomTypeIndex(RoomType.ROOM_DEVIL, false, RNG()), Direction.NO_DIRECTION, "3") --поменять на другую команду чтобы не было ангельских сделок
       player:AnimateTeleport(true)
     end
   end

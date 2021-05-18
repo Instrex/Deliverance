@@ -48,7 +48,7 @@ function this:updateSilhouette(npc)
           cloneType = Utils.choose(219,224,225,259,285)
        end
        local clone = Game():Spawn(cloneType, 0, npc.Position, vectorZero, npc, 0, 1):ToNPC()
-       clone:AddCharmed(-1)
+       clone:AddCharmed(EntityRef(nil),-1)
        clone:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
        clone:SetColor(Color(0,0,0,0.75,0,0,0),0,0,false,false)
        clone.MaxHitPoints = clone.MaxHitPoints*1
@@ -112,7 +112,7 @@ function this:Update()
   end
 end
 
-local ShalkBar = Sprite() ShalkBar:Load("gfx/ui/sinisterShalk_bar.anm2", true)
+local ShalkBar = Sprite() ShalkBar:Load("gfx/ui/sinisterChalk_bar.anm2", true)
 function this:onRender()
    local player = Isaac.GetPlayer(0)
    local room = game:GetRoom()

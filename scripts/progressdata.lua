@@ -48,7 +48,7 @@ mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, function(_)
     i:RemoveCollectible(deliveranceContent.items.timeGal.id)
   end
   if satan < normal then
-    i:RemoveCollectible(deliveranceContent.items.sinisterShalk.id)
+    i:RemoveCollectible(deliveranceContent.items.sinisterChalk.id)
   end
   if lamb < normal then
     i:RemoveCollectible(deliveranceContent.items.theDivider.id)
