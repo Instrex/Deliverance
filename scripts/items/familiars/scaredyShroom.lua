@@ -78,7 +78,7 @@ function this.shot(fam)
       local dirs = { [Direction.LEFT] = Vector(-12.5, 0), [Direction.UP] = Vector(0, -12.5), [Direction.RIGHT] = Vector(12.5, 0), [Direction.DOWN] = Vector(0, 12.5), [Direction.NO_DIRECTION] = vectorZero, }
       if not d.shoot then
         local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()], nil):ToTear()
-        prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255))
+        prj:GetSprite().Color = Color(0.4,0.15,0.15,1,0.28,0,0.45)
         if player:HasCollectible(247) then prj.Scale = 0.95 prj.CollisionDamage = 2.25 else prj.Scale = 0.75 prj.CollisionDamage = 1.5 end
         if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING end
         d.shoot = true

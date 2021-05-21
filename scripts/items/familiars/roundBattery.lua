@@ -16,7 +16,7 @@ function this:behaviour(fam)
 
     if sprite:IsEventTriggered("Shoot") then
        local laser = EntityLaser.ShootAngle(2, fam.Position, math.random(0, 360), 15, Vector(0,-15), fam)
-       laser:GetSprite().Color = Color(0,0.5,0,1,200,180,0) laser.TearFlags = TearFlags.TEAR_HOMING
+       laser:GetSprite().Color = Color(0,0.5,0,1,200/255,180/255,0) laser.TearFlags = TearFlags.TEAR_HOMING
        laser.CollisionDamage = player.Damage*0.8
     end
 
@@ -28,7 +28,7 @@ function this:behaviour(fam)
 
     if sprite:IsEventTriggered("Shoot") then
        local laser = EntityLaser.ShootAngle(2, fam.Position, math.random(0, 360), 15, Vector(0,-15), fam)
-       laser:GetSprite().Color = Color(0,0.5,0,1,200,180,0) laser.TearFlags = TearFlags.TEAR_HOMING
+       laser:GetSprite().Color = Color(0,0.5,0,1,200/255,180/255,0) laser.TearFlags = TearFlags.TEAR_HOMING
        laser.CollisionDamage = player.Damage*0.8
     end
 

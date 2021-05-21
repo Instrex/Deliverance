@@ -77,18 +77,18 @@ function this.shot(fam)
                 (gD == Direction.UP and entity.Position.Y<fam.Position.Y and entity.Position.X<fam.Position.X+64 and entity.Position.X>fam.Position.X-64) then 
                    dist = fam.Position:Distance(entity.Position)+16
                    local laser2 = EntityLaser.ShootAngle(2, fam.Position, (fam.Position - entity.Position):GetAngleDegrees()+180, 5, Vector(0,-20), fam)
-                   laser2:GetSprite().Color = Color(0,0.5,0,1,225,225,225) if player:HasTrinket(127) then laser2.TearFlags = TearFlags.TEAR_HOMING end
+                   laser2:GetSprite().Color = Color(0,0.5,0,1,225/255,225/255,225/255) if player:HasTrinket(127) then laser2.TearFlags = TearFlags.TEAR_HOMING end
                    if player:HasCollectible(247) then laser2.CollisionDamage = 0.45 else laser2.CollisionDamage = 0.3 end
                    laser2:SetMaxDistance(dist)
                    local laser3 = EntityLaser.ShootAngle(2, entity.Position, math.random(0, 360), 5, vectorZero, fam)
-                   laser3:GetSprite().Color = Color(0,0.5,0,1,225,225,225) if player:HasTrinket(127) then laser3.TearFlags = TearFlags.TEAR_HOMING end
+                   laser3:GetSprite().Color = Color(0,0.5,0,1,225/255,225/255,225/255) if player:HasTrinket(127) then laser3.TearFlags = TearFlags.TEAR_HOMING end
                    if player:HasCollectible(247) then laser3.CollisionDamage = 0.225 else laser3.CollisionDamage = 0.15 end
                    laser3:SetMaxDistance(dist/2)
              end
           end 
        end
        local laser = EntityLaser.ShootAngle(2, fam.Position, angle, 5, Vector(0,-20), fam)
-       laser:GetSprite().Color = Color(0,0.5,0,1,225,225,225) if player:HasTrinket(127) then laser.TearFlags = TearFlags.TEAR_HOMING end
+       laser:GetSprite().Color = Color(0,0.5,0,1,225/255,225/255,225/255) if player:HasTrinket(127) then laser.TearFlags = TearFlags.TEAR_HOMING end
        if player:HasCollectible(247) then laser.CollisionDamage = 0.9 else laser.CollisionDamage = 0.6 end
        
        d.shoot = true

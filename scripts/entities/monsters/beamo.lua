@@ -102,7 +102,7 @@ function this:die(npc)
   if npc.Variant == this.variant then
     blood = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, target)
     if current_floor == LevelStage.STAGE5 and level:GetStageType() == StageType.STAGETYPE_WOTL then
-       blood.Color = Color( 0, 0, 0,   1,   150, 150, 150)
+       blood.Color = Color( 0, 0, 0,   1,   150/255, 150/255, 150/255)
     end
   end
 end

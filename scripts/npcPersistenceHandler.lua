@@ -63,7 +63,7 @@ end
 -- Register control --
 function this.restore()
     for i = 1, #register do
-        if register[i].room == game:GetLevel():GetCurrentRoomIndex() then
+        if register[i].room == game:GetLevel():GetCurrentRoomIndex() and not game:GetRoom():IsFirstVisit() then --временный фикс
             local entity = Isaac.Spawn(register[i].type, register[i].variant, 0, Vector(register[i].x, register[i].y), vectorZero, nil)
             local data = entity:GetData()
             data.persistent = register[i].data

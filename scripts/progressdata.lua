@@ -108,5 +108,4 @@ mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, function(_, c, p)
 	end
 end)
 
-print("save loaded deliverance")
 return this

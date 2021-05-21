@@ -69,7 +69,7 @@ function this.shot(fam)
         for i=1, 6 do
           local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()]:Rotated(i*60), nil):ToTear()
           if player:HasCollectible(247) then prj.Scale = 0.95 prj.CollisionDamage = 4 else prj.Scale = 0.75 prj.CollisionDamage = 2.5 end
-          if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
+          if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,0.28,0,0.45) end
         end
         d.shoot = true
       end

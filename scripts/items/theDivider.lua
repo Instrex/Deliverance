@@ -149,6 +149,21 @@ function this.use()
                Isaac.Spawn(5, 60, 0, pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
             end
             this.divide(pickup)
+		elseif pickup.Variant== 90 and pickup.SubType~=2 then
+			if pickup.SubType == 4 then
+				for i=1,2 do
+					Isaac.Spawn(5,90,1,pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
+				end
+			elseif pickup.SubType == 3 then
+				for i=1,2 do
+					Isaac.Spawn(5,90,1,pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
+				end
+			elseif pickup.SubType == 1 then
+				for i=1,3 do
+					Isaac.Spawn(5,90,2,pickup.Position, Vector.FromAngle(math.random(0, 360)):Resized(1), pickup)
+				end
+			end
+		this.divide(pickup)
          end
       end
     end
