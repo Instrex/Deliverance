@@ -88,7 +88,7 @@ end
 function this:die(npc)
  if npc.Variant == this.variant then
     sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
-    Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 69, 56, 52)
+    Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 69/255, 56/255, 52/255)
  end
 end
 

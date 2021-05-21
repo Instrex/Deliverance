@@ -103,7 +103,7 @@ function this:behaviour(npc)
        end
        Game():ShakeScreen(10)
        sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
-       Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 132, 163, 244)
+       Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 132/255, 163/255, 244/255)
        npc:Remove()
     end
   elseif npc.State == NpcState.STATE_ATTACK4 then
@@ -138,7 +138,7 @@ function this:die(npc)
        npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y), velocity, 0, params)
     end
     sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND , 1, 0, false, 1) 
-    Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 132, 163, 244)
+    Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 132/255, 163/255, 244/255)
     Game():ShakeScreen(5)
  end
 end

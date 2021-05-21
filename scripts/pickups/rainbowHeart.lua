@@ -37,9 +37,10 @@ function this:pickupinit(pickup)
   if pickup.SubType == HeartSubType.HEART_FULL or pickup.SubType == HeartSubType.HEART_SCARED then
     delivRNG:SetSeed(pickup.InitSeed, 0)
       if delivRNG:RandomInt(25) == 1 then
-        pickup:Morph(5,this.variant,this.subtype,false)
+        pickup:Morph(5,this.variant,this.subtype,true,true,false)
       end
     end
+	
   if pickup.SubType == this.subtype then
     if pickup:IsShopItem() then
       pickup.Price = 5

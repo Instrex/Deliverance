@@ -8,7 +8,7 @@ function this.use(id,rng,player,useflags,slot,vardata)
 	local player = Isaac.GetPlayer()
 	player:AddBoneHearts(1)
     sfx:Play(461, 0.8, 0, false, 1)
-	if utils.chancep(16.5) then
+	if utils.chancep(0.1) then
 		player:ChangePlayerType(PlayerType.PLAYER_THEFORGOTTEN)
 		player:RemoveCollectible(this.id)
 	end

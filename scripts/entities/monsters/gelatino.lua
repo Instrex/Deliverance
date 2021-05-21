@@ -40,22 +40,22 @@ function this:behaviour(npc)
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
-    if data.color == nil then data.color = Color(0, 0, 0, 0.75, 58, 140, 122) end
-    if data.tearColor == nil then data.tearColor = Color(0, 0, 0, 1, 116, 280, 244) end
+    if data.color == nil then data.color = Color(0, 0, 0, 0.75, 58/255, 140/255, 122/255) end
+    if data.tearColor == nil then data.tearColor = Color(0, 0, 0, 1, 116/255, 280/255, 244/255) end
     if data.GridCountdown == nil then data.GridCountdown = 0 end
 
     if stage == LevelStage.STAGE3_1 or stage == LevelStage.STAGE3_2 or (stage == LevelStage.STAGE3_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-       data.color = Color(0, 0, 0, 0.75, 58, 79, 140)
-       data.tearColor = Color(0, 0, 0, 1, 87, 119, 210)
+       data.color = Color(0, 0, 0, 0.75, 58/255, 79/255, 140/255)
+       data.tearColor = Color(0, 0, 0, 1, 87/255, 119/255, 210/255)
     elseif stage == LevelStage.STAGE4_1 or stage == LevelStage.STAGE4_2 or (stage == LevelStage.STAGE4_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-       data.color = Color(0, 0, 0, 0.75, 171, 47, 60)
-       data.tearColor = Color(0, 0, 0, 1, 256, 64, 90)
+       data.color = Color(0, 0, 0, 0.75, 171/255, 47/255, 60/255)
+       data.tearColor = Color(0, 0, 0, 1, 256/255, 64/255, 90/255)
     elseif stage == LevelStage.STAGE5 or stage == LevelStage.STAGE6 or stage == LevelStage.STAGE7 or (stage == LevelStage.STAGE5_GREED or stage == LevelStage.STAGE6_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
-       data.color = Color(0, 0, 0, 0.75, 101, 71, 96)
-       data.tearColor = Color(0, 0, 0, 1, 152, 104, 144)
+       data.color = Color(0, 0, 0, 0.75, 101/255, 71/255, 96/255)
+       data.tearColor = Color(0, 0, 0, 1, 152/255, 104/255, 144/255)
     else
-       data.color = Color(0, 0, 0, 0.75, 58, 140, 122)
-       data.tearColor = Color(0, 0, 0, 1, 87, 210, 183)
+       data.color = Color(0, 0, 0, 0.75, 58/255, 140/255, 122/255)
+       data.tearColor = Color(0, 0, 0, 1, 87/255, 210/255, 183/255)
     end
  
     if data.roll == nil then data.roll = npc:GetDropRNG():RandomInt(99) end

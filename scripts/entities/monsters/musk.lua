@@ -108,7 +108,7 @@ function this:die(npc)
     sfx:Play(SoundEffect.SOUND_DEATH_BURST_LARGE , 1, 0, false, 1)
     Game():ShakeScreen(15) 
     local prj = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player)
-    if npc.Variant == 4001 then prj.Color = Color(0, 0, 0, 1, 90, 0, 90) end
+    if npc.Variant == 4001 then prj.Color = Color(0, 0, 0, 1, 90/255, 0, 90/255) end
  end
 end
 

@@ -23,7 +23,7 @@
        <Item Name="Silver Bar" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Shamrock Leaf" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-	   <Item Name="Yum Rib" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
+	   <Item Name="Yum Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -92,7 +92,7 @@
        <Item Name="Mom's Earrings" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Mystery Bag" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-	   <Item Name="Yum Rib" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
+	   <Item Name="Yum Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedShop">
        <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -136,8 +136,41 @@
       <Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Sinister Chalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
-    <Pool Name="greedGoldenChest" >
+    <!-- <Pool Name="greedGoldenChest" >
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-    </Pool>
+    </Pool> Unused pool-->
+	
+	<!-- Repentance Itempools -->
+	<Pool Name="batteryBum">
+	   <Item Name="Edgeless Cube Battery" Weight="1" DecreaseBy="0.5" RemoveOn="0.1"/>
+	</Pool>
+	<Pool Name="momsChest">
+	   <Item Name="Mom's Earrings" Weight="1" DecreaseBy="0.5" RemoveOn="0.1"/>
+	</Pool>
+	<Pool Name="craneGame">
+	    <Item Name="Air Strike!" Weight="1" DecreaseBy="0.1" RemoveOn="0.1"/>
+		<Item Name="Scaredy-shroom" Weight="1" DecreaseBy="0.1" RemoveOn="0.1"/>
+		<Item Name="The Divider" Weight="1" DecreaseBy="0.1" RemoveOn="0.1"/>
+		<Item Name="Special Delivery" Weight="1" DecreaseBy="0.1" RemoveOn="0.1"/>
+		<Item Name="Lighter" Weight="1" DecreaseBy="0.1" RemoveOn="0.1"/>
+		<Item Name="Good Old Friend" Weight="1" DecreaseBy="0.1" RemoveOn="0.1"/>
+		<Item Name="Battle Royale" Weight="1" DecreaseBy="0.1" RemoveOn="0.1"/>
+	</Pool>
+	<Pool Name="oldChest">
+	   <Item Name="Mom's Earrings" Weight="1" DecreaseBy="0.4" RemoveOn="0.1"/>
+	</Pool>
+	<Pool Name="babyShop">
+	    <Item Name="Sister's Heart" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Lil Tummy" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Scaredy-shroom" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Edgeless Cube Battery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Bile Knight" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Beanborne" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+	<Pool Name="rottenBeggar">
+	   <Item Name="Rotten Pork Chop" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
 </ItemPools>

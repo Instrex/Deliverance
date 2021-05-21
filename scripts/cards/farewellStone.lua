@@ -4,9 +4,13 @@ this.description = "Turns your red hearts into souls hearts in a 1:2 ratio#Grant
 this.rusdescription ={"Farewell Stone /Прощальный камень", "Превращает все красные сердца в сердца души в соотношении 1:2#Даёт одно сердце души если у персонажа нет красных сердец"}
 
 function this:cardCallback(cardId)
-    local player = Isaac.GetPlayer(0)
+    local player = Isaac.GetPlayer()
 	local hearts = player:GetMaxHearts()
-	player:AddMaxHearts(0 - hearts)
+	if player:GetPlayerType() == PlayerType.PLAYER_BETHANY then
+		player:AddMaxHearts(1 - hearts)
+	else
+		player:AddMaxHearts(0 - hearts)
+	end
     player:AddSoulHearts(math.max(2, hearts * 2))
     sfx:Play(SoundEffect.SOUND_HOLY, 1, 0, false, 1.05)
 end

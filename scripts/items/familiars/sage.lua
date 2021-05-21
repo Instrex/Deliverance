@@ -79,31 +79,31 @@ function this.shot(fam)
    if not d.shoot then
       if d.multiplier == 0 then
          local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()] + player:GetTearMovementInheritance(player.Velocity), nil):ToTear()
-         prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15,8,15) if player:HasCollectible(247) then prj.Scale = 1.4 prj.CollisionDamage = 7 else prj.Scale = 1.25 prj.CollisionDamage = 5.5 end
-         if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
+         prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15/255,8/255,15/255) if player:HasCollectible(247) then prj.Scale = 1.4 prj.CollisionDamage = 7 else prj.Scale = 1.25 prj.CollisionDamage = 5.5 end
+         if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,0.28,0,0.45) end
       elseif d.multiplier == 1 then
          for i=1, 2 do
             local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()]:Rotated(-12+i*8) + player:GetTearMovementInheritance(player.Velocity), nil):ToTear()
-            prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15,8,15) if player:HasCollectible(247) then prj.Scale = 1.35 prj.CollisionDamage = 6.5 else prj.Scale = 1.2 prj.CollisionDamage = 4.9 end
-            if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
+            prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15/255,8/255,15/255) if player:HasCollectible(247) then prj.Scale = 1.35 prj.CollisionDamage = 6.5 else prj.Scale = 1.2 prj.CollisionDamage = 4.9 end
+            if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,0.28,0,0.45) end
          end
       elseif d.multiplier == 2 then
          for i=1, 3 do
             local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()]:Rotated(-12+i*6) + player:GetTearMovementInheritance(player.Velocity), nil):ToTear()
-            prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15,8,15) if player:HasCollectible(247) then prj.Scale = 1.25 prj.CollisionDamage = 5.9 else prj.Scale = 1.1 prj.CollisionDamage = 4.3 end
-            if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
+            prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15/255,8/255,15/255) if player:HasCollectible(247) then prj.Scale = 1.25 prj.CollisionDamage = 5.9 else prj.Scale = 1.1 prj.CollisionDamage = 4.3 end
+            if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,0.28,0,0.45) end
          end
       elseif d.multiplier == 3 then
          for i=1, 4 do
             local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()]:Rotated(-10+i*4) + player:GetTearMovementInheritance(player.Velocity), nil):ToTear()
-            prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15,8,15) if player:HasCollectible(247) then prj.Scale = 1.13 prj.CollisionDamage = 5.2 else prj.Scale = 1 prj.CollisionDamage = 3.7 end
-            if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
+            prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15/255,8/255,15/255) if player:HasCollectible(247) then prj.Scale = 1.13 prj.CollisionDamage = 5.2 else prj.Scale = 1 prj.CollisionDamage = 3.7 end
+            if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,0.28,0,0.45) end
          end
       elseif d.multiplier >= 4 then
          for i=1, 5 do
             local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 0, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()]:Rotated(-9+i*3) + player:GetTearMovementInheritance(player.Velocity), nil):ToTear()
-            prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15,8,15) if player:HasCollectible(247) then prj.Scale = 1 prj.CollisionDamage = 4.5 else prj.Scale = 0.9 prj.CollisionDamage = 3 end
-            if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
+            prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15/255,8/255,15/255) if player:HasCollectible(247) then prj.Scale = 1 prj.CollisionDamage = 4.5 else prj.Scale = 0.9 prj.CollisionDamage = 3 end
+            if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,0.28,0,0.45) end
          end
       end
      

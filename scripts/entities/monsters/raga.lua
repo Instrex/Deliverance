@@ -97,7 +97,7 @@ end
 
 function this:die(npc)
  if npc.Variant == this.variant then
-    Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 90, 0, 90)
+    Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 90/255, 0, 90/255)
  end
 end
 

@@ -1,39 +1,39 @@
 <data>
     <!-- Enemies -->
-	<entity BaseHP="1" Group="Deliverance" ID="761" Image="deliverance/761.4000.0 - Munchubus.png" Kind="Stage" Name="Munchubus" Subtype="0" Variant="4000" />
-	<entity BaseHP="50" Group="Deliverance" ID="740" Image="deliverance/740.4000.00 - Raga.png" Kind="Enemies" Name="Raga" Subtype="0" Variant="4000" />
-	<entity BaseHP="30" Group="Deliverance" ID="741" Image="deliverance/741.4000.00 - Cracker.png" Kind="Enemies" Name="Cracker" Subtype="0" Variant="4000" />
-	<entity BaseHP="40" Group="Deliverance" ID="742" Image="deliverance/742.4000.00 - Jester.png" Kind="Enemies" Name="Jester" Subtype="0" Variant="4000" />
-	<entity BaseHP="45" Group="Deliverance" ID="743" Image="deliverance/743.4000.00 - Joker.png" Kind="Enemies" Name="Joker" Subtype="0" Variant="4000" />
-	<entity BaseHP="25" Group="Deliverance" ID="744" Image="deliverance/744.4000.00 - Nutcracker.png" Kind="Enemies" Name="Nutcracker" Subtype="0" Variant="4000" />
-	<entity BaseHP="30" Group="Deliverance" ID="745" Image="deliverance/745.4000.00 - Beamo.png" Kind="Enemies" Name="Beamo" Subtype="0" Variant="4000" />
-	<entity BaseHP="25" Group="Deliverance" ID="746" Image="deliverance/746.4000.00 - Peabody.png" Kind="Enemies" Name="Peabody" Subtype="0" Variant="4000" />
-	<entity BaseHP="22" Group="Deliverance" ID="746" Image="deliverance/746.4001.00 - Peabody.png" Kind="Enemies" Name="Peabody X" Subtype="0" Variant="4001" />
-	<entity BaseHP="25" Group="Deliverance" ID="746" Image="deliverance/peamonger.png" Kind="Enemies" Name="Peamonger" Subtype="0" Variant="4002" />
-	<entity BaseHP="15" Group="Deliverance" ID="747" Image="deliverance/747.4000.00 - Rosenberg.png" Kind="Enemies" Name="Rosenberg" Subtype="0" Variant="4000" />
-	<entity BaseHP="30" Group="Deliverance" ID="748" Image="deliverance/748.4000.00 - Shroomeo.png" Kind="Enemies" Name="Shroomeo" Subtype="0" Variant="4000" />
-	<entity BaseHP="25" Group="Deliverance" ID="749" Image="deliverance/749.4000.00 - Tinhorn.png" Kind="Enemies" Name="Tinhorn" Subtype="0" Variant="4000" />
-	<entity BaseHP="30" Group="Deliverance" ID="750" Image="deliverance/750.4000.00 - Musk.png" Kind="Enemies" Name="Musk" Subtype="0" Variant="4000" />
-	<entity BaseHP="30" Group="Deliverance" ID="750" Image="deliverance/750.4001.00 - Dusk.png" Kind="Enemies" Name="Dusk" Subtype="0" Variant="4001" />
-	<entity BaseHP="25" Group="Deliverance" ID="751" Image="deliverance/751.4000.00 - Fat Host.png" Kind="Enemies" Name="Fat Host" Subtype="0" Variant="4000" />
-	<entity BaseHP="30" Group="Deliverance" ID="751" Image="deliverance/751.4001.00 - Red Fat Host.png" Kind="Enemies" Name="Red Fat Host" Subtype="0" Variant="4001" />
-	<entity BaseHP="32" Group="Deliverance" ID="752" Image="deliverance/752.4000.0 - Gelatino.png" Kind="Enemies" Name="Gelatino" Subtype="0" Variant="4000" />
-	<entity BaseHP="22" Group="Deliverance" ID="752" Image="deliverance/752.4001.0 - Mini Gelatino.png" Kind="Enemies" Name="Mini Gelatino" Subtype="0" Variant="4001" />
-	<entity BaseHP="12" Group="Deliverance" ID="753" Image="deliverance/753.4003.0 - Cadaver (random).png" Kind="Enemies" Name="Cadaver (random)" Subtype="0" Variant="4003" />
-	<entity BaseHP="12" Group="Deliverance" ID="753" Image="deliverance/753.4000.0 - Cadaver.png" Kind="Enemies" Name="Cadaver" Subtype="0" Variant="4000" />
-	<entity BaseHP="12" Group="Deliverance" ID="753" Image="deliverance/753.4001.0 - Wicked Cadaver.png" Kind="Enemies" Name="Wicked Cadaver" Subtype="0" Variant="4001" />
-	<entity BaseHP="15" Group="Deliverance" ID="753" Image="deliverance/753.4002.0 - Sluggish Cadaver.png" Kind="Enemies" Name="Sluggish Cadaver" Subtype="0" Variant="4002" />
-	<entity BaseHP="15" Group="Deliverance" ID="754" Image="deliverance/754.4000.0 - Eddie.png" Kind="Enemies" Name="Eddie" Subtype="0" Variant="4000" />
-	<entity BaseHP="20" Group="Deliverance" ID="755" Image="deliverance/755.4000.0 - Explosimaw.png" Kind="Enemies" Name="Explosimaw" Subtype="0" Variant="4000" />
-	<entity BaseHP="36" Group="Deliverance" ID="756" Image="deliverance/756.4000.0 - Seraphim.png" Kind="Enemies" Name="Seraphim" Subtype="0" Variant="4000" />	
-	<entity BaseHP="25" Group="Deliverance" ID="758" Image="deliverance/758.4000.0 - Fistulauncher.png" Kind="Enemies" Name="Fistulauncher" Subtype="0" Variant="4000" />
-	<entity BaseHP="25" Group="Deliverance" ID="214" Image="deliverance/level25fly.png" Kind="Enemies" Name="lvl2.5 Fly" Subtype="0" Variant="4000" />
-	<entity BaseHP="25" Group="Deliverance" ID="215" Image="deliverance/level25spider.png" Kind="Enemies" Name="lvl2.5 Spider" Subtype="0" Variant="4000" />
-	<entity BaseHP="25" Group="Deliverance" ID="208" Image="deliverance/MotherOfMany.png" Kind="Enemies" Name="Mother Of Many" Subtype="0" Variant="4000" />
-	<entity BaseHP="25" Group="Deliverance" ID="208" Image="deliverance/PalemotherOfMany.png" Kind="Enemies" Name="Pale Mother Of Many" Subtype="0" Variant="4001" />
-	<entity BaseHP="45" Group="Deliverance" ID="762" Image="deliverance/Creampile.png" Kind="Enemies" Name="Creampile" Subtype="0" Variant="4000" />
-	<entity BaseHP="0" Group="Deliverance" ID="765" Image="deliverance/stonelet.png" Kind="Enemies" Name="Stonelet" Subtype="0" Variant="4000" />
-	<entity BaseHP="30" Group="Deliverance" ID="212" Image="deliverance/reaper.png" Kind="Enemies" Name="Reaper" Subtype="0" Variant="4000" />
-	<entity BaseHP="40" Group="Deliverance" ID="766" Image="deliverance/766.4000.0 - Grilly.png" Kind="Enemies" Name="Grilly" Subtype="0" Variant="4000" />
-    <entity BaseHP="20" Group="Deliverance" ID="767" Image="deliverance/bloodmind.png" Kind="Enemies" Name="Bloodmind" Subtype="0" Variant="4000" />
+	<entity BaseHP="1"  Group="Stage" ID="761" Image="deliverance/761.4000.0 - Munchubus.png" Kind="Deliverance" Name="Munchubus" Subtype="0" Variant="4000" />
+	<entity BaseHP="50" Group="Enemies" ID="740" Image="deliverance/740.4000.00 - Raga.png" Kind="Deliverance" Name="Raga" Subtype="0" Variant="4000" />
+	<entity BaseHP="30" Group="Enemies" ID="741" Image="deliverance/741.4000.00 - Cracker.png" Kind="Deliverance" Name="Cracker" Subtype="0" Variant="4000" />
+	<entity BaseHP="40" Group="Enemies" ID="742" Image="deliverance/742.4000.00 - Jester.png" Kind="Deliverance" Name="Jester" Subtype="0" Variant="4000" />
+	<entity BaseHP="45" Group="Enemies" ID="743" Image="deliverance/743.4000.00 - Joker.png" Kind="Deliverance" Name="Joker" Subtype="0" Variant="4000" />
+	<entity BaseHP="25" Group="Enemies" ID="744" Image="deliverance/744.4000.00 - Nutcracker.png" Kind="Deliverance" Name="Nutcracker" Subtype="0" Variant="4000" />
+	<entity BaseHP="30" Group="Enemies" ID="745" Image="deliverance/745.4000.00 - Beamo.png" Kind="Deliverance" Name="Beamo" Subtype="0" Variant="4000" />
+	<entity BaseHP="25" Group="Enemies" ID="746" Image="deliverance/746.4000.00 - Peabody.png" Kind="Deliverance" Name="Peabody" Subtype="0" Variant="4000" />
+	<entity BaseHP="22" Group="Enemies" ID="746" Image="deliverance/746.4001.00 - Peabody.png" Kind="Deliverance" Name="Peabody X" Subtype="0" Variant="4001" />
+	<entity BaseHP="25" Group="Enemies" ID="746" Image="deliverance/peamonger.png" Kind="Deliverance" Name="Peamonger" Subtype="0" Variant="4002" />
+	<entity BaseHP="15" Group="Enemies" ID="747" Image="deliverance/747.4000.00 - Rosenberg.png" Kind="Deliverance" Name="Rosenberg" Subtype="0" Variant="4000" />
+	<entity BaseHP="30" Group="Enemies" ID="748" Image="deliverance/748.4000.00 - Shroomeo.png" Kind="Deliverance" Name="Shroomeo" Subtype="0" Variant="4000" />
+	<entity BaseHP="25" Group="Enemies" ID="749" Image="deliverance/749.4000.00 - Tinhorn.png" Kind="Deliverance" Name="Tinhorn" Subtype="0" Variant="4000" />
+	<entity BaseHP="30" Group="Enemies" ID="750" Image="deliverance/750.4000.00 - Musk.png" Kind="Deliverance" Name="Musk" Subtype="0" Variant="4000" />
+	<entity BaseHP="30" Group="Enemies" ID="750" Image="deliverance/750.4001.00 - Dusk.png" Kind="Deliverance" Name="Dusk" Subtype="0" Variant="4001" />
+	<entity BaseHP="25" Group="Enemies" ID="751" Image="deliverance/751.4000.00 - Fat Host.png" Kind="Deliverance" Name="Fat Host" Subtype="0" Variant="4000" />
+	<entity BaseHP="30" Group="Enemies" ID="751" Image="deliverance/751.4001.00 - Red Fat Host.png" Kind="Deliverance" Name="Red Fat Host" Subtype="0" Variant="4001" />
+	<entity BaseHP="32" Group="Enemies" ID="752" Image="deliverance/752.4000.0 - Gelatino.png" Kind="Deliverance" Name="Gelatino" Subtype="0" Variant="4000" />
+	<entity BaseHP="22" Group="Enemies" ID="752" Image="deliverance/752.4001.0 - Mini Gelatino.png" Kind="Deliverance" Name="Mini Gelatino" Subtype="0" Variant="4001" />
+	<entity BaseHP="12" Group="Enemies" ID="753" Image="deliverance/753.4003.0 - Cadaver (random).png" Kind="Deliverance" Name="Cadaver (random)" Subtype="0" Variant="4003" />
+	<entity BaseHP="12" Group="Enemies" ID="753" Image="deliverance/753.4000.0 - Cadaver.png" Kind="Deliverance" Name="Cadaver" Subtype="0" Variant="4000" />
+	<entity BaseHP="12" Group="Enemies" ID="753" Image="deliverance/753.4001.0 - Wicked Cadaver.png" Kind="Deliverance" Name="Wicked Cadaver" Subtype="0" Variant="4001" />
+	<entity BaseHP="15" Group="Enemies" ID="753" Image="deliverance/753.4002.0 - Sluggish Cadaver.png" Kind="Deliverance" Name="Sluggish Cadaver" Subtype="0" Variant="4002" />
+	<entity BaseHP="15" Group="Enemies" ID="754" Image="deliverance/754.4000.0 - Eddie.png" Kind="Deliverance" Name="Eddie" Subtype="0" Variant="4000" />
+	<entity BaseHP="20" Group="Enemies" ID="755" Image="deliverance/755.4000.0 - Explosimaw.png" Kind="Deliverance" Name="Explosimaw" Subtype="0" Variant="4000" />
+	<entity BaseHP="36" Group="Enemies" ID="756" Image="deliverance/756.4000.0 - Seraphim.png" Kind="Deliverance" Name="Seraphim" Subtype="0" Variant="4000" />	
+	<entity BaseHP="25" Group="Enemies" ID="758" Image="deliverance/758.4000.0 - Fistulauncher.png" Kind="Deliverance" Name="Fistulauncher" Subtype="0" Variant="4000" />
+	<entity BaseHP="25" Group="Enemies" ID="214" Image="deliverance/level25fly.png" Kind="Deliverance" Name="lvl2.5 Fly" Subtype="0" Variant="4000" />
+	<entity BaseHP="25" Group="Enemies" ID="215" Image="deliverance/level25spider.png" Kind="Deliverance" Name="lvl2.5 Spider" Subtype="0" Variant="4000" />
+	<entity BaseHP="25" Group="Enemies" ID="208" Image="deliverance/MotherOfMany.png" Kind="Deliverance" Name="Mother Of Many" Subtype="0" Variant="4000" />
+	<entity BaseHP="25" Group="Enemies" ID="208" Image="deliverance/PalemotherOfMany.png" Kind="Deliverance" Name="Pale Mother Of Many" Subtype="0" Variant="4001" />
+	<entity BaseHP="45" Group="Enemies" ID="762" Image="deliverance/Creampile.png" Kind="Deliverance" Name="Creampile" Subtype="0" Variant="4000" />
+	<entity BaseHP="0"  Group="Enemies" ID="765" Image="deliverance/stonelet.png" Kind="Deliverance" Name="Stonelet" Subtype="0" Variant="4000" />
+	<entity BaseHP="30" Group="Enemies" ID="212" Image="deliverance/reaper.png" Kind="Deliverance" Name="Reaper" Subtype="0" Variant="4000" />
+	<entity BaseHP="40" Group="Enemies" ID="766" Image="deliverance/766.4000.0 - Grilly.png" Kind="Deliverance" Name="Grilly" Subtype="0" Variant="4000" />
+    <entity BaseHP="20" Group="Enemies" ID="767" Image="deliverance/bloodmind.png" Kind="Deliverance" Name="Bloodmind" Subtype="0" Variant="4000" />
 </data>

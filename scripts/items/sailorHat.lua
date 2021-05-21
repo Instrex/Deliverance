@@ -6,25 +6,20 @@ this.rusdescription ={"Sailor Hat /Матросская шляпа", "©+0.2 к скорости#Оставляе
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    --if not deliveranceData.temporary.hasSailorHat then
-    --  deliveranceData.temporary.hasSailorHat = true
-    --  deliveranceDataHandler.directSave()
       if flag == CacheFlag.CACHE_SPEED then
         player.MoveSpeed = player.MoveSpeed + 0.2
-      --[[elseif flag == CacheFlag.CACHE_TEARCOLOR then
-         player:AddNullCostume(deliveranceContent.costumes.sailorHat)--]]
       end
-    --end
   end
 end
 
 function this:onHitNPC(npc)
   local player = Isaac.GetPlayer(0)
-  if npc:IsVulnerableEnemy() and player:HasCollectible(this.id) then
+  if npc:IsVulnerableEnemy() and not npc:IsDead() and player:HasCollectible(this.id) then
     if math.random(1, 4-(math.min(player.Luck, 2))) == 2 then
       local creep = Isaac.Spawn(1000, 54, 0, npc.Position, vectorZero, player)
       if npc:IsBoss() then
-         creep.SpriteScale = Vector(2.6,2.6)
+         creep.SpriteScale = Vector(math.random(0,2),math.random(0,2))
+		 creep.CollisionDamage = (npc.MaxHitPoints/1000)
       else
          creep.SpriteScale = Vector(0.5+npc.MaxHitPoints / 60,0.5+npc.MaxHitPoints / 60)
       end

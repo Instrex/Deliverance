@@ -86,7 +86,7 @@ function this:behaviour(npc)
        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
        RCreep.SpriteScale = Vector(2.1,2.1) 
        RCreep:Update()
-       Isaac.Spawn(1000, 34, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 217, 2, 24)
+       Isaac.Spawn(1000, 16, 5, npc.Position, vectorZero, player)
        Game():ShakeScreen(16)
        npc:Remove()
     end
