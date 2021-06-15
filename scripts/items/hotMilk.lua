@@ -7,11 +7,6 @@ this.rusdescription ={"Hot Milk /Горячее молоко", "©+0.45 к урону#Урон от слез с
 function this:cache(player, flag)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    --if not deliveranceData.temporary.hasHotMilk then
-    --   deliveranceData.temporary.hasHotMilk = true
-    --   deliveranceDataHandler.directSave()
-    --end
---  if flag == CacheFlag.CACHE_TEARCOLOR then player.TearColor = Color(219, 231, 251, 1, 0, 0, 0) end
     if flag == CacheFlag.CACHE_DAMAGE then player.Damage = player.Damage + 0.45 end
   end
 end

@@ -170,6 +170,9 @@
 		<Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 		<Item Name="Beanborne" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	</Pool>
+	<Pool Name="woodenChest">
+	   <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
 	<Pool Name="rottenBeggar">
 	   <Item Name="Rotten Pork Chop" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	</Pool>

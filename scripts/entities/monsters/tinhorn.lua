@@ -6,7 +6,6 @@ function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
-  local data = npc:GetData()
   local room = game:GetRoom()
 
   if sprite:IsEventTriggered("ChangeColToNone") then

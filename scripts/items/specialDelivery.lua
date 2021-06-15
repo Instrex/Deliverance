@@ -84,7 +84,7 @@ function this:updatebox(npc)
              Isaac.Spawn(3, 73, 0, npc.Position, vectorZero, nil)
           end
        elseif data.typ == 2 then
-          local rand2 = math.random(1, 14)
+          local rand2 = math.random(1, 13)
           for i=1, 3 do
              Isaac.Spawn(EntityType.ENTITY_PICKUP, 70, rand2, npc.Position, Vector.FromAngle(i*120):Resized(5), nil)
           end

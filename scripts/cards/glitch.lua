@@ -22,9 +22,7 @@ end--]]
 
 function this:updateEffect(npc)
  if npc.Variant == this.effect then
-    local player = Isaac.GetPlayer(0)
     local sprite = npc:GetSprite()
-    local data = npc:GetData()
     sprite:Play("Idle")
     
     if sprite:IsFinished("Idle") then 
