@@ -62,15 +62,9 @@ function this:behaviour(npc)
    end
 end
 
---[[function this.trigger(id)
-  local player = Isaac.GetPlayer(0)
-     player:AddCoins(7)
-   end
-end--]]
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
-  --mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.trigger, EntityType.ENTITY_PLAYER)--
 end
 
 return this

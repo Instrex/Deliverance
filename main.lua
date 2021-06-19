@@ -146,11 +146,12 @@ deliveranceContent = {
     gappy                     = include('scripts.entities.monsters.gappy'),
     reaper                    = include('scripts.entities.monsters.reaper'),
     stonelet                  = include('scripts.entities.monsters.stonelet'),
-	  grilly                    = include('scripts.entities.monsters.grilly'),
-	  bloodmind                 = include('scripts.entities.monsters.bloodmind'),
+    grilly                    = include('scripts.entities.monsters.grilly'),
+    bloodmind                 = include('scripts.entities.monsters.bloodmind'),
     bloodmindspit             = include('scripts.entities.monsters.bloodmindspit'),
     --slider                    = include('scripts.entities.monsters.slider')
-	  fathopper 				        = include('scripts.entities.monsters.fathopper'),
+	fathopper 				        = include('scripts.entities.monsters.fathopper'),
+    goldkeeper 				        = include('scripts.entities.monsters.goldkeeper'),
   },
 
   challenges = {
