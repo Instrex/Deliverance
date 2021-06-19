@@ -36,7 +36,9 @@ local glitchedItems = {
     CollectibleType.COLLECTIBLE_GB_BUG,
     CollectibleType.COLLECTIBLE_DATAMINER,
     CollectibleType.COLLECTIBLE_CHAOS,
-    CollectibleType.COLLECTIBLE_UNDEFINED
+    CollectibleType.COLLECTIBLE_UNDEFINED,
+	CollectibleType.COLLECTIBLE_GLITCHED_CROWN,
+	CollectibleType.COLLECTIBLE_TMTRAINER
 }
 
 function this._calculateAbyssCardRate()
@@ -60,12 +62,12 @@ end
 
 function this.getCard(rng)
     -- Purely random card drops --
-    if utils.chancep(3) then
+    --[[if utils.chancep(3) then
         return deliveranceContent.cards.farewellStone.id
         
     elseif utils.chancep(3) then 
         return deliveranceContent.cards.firestorms.id 
-    end
+    end--]]
 
     -- Chance increases when you have 'glitched' items --
     if utils.chancep(this._calculateGlitchCardRate(Isaac.GetPlayer(0))) then 

@@ -24,7 +24,7 @@ function this:behaviour(npc)
   data.Position = data.Position or npc.Position
 
   -- Затем, если этот объект не имеет присвоенного индекса, задать его и загрузить данные(если имеются) --
-  if not data._index then 
+  if not data._index then
     data._index = npcPersistence.initEntity(npc)
   end
 
@@ -50,7 +50,7 @@ function this:behaviour(npc)
 
   -- Begin --
   if npc.State == NpcState.STATE_INIT then
-    npc:ClearEntityFlags(npc:GetEntityFlags()) 
+    npc:ClearEntityFlags(npc:GetEntityFlags())
     npc:AddEntityFlags(EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS)
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
     if player:GetActiveItem()~=0 then npc.State = 3 else npc.State = 2 end

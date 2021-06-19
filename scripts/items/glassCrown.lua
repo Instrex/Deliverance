@@ -1,12 +1,14 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Glass Crown")
 this.description = "Gives a bonus to stats that will decrease if the character takes damage#When receiving the third hit with this item, the crown breaks down"
-this.rusdescription ={"Glass Crown /—текл€нна€ корона", "ƒаЄт бонус к характеристикам котора€ будет уменьшатьс€ если персонаж получит урон#ƒает бонус к статистике, котора€ будет уменьшатьс€, если персонаж получит урон#ѕосле получени€ третьего удара с этим предметом, корона ломаетс€"}
+--this.rusdescription ={"Glass Crown /—текл€нна€ корона", "ƒаЄт бонус к характеристикам котора€ будет уменьшатьс€ если персонаж получит урон#ƒает бонус к статистике, котора€ будет уменьшатьс€, если персонаж получит урон#ѕосле получени€ третьего удара с этим предметом, корона ломаетс€"}
+local crown = Sprite()
+crown:Load("gfx/glassCrown.anm2", true)
 
 --add crown render later--
 
 
- local bonus = {
+local bonus = {
   speed = 0.15,
   damage = 0.85,
   luck = 1,
@@ -43,7 +45,7 @@ function this:cache(player, flag)
 end
 
 function this:trigger(player)
-  local player = Isaac.GetPlayer(0)
+  local player = Isaac.GetPlayer()
   if player:HasCollectible(this.id) then
   deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
 	if deliveranceData.temporary.glasscounter then
@@ -52,25 +54,42 @@ function this:trigger(player)
 	  player:EvaluateItems()
     deliveranceDataHandler.directSave()
 	end
-	if deliveranceData.temporary.glasscounter <= 0 then
+	
+	if crown:IsPlaying("Idle"..deliveranceData.temporary.glasscounter) then
+		print("play please")
+		crown:Play("Crack"..deliveranceData.temporary.glasscounter,true)
+	end
+	
+	if crown:IsFinished("Crack"..deliveranceData.temporary.glasscounter) then
+		crown:Play("Idle"..deliveranceData.temporary.glasscounter)
+	end
+	--[[if deliveranceData.temporary.glasscounter <= 0 then
 		player:RemoveCollectible(this.id)
 		deliveranceData.temporary.glasscounter = nil
-	end
+	end--]]
   end
 end
 
 function this:crownrender()
 	local player = Isaac.GetPlayer(0)
 	if player:HasCollectible(this.id) then
-		if crown ==nil then
-		crown = Sprite()
-		crown:Load("gfx/glassCrown.anm2", true)
-		crown:Play("Idle",true)
-	elseif crown then
-		crown:Update()
+		deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
+		
+		if deliveranceData.temporary.glasscounter == 0 then
+			crown:Play("CrackFinal",false)
+		else
+			crown:Play("Idle"..deliveranceData.temporary.glasscounter,false)
+		end
+		if (not Game():IsPaused()) and Isaac.GetFrameCount() % 2 == 0 then
+			crown:Update()
+		end
+		
+		if crown:IsFinished("CrackFinal") then
+			player:RemoveCollectible(this.id)
+			deliveranceData.temporary.glasscounter = nil
+		end
 	end
 	crown:Render(Isaac.WorldToScreen(player.Position + Vector(0, player.Size)), vectorZero,vectorZero)
-	end
 end
 --[[function this:updateFloor()
   local player = Isaac.GetPlayer(0)

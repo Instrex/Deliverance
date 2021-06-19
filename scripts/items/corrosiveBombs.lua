@@ -9,12 +9,11 @@ function this:cache(bomb)
 	local room = Game():GetRoom()
 	local bombsprite = bomb:GetSprite()
 	--update sprite--
-	if (bomb.Variant > 4 or bomb.Variant < 3) then
+	--[[if (bomb.Variant > 4 or bomb.Variant < 3) then
 		if bomb.FrameCount < 2 and bomb.Variant ~= 2 then
-			bombsprite:Load("gfx/items/effects/corrosive_bomb.anm2",true)
-			bombsprite:LoadGraphics()
+			bomb:Morph(bomb.Type,4000,0,false,false,true)
 		end
-	end
+	end--]]
 	--unlock doors--
 	for i = 0, 7 do
 		local door = room:GetDoor(i)
@@ -45,8 +44,21 @@ function this:cache(bomb)
 	  end
 	end
 end
+
+function this:morphbomb(bomb)
+  local player = Isaac.GetPlayer(0) 
+  if player:HasCollectible(this.id) then
+	--update sprite--
+	if (bomb.Variant > 4 or bomb.Variant < 3) then
+		if bomb.Variant ~= 2 then
+			bomb.Variant = 4000
+		end
+	end
+   end
+end
  
 function this.Init()
+  mod:AddCallback(ModCallbacks.MC_POST_BOMB_INIT,this.morphbomb)
   mod:AddCallback(ModCallbacks.MC_POST_BOMB_UPDATE, this.cache) 
 end
 

@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="04.11.2020 16:39:12" Version="129" Fps="45"/>
+	<Info CreatedBy="robot" CreatedOn="06.06.2021 19:56:43" Version="130" Fps="45"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="familiars\glasscrown.png" Id="0"/>
@@ -14,8 +14,8 @@
 			<Event Name="Explosion" Id="1"/>
 		</Events>
 	</Content>
-	<Animations DefaultAnimation="Idle">
-		<Animation Name="Idle" FrameNum="28" Loop="true">
+	<Animations DefaultAnimation="Idle3">
+		<Animation Name="Idle3" FrameNum="28" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -33,7 +33,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="Crack" FrameNum="27" Loop="false">
+		<Animation Name="Crack2" FrameNum="27" Loop="false">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 				<Frame XPosition="-2" YPosition="2" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
@@ -79,7 +79,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="Crack2" FrameNum="27" Loop="false">
+		<Animation Name="Crack1" FrameNum="27" Loop="false">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 				<Frame XPosition="-2" YPosition="2" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
@@ -107,7 +107,7 @@
 				<Trigger EventId="0" AtFrame="1"/>
 			</Triggers>
 		</Animation>
-		<Animation Name="Idle3" FrameNum="28" Loop="true">
+		<Animation Name="Idle1" FrameNum="28" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="1" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>

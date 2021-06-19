@@ -65,22 +65,22 @@ deliveranceContent = {
     encharmedPenny            = include('scripts.items.encharmedPenny'),
     obituary                  = include('scripts.items.obituary'),
     shamrockLeaf              = include('scripts.items.shamrockLeaf'),
-	mysteryBag                = include('scripts.items.mysteryBag'),
-	glassCrown                = include('scripts.items.glassCrown'),
+	  mysteryBag                = include('scripts.items.mysteryBag'),
+	  glassCrown                = include('scripts.items.glassCrown'),
     corrosiveBombs            = include('scripts.items.corrosiveBombs'),
-	yumRib                    = include('scripts.items.yumrib'),
-	discountBrochure          = include('scripts.items.discountBrochure')
+	  yumRib                    = include('scripts.items.yumrib')
   },
   
   trinkets = {
     uncertainty               = include('scripts.trinkets.uncertainty'),
     appleCore                 = include('scripts.trinkets.appleCore'),
     krampusHorn               = include('scripts.trinkets.krampusHorn'),
+    discountBrochure          = include('scripts.trinkets.discountBrochure'),
     darkLock                  = include('scripts.trinkets.darkLock'),
     specialPenny              = include('scripts.trinkets.specialPenny'),
     littleTransducer          = include('scripts.trinkets.littleTransducer'),
     extinguisher              = include('scripts.trinkets.extinguisher'),
-	bloatedcapacitor          = include('scripts.trinkets.bloatedcapacitor'),
+	  bloatedcapacitor          = include('scripts.trinkets.bloatedcapacitor'),
     gunPowder                 = include('scripts.trinkets.gunPowder'),
     pieceOfPaper              = include('scripts.trinkets.pieceOfPaper'),
     bottledBlood              = include('scripts.trinkets.bottledBlood'),
@@ -118,7 +118,7 @@ deliveranceContent = {
   entities = {
     persistent = {
       chestBoy                = include('scripts.entities.chestBoy'),
-	  cauldron                = include('scripts.entities.cauldron')
+	    cauldron                = include('scripts.entities.cauldron')
     },
 
     raga                      = include('scripts.entities.monsters.raga'),
@@ -141,36 +141,18 @@ deliveranceContent = {
     fistubomb                 = include('scripts.entities.monsters.fistubomb'),
     fistulauncher             = include('scripts.entities.monsters.fistulauncher'),
     lilbonydies               = include('scripts.entities.monsters.lilbonydies'),
-    rosenbergspit             = include('scripts.entities.monsters.rosenbergspit'),
+    --rosenbergspit             = include('scripts.entities.monsters.rosenbergspit'),
     creampile                 = include('scripts.entities.monsters.creampile'),
     gappy                     = include('scripts.entities.monsters.gappy'),
     reaper                    = include('scripts.entities.monsters.reaper'),
     stonelet                  = include('scripts.entities.monsters.stonelet'),
-	grilly                    = include('scripts.entities.monsters.grilly'),
-	bloodmind                 = include('scripts.entities.monsters.bloodmind'),
+	  grilly                    = include('scripts.entities.monsters.grilly'),
+	  bloodmind                 = include('scripts.entities.monsters.bloodmind'),
     bloodmindspit             = include('scripts.entities.monsters.bloodmindspit'),
     --slider                    = include('scripts.entities.monsters.slider')
-	fathopper 				  = include('scripts.entities.monsters.fathopper'),
-	goldkeeper			      = include('scripts.entities.monsters.goldkeeper')
+	  fathopper 				        = include('scripts.entities.monsters.fathopper'),
   },
 
-  costumes = {
-    noAutoload = true,
-
-    --sailorHat                 = utils.getCostume('sailorhat'),
-    --saltySoup                 = utils.getCostume('saltySoup'),
-    --gasoline                  = utils.getCostume('gasoline'),
-    --luckySaucer               = utils.getCostume('luckySaucer'),
-    --theCovenant               = utils.getCostume('theCovenant'),
-    --adamsRib                  = utils.getCostume('adamsRib'),
-    --hotmilk                   = utils.getCostume('hotmilk'),
-    --adamsRib2                 = utils.getCostume('adamsRib2')
-    --manuscript                = utils.getCostume('manuscript'),
-    --dangerRoom                = utils.getCostume('dangerRoom'),
-    --lawful                    = utils.getCostume('lawful'),
-    --momsEarrings              = utils.getCostume('momsEarrings')
-	  --obituary                  = utils.getCostume('obituary')
-  },
   challenges = {
 	shocktherapy =  include('scripts.challenges.shocktherapy')
   }

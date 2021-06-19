@@ -8,9 +8,9 @@
 	<item id="7" quality="1" tags="offensive"/> <!-- Shrink Ray -->
 	<item id="8" quality="2" tags="summonable offensive"/> <!-- Sailor Hat -->
 	<item id="9" quality="1" tags="nolostbr"/> <!-- D<3 -->
-	<item id="10" quality="2" tags="offensive summonable"/> <!-- Salty Soup -->
+	<item id="10" quality="2" tags="offensive summonable food"/> <!-- Salty Soup -->
 	<item id="11" quality="3" tags="summonable offensive"/> <!-- Gasoline -->
-	<item id="12" quality="2" tags="poop summonable offensive"/> <!-- Lucky Saucer -->
+	<item id="12" quality="2" tags="poop summonable offensive food"/> <!-- Lucky Saucer -->
 	<item id="13" quality="3" tags="offensive"/> <!-- Bloody Stream -->
 	<item id="14" quality="3" tags="summonable offensive"/> <!-- The Covenant -->
 	<item id="15" quality="3" tags="summonable offensive"/> <!-- Adam's Rib -->
