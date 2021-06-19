@@ -24,6 +24,7 @@
 	   <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Shamrock Leaf" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	   <Item Name="Yum Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+	   <Item Name="Discount Brochure" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Sister's Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

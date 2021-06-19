@@ -68,14 +68,14 @@ deliveranceContent = {
 	mysteryBag                = include('scripts.items.mysteryBag'),
 	glassCrown                = include('scripts.items.glassCrown'),
     corrosiveBombs            = include('scripts.items.corrosiveBombs'),
-	yumRib                    = include('scripts.items.yumrib')
+	yumRib                    = include('scripts.items.yumrib'),
+	discountBrochure          = include('scripts.items.discountBrochure')
   },
   
   trinkets = {
     uncertainty               = include('scripts.trinkets.uncertainty'),
     appleCore                 = include('scripts.trinkets.appleCore'),
     krampusHorn               = include('scripts.trinkets.krampusHorn'),
-    discountBrochure          = include('scripts.trinkets.discountBrochure'),
     darkLock                  = include('scripts.trinkets.darkLock'),
     specialPenny              = include('scripts.trinkets.specialPenny'),
     littleTransducer          = include('scripts.trinkets.littleTransducer'),
@@ -151,6 +151,7 @@ deliveranceContent = {
     bloodmindspit             = include('scripts.entities.monsters.bloodmindspit'),
     --slider                    = include('scripts.entities.monsters.slider')
 	fathopper 				  = include('scripts.entities.monsters.fathopper'),
+	goldkeeper			      = include('scripts.entities.monsters.goldkeeper')
   },
 
   costumes = {

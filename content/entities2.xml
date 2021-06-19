@@ -232,6 +232,10 @@
         <gibs amount="8" blood="1" bone="1" eye="0" gut="1" large="1" />
     </entity>
 	
+	<entity id="771" variant="4000" anm2path="goldkeeper.anm2" baseHP="35" boss="0" champion="1" collisionDamage="1" collisionMass="100" collisionRadius="8" friction="1" name="Golden Keeper" numGridCollisionPoints="12" shadowSize="20" stageHP="0">
+        <gibs amount="6" blood="0" bone="0" eye="0" gut="0" large="0" />
+    </entity>
+	
     <!-- Effects -->
     <entity id="1000" variant="4000" anm2path="effect_special_delivery_cursor.anm2" baseHP="0" boss="0" bossID = "0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Special Delivery Target" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
