@@ -1,6 +1,6 @@
 ﻿<items gfxroot="gfx/items/" version="1">
-  <active id="1" name="Sister's Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
-  <familiar id="2" name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
+  <active id="1" name="Cain's Lost Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
+  <familiar id="2" name="Arterial Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <active id="3" name="Special Delivery" description="Re-supply!" gfx="collectibles_special_delivery.png" maxcharges="4"/>
   <active id="4" name="Captain's Brooch" description="Creates a chest nearby" gfx="collectibles_capbrooch.png" maxcharges="6"/>
   <active id="5" name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="0"/>
@@ -48,14 +48,13 @@
  <!--  <active id="47" name="Equivalent Exchange" description="-" gfx="collectibles_EquivalentExchange.png" maxcharges="6"/> -->
   <active id="48" name="Smelly Pot" description="-" gfx="collectibles_smellyPot.png" maxcharges="6"/>
   <!-- <active id="49" name="Exchange Journal" description="-" gfx="-" maxcharges="6"/> -->
-  <passive id="49" name="Discount Brochure" description="Too awesome to miss!" gfx="collectibles_discountbrochure.png" />
   
  
 
   <trinket id="1" name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
   <trinket id="2" name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
   <trinket id="3" name="Dark Lock" description="Even darker rewards" gfx="trinket_darklock.png" />
-  <trinket id="4" name="Krampus' Horn" description="Cursed as always" gfx="trinket_krampus_horn.png" />
+  <trinket id="4" name="Krampus Horn" description="Cursed as always" gfx="trinket_krampus_horn.png" />
   <trinket id="5" name="Apple Core" description="Someone is eating, but someone has already ate.." gfx="trinket_appleCore.png" />
   <trinket id="6" name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
   <trinket id="7" name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />

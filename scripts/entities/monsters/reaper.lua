@@ -8,7 +8,7 @@ function this:updateEffect(npc)
     local sprite = npc:GetSprite()
     sprite:Play("Extra")
     
-    if sprite:IsFinished("Extra") then 
+    if sprite:IsFinished("Extra") then
       npc:Remove()
     end
   end

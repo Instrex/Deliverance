@@ -6,9 +6,7 @@ local this = {
 function this:behaviour(npc)
   if npc.Variant == this.variant then
 	local sprite = npc:GetSprite()
-	local data = npc:GetData()
 	local target = npc:GetPlayerTarget()
-	local room = game:GetRoom()
 	
    -- Пиздец --
     if npc.State == NpcState.STATE_INIT then
@@ -30,7 +28,8 @@ function this:behaviour(npc)
          npc.StateFrame = npc.StateFrame + Utils.choose(0, 1)
       end
       npc.StateFrame = npc.StateFrame + Utils.choose(0, 1)
-	  if npc.StateFrame >= 100 then
+	  print(npc.StateFrame)
+	  if npc.StateFrame > 100 and sprite:IsFinished("JumpDown") then
 		npc.State = NpcState.STATE_ATTACK
 	  end
       if npc.State == NpcState.STATE_ATTACK then
@@ -55,9 +54,9 @@ function this:behaviour(npc)
 		npc:PlaySound(427, 1, 0, false, 2)
 		Isaac.Spawn(1000, 357, 0, npc.Position, Vector(0,0), npc)
 		for i=0, 6, 2 do
-		  Isaac.Spawn(1000, 97, 0, npc.Position, vectorZero, player)
+		  Isaac.Spawn(1000, 97, 0, npc.Position, vectorZero, npc)
 	      Game():SpawnParticles(npc.Position, 95, 10, i, Color(1.1,1,1,1,0,0,0), -50)
-		end	
+		end
 	  end
    end
 end

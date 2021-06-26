@@ -25,8 +25,8 @@ deliveranceData = {
 -- Register mod content here --
 deliveranceContent = {
   items = {
-    sistersKey                = include('scripts.items.sistersKey'),
-    sistersHeart              = include('scripts.items.familiars.sistersHeart'),
+    cainsKey                  = include('scripts.items.cainsKey'),
+    arterialHeart             = include('scripts.items.familiars.arterialHeart'),
     specialDelivery           = include('scripts.items.specialDelivery'),
     capBrooch                 = include('scripts.items.captainsBrooch'),
     theApple                  = include('scripts.items.theApple'),
@@ -65,10 +65,10 @@ deliveranceContent = {
     encharmedPenny            = include('scripts.items.encharmedPenny'),
     obituary                  = include('scripts.items.obituary'),
     shamrockLeaf              = include('scripts.items.shamrockLeaf'),
-	  mysteryBag                = include('scripts.items.mysteryBag'),
-	  glassCrown                = include('scripts.items.glassCrown'),
+	mysteryBag                = include('scripts.items.mysteryBag'),
+	glassCrown                = include('scripts.items.glassCrown'),
     corrosiveBombs            = include('scripts.items.corrosiveBombs'),
-	  yumRib                    = include('scripts.items.yumrib')
+	yumRib                    = include('scripts.items.yumrib')
   },
   
   trinkets = {
@@ -80,7 +80,7 @@ deliveranceContent = {
     specialPenny              = include('scripts.trinkets.specialPenny'),
     littleTransducer          = include('scripts.trinkets.littleTransducer'),
     extinguisher              = include('scripts.trinkets.extinguisher'),
-	  bloatedcapacitor          = include('scripts.trinkets.bloatedcapacitor'),
+	bloatedcapacitor          = include('scripts.trinkets.bloatedcapacitor'),
     gunPowder                 = include('scripts.trinkets.gunPowder'),
     pieceOfPaper              = include('scripts.trinkets.pieceOfPaper'),
     bottledBlood              = include('scripts.trinkets.bottledBlood'),
@@ -174,7 +174,7 @@ local coh = include('scripts.customOverHandler')
 local dss = include('scripts.deadseascrolls')
 local logs = include('scripts.changelogs')
 pd = include('scripts.progressdata')
---local encyclopedia = include('scripts.encyclopedia')
+--local encyclopedia = include('scripts.encyclopedia') descriptions support are crap
 eid.init()
 
 for type, r in pairs(deliveranceContent) do

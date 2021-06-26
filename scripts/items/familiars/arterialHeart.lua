@@ -1,8 +1,8 @@
 local this = {}
-this.id = Isaac.GetItemIdByName("Sister's Heart")
-this.variant = Isaac.GetEntityVariantByName("Sister's Heart")
+this.id = Isaac.GetItemIdByName("Arterial Heart")
+this.variant = Isaac.GetEntityVariantByName("Arterial Heart")
 this.description = "Shoots tear in different directions, increases the firerate when you are low on health"
-this.rusdescription ={"Sister's Heart /—естринское сердце", "—трел€ет кровавыми слезами в разных направлени€х, увеличива€ скорострельность когда у вас остаЄтс€ мало здоровь€"}
+this.rusdescription ={"Arterial Heart /јртериальное  сердце", "—трел€ет кровавыми слезами в разных направлени€х, увеличива€ скорострельность когда у вас остаЄтс€ мало здоровь€"}
 
 function this.checkEnemies()
   local count = 0
@@ -18,13 +18,13 @@ function this:behaviour(fam)
   local player = Isaac.GetPlayer(0)
   local data = fam:GetData()
 
-  if player:GetPlayerType() == PlayerType.PLAYER_XXX then  
+  if player:GetPlayerType() == PlayerType.PLAYER_XXX or player:GetPlayerType() == PlayerType.PLAYER_XXX_B or player:GetPlayerType() == PlayerType.PLAYER_BETHANY_B then
     sprite:ReplaceSpritesheet(1,"gfx/familiars/familiar_itlives2.png")
     sprite:LoadGraphics()
-  elseif player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then  
+  elseif player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN or player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN_B then
     sprite:ReplaceSpritesheet(1,"gfx/familiars/familiar_itlives3.png")
     sprite:LoadGraphics()
-  else  
+  else
     sprite:ReplaceSpritesheet(1,"gfx/familiars/familiar_itlives.png")
     sprite:LoadGraphics()
   end

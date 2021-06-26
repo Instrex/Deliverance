@@ -4,7 +4,6 @@ this.description = "\1 Tears up#Slightly higher chance to miss"
 this.rusdescription ={"Salty Soup /Пересоленная похлёбка", "©Увеличивает скорострельность#Шанс промахнуться немного выше"}
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
       if flag == CacheFlag.CACHE_SPEED then player.MoveSpeed = player.MoveSpeed - 0.09
       elseif flag == CacheFlag.CACHE_FIREDELAY then player.MaxFireDelay = Utils.tearsUp(player.MaxFireDelay,0.70)

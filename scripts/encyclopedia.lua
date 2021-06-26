@@ -2,14 +2,14 @@ local this = {}
 if Encyclopedia then
 	local items = {
 		{
-			id = deliveranceContent.items.sistersKey.id,
+			id = deliveranceContent.items.cainsKey.id,
 			Pools = { 
 				Encyclopedia.ItemPools.POOL_SHOP,
 				Encyclopedia.ItemPools.POOL_GREED_SHOP,
 			}
 		},
 		{
-			id = deliveranceContent.items.sistersHeart.id,
+			id = deliveranceContent.items.arterialHeart.id,
 			Pools = { 
 				Encyclopedia.ItemPools.POOL_DEVIL,
 				Encyclopedia.ItemPools.POOL_GREED_DEVIL,
@@ -117,13 +117,202 @@ if Encyclopedia then
 				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
 			}
 		},
+		{
+			id = deliveranceContent.items.hotMilk.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.battleRoyale.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.sage.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.rottenPorkChop.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.lilTummy.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.scaredyShroom.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.drMedicine.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.manuscript.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.roundBattery.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.airStrike.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.lawful.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.bileKnight.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.dangerRoom.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.theThreater.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.beanborne.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.theDivider.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.sinisterChalk.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.momsEarrings.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.timeGal.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.silverBar.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.urnOfWant.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.encharmedPenny.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.obituary.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.shamrockLeaf.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.mysteryBag.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.corrosiveBombs.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
+		{
+			id = deliveranceContent.items.yumRib.id,
+			Pools = { 
+				Encyclopedia.ItemPools.POOL_ANGEL,
+				Encyclopedia.ItemPools.POOL_GREED_ANGEL,
+			}
+		},
 	}
 	
 	for _,item in ipairs(items) do
 		Encyclopedia.AddItem({
 			Class = "Deliverance",
 			ID = item.id,
-			--WikiDesc = Encyclopedia.EIDtoWiki(__eidItemDescriptions[ID]),
+			WikiDesc = Encyclopedia.EIDtoWiki(__eidItemDescriptions[item.id]),
 			Pools = item.Pools
 		})
 	end

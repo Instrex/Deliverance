@@ -1,15 +1,17 @@
 local this = {}
-this.id = Isaac.GetItemIdByName("Sister's Key")
+this.id = Isaac.GetItemIdByName("Cain's Lost Key")
 this.description = "Opens all chests in the room"
-this.rusdescription ={"Sister's Key /Сестринский ключ", "Открывает все сундуки в комнате"}
+this.rusdescription ={"Cain's Lost Key /РџРѕС‚РµСЂСЏРЅРЅС‹Р№ РєР»СЋС‡ РљР°РёРЅР°", "РћС‚РєСЂС‹РІР°РµС‚ РІСЃРµ СЃСѓРЅРґСѓРєРё РІ РєРѕРјРЅР°С‚Рµ"}
 this.isActive = true
 
 function this.use()
   sfx:Play(SoundEffect.SOUND_ULTRA_GREED_COIN_DESTROY, 0.8, 0, false, 1)
-  for e, entity in pairs(Isaac.GetRoomEntities()) do
+  for _, entity in pairs(Isaac.GetRoomEntities()) do
     if entity.Type == EntityType.ENTITY_PICKUP then
       if entity.Variant == PickupVariant.PICKUP_LOCKEDCHEST or entity.Variant == PickupVariant.PICKUP_CHEST or entity.Variant == PickupVariant.PICKUP_SPIKEDCHEST 
-      or entity.Variant == PickupVariant.PICKUP_ETERNALCHEST or entity.Variant == PickupVariant.PICKUP_REDCHEST or entity.Variant == PickupVariant.PICKUP_BOMBCHEST then
+      or entity.Variant == PickupVariant.PICKUP_ETERNALCHEST or entity.Variant == PickupVariant.PICKUP_REDCHEST or entity.Variant == PickupVariant.PICKUP_BOMBCHEST 
+      or entity.Variant == PickupVariant.PICKUP_MIMICCHEST or entity.Variant == PickupVariant.PICKUP_OLDCHEST or entity.Variant == PickupVariant.PICKUP_WOODENCHEST
+      or entity.Variant == PickupVariant.PICKUP_MEGACHEST or entity.Variant == PickupVariant.PICKUP_HAUNTEDCHEST then
         --if entity.SubType ~= ChestSubType.CHEST_CLOSED then
            entity:ToPickup():TryOpenChest()
         --end

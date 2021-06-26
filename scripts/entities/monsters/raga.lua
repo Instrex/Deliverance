@@ -70,9 +70,14 @@ function this:behaviour(npc)
     end
 
     if sprite:IsEventTriggered("Fire") then
-       local params = ProjectileParams() 
+       local params = ProjectileParams()
        params.Variant = 2
        params.Scale = Utils.choose(0.8, 1, 1.2)
+
+       local color = Color(1,1,1,1,0,0,0)
+       color:SetColorize(1,1,1,1)
+       color:SetOffset(0.5,0,0.5,1)
+       params.Color = color
 
        local velocity = Vector(Utils.choose(math.random(-4, -1), math.random(1, 4)), Utils.choose(math.random(-4, -1), math.random(1, 4))):Rotated(math.random(-30, 30))
        npc:FireProjectiles(Vector(npc.Position.X,npc.Position.Y+25), velocity, 0, params)
@@ -97,7 +102,7 @@ end
 
 function this:die(npc)
  if npc.Variant == this.variant then
-    Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 1, 90/255, 0, 90/255)
+    Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc).Color = Color(0, 0, 0, 1, 90/255, 0, 90/255)
  end
 end
 

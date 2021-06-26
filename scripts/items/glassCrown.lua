@@ -1,12 +1,9 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Glass Crown")
-this.description = "Gives a bonus to stats that will decrease if the character takes damage#When receiving the third hit with this item, the crown breaks down"
---this.rusdescription ={"Glass Crown /Стеклянная корона", "Даёт бонус к характеристикам которая будет уменьшаться если персонаж получит урон#Дает бонус к статистике, которая будет уменьшаться, если персонаж получит урон#После получения третьего удара с этим предметом, корона ломается"}
+this.description = "Gives a bonus to stats that will decrease if the character takes damage#Receiving the third hit will destroy this item"
+--this.rusdescription ={"Glass Crown /пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ#пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ#пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"}
 local crown = Sprite()
 crown:Load("gfx/glassCrown.anm2", true)
-
---add crown render later--
-
 
 local bonus = {
   speed = 0.15,
@@ -14,7 +11,7 @@ local bonus = {
   luck = 1,
   range = 0.25,
   shotspeed = 0.10,
-  tears = 1
+  tears = 0.35
 }
 
 function this:update(continue)
@@ -31,7 +28,6 @@ function this:update(continue)
 end
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
 	deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
     if 	   flag == CacheFlag.CACHE_SPEED     then player.MoveSpeed = player.MoveSpeed + (bonus.speed * deliveranceData.temporary.glasscounter)
@@ -39,12 +35,12 @@ function this:cache(player, flag)
 	elseif flag == CacheFlag.CACHE_LUCK      then player.Luck = player.Luck + (bonus.luck * deliveranceData.temporary.glasscounter)
 	elseif flag == CacheFlag.CACHE_RANGE     then player.TearHeight = player.TearHeight - (bonus.range * deliveranceData.temporary.glasscounter)
 	elseif flag == CacheFlag.CACHE_SHOTSPEED then player.ShotSpeed = player.ShotSpeed + (bonus.shotspeed * deliveranceData.temporary.glasscounter)
-	elseif flag == CacheFlag.CACHE_FIREDELAY then player.MaxFireDelay = player.MaxFireDelay - (bonus.tears * deliveranceData.temporary.glasscounter)
+	elseif flag == CacheFlag.CACHE_FIREDELAY then player.MaxFireDelay =  Utils.tearsUp(player.MaxFireDelay,bonus.tears * deliveranceData.temporary.glasscounter)
 	  end
   end
 end
 
-function this:trigger(player)
+function this:trigger()
   local player = Isaac.GetPlayer()
   if player:HasCollectible(this.id) then
   deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
@@ -55,10 +51,8 @@ function this:trigger(player)
     deliveranceDataHandler.directSave()
 	end
 	
-	if crown:IsPlaying("Idle"..deliveranceData.temporary.glasscounter) then
 		print("play please")
-		crown:Play("Crack"..deliveranceData.temporary.glasscounter,true)
-	end
+		crown:Play("Crack"..deliveranceData.temporary.glasscounter,false)
 	
 	if crown:IsFinished("Crack"..deliveranceData.temporary.glasscounter) then
 		crown:Play("Idle"..deliveranceData.temporary.glasscounter)
@@ -72,13 +66,17 @@ end
 
 function this:crownrender()
 	local player = Isaac.GetPlayer(0)
-	if player:HasCollectible(this.id) then
+	local room = game:GetRoom()
+	if player:HasCollectible(this.id) and not (room:GetFrameCount() == 0 and room:GetType() == RoomType.ROOM_BOSS and not room:IsClear()) and not player:IsDead() then
+		crown:Render(Isaac.WorldToScreen(player.Position + Vector(0, player.Size)), Vector.Zero,Vector.Zero)
 		deliveranceData.temporary.glasscounter = deliveranceData.temporary.glasscounter or 3
 		
 		if deliveranceData.temporary.glasscounter == 0 then
 			crown:Play("CrackFinal",false)
 		else
-			crown:Play("Idle"..deliveranceData.temporary.glasscounter,false)
+			if not crown:IsPlaying("Crack"..deliveranceData.temporary.glasscounter) then
+				crown:Play("Idle"..deliveranceData.temporary.glasscounter,false)
+			end
 		end
 		if (not Game():IsPaused()) and Isaac.GetFrameCount() % 2 == 0 then
 			crown:Update()
@@ -89,7 +87,6 @@ function this:crownrender()
 			deliveranceData.temporary.glasscounter = nil
 		end
 	end
-	crown:Render(Isaac.WorldToScreen(player.Position + Vector(0, player.Size)), vectorZero,vectorZero)
 end
 --[[function this:updateFloor()
   local player = Isaac.GetPlayer(0)
@@ -110,5 +107,5 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.trigger, EntityType.ENTITY_PLAYER)
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.crownrender)
 end
-  
+
 return this

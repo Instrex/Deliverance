@@ -42,17 +42,17 @@ local glitchedItems = {
 }
 
 function this._calculateAbyssCardRate()
-    if not deliveranceData.temporary.abyssCard then 
-        return 3
+    if not deliveranceData.temporary.abyssCard then
+        return 1.2
     else 
-        return 3 + math.min(20, (#deliveranceData.temporary.abyssCard * 2))
+        return 1.2 + math.min(20, (#deliveranceData.temporary.abyssCard * 2))
     end
 end
 
 function this._calculateGlitchCardRate(player)
-    local base = 3
+    local base = 1.2
     for _, item in pairs(glitchedItems)do
-        if player:HasCollectible(item) then 
+        if player:HasCollectible(item) then
             base = base * 2.5
         end
     end
@@ -70,12 +70,12 @@ function this.getCard(rng)
     end--]]
 
     -- Chance increases when you have 'glitched' items --
-    if utils.chancep(this._calculateGlitchCardRate(Isaac.GetPlayer(0))) then 
+    if utils.chancep(this._calculateGlitchCardRate(Isaac.GetPlayer())) then
         return deliveranceContent.cards.glitch.id
     end
     
     -- Chance increases the more you have consumed cards --
-    if utils.chancep(this._calculateAbyssCardRate()) then 
+    if utils.chancep(this._calculateAbyssCardRate()) then
         return deliveranceContent.cards.abyss.id
     end
 end

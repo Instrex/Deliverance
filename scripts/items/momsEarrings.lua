@@ -6,7 +6,6 @@ this.rusdescription ={"Mom's Earrings /Мамины серёжки", "Увеличивает ваш урон пр
 this.damageBonus = 0
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
       if flag == CacheFlag.CACHE_DAMAGE then
 	 player.Damage = player.Damage * this.damageBonus end
@@ -22,7 +21,6 @@ function this.checkForEnemies()
 end
 
 function this:update(player)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
     this.damageBonus = 1+this.checkForEnemies()*0.033
     player:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
