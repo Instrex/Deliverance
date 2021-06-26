@@ -5,12 +5,10 @@ local this = {
 }
 function this:updateEffect(npc)
  if npc.Variant == this.effect then
-    local player = Isaac.GetPlayer(0)
     local sprite = npc:GetSprite()
-    local data = npc:GetData()
     sprite:Play("Extra")
     
-    if sprite:IsFinished("Extra") then 
+    if sprite:IsFinished("Extra") then
       npc:Remove()
     end
   end

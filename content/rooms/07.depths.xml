@@ -2931,7 +2931,7 @@
 	</room>
 	<room variant="9030" name="New Room (copy)" type="1" subtype="0" shape="1" width="13" height="7" difficulty="10" weight="1.0">
 		<door exists="False" x="-1" y="3"/>
-		<door exists="True" x="6" y="-1"/>
+		<door exists="False" x="6" y="-1"/>
 		<door exists="True" x="6" y="7"/>
 		<door exists="True" x="13" y="3"/>
 		<spawn x="5" y="0">

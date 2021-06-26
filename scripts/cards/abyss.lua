@@ -2,6 +2,10 @@ local this = {}
 this.id = Isaac.GetCardIdByName("Abyss")
 this.description = "Consumes all the cards and drops itself#Will trigger the effect of all consumed cards if used in a room without any cards#\3Will reset all the effects upon use"
 this.rusdescription ={"Abyss /Бездна", "Втягивает в себя все карты и падает на пол#Вызовет эффекты всех втянутых карт если использована в комнате без карт#Сбросит все эффекты при использовании"}
+this.cardobjects = {
+    [Card.CARD_DICE_SHARD] = true,
+    [Card.CARD_CRACKED_KEY] = true
+}
 
 function this.cardCallback()
     deliveranceData.temporary.abyssCard = deliveranceData.temporary.abyssCard or {}
@@ -9,14 +13,14 @@ function this.cardCallback()
     local void = false
     for _, card in pairs(Isaac.GetRoomEntities()) do
         if card.SubType ~= this.id and not utils.contains(deliveranceData.temporary.abyssCard, card.SubType) and 
-        card.Type == EntityType.ENTITY_PICKUP and card.Variant == PickupVariant.PICKUP_TAROTCARD then
+        card.Type == EntityType.ENTITY_PICKUP and card.Variant == PickupVariant.PICKUP_TAROTCARD and not this.cardobjects[card.SubType] then
             table.insert(deliveranceData.temporary.abyssCard, card.SubType)
             card:Remove()
             void = true
         end
     end
 
-    if not void then 
+    if not void then
         local player = Isaac.GetPlayer(0)
         for _, card in pairs(deliveranceData.temporary.abyssCard) do
             player:UseCard(card)

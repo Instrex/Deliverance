@@ -55,7 +55,7 @@ function this:Update()
             this.backTimer3=30*deliveranceData.temporary.dangerBarUsed
             deliveranceData.temporary.dangerBar=0
             deliveranceData.temporary.dangerBarUsed=deliveranceData.temporary.dangerBarUsed+1
-            deliveranceDataHandler.directSave() 
+            deliveranceDataHandler.directSave()
          end
       end
       if this.backTimer3>0 then this.backTimer3=this.backTimer3-1 end
@@ -66,6 +66,11 @@ local DangerBar = Sprite() DangerBar:Load("gfx/ui/dangerRoom_bar.anm2", true)
 function this:onRender()
    local player = Isaac.GetPlayer(0)
    local room = game:GetRoom()
+
+	if room:GetFrameCount() == 0 and room:GetType() == RoomType.ROOM_BOSS and not room:IsClear() then
+		return
+   end
+
    if player:HasCollectible(this.id) then
       if deliveranceData.temporary.dangerBar~=nil and deliveranceData.temporary.dangerBar>0 and not player:IsDead() then
          local pos = room:WorldToScreenPosition(player.Position)

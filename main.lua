@@ -4,7 +4,7 @@ sfx = SFXManager()
 vectorZero = Vector(0,0)
 delivRNG = RNG()
 
-deliveranceVersion = "2.5.5"
+deliveranceVersion = "2.5.6"
 
 utils = include ('scripts.utils')
 include ('scripts.enumerations')
@@ -25,8 +25,8 @@ deliveranceData = {
 -- Register mod content here --
 deliveranceContent = {
   items = {
-    sistersKey                = include('scripts.items.sistersKey'),
-    sistersHeart              = include('scripts.items.familiars.sistersHeart'),
+    cainsKey                  = include('scripts.items.cainsKey'),
+    arterialHeart             = include('scripts.items.familiars.arterialHeart'),
     specialDelivery           = include('scripts.items.specialDelivery'),
     capBrooch                 = include('scripts.items.captainsBrooch'),
     theApple                  = include('scripts.items.theApple'),
@@ -66,6 +66,7 @@ deliveranceContent = {
     obituary                  = include('scripts.items.obituary'),
     shamrockLeaf              = include('scripts.items.shamrockLeaf'),
 	mysteryBag                = include('scripts.items.mysteryBag'),
+	glassCrown                = include('scripts.items.glassCrown'),
     corrosiveBombs            = include('scripts.items.corrosiveBombs'),
 	yumRib                    = include('scripts.items.yumrib')
   },
@@ -128,34 +129,16 @@ deliveranceContent = {
     fistubomb                 = include('scripts.entities.monsters.fistubomb'),
     fistulauncher             = include('scripts.entities.monsters.fistulauncher'),
     lilbonydies               = include('scripts.entities.monsters.lilbonydies'),
-    rosenbergspit             = include('scripts.entities.monsters.rosenbergspit'),
+    --rosenbergspit             = include('scripts.entities.monsters.rosenbergspit'),
     creampile                 = include('scripts.entities.monsters.creampile'),
     gappy                     = include('scripts.entities.monsters.gappy'),
     reaper                    = include('scripts.entities.monsters.reaper'),
     stonelet                  = include('scripts.entities.monsters.stonelet'),
-	grilly                    = include('scripts.entities.monsters.grilly'),
-	bloodmind                 = include('scripts.entities.monsters.bloodmind'),
+    grilly                    = include('scripts.entities.monsters.grilly'),
+    bloodmind                 = include('scripts.entities.monsters.bloodmind'),
     bloodmindspit             = include('scripts.entities.monsters.bloodmindspit'),
     --slider                    = include('scripts.entities.monsters.slider')
   },
-
-  costumes = {
-    noAutoload = true,
-
-    --sailorHat                 = utils.getCostume('sailorhat'),
-    --saltySoup                 = utils.getCostume('saltySoup'),
-    --gasoline                  = utils.getCostume('gasoline'),
-    --luckySaucer               = utils.getCostume('luckySaucer'),
-    --theCovenant               = utils.getCostume('theCovenant'),
-    --adamsRib                  = utils.getCostume('adamsRib'),
-    --hotmilk                   = utils.getCostume('hotmilk'),
-    --adamsRib2                 = utils.getCostume('adamsRib2')
-    --manuscript                = utils.getCostume('manuscript'),
-    --dangerRoom                = utils.getCostume('dangerRoom'),
-    --lawful                    = utils.getCostume('lawful'),
-    --momsEarrings              = utils.getCostume('momsEarrings')
-	--obituary                  = utils.getCostume('obituary')
-  }
 }
 
 deliveranceDataHandler = include('scripts.deliveranceDataHandler')
@@ -169,6 +152,11 @@ cardHandler.init(deliveranceContent.cards)
 
 -- Content Initialization --
 local eid = include('scripts.eidHandler')
+--local coh = include('scripts.customOverHandler')
+--local dss = include('scripts.deadseascrolls') for confings
+--local logs = include('scripts.changelogs') and logs
+--pd = include('scripts.progressdata') unlockables
+--local encyclopedia = include('scripts.encyclopedia') descriptions support are crap
 eid.init()
 
 for type, r in pairs(deliveranceContent) do

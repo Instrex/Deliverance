@@ -6,7 +6,6 @@ this.rusdescription ={"Obituary /Некролог", "Дает огромный, временный бонус при 
 this.superObituaryBonus=1
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
  if flag == CacheFlag.CACHE_DAMAGE then
   if deliveranceData.temporary.damageBonus~=nil then
@@ -28,7 +27,6 @@ end
 end--]]
 
 function this:update(player)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
     if this.superObituaryBonus>1 then this.superObituaryBonus=this.superObituaryBonus-0.05 else this.superObituaryBonus=1 end
     if deliveranceData.temporary.damageBonus==nil then

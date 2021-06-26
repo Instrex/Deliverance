@@ -1,0 +1,28 @@
+<bombcostumes anm2root="gfx/items/pick ups/bombs/">
+<!--
+	Rules are evaluated from top to bottom. A rule will only trigger if all of its conditions are true.
+	
+	Conditions:
+		- includeFlags: True if all provided flags are set
+		- excludeFlags: True if none of the provided flags are set
+	Layers (in rendering order):
+		- back
+		- body
+		- body2
+		- front
+		- front2
+		- overlay
+	GFX suffixes:
+		- suffix
+		- suffix2
+-->
+	<bomb variant="4000"> <!-- Corrosive bomb (since i have no idea how to add and attach non-vanilla flag) -->
+		<rule body="corrosive.anm2" />
+		
+		<rule includeFlags="125" suffix2="_gold" />
+		
+		<rule includeFlags="22" back="flame.anm2" />
+		<rule includeFlags="35" overlay="glitter_sparkle.anm2" />
+	</bomb>
+</bombcostumes>
+

@@ -1,8 +1,8 @@
 <pocketitems>
   <card type="special" name="Farewell Stone" description="What do you have that I cannot obtain?" pickup="4000" mimiccharge="6" hud="FarewellStone"/>
   <card type="special" name="Firestorms" description="Feed your anger like fire" pickup="4001" hud="Firestorms" mimiccharge="4"/>
-  <card type="special" name="Gl1tch" description="Distortion is getting bigger..." pickup="4002" hud="Glitch" mimiccharge="12"/>
-  <card type="special" name="Abyss" description="Zero, holding an infinite potential" pickup="4003" hud="Abyss" mimiccharge="6"/>
+  <card name="Gl1tch" description="Distortion is getting bigger..." pickup="4002" hud="Glitch" mimiccharge="12"/>
+  <card name="Abyss" description="Zero, holding an infinite potential" pickup="4003" hud="Abyss" mimiccharge="6"/>
 
   <pilleffect name="Dissociative Reaction" class="2" mimiccharge="6" />
 </pocketitems>

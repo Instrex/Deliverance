@@ -3,13 +3,13 @@ local this = {
     subtype = 4000
 }
 
--- MC_PRE_PICKUP_COLLISION 
+-- MC_PRE_PICKUP_COLLISION
 function this:collision(pickup, collider, low)
     if collider.Type == 1 and pickup.SubType == this.subtype then
 	  collider = collider:ToPlayer()
       local sprite = pickup:GetSprite()
       if (sprite:IsPlaying("Idle") or (sprite:IsPlaying("Appear") and sprite:WasEventTriggered("DropSound"))) and collider:CanPickRedHearts() then
-		collider:UseActiveItem(58,false,false,false,false)
+		collider:UseActiveItem(58,false)
         collider:AddHearts(20)
         sprite:Play("Collect")
         pickup.EntityCollisionClass = 0
@@ -24,9 +24,7 @@ function this:collision(pickup, collider, low)
 end
 
 function this:updateHeart(pickup)
-  local player = Isaac.GetPlayer(0)
-  local room = game:GetRoom()
-  if pickup.Variant == this.variant and pickup.SubType == this.subtype then 
+  if pickup.Variant == this.variant and pickup.SubType == this.subtype then
     if pickup:GetSprite():IsFinished("Collect") then
       pickup:Remove()
      end

@@ -7,7 +7,6 @@ function this:behaviour(npc)
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
-  local room = game:GetRoom()
 
   if sprite:IsEventTriggered("ChangeColToAll") then
      npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY 
@@ -17,7 +16,7 @@ function this:behaviour(npc)
   if npc.State == NpcState.STATE_INIT then
     npc.State = NpcState.STATE_IDLE
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
-    npc.GridCollisionClass = GridCollisionClass.COLLISION_NONE 
+    npc.GridCollisionClass = GridCollisionClass.COLLISION_NONE
     npc:ClearEntityFlags(EntityFlag.FLAG_APPEAR)
  
     

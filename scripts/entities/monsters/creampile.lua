@@ -7,10 +7,6 @@ function this:behaviour(npc)
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
-  local room = game:GetRoom()
-
-  local level = game:GetLevel()
-  local stage = level:GetStage()
 
   if data.hits == nil then data.hits = 1 end
   if data.creampileSet == nil then data.creampileSet = Utils.choose(0, 1, 2, 3, 4, 5) end

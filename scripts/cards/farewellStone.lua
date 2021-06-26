@@ -7,7 +7,7 @@ function this:cardCallback(cardId)
     local player = Isaac.GetPlayer()
 	local hearts = player:GetMaxHearts()
 	if player:GetPlayerType() == PlayerType.PLAYER_BETHANY then
-		player:AddMaxHearts(1 - hearts)
+		player:AddMaxHearts(2 - hearts)
 	else
 		player:AddMaxHearts(0 - hearts)
 	end

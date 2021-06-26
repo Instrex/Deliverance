@@ -158,4 +158,9 @@ function string:split(sep)
   return fields
 end
 
+function Utils.tearsUp(firedelay, val)
+    local currentTears = 30 / (firedelay + 1)
+    local newTears = currentTears + val
+    return math.max((30 / newTears) - 1, -0.99)
+end
 return Utils

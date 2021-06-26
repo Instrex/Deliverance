@@ -5,7 +5,6 @@ this.rusdescription ={"D<3", "Превращает все подбираемые предметы в разнообразны
 this.isActive = true
 
 function this.use()
-  local player = Isaac.GetPlayer(0)
   sfx:Play(SoundEffect.SOUND_DEATH_CARD , 0.8, 0, false, 1)
   for _, e in pairs(Isaac:GetRoomEntities()) do
     local pickup = e:ToPickup()

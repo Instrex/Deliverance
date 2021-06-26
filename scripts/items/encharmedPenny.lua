@@ -12,14 +12,6 @@ this.blacklist = {
    [EntityType.ENTITY_BRIMSTONE_HEAD] = true,
    [765] = true
 }
-
-function this.checkEnemies()
-   local count = 0
-   for _, e in pairs(Isaac.GetRoomEntities()) do
-     if e:GetData().encharmed then count = count + 1 end
-   end
-   return count
- end
  
 function this:update(entity)
     local data = entity:GetData()
@@ -39,18 +31,18 @@ function this:updateRoom()
    local room = game:GetRoom()
    local player = Isaac.GetPlayer(0)
    if player:HasCollectible(this.id) then
-     if room:IsFirstVisit() and not room:IsClear() then 
+     if room:IsFirstVisit() and not room:IsClear() then
         local enemies = {}
         local et = nil
         for _, entity in pairs(Isaac.GetRoomEntities()) do
-           if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:IsBoss() and not this.blacklist[entity.Type] and this.checkEnemies()<=4 then
+           if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:IsBoss() and not this.blacklist[entity.Type] then
               table.insert(enemies,entity)
               et = enemies[math.random(#enemies)]
            end
         end
         if et~=nil then
            if math.random(1, 4-(math.min(player.Luck, 3))) == 1 then
-	      et:AddCharmed(-1)
+	      et:AddCharmed(EntityRef(player),-1)
 	      et:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
            end
         end

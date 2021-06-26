@@ -1,6 +1,6 @@
 ﻿<items gfxroot="gfx/items/" version="1">
-  <active id="1" name="Sister's Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
-  <familiar id="2" name="Sister's Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
+  <active id="1" name="Cain's Lost Key" description="Open your treasure!" gfx="collectibles_sisterskey.png" maxcharges="4"/>
+  <familiar id="2" name="Arterial Heart" devilprice="2" description="Still loving, still caring" gfx="collectibles_sistersheart.png"/>
   <active id="3" name="Special Delivery" description="Re-supply!" gfx="collectibles_special_delivery.png" maxcharges="4"/>
   <active id="4" name="Captain's Brooch" description="Creates a chest nearby" gfx="collectibles_capbrooch.png" maxcharges="6"/>
   <active id="5" name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="0"/>
@@ -40,14 +40,14 @@
   <passive id="39" name="Obituary" description="Enjoy hell, swamp mouth!" gfx="collectibles_obituary.png" cache="tearcolor" devilprice="1"/>
   <passive id="40" name="Shamrock Leaf" description="Amuse your ego" gfx="collectibles_shamrockLeaf.png"/> 
   <passive id="41" name="Mystery Bag" description="Throws runes" gfx="collectibles_mysteryBag.png"/>
-  <!-- <passive id="42" name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/> -->
+  <passive id="42" name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/>
   <passive id="43" name="Corrosive Bombs" description="Acid Explosions + 3 Bombs" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
   <active id="44" name="Yum Rib" description="Fills up the calcium" gfx="collectibles_yumRib.png" maxcharges="8" initcharge="0"/>
-  
+
   <trinket id="1" name="Discount Brochure" description="Too awesome to miss!" gfx="trinket_discountbrochure.png" />
   <trinket id="2" name="Uncertainty" description="What was that?" gfx="trinket_uncertainty.png" />
   <trinket id="3" name="Dark Lock" description="Even darker rewards" gfx="trinket_darklock.png" />
-  <trinket id="4" name="Krampus' Horn" description="Cursed as always" gfx="trinket_krampus_horn.png" />
+  <trinket id="4" name="Krampus Horn" description="Cursed as always" gfx="trinket_krampus_horn.png" />
   <trinket id="5" name="Apple Core" description="Someone is eating, but someone has already ate.." gfx="trinket_appleCore.png" />
   <trinket id="6" name="Special Penny" description="Wealth of secrets" gfx="trinket_specialPenny.png" />
   <trinket id="7" name="Lil Transducer" description="Alternative energy" gfx="trinket_littleTransducer.png" />
