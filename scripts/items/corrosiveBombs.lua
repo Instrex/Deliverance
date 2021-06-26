@@ -50,7 +50,7 @@ function this:morphbomb(bomb)
   if player:HasCollectible(this.id) then
 	--update sprite--
 	if (bomb.Variant > 4 or bomb.Variant < 3) then
-		if bomb.Variant ~= 2 then
+		if bomb.Variant == 0 then
 			bomb.Variant = 4000
 		end
 	end

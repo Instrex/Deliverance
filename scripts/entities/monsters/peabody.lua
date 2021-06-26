@@ -56,7 +56,7 @@ function this:behaviour(npc)
       npc.StateFrame = npc.StateFrame - Utils.choose(20, 15, 10)
       if utils.chancep(80) and not npc:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) then
         local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
-        if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then RCreep.SpriteScale = Vector(1.25,1.25) else RCreep.SpriteScale = Vector(0.75,0.75) end
+        if npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then RCreep.SpriteScale = Vector(2,2) else RCreep.SpriteScale = Vector(1.25,1.25) end
           RCreep:Update()
       end
 
