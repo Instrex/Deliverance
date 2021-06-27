@@ -68,7 +68,8 @@ deliveranceContent = {
 	mysteryBag                = include('scripts.items.mysteryBag'),
 	glassCrown                = include('scripts.items.glassCrown'),
     corrosiveBombs            = include('scripts.items.corrosiveBombs'),
-	yumRib                    = include('scripts.items.yumrib')
+	yumRib                    = include('scripts.items.yumrib'),
+	dermoidcyst               = include('scripts.items.dermoidcyst')
   },
   
   trinkets = {
