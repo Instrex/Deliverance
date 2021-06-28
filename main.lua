@@ -69,7 +69,8 @@ deliveranceContent = {
 	glassCrown                = include('scripts.items.glassCrown'),
     corrosiveBombs            = include('scripts.items.corrosiveBombs'),
 	yumRib                    = include('scripts.items.yumrib'),
-	dermoidcyst               = include('scripts.items.dermoidcyst')
+	dermoidcyst               = include('scripts.items.dermoidcyst'),
+	smellyPot                 = include('scripts.items.smellyPot')
   },
   
   trinkets = {

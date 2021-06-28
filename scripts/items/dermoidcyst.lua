@@ -16,6 +16,7 @@ function this:cache(player, flag)
   if player:HasCollectible(this.id) then
 	 if flag == CacheFlag.CACHE_DAMAGE then player.Damage = player.Damage -1.50
 	 elseif flag == CacheFlag.CACHE_FIREDELAY then player.MaxFireDelay = Utils.tearsUp(player.MaxFireDelay, 3)
+	 Game():Darken(2,1)
      end
   end
 end
@@ -23,12 +24,12 @@ end
 function this:TearUpdate(tear)
   local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-     tear.Velocity = tear.Velocity:Rotated(math.random(-50, 50))
+     tear.Velocity = tear.Velocity:Rotated(math.random(-50, 50)) 
 	 tear:ChangeVariant(TearVariant.BLOOD)
 	 tear.Scale = tear.Scale + 0.25
   end
 end
- 
+
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, this.update)

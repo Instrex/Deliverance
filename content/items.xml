@@ -43,12 +43,12 @@
   <passive id="42" name="Glass Crown" description="Don't drop it" gfx="collectibles_glassCrown.png" cache="speed damage luck range shotspeed firedelay"/>
   <passive id="43" name="Corrosive Bombs" description="Acid Explosions + 3 Bombs" gfx="collectibles_corrosiveBombs.png" bombs="3"/>
   <active id="44" name="Yum Rib" description="Fills up the calcium" gfx="collectibles_yumRib.png" maxcharges="8" initcharge="0"/>
-  <!-- <passive id="45" name="Scampoo" description="-" gfx="-"/> -->
   <active id="45" name="Chaotic D6" description="Reroll your destiny!" gfx="collectibles_chaotic_D6.png" maxcharges="6"/>
- <!--  <active id="47" name="Equivalent Exchange" description="-" gfx="collectibles_EquivalentExchange.png" maxcharges="6"/> -->
-  <active id="46" name="Smelly Pot" description="-" gfx="collectibles_smellyPot.png" maxcharges="6"/>
-  <!-- <active id="49" name="Exchange Journal" description="-" gfx="-" maxcharges="6"/> -->
-  <passive id="47" name="Dermoid Cyst" description="ae" gfx="collectibles_dermoidcyst.png" cache="tearcolor"/>
+  <active id="46" name="Smelly Pot" description="Poo-Poo Check" gfx="collectibles_smellyPot.png" maxcharges="2"/>
+  <passive id="47" name="Dermoid Cyst" description="Nature is terrible and disgusting" gfx="collectibles_dermoidcyst.png" cache="tearcolor"/>
+  <!-- <passive id="48" name="Scampoo" description="-" gfx="-"/> -->
+  <!--  <active id="49" name="Equivalent Exchange" description="-" gfx="collectibles_EquivalentExchange.png" maxcharges="6"/> -->
+  <!-- <active id="50" name="Exchange Journal" description="-" gfx="-" maxcharges="6"/> -->
   
  
 
