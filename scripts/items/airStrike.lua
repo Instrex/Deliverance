@@ -11,7 +11,7 @@ function this:updatetarget(s)
  if s.Variant == airStrike_target then
   local sprite = s:GetSprite()
   local data = s:GetData()
-  local player = Isaac.GetPlayer(0)
+  local player = Utils.GetPlayersItemUse()
 
   s.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_GROUND 
 
@@ -47,9 +47,7 @@ end
 
 function this:updatemissile(npc)
  if npc.Variant == airStrike then
-    local player = Isaac.GetPlayer(0)
     local sprite = npc:GetSprite()
-    local data = npc:GetData()
     sprite:Play("Idle")
     
     if sprite:IsFinished("Idle") then 
@@ -60,7 +58,7 @@ function this:updatemissile(npc)
 end
 
 function this.use()
-  local player = Isaac.GetPlayer(0)
+  local player = Utils.GetPlayersItemUse()
   player:AnimateCollectible(this.id, "LiftItem", "Idle")
   Isaac.Spawn(1000, airStrike_target, 0, player.Position, vectorZero, nil)
   sfx:Play(Isaac.GetSoundIdByName("Bomber"), 0.8, 0, false, 1) 

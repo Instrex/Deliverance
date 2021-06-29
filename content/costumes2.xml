@@ -12,7 +12,7 @@
 	 <costume id="29" anm2path="deliverance/animation_costume_dangerRoom.anm2"  type="passive" />
      <costume id="34" anm2path="deliverance/animation_costume_momsEarrings.anm2"  type="passive" />
 	 <costume id="39" anm2path="deliverance/animation_costume_obituary.anm2"  type="passive" hasSkinAlt="true" />
-	 <costume id="47" anm2path="deliverance/animation_costume_dermoidcyst.anm2"  type="passive" hasSkinAlt="true" />
+	 <costume id="50" anm2path="deliverance/animation_costume_dermoidcyst.anm2"  type="passive" hasSkinAlt="true" />
 	 
 	 <costume anm2path="deliverance/character_awan.anm2" type="none" />
 </costumes>

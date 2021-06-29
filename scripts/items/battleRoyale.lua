@@ -5,22 +5,22 @@ this.rusdescription ={"Battle Royale /Королевская битва", "Призывает дружественн
 this.isActive = true
 
 function this.use()
-  sfx:Play(Isaac.GetSoundIdByName("Spawn"), 1, 0, false, 1)
-  for e, entity in pairs(Isaac.GetRoomEntities()) do 
-	local player =Isaac.GetPlayer(0) 
-     if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:HasEntityFlags(EntityFlag.FLAG_NO_TARGET) and not entity:IsBoss() and entity:IsVulnerableEnemy() then 
-        local clone = Game():Spawn(entity.Type, entity.Variant, entity.Position, vectorZero, entity, 0, 1):ToNPC()
---      clone.HitPoints = entity.HitPoints/1.25
-        clone:SetSize(9, Vector(1,1), 12)
-        clone.Scale = 0.75
-	clone:AddCharmed(EntityRef(player),-1)
-	clone:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
-        clone:SetColor(Color(10,10,10,0.75,0,0,0),0,0,false,false)
-        clone:GetData().battleRoyaled = true
+   sfx:Play(Isaac.GetSoundIdByName("Spawn"), 1, 0, false, 1)
+   for e, entity in pairs(Isaac.GetRoomEntities()) do
+     local player = Utils.GetPlayersItemUse()
+     if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:HasEntityFlags(EntityFlag.FLAG_NO_TARGET) and not entity:IsBoss() and entity:IsVulnerableEnemy() then
+       local clone = Game():Spawn(entity.Type, entity.Variant, entity.Position, vectorZero, entity, 0, 1):ToNPC()
+       --      clone.HitPoints = entity.HitPoints/1.25
+       clone:SetSize(9, Vector(1,1), 12)
+       clone.Scale = 0.75
+       clone:AddCharmed(EntityRef(player),-1)
+       clone:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
+       clone:SetColor(Color(10,10,10,0.75,0,0,0),0,0,false,false)
+       clone:GetData().battleRoyaled = true
      end
-  end
-  return true
-end
+   end
+   return true
+ end
 
 function this:update(clone)
     local data = clone:GetData()

@@ -23,8 +23,9 @@
        <Item Name="Silver Bar" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Shamrock Leaf" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-       <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.01"/>
+       <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Yum Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Smelly Pot" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
       <Item Name="Cain's Lost Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -93,6 +94,7 @@
 	     <Item Name="Mystery Bag" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Yum Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Smelly Pot" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="greedShop">
        <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

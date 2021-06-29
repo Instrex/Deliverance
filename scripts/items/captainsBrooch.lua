@@ -5,11 +5,11 @@ this.rusdescription ={"Captain's Brooch /Капитанская брошь", "Создает сундук ряд
 this.isActive = true
 
 function this.use()
-  local player = Isaac.GetPlayer(0)
+  local player = Utils.GetPlayersItemUse()
   local room = game:GetRoom()
   sfx:Play(SoundEffect.SOUND_SUMMONSOUND, 0.8, 0, false, 1)
   local chest = Isaac.Spawn(5, utils.chance(4, 60, 50), 0,
-                  room:FindFreePickupSpawnPosition(player.Position, 32, true), vectorZero, Isaac.GetPlayer(0));
+  room:FindFreePickupSpawnPosition(player.Position, 32, true), vectorZero, player);
 
   chest:GetSprite():ReplaceSpritesheet(0,"gfx/items/pick ups/cbrooch_chests.png")
   chest:GetSprite():LoadGraphics()

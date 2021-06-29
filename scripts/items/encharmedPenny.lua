@@ -10,6 +10,7 @@ this.blacklist = {
    [EntityType.ENTITY_GAPING_MAW] = true,
    [EntityType.ENTITY_BROKEN_GAPING_MAW] = true,
    [EntityType.ENTITY_BRIMSTONE_HEAD] = true,
+   [EntityType.ENTITY_GRUDGE] = true,
    [765] = true
 }
  

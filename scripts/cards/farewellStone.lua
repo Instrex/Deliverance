@@ -4,7 +4,7 @@ this.description = "Turns your red hearts into souls hearts in a 1:2 ratio#Grant
 this.rusdescription ={"Farewell Stone /Прощальный камень", "Превращает все красные сердца в сердца души в соотношении 1:2#Даёт одно сердце души если у персонажа нет красных сердец"}
 
 function this:cardCallback(cardId)
-    local player = Isaac.GetPlayer()
+    local player = Utils.GetPlayersItemUse()
 	local hearts = player:GetMaxHearts()
 	if player:GetPlayerType() == PlayerType.PLAYER_BETHANY then
 		player:AddMaxHearts(2 - hearts)

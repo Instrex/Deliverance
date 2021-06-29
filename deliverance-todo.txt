@@ -1,0 +1,136 @@
+-Killed Afterbirth+ support >:]
+-Added items_metadata config for deliverance items (for quality and tags content)
+-Added interaction between Lighter active item with tars creep
+-Deliverance cards are now a separate entity
+-Added mimiccharge attribute for deliverance cards and pill
+-Fixed Rosenberg Spit projectile creep color
+-Fixed Reapers Deaths Head not moving after Reapers death (need to figuring out how to make Reaper blink on damage again)
+-Adjusted Silver Bar laser offset
+-Rainbow Heart now somehow works with RNG stuff
+-Decreased Yum Rib charge from 12 to 6... With a twist
+
+[Interaction with other mods]
+-Moved Deliverance costume folder from (characters/costumes/...) to (characters/deliverance/costumes/...)
+-Using Communtiy Remix Remixed Donkey's Jawbone and apples will not interact with Manuscript anymore
+
+----------------------------------
+2.5.5
+--Plan--
+Adjust softlock rooms (done) -write
+Add backdrops for Super Secret Room(done) -write
+Check rainbow heart again (fixed shopprice part)
+Increase pool for yum rib (done) -write
+Increase charge for Yum Rib from 6 to 8 (done) -write
+Remove twist feature from yum rib (done ;]) -write
+Make diss reaction works like hematesis (done) -write
+Make Divider split batteries [also rewrite item] (done, but not rewrite) -write
+Make farewell stone decrease health to for Bethany(done) -write
+Fix double munchubus appear (done?) - write
+Look what Sailor Hat doing with Bumbino (kinda done) -write
+Fix Shroom creep death color (done) and for everyone too (done) -write
+Move greed rooms to the greed folder and also adjust positions and difficulty (moved/done) -write
+Add new pools for mod(done) -write
+
+--Patch list--
+-Adjusted rooms weight and difficulty values
+-Fixed 2 rooms from Burning Basement and Utero which caused softlocks
+-Greed rooms moved to the respective folder
+-Added backdrops for Super Secret Rooms
+-Farewell Stone lowers the health container to one for Bethany
+-Dissociative Reaction pill now has more similarities to Hematemesis pill
+-Added new pool pack from Repentance
+-Sailor Hat was slighty nerfed against bosses 
+-Divider now works with batteries
+-Increased Yum Rib charge from 6 to 8
+-Increased pool weight for Yum Rib
+-"Removed" new twist feature for Yum Rib from previous patch
+-Fixed a bug with unused pool, which cause crash on continuing run
+-Fixed a bug with persistence system, which caused spawn another Munchubus on fisrt room visiting
+-Adjusted all color values for mod
+-------------------------------------------
+2.5.6
+--Plan--
+Rename sisters items (done) -write
+Check new tear stat function (fixed problem with salty soup and soy milk) [done] - write
+Check abyss card with cracked key (done, not consuming) -write
+Change peabody behaviour to old one (done) [also need improve appear animation] -write
+Add divider to wooden chest pool (done) -write
+Check special deliviry with golden pills (done) -write
+Finish Glass Crown (done) -write
+Decrease krampus horn teleport chance (done) -write
+add lucky saucer and salty soup to the food (done) - write
+Rainbow heart should blink (done) -write
+Remove counter for emcharmed penny (done) -write
+Rework worms movement behaviour (done) -write
+Add new glitch items for glitch card drop (done) -write
+Decrease health to 2 for beth and farewell stone (done) -write
+Decrease drop chance for deliverance cards (done?, disabled special card handling for farwerll and firestorms) -write
+Nutcracker explode bomb rock if collides with it (done) -write
+Move Divider to the shop pool from chest pool (done) -write
+Make divider split runes into rune shard (done) -write
+Make sisters key work with new chest type (done) -write
+Add new bone and blue hearts check for Arterial Heart (done) -write
+Make danger's room interface hide in Boss Room intro (done) -notwrite
+check deliverance enemies with toxic shock (worms are not friendly) [done] -write
+Fix Shroomeo shockwave attack (done) -write
+Change fire color for Raga (done) -write
+Improve rosens tar attack (done) -write
+Check what's wrong with corrosive bombs with pink bombs (done) -write
+
+
+-- 2.5.6 Patch list--
+-Added new item - Glass Crown (finally!)
+-"Sister" items was renamed (Sister's Heart -> Arterial Heart) (Sister's Key > Cain's Lost Key)
+-Discount Brochure now teleports to the Member Card shop instead default one
+-Fixed a bug which caused crash the game if the player used Corrosive Bombs with Glitter Bombs (also added initial support for bomb costumes)
+-Special Delivery does not spawn golden pills anymore
+-Divider split runes into the rune shards
+-Divider was moved from golden chest pool to the shop pool
+-Divider now belongs in Wooden Chest pool
+-Salty Soup works properly with Soy Milk
+-Salty Soup and Lucky Saucer now counts as food items
+-Removed limit of friendly monsters for Encharmed Penny
+-Sist, *cough* sorry, Cain's Lost Key now works with new chest types
+-Arterial Heart now also changes its sprite for Tainted (Blue Baby, Bethany, Forgotten)
+-Krampus Horn activation chance was decreased (also will not trigger if angel deal chance is higher than devil one)
+-Decreased and improve chance drop for Deliverance cards
+-Abyss card will not consume objects anymore
+-Added new glitched items for the glitch card list
+-Farewell Stone now properly decrease Bethany red hearts to 1
+-Rainbow Heart shield now blinks again
+-
+-Tweaked worms movement (hopefully without scary undergroud attack anymore)
+-Worms now take damage from Toxic Shock
+-Adjusted Rosenberg's tar attack
+-Returned the old version of the movement for Peabodies
+-Now if the Nutcracker tries to eat Bomb Rock, it will explode! (be careful)
+-Fixed a bug with Shroomeo shockwave attack which inflicts damage on the player again
+-Raga's flamethrower attack is now purple again
+-Still no idea how to make Reaper blink again...
+-
+-Disabled top door from one of Depths room
+-Removed certain files from mods folder
+
+AWAN UPDATE
+--Plan--
+Awan
+
+
+Items
+New
+
+
+Old
+
+Monsters
+New
+
+
+Old
+Check how to make reaper blink again
+
+
+Misc
+Re-add support for rus eid
+Add Encyclopedia mod initial support (later)
+Remove graphics from original game
