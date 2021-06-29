@@ -13,7 +13,7 @@ function this:updatetarget(s)
   local data = s:GetData()
   local player = Isaac.GetPlayer(0)
 
-  s.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_GROUND 
+  s.GridCollisionClass = EntityGridCollisionClass.GRIDCOLL_GROUND
 
   if data.time == nil then data.time = 0 end
 
@@ -28,12 +28,12 @@ function this:updatetarget(s)
   if player:HasCollectible(356) then  
      data.boxvec = Vector.FromAngle(math.random(360)):Resized(24)
   end
-  if sprite:IsFinished("Die") then 
-     s:Remove() 
-     box = Isaac.Spawn(1000, specialDel, 0, s.Position + data.boxvec, vectorZero, nil) 
+  if sprite:IsFinished("Die") then
+     s:Remove()
+     local box = Isaac.Spawn(1000, specialDel, 0, s.Position + data.boxvec, vectorZero, nil)
      
      if utils.chancep(1) and utils.chancep(1) then 
-        box:GetData().typ=3 
+        box:GetData().typ=3
      else 
         box:GetData().typ=math.random(0,3)
      end 
@@ -42,14 +42,13 @@ function this:updatetarget(s)
 
   if Input.IsMouseBtnPressed(0) then s.Velocity = (Input.GetMousePosition(true) - s.Position) / 6
     elseif player:GetFireDirection() ~= Direction.NO_DIRECTION then s.Velocity = player:GetAimDirection()*13
-    else s.Velocity = vectorZero 
+    else s.Velocity = Vector.Zero
   end
  end
 end
 
 function this:updatebox(npc)
  if npc.Variant == specialDel then
-    local player = Isaac.GetPlayer(0)
     local sprite = npc:GetSprite()
     local data = npc:GetData()
     
@@ -100,7 +99,7 @@ function this:updatebox(npc)
 end
 
 function this.use()
-  local player = Isaac.GetPlayer(0)
+  local player = Utils.GetPlayersItemUse()
   player:AnimateCollectible(this.id, "LiftItem", "Idle")
   Isaac.Spawn(1000, specialDel_target, 0, player.Position, vectorZero, nil)
 end

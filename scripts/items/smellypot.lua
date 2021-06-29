@@ -6,7 +6,7 @@ local this = {
 }
 
 function this.use()
-  local player = Isaac.GetPlayer(0) --change player get method later for proper coop support
+  local player = Utils.GetPlayersItemUse() --change player get method later for proper coop support
   for i=1, math.random(1, 3) do
     player:ThrowFriendlyDip(math.random(0,6), player.Position, Vector.Zero)
   end

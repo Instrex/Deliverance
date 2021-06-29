@@ -21,7 +21,7 @@ function this.cardCallback()
     end
 
     if not void then
-        local player = Isaac.GetPlayer(0)
+        local player = Utils.GetPlayersItemUse()
         for _, card in pairs(deliveranceData.temporary.abyssCard) do
             player:UseCard(card)
         end

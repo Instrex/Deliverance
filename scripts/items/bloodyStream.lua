@@ -10,7 +10,7 @@ function this.use()
   game:ShakeScreen(60)
   sfx:Play(SoundEffect.SOUND_SATAN_RISE_UP , 0.8, 0, false, 1.1)
   for i = 0, 8 do
-    local stream = Isaac.Spawn(1000, this.variant, 0, Isaac.GetPlayer(0).Position, vectorZero, nil)
+    local stream = Isaac.Spawn(1000, this.variant, 0, Utils.GetPlayersItemUse().Position, vectorZero, nil)
     local data = stream:GetData()
     data.id = i
     data.time = 0
@@ -21,7 +21,7 @@ end
 
 function this:update(npc)
   if npc.Variant == this.variant then
-    local player = Isaac.GetPlayer(0)
+    local player = Utils.GetPlayersItemUse()
     local data = npc:GetData()
     local sprite = npc:GetSprite()
 

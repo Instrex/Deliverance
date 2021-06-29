@@ -117,10 +117,14 @@ Awan
 
 
 Items
+New
 
+
+Old
 
 Monsters
 New
+
 
 Old
 Check how to make reaper blink again
