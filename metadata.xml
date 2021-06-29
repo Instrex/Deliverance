@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-    <name>Deliverance</name>
+    <name>Deliverance (Repentance)</name>
     <directory>deliverance</directory>
     <id>1762369129</id>
     <description>[img]https://i.imgur.com/7Jc9ctD.png[/img]
@@ -35,7 +35,7 @@ Feel free to join our [url=discord.gg/PKgV5nf]discord server![/url]
 To [b]AgentCucco[/b], [b]Budjmt[/b], [b]BogdanRudyka[/b], [b]Minichibis[/b], [b]Der Clown[/b], [b]Eternal Necromancer[/b], [b]Modding of Isaac Community[/b] and [b]You[/b]!
 [img]https://i.imgur.com/cAYjYgW.png[/img]
 </description>
-    <version>2.5.3.4</version>
+    <version>2.5.6.2</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Items"/>
