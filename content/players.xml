@@ -1,9 +1,9 @@
 <players root="gfx/characters/deliverance/costumes/" 
          portraitroot="gfx/ui/boss/" 
-         nameimageroot="gfx/ui/boss/" 
-         bigportraitroot="gfx/ui/stage/">
+         nameimageroot="gfx/ui/boss/">
 	<player name="Awan" skin="Character_Awan.png" black="2" hp="2" bombs="3"
           nameimage="PlayerName_Awan.png" 
           portrait="PlayerPortrait_Awan.png" 
-          skinColor="0" />
+          skinColor="0" costumeSuffix="awan"
+          birthright="???" />
 </players>

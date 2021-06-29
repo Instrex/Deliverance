@@ -111,16 +111,28 @@ Check what's wrong with corrosive bombs with pink bombs (done) -write
 -Disabled top door from one of Depths room
 -Removed certain files from mods folder
 
+
+
 AWAN UPDATE
 --Plan--
 Awan
-
+adapt code for new sprites
+move hair adding to init callback
 
 Items
 New
 
+Scampoo
+Chaotic D6
+Equivalent Exchange
+Smelly Pot (done)
+Exchange Journal
 
 Old
+
+Trinkets
+New
+
 
 Monsters
 New
