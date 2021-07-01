@@ -65,12 +65,13 @@ deliveranceContent = {
     encharmedPenny            = include('scripts.items.encharmedPenny'),
     obituary                  = include('scripts.items.obituary'),
     shamrockLeaf              = include('scripts.items.shamrockLeaf'),
-	mysteryBag                = include('scripts.items.mysteryBag'),
-	glassCrown                = include('scripts.items.glassCrown'),
+	  mysteryBag                = include('scripts.items.mysteryBag'),
+	  glassCrown                = include('scripts.items.glassCrown'),
     corrosiveBombs            = include('scripts.items.corrosiveBombs'),
-	yumRib                    = include('scripts.items.yumrib'),
-	dermoidcyst               = include('scripts.items.dermoidcyst'),
-	smellyPot                 = include('scripts.items.smellyPot')
+	  yumRib                    = include('scripts.items.yumrib'),
+    chaoticD6                 = include('scripts.items.chaoticdice'),
+    smellyPot                 = include('scripts.items.smellyPot'),
+	  dermoidcyst               = include('scripts.items.dermoidcyst')
   },
   
   trinkets = {
@@ -152,7 +153,7 @@ deliveranceContent = {
     bloodmind                 = include('scripts.entities.monsters.bloodmind'),
     bloodmindspit             = include('scripts.entities.monsters.bloodmindspit'),
     --slider                    = include('scripts.entities.monsters.slider')
-	fathopper 				        = include('scripts.entities.monsters.fathopper'),
+	  fathopper 				        = include('scripts.entities.monsters.fathopper'),
     goldkeeper 				        = include('scripts.entities.monsters.goldkeeper'),
   },
 

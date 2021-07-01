@@ -7,7 +7,7 @@ function this.onNewFloor()
    local player = Isaac.GetPlayer(0)
 
    if player:HasCollectible(this.id) then 
-     deliveranceData.temporary.lawfulPool = math.random(0, ItemPoolType.NUM_ITEMPOOLS)
+     deliveranceData.temporary.lawfulPool = math.random(0, 30)
      deliveranceDataHandler.directSave()
    end
 end
