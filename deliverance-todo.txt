@@ -143,6 +143,8 @@ Check how to make reaper blink again
 
 
 Misc
+Check basement room 9145 (new diff and weight)
+
 Re-add support for rus eid
 Add Encyclopedia mod initial support (later)
 Remove graphics from original game

@@ -25,11 +25,22 @@ function this:saltyTearUpdate(tear)
     tear.Velocity = tear.Velocity:Rotated(math.random(-8,8))
   end
 end
+
+function this:saltyLaserUpdate(laser)
+  local plr = Isaac.GetPlayer()
+  if plr:HasCollectible(this.id) then
+    if laser.SpawnerType == EntityType.ENTITY_PLAYER then
+      print(laser.AngleDegrees)
+      laser.Angle = laser.Angle + math.random(-6,6)
+    end
+  end
+end
  
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, this.update)
   mod:AddCallback(ModCallbacks.MC_POST_FIRE_TEAR, this.saltyTearUpdate)
+  mod:AddCallback(ModCallbacks.MC_POST_LASER_UPDATE, this.saltyLaserUpdate)
 end
 
 return this
