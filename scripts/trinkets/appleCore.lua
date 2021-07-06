@@ -3,8 +3,8 @@ this.id = Isaac.GetTrinketIdByName("Apple Core")
 this.description = "Chance to restore all health when taking damage#One-time"
 this.rusdescription ={"Apple Core /Огрызок Яблока", "Шанс восстанивить всё здоровье при получении урона#Одноразовый"}
 
-function this.trigger(id)
-  local player = Isaac.GetPlayer(0)
+function this.trigger(_,player)
+  local player = player:ToPlayer()
   if player:HasTrinket(this.id) then
     if utils.chance(8) then
       sfx:Play(SoundEffect.SOUND_1UP , 0.8, 0, false, 0.8)

@@ -6,7 +6,7 @@ this.rusdescription ={"The Threater /Угрожающий", "Поражает группы врагов молние
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
-    local player = Isaac.GetPlayer(0)
+    local player = fam.Player:ToPlayer()
     local d = fam:GetData()
     if d.cooldown == nil then d.cooldown = 12 end
     if d.maxCooldown == nil then d.maxCooldown = 12 end
@@ -60,7 +60,7 @@ function this:awake(fam)
 end
 
 function this.shot(fam)   
-   local player = Isaac.GetPlayer(0)
+   local player = fam.Player:ToPlayer()
    local d = fam:GetData() 
    if not d.shoot then
        local angle = 0

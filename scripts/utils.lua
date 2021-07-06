@@ -164,6 +164,16 @@ function Utils.tearsUp(firedelay, val)
     return math.max((30 / newTears) - 1, -0.99)
 end
 
+function Utils.GetPlayers()
+    local Players = {}
+    
+    for plr = 0, game:GetNumPlayers() - 1 do
+        Players[#Players + 1] = Isaac.GetPlayer(plr)
+    end
+
+    return Players
+end
+
 function Utils.GetPlayersItemUse()
   for i = 1, Game():GetNumPlayers() - 1 do
     local plr = Isaac.GetPlayer(i)

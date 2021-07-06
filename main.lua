@@ -177,7 +177,7 @@ local coh = include('scripts.customOverHandler')
 local dss = include('scripts.deadseascrolls')
 local logs = include('scripts.changelogs')
 pd = include('scripts.progressdata')
---local encyclopedia = include('scripts.encyclopedia') descriptions support are crap
+
 eid.init()
 
 for type, r in pairs(deliveranceContent) do
@@ -191,5 +191,6 @@ for type, r in pairs(deliveranceContent) do
     end
   end
 end
+local encyclopedia = include('scripts.encyclopedia')
 
 print("Deliverance Repentance v"..deliveranceVersion..": Successfully initialized! Have a nice run :)")

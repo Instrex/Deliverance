@@ -129,6 +129,8 @@ Smelly Pot (done)
 Exchange Journal
 
 Old
+Add new player types for Good Old Friend
+Add size and damage synergy for hotMilk
 
 Trinkets
 New
@@ -143,7 +145,20 @@ Check how to make reaper blink again
 
 
 Misc
-Check basement room 9145 (new diff and weight)
+
+COOP
+
+Good Old Friend (done)
+Hot Milk (done)
+Mom's Earrings (done)
+Salty Soup (done)
+Dr.Medicine / Manuscript ()
+Silver Bar(done)
+lucky saucer ()
+Lil Tummy (done)
+Arterial Heart (done)
+Beanborne(done)
+Bile Knight (add proper data handling)
 
 Re-add support for rus eid
 Add Encyclopedia mod initial support (later)

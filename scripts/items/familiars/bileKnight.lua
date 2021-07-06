@@ -6,7 +6,7 @@ this.rusdescription ={"Bile Knight /Раздражительный рыцарь", "Быстро стреляет сл
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
-    local player = Isaac.GetPlayer(0)
+    local player = fam.Player:ToPlayer()
     deliveranceData.temporary.knightStunned=deliveranceData.temporary.knightStunned or 0
     local d = fam:GetData()
     if d.cooldown == nil then d.cooldown = 5 end
@@ -70,7 +70,7 @@ function this:awake(fam)
 end
 
 function this.shot(fam)   
-   local player = Isaac.GetPlayer(0)
+   local player = fam.Player:ToPlayer()
    local d = fam:GetData() 
    local dirs = { [Direction.LEFT] = Vector(-15, 0), [Direction.UP] = Vector(0, -15), [Direction.RIGHT] = Vector(15, 0), [Direction.DOWN] = Vector(0, 15), [Direction.NO_DIRECTION] = vectorZero, }
    if not d.shoot then

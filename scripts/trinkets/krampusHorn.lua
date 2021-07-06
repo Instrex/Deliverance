@@ -2,8 +2,8 @@ local this = {}
 this.id = Isaac.GetTrinketIdByName("Krampus Horn")
 this.description = "Chance to teleport to the Devil Room when taking damage"
 this.rusdescription ={"Krampus Horn /Рог Крампуса", "Шанс телепортироваться в комнату дьявола при получении урона"}
-function this.trigger(id,dmgAmount,flags,source,frames)
-  local player = Isaac.GetPlayer(0)
+function this.trigger(_,player,flags)
+  local player = player:ToPlayer()
   if player:HasTrinket(this.id) then
     if utils.chancep(6) and flags ~= DamageFlag.DAMAGE_NO_PENALTIES then
       local level = game:GetLevel()
