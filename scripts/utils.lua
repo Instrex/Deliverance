@@ -177,11 +177,11 @@ end
 function Utils.GetPlayersItemUse()
   for i = 1, Game():GetNumPlayers() - 1 do
     local plr = Isaac.GetPlayer(i)
-    if Input.IsActionTriggered(ButtonAction.ACTION_ITEM, plr.ControllerIndex) or Input.IsActionTriggered(ButtonAction.ACTION_PILLCARD, plr.ControllerIndex) then
+     if Input.IsActionTriggered(ButtonAction.ACTION_ITEM, plr.ControllerIndex) or Input.IsActionTriggered(ButtonAction.ACTION_PILLCARD, plr.ControllerIndex) then
       return plr
     end
-  end
-  return Isaac.GetPlayer(0)
+end
+return Isaac.GetPlayer(0)
 end
 
 return Utils

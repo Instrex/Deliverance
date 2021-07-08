@@ -6,11 +6,11 @@
   <active id="5" name="Golden Apple" description="Tastes like sin" gfx="collectibles_apple.png" maxcharges="0"/>
   <active id="6" name="Lighter" description="Let everything burn to the ground!" gfx="collectibles_lighter.png" maxcharges="3"/>
   <active id="7" name="Shrink Ray" description="You know, I’m something of a scientist myself" gfx="collectibles_shrink_ray.png" maxcharges="3"/>
-  <passive id="8" name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="tearcolor"/>
+  <passive id="8" name="Sailor Hat" description="Soft and wet" gfx="collectibles_sailorhat.png" cache="speed"/>
   <active id="9" name="D<3" description="Life will change!" gfx="collectibles_dheart.png" maxcharges="6"/>
   <passive id="10" name="Salty Soup" description="Uh oh..." gfx="collectibles_saltySoup.png" soulhearts="2" cache="speed firedelay tearcolor"/>
   <passive id="11" name="Gasoline" description="Smells like fire" gfx="collectibles_gasoline.png" devilprice="2" cache="tearcolor" />
-  <passive id="12" name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck tearcolor"/>
+  <passive id="12" name="Lucky Saucer" description="I brought you some food, bro!" gfx="collectibles_luckySaucer.png" soulhearts="2" cache="luck"/>
   <active id="13" name="Bloody Stream" devilprice="2" description="Let's paint the room red!" gfx="collectibles_bloody_stream.png" maxcharges="6" discharged="true"/>
   <passive id="14" name="The Covenant" description="Filthy acts at a reasonable price" gfx="collectibles_theCovenant.png" maxhearts="4" hearts="4" soulhearts="4" blackhearts="4" cache="tearcolor" />
   <passive id="15" name="Adam's Rib" devilprice="2" description="Deals double damage on first hit" gfx="collectibles_adamsRib.png" cache="tearcolor"/>

@@ -6,22 +6,20 @@ this.rusdescription ={"Lucky Saucer /—частливое блюдце", "©+3 к удаче"}
 this.luckBonus = 3
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-      if flag == CacheFlag.CACHE_LUCK then
-         player.Luck = player.Luck + this.luckBonus; 
-      end
-  end
-end
+   local data = player:GetData()
+   if player:GetCollectibleNum(this.id) > 0 and data.poopOnHead == nil then
+      data.poopOnHead = true
+   end
+
+   if player:HasCollectible(this.id) and data.poopOnHead then
+     player.Luck = player.Luck + this.luckBonus;
+   end
+ end
 
 function this:update(player)
-  local player = Isaac.GetPlayer(0)
+  local data = player:GetData()
   if player:HasCollectible(this.id) then
-    if deliveranceData.temporary.poopOnHead==nil then
-       deliveranceData.temporary.poopOnHead=true
-       deliveranceDataHandler.directSave()
-    end
-    if deliveranceData.temporary.poopOnHead then
+    if data.poopOnHead then
        this.luckBonus = 3
        if player:HasCollectible(202) then  
           player:ReplaceCostumeSprite(Isaac.GetItemConfig():GetCollectible(this.id), "gfx/characters/deliverance/costumes/sheet_costume_luckySaucerG.png", 0)
@@ -42,32 +40,36 @@ function this:update(player)
 end
 
 function this:takeDamage(player)
-  local player = Isaac.GetPlayer(0)
+  local player = player:ToPlayer()
   if player:HasCollectible(this.id) then
-    if deliveranceData.temporary.poopOnHead then
-       player:UseActiveItem(36,false,false,false,false)	
+   local data = player:GetData()
+    if data.poopOnHead then
+       player:UseActiveItem(36)
        sfx:Play(SoundEffect.SOUND_BIRD_FLAP, 0.8, 0, false, 1)
-       deliveranceData.temporary.poopOnHead=false
-       deliveranceDataHandler.directSave()
+       data.poopOnHead = false
     end
   end
 end
 
 function this:updateRoom()
    local room = game:GetRoom()
-   local player = Isaac.GetPlayer(0)
-   if player:HasCollectible(this.id) then
-     if room:IsFirstVisit() then 
-        deliveranceData.temporary.poopOnHead=true
-     end
+   if Utils.GetPlayers() then
+      for _, player in pairs(Utils.GetPlayers()) do
+         if player:HasCollectible(this.id) then
+            local data = player:GetData()
+            if room:IsFirstVisit() then
+              data.poopOnHead=true
+            end
+          end
+      end
    end
 end
 
 function this.Init()
-  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
+  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache, CacheFlag.CACHE_LUCK)
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, this.update)
-  mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.updateRoom)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.takeDamage, EntityType.ENTITY_PLAYER)
+  mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.updateRoom)
 end
 
 return this

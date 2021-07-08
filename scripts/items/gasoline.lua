@@ -27,7 +27,6 @@ end
 local updateIndex = 0
 function this:updateFire(npc)
   if npc.Variant == Isaac.GetEntityVariantByName("Gasoline Fire") then
-    local player = Isaac.GetPlayer(0)
     local data = npc:GetData()
     local sprite = npc:GetSprite()
 

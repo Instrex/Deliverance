@@ -132,6 +132,7 @@ Old
 Add new player types for Good Old Friend
 Add size and damage synergy for hotMilk
 
+
 Trinkets
 New
 
@@ -145,6 +146,7 @@ Check how to make reaper blink again
 
 
 Misc
+burning base 9031 (move grilly)
 
 COOP
 
@@ -159,6 +161,8 @@ Lil Tummy (done)
 Arterial Heart (done)
 Beanborne(done)
 Bile Knight (add proper data handling)
+obituary(done)
+danger room(done)
 
 Re-add support for rus eid
 Add Encyclopedia mod initial support (later)

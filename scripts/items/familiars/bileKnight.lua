@@ -7,22 +7,22 @@ this.rusdescription ={"Bile Knight /Раздражительный рыцарь", "Быстро стреляет сл
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
     local player = fam.Player:ToPlayer()
-    deliveranceData.temporary.knightStunned=deliveranceData.temporary.knightStunned or 0
     local d = fam:GetData()
+    d.knightStunned=d.knightStunned or 0
     if d.cooldown == nil then d.cooldown = 5 end
     if d.maxCooldown == nil then d.maxCooldown = 5 end
     if d.shoot == nil then d.shoot = false end
     fam:FollowParent()
 
-    d.maxCooldown = 5-deliveranceData.temporary.knightStunned
+    d.maxCooldown = 5 - d.knightStunned
 	
-    if deliveranceData.temporary.knightStunned==3 then
+    if d.knightStunned==3 then
         sprite:Play("StunnedLoop", false)
     else
-      if deliveranceData.temporary.knightStunned==2 then
+      if d.knightStunned==2 then
         sprite:ReplaceSpritesheet(0, "gfx/familiars/familiar_bileKnight3.png")
         sprite:LoadGraphics()
-      elseif deliveranceData.temporary.knightStunned==1 then
+      elseif d.knightStunned==1 then
         sprite:ReplaceSpritesheet(0, "gfx/familiars/familiar_bileKnight2.png")
         sprite:LoadGraphics()
       else 
@@ -53,14 +53,13 @@ function this:behaviour(fam)
     end
 
    for i,proj in ipairs(Isaac.FindByType(EntityType.ENTITY_PROJECTILE, -1, -1, true)) do
-     if (fam.Position:Distance(proj.Position) < proj.Size*2 + fam.Size) and deliveranceData.temporary.knightStunned<3 and not sprite:IsPlaying("Stunned") then
+     if (fam.Position:Distance(proj.Position) < proj.Size*2 + fam.Size) and d.knightStunned<3 and not sprite:IsPlaying("Stunned") then
 	proj:Die()
         sprite:Play("Stunned", false)
         Isaac.Spawn(1000, 15, 0, fam.Position, vectorZero, fam)
         sfx:Play(SoundEffect.SOUND_THUMBS_DOWN, 1, 0, false, 1)
         d.cooldown = 5
-        deliveranceData.temporary.knightStunned=deliveranceData.temporary.knightStunned+1
-        deliveranceDataHandler.directSave()
+       d.knightStunned= d.knightStunned+1
      end
    end
 end
@@ -75,24 +74,22 @@ function this.shot(fam)
    local dirs = { [Direction.LEFT] = Vector(-15, 0), [Direction.UP] = Vector(0, -15), [Direction.RIGHT] = Vector(15, 0), [Direction.DOWN] = Vector(0, 15), [Direction.NO_DIRECTION] = vectorZero, }
    if not d.shoot then
       local prj = Isaac.Spawn(EntityType.ENTITY_TEAR, 1, 1, fam.Position + dirs[player:GetFireDirection()], dirs[player:GetFireDirection()] + player:GetTearMovementInheritance(player.Velocity), nil):ToTear()
-      prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15/255,8/255,15/255) if player:HasCollectible(247) then prj.Scale = 1.4 - deliveranceData.temporary.knightStunned/3.5 prj.CollisionDamage = 7-deliveranceData.temporary.knightStunned*1.5 else prj.Scale = 1.2 - deliveranceData.temporary.knightStunned/5 prj.CollisionDamage = 5.5-deliveranceData.temporary.knightStunned*1.5 end
+      prj:GetSprite().Color = Color(0.75,0.75,1.2,1,15/255,8/255,15/255) if player:HasCollectible(247) then prj.Scale = 1.4 -d.knightStunned/3.5 prj.CollisionDamage = 7- d.knightStunned*1.5 else prj.Scale = 1.2 -d.knightStunned/5 prj.CollisionDamage = 5.5- d.knightStunned*1.5 end
       if player:HasTrinket(127) then prj.TearFlags = TearFlags.TEAR_HOMING prj:GetSprite().Color = Color(0.4,0.15,0.15,1,math.floor(0.28*255),0,math.floor(0.45*255)) end
       d.shoot = true
    end
 end
 
-function this:restoreKnight()   
-   deliveranceData.temporary.knightStunned=deliveranceData.temporary.knightStunned or 0
-   if deliveranceData.temporary.knightStunned>0 then
-      deliveranceData.temporary.knightStunned=0
-      for e, fam in pairs(Isaac.GetRoomEntities()) do 
-        if fam.Type == 3 and fam.Variant == this.variant then 
-           local sprite = fam:GetSprite()
-           sprite:Play("FloatDown", false)
-        end 
-      end
-      deliveranceDataHandler.directSave()
-   end
+function this:restoreKnight()
+  --d.knightStunned= d.knightStunned or 0
+  for e, fam in pairs(Isaac.FindByType(EntityType.ENTITY_FAMILIAR,this.variant,-1)) do
+    local d = fam:GetData()
+    if d.knightStunned>0 then
+      d.knightStunned=0
+    end
+    local sprite = fam:GetSprite()
+    sprite:Play("FloatDown", false)
+  end
 end
 
 function this:cache(player, flag)
