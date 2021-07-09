@@ -7,15 +7,13 @@ this.isActive = true
 this.effect = Isaac.GetEntityVariantByName("Urn of Want Effect")
 
 function this:updateEffect(npc)
- if npc.Variant == this.effect then
-    local sprite = npc:GetSprite()
-    sprite:Play("Idle")
-    
-    if sprite:IsFinished("Idle") then
-      npc:Remove()
-    end
-  end
-end
+   local sprite = npc:GetSprite()
+   sprite:Play("Idle")
+ 
+   if sprite:IsFinished("Idle") then
+     npc:Remove()
+   end
+ end
 
 function this.use()
    local player = Utils.GetPlayersItemUse()
@@ -40,15 +38,16 @@ function this.use()
 end
 
 function this:die(npc)
-   local player = Isaac.GetPlayer(0)
-   if player:HasCollectible(this.id) then
-      player:SetActiveCharge(player:GetActiveCharge()+1)
+   for _, player in pairs(Utils.GetPlayers()) do
+      if player:HasCollectible(this.id) then
+         player:SetActiveCharge(player:GetActiveCharge()+1)
+      end
    end
 end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_USE_ITEM, this.use, this.id)
-  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateEffect)
+  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateEffect, this.effect)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die)
 end
 

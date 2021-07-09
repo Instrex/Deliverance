@@ -12,7 +12,7 @@ function this:update()
     and player:GetBoneHearts() == 0 and player:GetBlackHearts() == 0 then
       sfx:Play(SoundEffect.SOUND_HAPPY_RAINBOW, 0.9, 0, false, 1)
       player:Revive()
-      player:AddSoulHearts(2)
+      player:AddSoulHearts(3)
       
       local bear = Isaac.Spawn(1000, this.variant, 0, player.Position, vectorZero, nil)
       bear:GetSprite():Play("Idle")
@@ -22,8 +22,11 @@ function this:update()
         player:AddSoulHearts(-2)
       end
 
-      if player:GetPlayerType() == PlayerType.XXX then
-        player:AddSoulHearts(6)
+      if player:GetPlayerType() == PlayerType.PLAYER_XXX or player:GetPlayerType() == PlayerType.PLAYER_BLACKJUDAS
+      or player:GetPlayerType() == PlayerType.PLAYER_JUDAS_B or player:GetPlayerType() == PlayerType.PLAYER_XXX_B
+      or player:GetPlayerType() == PlayerType.PLAYER_BETHANY_B or player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN_B  then
+        print("good")
+        player:AddSoulHearts(2)
       end
 
       player:SetFullHearts()

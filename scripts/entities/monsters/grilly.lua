@@ -7,7 +7,6 @@ function this:behaviour(npc)
     local target = npc:GetPlayerTarget()
     local sprite = npc:GetSprite()
     local data = npc:GetData()
-    local room = game:GetRoom()
 	
 	npc:AddEntityFlags(EntityFlag.FLAG_NO_KNOCKBACK | EntityFlag.FLAG_NO_PHYSICS_KNOCKBACK)
 
@@ -100,18 +99,18 @@ mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, function(_, effect) --taked 
     if effect.FrameCount == 360 then
       effect:Remove()
     end
-    local player = Isaac.GetPlayer(0)
-    local dis = player.Position:Distance(effect.Position)
-    local sizeCheck = player.Size + effect.Size
-    if dis < sizeCheck then
-      player:TakeDamage(1, 0, EntityRef(effect), 30)
+    for _, player in pairs(Utils.GetPlayers()) do
+      local dis = player.Position:Distance(effect.Position)
+      local sizeCheck = player.Size + effect.Size
+      if dis < sizeCheck then
+        player:TakeDamage(1, 0, EntityRef(effect), 30)
+      end
     end
   end
 end)
 
 function this:onHitNPC(npc, dmgAmount, flags, source, frames)
   if npc.Variant == Isaac.GetEntityVariantByName("Grilly") then
-   local data = npc:GetData()
    if npc.Type == this.id then
    if flags == DamageFlag.DAMAGE_EXPLOSION and source.Type == EntityType.ENTITY_PROJECTILE then
      return false

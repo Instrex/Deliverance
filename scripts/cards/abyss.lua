@@ -8,27 +8,28 @@ this.cardobjects = {
 }
 
 function this.cardCallback()
-    deliveranceData.temporary.abyssCard = deliveranceData.temporary.abyssCard or {}
+    local player = Utils.GetPlayersItemUse()
+    local data = player:GetData()
+    data.abyssCard = data.abyssCard or {}
 
     local void = false
     for _, card in pairs(Isaac.GetRoomEntities()) do
-        if card.SubType ~= this.id and not utils.contains(deliveranceData.temporary.abyssCard, card.SubType) and 
+        if card.SubType ~= this.id and not utils.contains(data.abyssCard, card.SubType) and 
         card.Type == EntityType.ENTITY_PICKUP and card.Variant == PickupVariant.PICKUP_TAROTCARD and not this.cardobjects[card.SubType] then
-            table.insert(deliveranceData.temporary.abyssCard, card.SubType)
+            table.insert(data.abyssCard, card.SubType)
             card:Remove()
             void = true
         end
     end
-
+    
     if not void then
-        local player = Utils.GetPlayersItemUse()
-        for _, card in pairs(deliveranceData.temporary.abyssCard) do
+        for _, card in pairs(data.abyssCard) do
             player:UseCard(card)
         end
         
-        deliveranceData.temporary.abyssCard = {}
+        data.abyssCard = {}
     else
-        Isaac.Spawn(5, 300, this.id, Isaac.GetPlayer(0).Position, vectorZero, nil)
+        Isaac.Spawn(5, 300, this.id, player.Position, vectorZero, nil)
     end
 
     deliveranceDataHandler.directSave()

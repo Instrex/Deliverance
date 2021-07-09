@@ -7,8 +7,10 @@ this.rusdescription ={"Shamrock Leaf /Трёхлистный клевер", "Дарует призы после у
 -- ITEM LOGIC
 function this.onRoomEnter() -- MC_POST_NEW_ROOM
     local room = Game():GetRoom()
-    if Isaac.GetPlayer(0):HasCollectible(this.id) and not room:IsClear() then
-        deliveranceData.temporary.shamrockReward = room:GetType() == RoomType.ROOM_BOSS
+    for _, player in pairs(Utils.GetPlayers()) do
+        if player:HasCollectible(this.id) and not room:IsClear() then
+            deliveranceData.temporary.shamrockReward = room:GetType() == RoomType.ROOM_BOSS
+        end 
     end
 end
 
@@ -20,7 +22,8 @@ function this:updateEffect() -- MC_POST_UPDATE
 end
 
 function this:onPlayerDamage(player) -- MC_ENTITY_TAKE_DMG (EntityType.ENTITY_PLAYER)
-    if deliveranceData.temporary.shamrockReward and Isaac.GetPlayer(0):HasCollectible(this.id) then
+    player = player:ToPlayer()
+    if deliveranceData.temporary.shamrockReward and player:HasCollectible(this.id) then
         this.reset()
     end
 end

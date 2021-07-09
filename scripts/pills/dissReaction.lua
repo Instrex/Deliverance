@@ -4,11 +4,10 @@ this.description = "Drops all of your soul hearts on floor"
 this.rusdescription ={"Dissociative Reaction /Диссоциативная реакция", "Бросает все сердца души персонажа на пол"}
 
 function this:soultesPill()
-  local player = Isaac.GetPlayer(0)
+  local player = Utils.GetPlayersItemUse()
   local hearts = player:GetSoulHearts() - 1
   player:AddSoulHearts(1 - (hearts + 1))
   for i = 0, math.random(1,hearts) do
-    local room = Game():GetRoom()
     local position = Isaac.GetFreeNearPosition(player.Position,1)
     Isaac.Spawn(5, 10, 8, position, vectorZero, player)
   end

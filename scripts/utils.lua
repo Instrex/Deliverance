@@ -180,8 +180,18 @@ function Utils.GetPlayersItemUse()
      if Input.IsActionTriggered(ButtonAction.ACTION_ITEM, plr.ControllerIndex) or Input.IsActionTriggered(ButtonAction.ACTION_PILLCARD, plr.ControllerIndex) then
       return plr
     end
-end
+  end
 return Isaac.GetPlayer(0)
+end
+
+function Utils.GetPlayersPlacingBomb()
+	for i = 1, Game():GetNumPlayers() - 1 do
+    	local plr = Isaac.GetPlayer(i)
+ 	    if Input.IsActionTriggered(ButtonAction.ACTION_ITEM, plr.ControllerIndex) or Input.IsActionTriggered(ButtonAction.ACTION_BOMB, plr.ControllerIndex) then
+    		return plr
+	    end
+	end
+	return Isaac.GetPlayer(0)
 end
 
 return Utils

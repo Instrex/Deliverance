@@ -4,13 +4,13 @@ this.description = 'All items on floors will be of same item pool#Item pool is r
 this.rusdescription ={"Lawful /Законный", "Все предметы на этажах будут из одного пула предметов#Пул предметов выбирается случайно в начале уровня"}
 -- MC_POST_NEW_LEVEL
 function this.onNewFloor() 
-   local player = Isaac.GetPlayer(0)
-
-   if player:HasCollectible(this.id) then 
-     deliveranceData.temporary.lawfulPool = math.random(0, 30)
-     deliveranceDataHandler.directSave()
-   end
-end
+    for _, player in pairs(Utils.GetPlayers()) do
+     if player:HasCollectible(this.id) then
+         deliveranceData.temporary.lawfulPool = math.random(0, 30)
+         deliveranceDataHandler.directSave()
+       end
+    end
+ end
 
 --[[
 -- MC_POST_PICKUP_SELECTION 
@@ -42,20 +42,20 @@ function this:postPickupSelection(pickup, variant, subtype)
 end
 ]]--
 
-function this:preGetCollectible(pool, decrease, seed) 
-        if deliveranceData.temporary.lawfulPool == pool then
-           return
+function this:preGetCollectible(pool, decrease, seed)
+    if deliveranceData.temporary.lawfulPool == pool then
+      return
+    end
+    for _, player in pairs(Utils.GetPlayers()) do
+      if player:HasCollectible(this.id) then
+        if not deliveranceData.temporary.lawfulPool then
+          this.onNewFloor()
         end
-        local player = Isaac.GetPlayer(0)
-
-        if player:HasCollectible(this.id) then 
-            if not deliveranceData.temporary.lawfulPool then 
-               this.onNewFloor()
-            end
-            local newItem = Game():GetItemPool():GetCollectible(deliveranceData.temporary.lawfulPool, decrease, seed+2)
-            return newItem
-        end
-end
+        local newItem = Game():GetItemPool():GetCollectible(deliveranceData.temporary.lawfulPool, decrease, seed+2)
+        return newItem
+      end
+    end
+  end
 
 function this.Init()
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, this.onNewFloor)
