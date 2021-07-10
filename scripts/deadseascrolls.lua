@@ -2690,8 +2690,8 @@ local deliverancedirectory = {
         title = 'deliverance',
         buttons = {
             {str = 'resume game', action = 'resume'},
-            {str = 'settings', dest = 'settings'},
-			{str = 'awan settings', dest = 'awansettings', cursoroff = Vector(6, 0)},
+            --{str = 'settings', dest = 'settings'},
+			--{str = 'awan settings', dest = 'awansettings', cursoroff = Vector(6, 0)},
 			{str = 'credits', dest = 'credits'},
             changelogsButton,
         },
@@ -2707,7 +2707,7 @@ local deliverancedirectory = {
         },
         tooltip = menuOpenToolTip
     },
-	awansettings = {
+	--[[awansettings = {
 		title = 'awan settings',
 		buttons = {
 		{
@@ -2719,7 +2719,7 @@ local deliverancedirectory = {
 		},
 		tooltip = {strset = {'awan edit'}}
 		},
-	},
+	},--]]
 	credits = {
         title = 'credits',
         fsize = 1,
@@ -2734,8 +2734,18 @@ local credits = {
 	{"instrex", "coder"},
 	{"baicherra", "artist"},
 	{"fly6", "coder"},
-	{"pixeloman", "room desinger"},
-	{"kovadon", "promotional art"}
+	--{"pixeloman", "room desinger"}, not yet my friend...
+	{"kovadon", "promotional art", tooltip = {"nodavok"}},
+    "",
+    "special thanks to",
+    "",
+    "minichibis, budj, rustybucket, erfly,",
+    "eternal necromancer, neibern, fiend",
+    "isaac servers (main, modders, other one,",
+    "russian wiki) community",
+    "deliverance hub c3",
+    "",
+    "(and deadinfinity for dss)"
 }
 
 for _, credit in ipairs(credits) do
@@ -2775,13 +2785,13 @@ dssmenu.AddMenu("Deliverance", {Run = dssmod.runMenu, Open = dssmod.openMenu, Cl
 
 dssmenu.AddPalettes({
 	{
-		Name = "cauldron",
+		Name = "cauldrony",
 		{56, 44, 74},
 		{98, 75, 137},
 		{215, 191, 191},
 	},
     {
-        Name = "split",
+        Name = "sunset",
         {31, 15, 29}, -- Back
         {53, 34, 59}, -- Text
         {250, 150, 5}, -- Highlight Text

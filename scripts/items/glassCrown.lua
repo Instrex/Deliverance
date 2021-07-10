@@ -1,6 +1,12 @@
 local this = {}
 this.id = Isaac.GetItemIdByName("Glass Crown")
-this.description = "Gives a bonus to stats that will decrease if the character takes damage#Receiving the third hit will destroy this item"
+
+if not __eidItemDescriptions then
+	__eidItemDescriptions = {}
+end
+__eidItemDescriptions[this.id] = "Gives a bonus to stats that will decrease if the character takes damage#Receiving the third hit will destroy this item"
+
+--this.description = "Gives a bonus to stats that will decrease if the character takes damage#Receiving the third hit will destroy this item"
 --this.rusdescription ={"Glass Crown /���������� ������", "��� ����� � ��������������� ������� ����� ����������� ���� �������� ������� ����#���� ����� � ����������, ������� ����� �����������, ���� �������� ������� ����#��� ��������� �������� �����, ������ ��������"}
 local crown = Sprite()
 crown:Load("gfx/glassCrown.anm2", true)

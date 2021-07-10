@@ -113,6 +113,28 @@ Check what's wrong with corrosive bombs with pink bombs (done) -write
 
 
 
+--2.5.7 Patch list--
+-Deliverance items are now co-op compatible!
+-Removed "food" tag from Rotten Porkchop and Salty Soup (was too powerful items for Binge Eater)
+-Arterial Heart firing rate now also increases with lower amount of soul hearts
+-Good Old Friend now provides additional soul hearts for more non-red hearts characters
+-Adjusted Time Gal timer. Now the time until the award is not so absurd low at the later stages
+-Added Lighter (active) in Greed Shop pool
+-Added Silver Bar in Greed Treasure pool
+-Added Lawful in Secret and Angel Greed pool
+-but also decreaded weight for angel pools (hee-hee)
+-Worms collsion now changes if they are buried in the ground, not before it
+-Nutcracker can eat Fool's Gold rocks
+-Decreased weight value for certain angel rooms
+-Disabled buttom door in Burning Basement room 9031
+
+[Interaction with other mods]
+-Added Encyclopedia support (more infos about items will be added later)
+-Added Dead Sea Scrolls menu support (in-game changelogs for now only, but also included with new palettes!)
+-Fixed Glass Crown EID description display
+-Minor fix for Time Gal EID description
+
+
 AWAN UPDATE
 --Plan--
 Awan
@@ -150,19 +172,7 @@ burning base 9031 (move grilly)
 
 COOP
 
-Good Old Friend (done)
-Hot Milk (done)
-Mom's Earrings (done)
-Salty Soup (done)
-Dr.Medicine / Manuscript ()
-Silver Bar(done)
-lucky saucer ()
-Lil Tummy (done)
-Arterial Heart (done)
-Beanborne(done)
-Bile Knight (add proper data handling)
-obituary(done)
-danger room(done)
+Done
 
 Re-add support for rus eid
 Add Encyclopedia mod initial support (later)
