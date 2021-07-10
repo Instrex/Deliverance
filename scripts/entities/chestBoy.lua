@@ -16,7 +16,8 @@ end
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local sprite = npc:GetSprite()
-  local player = Isaac.GetPlayer(0)
+  local player = npc:GetPlayerTarget()
+  player = player:ToPlayer()
 
   -- В начале нужно инициализировать data.persistent --
   local data = npc:GetData()

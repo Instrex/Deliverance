@@ -28,7 +28,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Drop") then
         sfx:Play(SoundEffect.SOUND_MEAT_IMPACTS, 1.2, 0, false, 1)
-        Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player).Color = Color(0, 0, 0, 0.9, 10/255, 10/255, 10/255)
+        Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc).Color = Color(0, 0, 0, 0.9, 10/255, 10/255, 10/255)
     end
     if sprite:IsFinished("Start") then
        npc:Remove()

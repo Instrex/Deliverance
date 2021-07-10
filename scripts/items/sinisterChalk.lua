@@ -6,9 +6,9 @@ this.silhouette = Isaac.GetEntityVariantByName("Silhouette")
 this.silhouette2 = Isaac.GetEntityVariantByName("Silhouette 2")
 
 function this:updateSilhouette(npc)
- if npc.Type == 1000 and npc.Variant == this.silhouette2 then
-    local player = Isaac.GetPlayer(0)
-    local sprite = npc:GetSprite()
+    local player = npc.Parent or Isaac.GetPlayer()
+    player = player:ToPlayer()
+    local plrData = player:GetData()
     local data = npc:GetData()
     local room = game:GetRoom()
     local level = game:GetLevel()
@@ -23,18 +23,18 @@ function this:updateSilhouette(npc)
         sil:AddEntityFlags(EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS | EntityFlag.FLAG_RENDER_FLOOR )
         data.checkForSilhouette = true
     end
-    if deliveranceData.temporary.shadowTimer == nil then 
-       deliveranceData.temporary.shadowTimer = 0 
+    if plrData.shadowTimer == nil then 
+       plrData.shadowTimer = 0 
     end
     npc:ClearEntityFlags(npc:GetEntityFlags()) 
     npc:AddEntityFlags(EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS)
     npc.Visible=false
     if npc.Position:Distance(player.Position+Vector(0,0)) <= 25 then
-       deliveranceData.temporary.shadowTimer = deliveranceData.temporary.shadowTimer + 1
+       plrData.shadowTimer = plrData.shadowTimer + 1
     else
-       deliveranceData.temporary.shadowTimer = 0
+       plrData.shadowTimer = 0
     end
-    if deliveranceData.temporary.shadowTimer>=34 then
+    if plrData.shadowTimer>=34 then
        local cloneType = 10
        if stage == LevelStage.STAGE1_1 or stage == LevelStage.STAGE1_2 or (stage == LevelStage.STAGE1_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
           cloneType = Utils.choose(10,15,23,40,305)
@@ -54,29 +54,29 @@ function this:updateSilhouette(npc)
        clone.MaxHitPoints = clone.MaxHitPoints*1
        clone.HitPoints = clone.HitPoints*1
        clone.CollisionDamage = clone.CollisionDamage*1
-       deliveranceData.temporary.shadowTimer = 0
+       plrData.shadowTimer = 0
        Isaac.Spawn(1000, 18, 0, npc.Position, vectorZero, player)
        sfx:Play(SoundEffect.SOUND_HELLBOSS_GROUNDPOUND, 0.66, 0, false, 1) 
        npc:Remove()
     end
     if room:IsClear() then 
-       deliveranceData.temporary.shadowTimer = 0 
+       plrData.shadowTimer = 0 
        sfx:Play(SoundEffect.SOUND_SUMMONSOUND, 1, 0, false, 1)
        Isaac.Spawn(1000, 15, 0, npc.Position, vectorZero, player)
        Isaac.Spawn(1000, 18, 0, npc.Position, vectorZero, player)
        npc:Remove()
     end
-  end
 end
 
 function this:updateRoom()
    local room = game:GetRoom()
-   local player = Isaac.GetPlayer(0)
-   if player:HasCollectible(this.id) then
-     if room:IsFirstVisit() and not room:IsClear() then 
-      local pos = Isaac.GetFreeNearPosition(room:GetCenterPos()+Vector(math.random(-150,150),math.random(-150,150)), 1)  
-      Isaac.Spawn(1000, this.silhouette2, 0, pos, vectorZero, nil)
-     end
+   for _, player in pairs(Utils.GetPlayers()) do
+      if player:HasCollectible(this.id) then
+         if room:IsFirstVisit() and not room:IsClear() then
+          local pos = Isaac.GetFreeNearPosition(room:GetCenterPos()+Vector(math.random(-150,150),math.random(-150,150)), 1)
+          Isaac.Spawn(1000, this.silhouette2, 0, pos, vectorZero, player).Parent = player
+         end
+       end
    end
 end
 
@@ -114,25 +114,27 @@ end
 
 local ShalkBar = Sprite() ShalkBar:Load("gfx/ui/sinisterChalk_bar.anm2", true)
 function this:onRender()
-   local player = Isaac.GetPlayer(0)
-   local room = game:GetRoom()
+   for _, player in pairs(Utils.GetPlayers()) do
+      local plrData = player:GetData()
+      local room = game:GetRoom()
    if player:HasCollectible(this.id) then
-      if deliveranceData.temporary.shadowTimer~=nil and deliveranceData.temporary.shadowTimer>0 and not player:IsDead() then
+      if plrData.shadowTimer~=nil and plrData.shadowTimer>0 and not player:IsDead() then
          local pos = room:WorldToScreenPosition(player.Position)
-         ShalkBar:SetFrame("Idle", deliveranceData.temporary.shadowTimer)
+         ShalkBar:SetFrame("Idle", plrData.shadowTimer)
          ShalkBar:RenderLayer(2, Vector(pos.X,pos.Y))
          ShalkBar:RenderLayer(0, Vector(pos.X,pos.Y))
          ShalkBar:RenderLayer(1, Vector(pos.X,pos.Y))
          ShalkBar:RenderLayer(3, Vector(pos.X,pos.Y))
       end
    end
+   end
 end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, this.updateRoom)
-  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateSilhouette)
+  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateSilhouette, this.silhouette2)
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, this.onRender)
-  mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
+  --mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)
 end
 
 return this

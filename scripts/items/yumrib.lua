@@ -4,8 +4,8 @@ this.description = "Gives one bone heart"
 this.rusdescription = {"Yum Rib /Ням Ребро", "Даёт одно костяное сердце"}
 this.isActive = true
 
-function this.use(id,rng,player,useflags,slot,vardata)
-	local player = Isaac.GetPlayer()
+function this.use()
+	local player = Utils.GetPlayersItemUse()
 	player:AddBoneHearts(1)
     sfx:Play(461, 0.8, 0, false, 1)
 	if utils.chancep(0.1) then

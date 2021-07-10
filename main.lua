@@ -4,7 +4,7 @@ sfx = SFXManager()
 vectorZero = Vector(0,0)
 delivRNG = RNG()
 
-deliveranceVersion = "2.5.6.3"
+deliveranceVersion = "2.5.7"
 
 utils = include ('scripts.utils')
 include ('scripts.enumerations')
@@ -65,10 +65,10 @@ deliveranceContent = {
     encharmedPenny            = include('scripts.items.encharmedPenny'),
     obituary                  = include('scripts.items.obituary'),
     shamrockLeaf              = include('scripts.items.shamrockLeaf'),
-	mysteryBag                = include('scripts.items.mysteryBag'),
-	glassCrown                = include('scripts.items.glassCrown'),
+	  mysteryBag                = include('scripts.items.mysteryBag'),
+	  glassCrown                = include('scripts.items.glassCrown'),
     corrosiveBombs            = include('scripts.items.corrosiveBombs'),
-	yumRib                    = include('scripts.items.yumrib')
+	  yumRib                    = include('scripts.items.yumrib')
   },
   
   trinkets = {
@@ -88,6 +88,10 @@ deliveranceContent = {
     glitch                    = include('scripts.cards.glitch'),
     abyss                     = include('scripts.cards.abyss'),
   },
+  
+  characters = {
+    awan                      = include('scripts.characters.awan'),
+  },
 
   pills = {
     dissReaction              = include('scripts.pills.dissReaction')
@@ -101,12 +105,12 @@ deliveranceContent = {
   },
 
   pickups = {
-    rainbowHeart              = include('scripts.pickups.rainbowHeart'),
+    rainbowHeart              = include('scripts.pickups.rainbowHeart')
   },
   
   entities = {
     persistent = {
-      chestBoy                = include('scripts.entities.chestBoy'),
+      chestBoy                = include('scripts.entities.chestBoy')
     },
 
     raga                      = include('scripts.entities.monsters.raga'),
@@ -136,7 +140,7 @@ deliveranceContent = {
     stonelet                  = include('scripts.entities.monsters.stonelet'),
     grilly                    = include('scripts.entities.monsters.grilly'),
     bloodmind                 = include('scripts.entities.monsters.bloodmind'),
-    bloodmindspit             = include('scripts.entities.monsters.bloodmindspit'),
+    bloodmindspit             = include('scripts.entities.monsters.bloodmindspit')
     --slider                    = include('scripts.entities.monsters.slider')
   },
 }
@@ -153,10 +157,9 @@ cardHandler.init(deliveranceContent.cards)
 -- Content Initialization --
 local eid = include('scripts.eidHandler')
 --local coh = include('scripts.customOverHandler')
---local dss = include('scripts.deadseascrolls') for confings
---local logs = include('scripts.changelogs') and logs
---pd = include('scripts.progressdata') unlockables
---local encyclopedia = include('scripts.encyclopedia') descriptions support are crap
+local dss = include('scripts.deadseascrolls')
+local logs = include('scripts.changelogs')
+
 eid.init()
 
 for type, r in pairs(deliveranceContent) do
@@ -170,5 +173,6 @@ for type, r in pairs(deliveranceContent) do
     end
   end
 end
+local encyclopedia = include('scripts.encyclopedia')
 
 print("Deliverance Repentance v"..deliveranceVersion..": Successfully initialized! Have a nice run :)")

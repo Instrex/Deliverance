@@ -6,15 +6,15 @@ this.rusdescription ={"Good Old Friend /Старый добрый друг", "Воскрешает один ра
 
 function this:update()
 
-  local player = Isaac.GetPlayer(0)
+  for _, player in pairs(Utils.GetPlayers()) do
   if player:HasCollectible(this.id) then
     if player:GetHearts() == 0 and player:GetSoulHearts() == 0
     and player:GetBoneHearts() == 0 and player:GetBlackHearts() == 0 then
       sfx:Play(SoundEffect.SOUND_HAPPY_RAINBOW, 0.9, 0, false, 1)
       player:Revive()
-      player:AddSoulHearts(2)
+      player:AddSoulHearts(3)
       
-      local bear = Isaac.Spawn(1000, this.variant, 0, Isaac.GetPlayer(0).Position, vectorZero, nil)
+      local bear = Isaac.Spawn(1000, this.variant, 0, player.Position, vectorZero, nil)
       bear:GetSprite():Play("Idle")
 
       if player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
@@ -22,8 +22,11 @@ function this:update()
         player:AddSoulHearts(-2)
       end
 
-      if player:GetPlayerType() == PlayerType.XXX then
-        player:AddSoulHearts(6)
+      if player:GetPlayerType() == PlayerType.PLAYER_XXX or player:GetPlayerType() == PlayerType.PLAYER_BLACKJUDAS
+      or player:GetPlayerType() == PlayerType.PLAYER_JUDAS_B or player:GetPlayerType() == PlayerType.PLAYER_XXX_B
+      or player:GetPlayerType() == PlayerType.PLAYER_BETHANY_B or player:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN_B  then
+        print("good")
+        player:AddSoulHearts(2)
       end
 
       player:SetFullHearts()
@@ -38,11 +41,10 @@ function this:update()
     end
   end
 end
+end
 
 function this:bearUpdate(npc)
   if npc.Variant == this.variant then
-    local player = Isaac.GetPlayer(0)
-    local data = npc:GetData()
     local sprite = npc:GetSprite()
 
     npc.Velocity = vectorZero

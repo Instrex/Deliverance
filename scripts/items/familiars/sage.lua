@@ -6,7 +6,7 @@ this.rusdescription ={"Sage /Шалфей", "Стреляет во врагов пурпурными слезами, ко
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
-    local player = Isaac.GetPlayer(0)
+    local player = fam.Player:ToPlayer()
     local d = fam:GetData()
     if d.cooldown == nil then d.cooldown = 8 end
     if d.maxCooldown == nil then d.maxCooldown = 8 end
@@ -73,7 +73,7 @@ function this:awake(fam)
 end
 
 function this.shot(fam)   
-   local player = Isaac.GetPlayer(0)
+   local player = fam.Player:ToPlayer()
    local d = fam:GetData() 
    local dirs = { [Direction.LEFT] = Vector(-15+d.multiplier, 0), [Direction.UP] = Vector(0, -15+d.multiplier), [Direction.RIGHT] = Vector(15-d.multiplier, 0), [Direction.DOWN] = Vector(0, 15-d.multiplier), [Direction.NO_DIRECTION] = vectorZero, }
    if not d.shoot then
@@ -115,8 +115,8 @@ function this:cache(player, flag)
   player:CheckFamiliar(this.variant, player:GetCollectibleNum(this.id) * (player:GetEffects():GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_BOX_OF_FRIENDS) + 1), RNG())
 end
 
-function this.trigger(id)
-  local player = Isaac.GetPlayer(0)
+function this.trigger(_,player)
+  local player = player:ToPlayer()
   for e, fam in pairs(Isaac.GetRoomEntities()) do
     d = fam:GetData()
     if fam.Type == EntityType.ENTITY_FAMILIAR and fam.Variant == this.variant then

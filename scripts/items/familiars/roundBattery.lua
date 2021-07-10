@@ -6,7 +6,7 @@ this.rusdescription ={"Edgeless Cube Battery /Скругленная кубическая батарея", "
 
 function this:behaviour(fam)
   local sprite = fam:GetSprite()
-  local player = Isaac.GetPlayer(0)
+  local player = fam.Player:ToPlayer()
   local data = fam:GetData()
   
   if data.shooting == nil then data.shooting = 0 end

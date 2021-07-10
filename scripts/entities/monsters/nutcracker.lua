@@ -91,7 +91,7 @@ function this:behaviour(npc)
 
       for i = 1, Game():GetRoom():GetGridSize() do
         local grid = room:GetGridEntity(i)
-        if grid and (grid.Desc.Type==2 or grid.Desc.Type==3 or grid.Desc.Type==4 or grid.Desc.Type==5 or grid.Desc.Type==6 or grid.Desc.Type==14 or grid.Desc.Type==22) then
+        if grid and (grid.Desc.Type==2 or grid.Desc.Type==3 or grid.Desc.Type==4 or grid.Desc.Type==5 or grid.Desc.Type==6 or grid.Desc.Type==14 or grid.Desc.Type==22 or grid.Desc.Type==27 ) then
           if npc.Position:Distance(grid.Position) <= 42 then
             grid:Destroy()
           end

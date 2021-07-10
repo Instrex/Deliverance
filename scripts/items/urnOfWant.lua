@@ -7,24 +7,20 @@ this.isActive = true
 this.effect = Isaac.GetEntityVariantByName("Urn of Want Effect")
 
 function this:updateEffect(npc)
- if npc.Variant == this.effect then
-    local player = Isaac.GetPlayer(0)
-    local sprite = npc:GetSprite()
-    local data = npc:GetData()
-    sprite:Play("Idle")
-    
-    if sprite:IsFinished("Idle") then 
-      npc:Remove()
-    end
-  end
-end
+   local sprite = npc:GetSprite()
+   sprite:Play("Idle")
+ 
+   if sprite:IsFinished("Idle") then
+     npc:Remove()
+   end
+ end
 
 function this.use()
-   local player = Isaac.GetPlayer(0)
+   local player = Utils.GetPlayersItemUse()
    local effecto = Isaac.Spawn(1000, this.effect, 0, player.Position, vectorZero, nil)
    sfx:Play(Isaac.GetSoundIdByName("Urn"), 1, 0, false, 1)
    player:UseActiveItem(97,false,false,false,false)
-   if utils.chancep(50) then 
+   if utils.chancep(50) then
        player:UseActiveItem(97,false,false,false,false)
    end
    if utils.chancep(50) then
@@ -41,35 +37,17 @@ function this.use()
    return true
 end
 
-function this:updateCollectible(collect)
-  local player = Isaac.GetPlayer(0)
-  local room = game:GetRoom()
-  if player:HasCollectible(this.id) then
-   if collect.Type == 5 then 
-     if collect.Variant == 90 then 
-        if room:GetType() == RoomType.ROOM_SHOP then
-           local pick = Isaac.Spawn(5, 20, 1, collect.Position, vectorZero, collect)
-           pick:ToPickup().Price = PickupPrice.PRICE_TWO_HEARTS
-        else
-           Isaac.Spawn(5, 20, 1, collect.Position, vectorZero, collect)
-        end
-        collect:Remove()
-     end
-   end
-  end
-end
-
-function this:die(npc) 
-   local player = Isaac.GetPlayer(0)
-   if player:HasCollectible(this.id) then
-      player:SetActiveCharge(player:GetActiveCharge()+1)
+function this:die(npc)
+   for _, player in pairs(Utils.GetPlayers()) do
+      if player:HasCollectible(this.id) then
+         player:SetActiveCharge(player:GetActiveCharge()+1)
+      end
    end
 end
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_USE_ITEM, this.use, this.id)
-  mod:AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, this.updateCollectible)
-  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateEffect)
+  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, this.updateEffect, this.effect)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die)
 end
 

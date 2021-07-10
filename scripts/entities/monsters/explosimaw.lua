@@ -7,7 +7,6 @@ function this:behaviour(npc)
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
-  local room = game:GetRoom()
   
   if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (0.33 + npc.StateFrame/60) + npc.Velocity * 0.85 end
 
@@ -59,7 +58,7 @@ function this:behaviour(npc)
        data.Smol = true
     end
 
-    if data.Smol then  
+    if data.Smol then
       npc.SizeMulti = npc.SizeMulti - Vector(0.1,0.1)
     end
 
@@ -77,11 +76,12 @@ mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, function(_, effect) --taked 
     if effect.FrameCount == 240 then
       effect:Remove()
     end
-    local player = Isaac.GetPlayer(0)
-    local dis = player.Position:Distance(effect.Position)
-    local sizeCheck = player.Size + effect.Size
-    if dis < sizeCheck then
-      player:TakeDamage(1, 0, EntityRef(effect), 30)
+    for _, player in pairs(Utils.GetPlayers()) do
+      local dis = player.Position:Distance(effect.Position)
+      local sizeCheck = player.Size + effect.Size
+      if dis < sizeCheck then
+        player:TakeDamage(1, 0, EntityRef(effect), 30)
+      end
     end
   end
 end)

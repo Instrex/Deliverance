@@ -5,14 +5,12 @@ this.rusdescription ={"Silver Bar /Серебряный слиток", "Дарует лазерный выстрел,
 this.bTimer = 0
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
     if flag == CacheFlag.CACHE_TEARCOLOR and player:HasCollectible(this.id) then
         player.Color = Color(0.6,0.6,1,1,10/255,10/255,10/255)
     end
 end
 
 function this:laserUpdate(player)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
     if this.bTimer<21 then this.bTimer=this.bTimer+1 end
     if player:GetFireDirection() ~= Direction.NO_DIRECTION then

@@ -163,4 +163,35 @@ function Utils.tearsUp(firedelay, val)
     local newTears = currentTears + val
     return math.max((30 / newTears) - 1, -0.99)
 end
+
+function Utils.GetPlayers()
+    local Players = {}
+    
+    for plr = 0, game:GetNumPlayers() - 1 do
+        Players[#Players + 1] = Isaac.GetPlayer(plr)
+    end
+
+    return Players
+end
+
+function Utils.GetPlayersItemUse()
+  for i = 1, Game():GetNumPlayers() - 1 do
+    local plr = Isaac.GetPlayer(i)
+     if Input.IsActionTriggered(ButtonAction.ACTION_ITEM, plr.ControllerIndex) or Input.IsActionTriggered(ButtonAction.ACTION_PILLCARD, plr.ControllerIndex) then
+      return plr
+    end
+  end
+return Isaac.GetPlayer(0)
+end
+
+function Utils.GetPlayersPlacingBomb()
+	for i = 1, Game():GetNumPlayers() - 1 do
+    	local plr = Isaac.GetPlayer(i)
+ 	    if Input.IsActionTriggered(ButtonAction.ACTION_ITEM, plr.ControllerIndex) or Input.IsActionTriggered(ButtonAction.ACTION_BOMB, plr.ControllerIndex) then
+    		return plr
+	    end
+	end
+	return Isaac.GetPlayer(0)
+end
+
 return Utils

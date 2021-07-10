@@ -11,11 +11,13 @@ function this:cache(player, flag)
 end
 
 function this:hotMilkUpdate(tear)
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-    local tr = math.random(75,125)/100
-    tear.Scale = tear.Scale*tr
-    tear.CollisionDamage = tear.CollisionDamage*tr
+  if tear.Parent and tear.Parent.Type == EntityType.ENTITY_PLAYER then
+    local player = tear.Parent:ToPlayer()
+    if player:HasCollectible(this.id) then
+      local tr = math.random(75,125)/100
+      tear.Scale = tear.Scale*tr
+      tear.CollisionDamage = tear.CollisionDamage*tr
+    end
   end
 end
 

@@ -20,9 +20,22 @@ function this:update(player)
 end
 
 function this:saltyTearUpdate(tear)
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-    tear.Velocity = tear.Velocity:Rotated(math.random(-8,8))
+  if tear.Parent and tear.Parent.Type == EntityType.ENTITY_PLAYER then
+    local player = tear.Parent:ToPlayer()
+    if player:HasCollectible(this.id) then
+      tear.Velocity = tear.Velocity:Rotated(math.random(-8,8))
+    end
+  end
+end
+
+function this:saltyLaserUpdate(laser)
+  if laser.Parent and laser.Parent.Type == EntityType.ENTITY_PLAYER then
+    local plr = laser.Parent:ToPlayer()
+    if plr:HasCollectible(this.id) then
+      if laser.SpawnerType == EntityType.ENTITY_PLAYER then
+        laser.Angle = laser.Angle + math.random(-6,6)
+      end
+    end
   end
 end
  
@@ -30,6 +43,7 @@ function this.Init()
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
   mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, this.update)
   mod:AddCallback(ModCallbacks.MC_POST_FIRE_TEAR, this.saltyTearUpdate)
+  mod:AddCallback(ModCallbacks.MC_POST_LASER_UPDATE, this.saltyLaserUpdate)
 end
 
 return this

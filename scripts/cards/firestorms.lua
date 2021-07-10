@@ -5,10 +5,10 @@ this.rusdescription ={"Firestorms /Огненные бури", "Поджигает всех врагов в комн
 this.isActive = false
 
 function this:cardCallback(cardId)
-    local player = Isaac.GetPlayer(0)
-    if cardId == this.id then 
+    local player = Utils.GetPlayersItemUse()
+    if cardId == this.id then
         deliveranceContent.items.lighter.use()
-        for e, entity in pairs(Isaac.GetRoomEntities()) do 
+        for e, entity in pairs(Isaac.GetRoomEntities()) do
            if entity:IsActiveEnemy() and not entity:HasEntityFlags(EntityFlag.FLAG_FRIENDLY) and not entity:HasEntityFlags(EntityFlag.FLAG_NO_TARGET) and not entity:IsBoss() and entity:IsVulnerableEnemy() then 
                local fire = Isaac.Spawn(1000, Isaac.GetEntityVariantByName("Gasoline Fire"), 0, entity.Position, vectorZero, player)
                local data = fire:GetData()

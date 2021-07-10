@@ -3,6 +3,7 @@
        <Item Name="Captain's Brooch" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Lighter" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Cain's Lost Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Lawful" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Sinister Chalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Urn Of Want" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -23,7 +24,7 @@
        <Item Name="Silver Bar" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Shamrock Leaf" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-       <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.01"/>
+       <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Yum Rib" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="keyMaster">
@@ -70,7 +71,7 @@
       <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
-      <Item Name="Lawful" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Lawful" Weight="0.5" DecreaseBy="0.5" RemoveOn="0.05"/>
     </Pool>
 	<Pool Name="bombBum">
 		<Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -89,6 +90,7 @@
        <Item Name="Scaredy-shroom" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Beanborne" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Mom's Earrings" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Silver Bar" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Corrosive Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
 	     <Item Name="Mystery Bag" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Glass Crown" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -99,6 +101,7 @@
        <Item Name="Sailor Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="D<3" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Special Delivery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Lighter" Weight="1" DecreaseBy="0.1" RemoveOn="0.1"/>
        <Item Name="Golden Apple" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Salty Soup" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Lucky Saucer" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -122,6 +125,7 @@
       <Item Name="Sage" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Battle Royale" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Threater" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Lawful" Weight="0.5" DecreaseBy="0.5" RemoveOn="0.05"/>
     </Pool>
     <Pool Name="greedSecret">
       <Item Name="Cain's Lost Key" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

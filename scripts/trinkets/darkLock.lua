@@ -4,9 +4,10 @@ this.description = "Makes rewards from red chests much more exciting"
 this.rusdescription ={"Dark Lock /Тёмный замок", "Улучшает награды, полученные с красных сундуков"}
 
 function this:trigger(pickup, col)
-  local player = Isaac.GetPlayer(0)
+  if col.Type == 1 then
+    local player = col:ToPlayer()
   local room = Game():GetRoom()
-  if col:ToPlayer() ~= nil and player:HasTrinket(this.id) then
+  if  player:HasTrinket(this.id) then
     local data = pickup:GetData()
 
     if pickup.Variant == PickupVariant.PICKUP_REDCHEST and data.darkLocked == nil and pickup.SubType == ChestSubType.CHEST_OPENED then
@@ -71,6 +72,7 @@ function this:trigger(pickup, col)
       end
     end
   end
+end
 end
 
 function this.Init()

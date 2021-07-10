@@ -5,17 +5,15 @@ this.rusdescription ={"Obituary /Некролог", "Дает огромный, временный бонус при 
 
 this.superObituaryBonus=1
 
-function this:cache(player, flag)
-  if player:HasCollectible(this.id) then
- if flag == CacheFlag.CACHE_DAMAGE then
-  if deliveranceData.temporary.damageBonus~=nil then
-    player.Damage = player.Damage * deliveranceData.temporary.damageBonus * this.superObituaryBonus
+function this:cache(player)
+  local data = player:GetData()
+  if player:GetCollectibleNum(this.id) > 0 and not data.damageBonus then
+    data.damageBonus = 1
   end
 
---[[elseif flag == CacheFlag.CACHE_TEARCOLOR then
-  player:AddNullCostume(deliveranceContent.costumes.obituary)--]]
-        end
-    end
+  if player:HasCollectible(this.id) and data.damageBonus then
+    player.Damage = player.Damage * data.damageBonus * this.superObituaryBonus
+  end
 end
 
 --[[function this:playerUpdate(player)
@@ -29,39 +27,39 @@ end--]]
 function this:update(player)
   if player:HasCollectible(this.id) then
     if this.superObituaryBonus>1 then this.superObituaryBonus=this.superObituaryBonus-0.05 else this.superObituaryBonus=1 end
-    if deliveranceData.temporary.damageBonus==nil then
-       deliveranceData.temporary.damageBonus=1
-    end
     player:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
     player:EvaluateItems()
   end
 end
 
-function this:die(npc) 
-   local player = Isaac.GetPlayer(0)
-   if player:HasCollectible(this.id) then
-      this.superObituaryBonus=3
-      if deliveranceData.temporary.damageBonus<1.5 then
-        deliveranceData.temporary.damageBonus=deliveranceData.temporary.damageBonus+0.01
-        deliveranceDataHandler.directSave()
+function this:die(npc)
+  if Utils.GetPlayers() then
+    for _, player in pairs(Utils.GetPlayers()) do
+      if player:HasCollectible(this.id) then
+        local data = player:GetData()
+        this.superObituaryBonus=3
+        if data.damageBonus<1.5 then
+          data.damageBonus=data.damageBonus+0.01
+        end
+        player:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
+        player:EvaluateItems()
       end
+    end
+  end
+end
+
+function this.trigger(_,player)
+    local player = player:ToPlayer()
+    if player:HasCollectible(this.id) then
+      local data = player:GetData()
+      data.damageBonus=1
       player:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
       player:EvaluateItems()
    end
 end
 
-function this.trigger(id)
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-     deliveranceData.temporary.damageBonus=1
-     deliveranceDataHandler.directSave()
-     player:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
-     player:EvaluateItems()
-  end
-end
-
 function this.Init()
-  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
+  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache, CacheFlag.CACHE_DAMAGE)
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, this.update)
   mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, this.die)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.trigger, EntityType.ENTITY_PLAYER)

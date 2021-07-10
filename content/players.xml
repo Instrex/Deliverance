@@ -1,0 +1,9 @@
+<players root="gfx/characters/deliverance/costumes/" 
+         portraitroot="gfx/ui/boss/" 
+         nameimageroot="gfx/ui/boss/">
+	<player name="Awan" skin="Character_Awan.png" black="6" hp="6" bombs="6"
+          skinColor="0" costumeSuffix="awan"
+          birthright="THERE IS NOTHING TO SEE HERE
+					  BEGONE STRANGER"
+		  hidden ="true"/>
+</players>

@@ -32,9 +32,11 @@ function this:behaviour(npc)
     end
 
   elseif npc.State == NpcState.STATE_MOVE then
-    npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
     if sprite:IsFinished("DigInIdle") or sprite:IsFinished("DigIn") or sprite:IsFinished("DigIn2") then
+      if npc.EntityCollisionClass ~= EntityCollisionClass.ENTCOLL_NONE then
+        npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+      end
       npc.StateFrame = npc.StateFrame + 1
       if npc.StateFrame >=30 then
         local validPositions = {}

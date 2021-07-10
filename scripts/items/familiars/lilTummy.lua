@@ -6,7 +6,7 @@ this.rusdescription ={"Lil Tummy /Животик-младший", "Стреляет шестью снарядами в
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
-    local player = Isaac.GetPlayer(0)
+    local player = fam.Player:ToPlayer()
     local d = fam:GetData()
     if d.cooldown == nil then d.cooldown = 21 end
     if d.shoot == nil then d.shoot = false end
@@ -61,7 +61,7 @@ function this:behaviour(fam)
 end
 
 function this.shot(fam)   
-   local player = Isaac.GetPlayer(0)
+   local player = fam.Player:ToPlayer()
    local d = fam:GetData() 
       local dirs = { [Direction.LEFT] = Vector(-12.5, 0), [Direction.UP] = Vector(0, -12.5), [Direction.RIGHT] = Vector(12.5, 0), [Direction.DOWN] = Vector(0, 12.5), [Direction.NO_DIRECTION] = vectorZero, }
       if not d.shoot then

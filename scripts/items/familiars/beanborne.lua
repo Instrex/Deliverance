@@ -7,7 +7,7 @@ this.rusdescription ={"Beanborne /Боборождённый", "Интесивно пукает, отравляя вр
 
 function this:behaviour(fam)
     local sprite = fam:GetSprite()
-    local player = Isaac.GetPlayer(0)
+    local player = fam.Player:ToPlayer()
     local d = fam:GetData()
     if d.cooldown == nil then d.cooldown = 40 end
     if d.shoot == nil then d.shoot = false end
@@ -56,7 +56,7 @@ end
 
 
 function this.shot(fam)   
-   local player = Isaac.GetPlayer(0)
+   local player = fam.Player:ToPlayer()
    local d = fam:GetData() 
       local fartSpeed = Utils.choose(11, 13, 15, 17)
       local dirs = { [Direction.LEFT] = Vector(-fartSpeed, 0), [Direction.UP] = Vector(0, -fartSpeed), [Direction.RIGHT] = Vector(fartSpeed, 0), [Direction.DOWN] = Vector(0, fartSpeed), [Direction.NO_DIRECTION] = vectorZero, }

@@ -8,30 +8,25 @@ local item = Isaac.GetItemIdByName("Dr. Medicine")
 local evecostume = Isaac.GetItemConfig():GetCollectible(item)
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
   if player:HasCollectible(this.id) then
-    --if not deliveranceData.temporary.hasAdamsRib then
-      --deliveranceData.temporary.hasAdamsRib = true
-      --deliveranceDataHandler.directSave()
       if flag == CacheFlag.CACHE_TEARCOLOR then
-      --player:AddNullCostume(deliveranceContent.costumes.adamsRib2)
        if player:GetPlayerType() == PlayerType.PLAYER_EVE then
          player:AddCostume(evecostume, false)
        end
       end
-    --end 
   end
 end
 
 function this:onHitNPC(npc,damage,flags,source)
-  local player = Isaac.GetPlayer(0)
-  if npc:IsVulnerableEnemy() and player:HasCollectible(this.id) then
+  for _, player in pairs(Utils.GetPlayers()) do
+    if npc:IsVulnerableEnemy() and player:HasCollectible(this.id) then
      if not npc:GetData().doubleDamaged then
         npc:GetData().doubleDamaged = true
         sfx:Play(SoundEffect.SOUND_SCAMPER, 1, 0, false, 1)
         local knife = Isaac.Spawn(1000, this.variant, 0, npc.Position, vectorZero, nil)
         knife:GetData().dmg = damage*0.75
      end
+  end
   end
 end
 

@@ -4,7 +4,7 @@ this.description = "Fully restores health, then turns into Apple core"
 this.rusdescription ={"Golden Apple /Золотое яблоко", "Полностью восстанавливает здоровье, затем превращается в огрызок"}
 
 function this.use()
-  local player = Isaac.GetPlayer(0)
+  local player = Utils.GetPlayersItemUse()
   player:AddHearts(20)
   player:RemoveCollectible(this.id)
 

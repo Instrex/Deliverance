@@ -4,23 +4,20 @@ this.description = "Restores half a heart each time you swallow a pill#Spawns a 
 this.rusdescription ={"Dr. Medicine /Доктор Врач", "Восстанавливает половину сердца каждый раз когда вы глотаете пилюлю#Cоздает одну пилюлю при подборе"}
 
 function this:cache(player, flag)
-  local player = Isaac.GetPlayer(0)
-  if player:HasCollectible(this.id) then
-    --if not deliveranceData.temporary.hasDrMedicine then
-      --deliveranceData.temporary.hasDrMedicine = true
-      --deliveranceDataHandler.directSave()
-      if utils.switchData('pickedUpDrMedicinePill') then
-        Isaac.Spawn(5, 70, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), nil)
-      end
-    --end
+  local data = player:GetData()
+  data.pillPickup = data.pillPickup or player:GetCollectibleNum(this.id)
+
+  if data.pillPickup < player:GetCollectibleNum(this.id) then
+    Isaac.Spawn(5, 70, 0, Isaac.GetFreeNearPosition(player.Position, 1), Vector.FromAngle(math.random(360)):Resized(2.5), player)
+    data.pillPickup = player:GetCollectibleNum(this.id)
   end
 end
 
 function this:usePill(pill)
-  local player = Isaac.GetPlayer(0)
+  local player = Utils.GetPlayersItemUse()
   if player:HasCollectible(this.id) then
      player:AddHearts(1)
-     local heart = Isaac.Spawn(1000, 49, 0, Vector(player.Position.X,player.Position.Y-96), vectorZero, nil)
+     local heart = Isaac.Spawn(1000, 49, 0, Vector(player.Position.X,player.Position.Y-64), Vector.Zero, nil)
      heart:GetSprite():ReplaceSpritesheet(0,"gfx/effects/hearteffect2.png")
      heart:GetSprite():LoadGraphics()
      sfx:Play(SoundEffect.SOUND_VAMP_GULP , 1.25, 0, false, 0.8)
@@ -28,7 +25,7 @@ function this:usePill(pill)
 end
 
 function this.Init()
-  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, this.cache)
+  mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, this.cache)
   mod:AddCallback(ModCallbacks.MC_USE_PILL, this.usePill)
 end
 

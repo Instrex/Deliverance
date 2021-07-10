@@ -2,7 +2,7 @@ local this = {}
 this.id = Isaac.GetCardIdByName("Glitch")
 this.effect = Isaac.GetEntityVariantByName("Urn of Want Effect")
 this.description = "%D@#$FHFXZQ@@*@)"
-this.rusdescription ={"Glitch /Ãëþê", "%D@#$FHFXZQ@@*@"}
+this.rusdescription ={"Glitch /ï¿½ï¿½ï¿½ï¿½", "%D@#$FHFXZQ@@*@"}
 --[[function this.getFrame() 
     if utils.chancep(35) then
         return utils.choose('gfx/items/pick ups/glitch/pickup_card_glitch2.png',
@@ -25,31 +25,14 @@ function this:updateEffect(npc)
     local sprite = npc:GetSprite()
     sprite:Play("Idle")
     
-    if sprite:IsFinished("Idle") then 
+    if sprite:IsFinished("Idle") then
       npc:Remove()
     end
   end
 end
 
 function this.cardCallback()
-  local player = Isaac.GetPlayer(0)
-   local effect = Isaac.Spawn(1000, this.effect, 0, player.Position, vectorZero, nil)
-   sfx:Play(Isaac.GetSoundIdByName("Urn"), 1, 0, false, 1)
-   player:UseActiveItem(97,false,false,false,false)
-   if utils.chancep(50) then 
-       player:UseActiveItem(97,false,false,false,false)
-   end
-   if utils.chancep(50) then
-       player:UseCard(Utils.choose(Card.CARD_EMPRESS,Card.CARD_HANGED_MAN,Card.CARD_DEVIL,Card.CARD_TOWER,
-                               Card.CARD_JUDGEMENT,Card.CARD_CLUBS_2,Card.CARD_SPADES_2,Card.CARD_HEARTS_2,
-                               Card.CARD_ACE_OF_CLUBS,Card.CARD_ACE_OF_DIAMONDS,Card.CARD_ACE_OF_SPADES,Card.CARD_ACE_OF_HEARTS)
-       )
-   else
-       player:UsePill(Utils.choose(PillEffect.PILLEFFECT_BOMBS_ARE_KEYS,PillEffect.PILLEFFECT_PUBERTY,PillEffect.PILLEFFECT_RANGE_DOWN,
-                               PillEffect.PILLEFFECT_RANGE_UP,PillEffect.PILLEFFECT_SPEED_DOWN,PillEffect.PILLEFFECT_SPEED_UP,
-                               PillEffect.PILLEFFECT_TEARS_DOWN,PillEffect.PILLEFFECT_TEARS_UP,PillEffect.PILLEFFECT_LUCK_DOWN,
-                               PillEffect.PILLEFFECT_LUCK_UP,PillEffect.PILLEFFECT_BAD_GAS),0)
-   end
+    deliveranceContent.items.urnOfWant.use()
    return true
 end
 
