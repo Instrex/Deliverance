@@ -5,7 +5,7 @@ this.rusdescription ={"Discount Brochure /Скидочная Брошюра", "Телепортирует в м
 
 function this.onNewFloor()
     for _, player in pairs(Utils.GetPlayers()) do
-        if player:HasTrinket(this.id) then
+        if player:HasTrinket(this.id) and game:GetLevel():GetStage() ~= LevelStage.STAGE8 then
             game:ChangeRoom(GridRooms.ROOM_SECRET_SHOP_IDX,0)
             if game:GetRoom():IsFirstVisit() then
                 deliveranceData.temporary.discountshop = true

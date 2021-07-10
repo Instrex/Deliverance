@@ -43,9 +43,11 @@ function this:behaviour(npc)
       end
 
     elseif npc.State == NpcState.STATE_MOVE then
-      npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
 
       if sprite:IsFinished("DigIn") then
+        if npc.EntityCollisionClass ~= EntityCollisionClass.ENTCOLL_NONE then
+          npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+        end
         local validPositions = {}
         for i = 0, room:GetGridSize() do
           local grid = room:GetGridEntity(i)
