@@ -8,6 +8,7 @@
        <Item Name="Sinister Chalk" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Urn Of Want" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
        <Item Name="Chaotic D6" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+       <Item Name="Exchange Magazine" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="treasure">
        <Item Name="Sailor Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
@@ -53,6 +54,7 @@
       <Item Name="Edgeless Cube Battery" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="Danger Room" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
       <Item Name="The Divider" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
+      <Item Name="Exchange Magazine" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>
     </Pool>
     <Pool Name="boss">
       <Item Name="Salty Soup" Weight="1" DecreaseBy="1" RemoveOn="0.1"/>

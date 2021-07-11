@@ -71,6 +71,7 @@ deliveranceContent = {
 	  yumRib                    = include('scripts.items.yumrib'),
     chaoticD6                 = include('scripts.items.chaoticdice'),
     smellyPot                 = include('scripts.items.smellyPot'),
+    exchangemagazine          = include('scripts.items.exchangemagazine'),
 	  dermoidcyst               = include('scripts.items.dermoidcyst')
   },
   
@@ -83,7 +84,7 @@ deliveranceContent = {
     specialPenny              = include('scripts.trinkets.specialPenny'),
     littleTransducer          = include('scripts.trinkets.littleTransducer'),
     extinguisher              = include('scripts.trinkets.extinguisher'),
-	bloatedcapacitor          = include('scripts.trinkets.bloatedcapacitor'),
+    bloatedcapacitor          = include('scripts.trinkets.bloatedcapacitor'),
     gunPowder                 = include('scripts.trinkets.gunPowder'),
     pieceOfPaper              = include('scripts.trinkets.pieceOfPaper'),
     bottledBlood              = include('scripts.trinkets.bottledBlood'),

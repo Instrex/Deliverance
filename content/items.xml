@@ -47,7 +47,7 @@
   <active id="46" name="Chaotic D6" description="Reroll your destiny!" gfx="collectibles_chaotic_D6.png" maxcharges="6"/>
   <!--  <active id="47" name="Equivalent Exchange" description="-" gfx="collectibles_EquivalentExchange.png" maxcharges="6"/> -->
   <active id="48" name="Smelly Pot" description="Poo-Poo Check" gfx="collectibles_smellyPot.png" maxcharges="2"/>
-  <!-- <active id="49" name="Exchange Journal" description="-" gfx="-" maxcharges="6"/> -->
+  <active id="49" name="Exchange Magazine" description="-" gfx="item_placeholder.png" maxcharges="6"/>
   <passive id="50" name="Dermoid Cyst" description="Nature is terrible and disgusting" gfx="collectibles_dermoidcyst.png" cache="tearcolor"/>
   
  
