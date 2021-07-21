@@ -22,7 +22,7 @@ local OutcomeIcon = {
     Angel       = 7,
     DemonAngel  = 8
 }
-if Game():IsGreedMode() then	
+if game:IsGreedMode() then	
 this.recipes = {
     [{ gunpowder = 1, rib = 1, blood = 1, feather = 1, paper = 1}] = { OutcomeType.Pool, OutcomeIcon.Unknown, ItemPoolType.POOL_GREED_BOSS },
     [{ rib = 2, blood = 2, precision = 1.0 }]          = { OutcomeType.Pool, OutcomeIcon.Devil, ItemPoolType.POOL_GREED_DEVIL },

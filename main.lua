@@ -4,7 +4,7 @@ sfx = SFXManager()
 vectorZero = Vector(0,0)
 delivRNG = RNG()
 
-deliveranceVersion = "3.0.0"
+local deliveranceVersion = "3.0.0"
 
 utils = include ('scripts.utils')
 include ('scripts.enumerations')
@@ -178,6 +178,11 @@ local coh = include('scripts.customOverHandler')
 local dss = include('scripts.deadseascrolls')
 local logs = include('scripts.changelogs')
 pd = include('scripts.progressdata')
+
+if REPENTANCE then
+  local wisps = include('scripts.wisps')
+  wisps.Init()
+end
 
 eid.init()
 

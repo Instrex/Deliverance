@@ -1,4 +1,4 @@
-<wisps gfxroot="gfx/familiar/wisps/">
+<wisps gfxroot="gfx/familiars/wisps/">
 	<!--
 		Color presets
 	-->
@@ -189,6 +189,8 @@
 			73: ECOLI
 	-->
 	
-	<!-- Air Strike! (temporary gfx) -->
-	<wisp id="26" hp="3" layer="0" damage="6" tearScale="1.2" shotSpeed="0.75" tearFlags="2" flameColor="flame_blue" coreColor="core_red" tearColor="tear_red" coreGfx="bomb.png" tearFlags2="12" procChance="0.5" />
+	<!-- Golden Apple temporary core gfx) -->
+	<wisp id="3" hp="3" layer="0" damage="2" tearScale="1.2" shotSpeed="0.75" tearFlags="2" flameColor="flame_yellow" coreColor="core_yellow" tearColor="tear_yellow" coreGfx="apple.png" count="3" tearFlags2="15" procChance="0.5" />
+	<!-- Air Strike! (temporary core gfx) -->
+	<wisp id="26" hp="3" layer="0" damage="6" tearScale="1.2" shotSpeed="0.75" tearFlags="2" flameColor="flame_red" coreColor="core_red" tearColor="tear_red" coreGfx="rocket.png" tearFlags2="12" procChance="0.5" />
 </wisps>

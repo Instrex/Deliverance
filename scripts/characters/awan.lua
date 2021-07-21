@@ -50,7 +50,7 @@ function this:Update()
    local stage = level:GetStage()
    local room = game:GetRoom()
 
-   if player:GetPlayerType() == this.playerAwan then 
+   if player:GetPlayerType() == this.playerAwan then
     if not player:IsDead() then
 	
 	if deliveranceData.persistent and not deliveranceData.persistent.completiondata then
@@ -73,11 +73,11 @@ function this:Update()
          deliveranceData.temporary.materials = deliveranceData.temporary.materials or {0, 0, 0, 0, 0}
          player:AddCard(Card.CARD_DICE_SHARD)
          deliveranceData.temporary.awanStartUp=true
-         deliveranceDataHandler.directSave() 
+         deliveranceDataHandler.directSave()
       end
 
       local trinket = player:GetTrinket(0)
-      if utils.contains(CauldronMaterialID, trinket) then 
+      if utils.contains(CauldronMaterialID, trinket) then
          deliveranceData.temporary.materials[MaterialMap[trinket]] = deliveranceData.temporary.materials[MaterialMap[trinket]] + 1
          deliveranceDataHandler.directSave()
 
@@ -95,7 +95,7 @@ function this:Update()
 	    player:AddNullCostume(this.costume)
       end
 
-      for e, collect in pairs(Isaac.GetRoomEntities()) do 
+      for e, collect in pairs(Isaac.GetRoomEntities()) do
 
          if collect.Type == 5 then 
             if (collect.Variant == 150 or collect.Variant == 100) then 
@@ -147,7 +147,7 @@ function this:Update()
 
                         if level:GetCurrentRoomIndex() == 98 and not deliveranceData.temporary.deletedFirstItem then
                            deliveranceData.temporary.deletedFirstItem=true
-                           deliveranceDataHandler.directSave() 
+                           deliveranceDataHandler.directSave()
                         end
                         collect:Remove()
                      end
@@ -162,8 +162,8 @@ function this:Update()
                   Isaac.Spawn(5, 350, Utils.chooset(CauldronMaterialID), collect.Position, vectorZero, npc)
                end
                collect:Remove()
-            end 
-         end 
+            end
+         end
       end
 
       for e, entity in pairs(Isaac.GetRoomEntities()) do 
@@ -261,10 +261,14 @@ function this:EvaluateCache(player, cacheFlag)
   end
 end
 
-local HudMaterials = Sprite() HudMaterials:Load("gfx/ui/hudMaterials.anm2", true)
-local HudChoose = Sprite() HudChoose:Load("gfx/ui/hudChooseMaterial.anm2", true)
+local HudMaterials = Sprite() HudMaterials:Load("gfx/ui/hudMaterials_OLD.anm2", true)
+local HudBackground = Sprite() HudBackground:Load("gfx/ui/hudBackround.anm2", true)
+local HudChoose = Sprite() HudChoose:Load("gfx/ui/hudChooseMaterial_OLD.anm2", true)
 local HudHint = Sprite() HudHint:Load("gfx/ui/hudHint.anm2", true)
+
 local hint = 0
+local appearcheck = false
+
 -- local AchSprite = Sprite() AchSprite:Load("gfx/ui/achievement/achievement.anm2", true)
 -- local AchName = "gfx/ui/achievement/achievement_awan1.png"
 local Completion_Widget = Sprite() Completion_Widget:Load("gfx/ui/achievement/completion_widget.anm2", true)
@@ -281,21 +285,54 @@ function this:onRender()
    
    local player = Isaac.GetPlayer(0)
    if player:GetPlayerType() == this.playerAwan and deliveranceData.temporary.awanStartUp then 
+	
+	--Stats render
+	local screenpos = Isaac.WorldToScreen(player.Position)
+	Isaac.RenderScaledText("Cauldron: "..this.checkForCauldron(),screenpos.X - 35,screenpos.Y + 10,0.5,0.5,1,1,1,1)
+	
+	Isaac.RenderScaledText("Res count: ".._awan_getCurrentMaterialInfo().count,screenpos.X + 10,screenpos.Y + 10,0.5,0.5,1,1,1,1)
+	Isaac.RenderScaledText("Res Type: ".._awan_getCurrentMaterialInfo().type,screenpos.X + 10,screenpos.Y + 15,0.5,0.5,1,1,1,1)
 
       if this.checkForCauldron()~=0 then
+         --hint hide/check
+            if not HudBackground:IsPlaying("Appear") and not appearcheck then
+               HudBackground:Play("Appear",false)
+            end
+            if HudBackground:IsFinished("Appear") then
+               appearcheck = true
+               HudBackground:Play("Idle",true)
+            end
+
          if hint < 13 then hint = hint + 1 end
       else
+         HudBackground:Play("New Animation")
+         if HudBackground:IsFinished("New Animation")then
+            appearcheck = false
+         end
+
          if hint > 0 then hint = hint - 1 end
+      end
+
+      for i = 0, 9 do
+         HudBackground:RenderLayer(i, Vector(50,238))
+      end
+
+      if (not Game():IsPaused()) then
+         HudBackground:Update()
       end
 
       HudHint:SetFrame("Appear", hint)
       HudHint:RenderLayer(0, Vector(97,231))
       HudHint:RenderLayer(1, Vector(97,231))
 
-      for i=1, #deliveranceData.temporary.materials do 
-        HudMaterials:SetFrame("Idle", i-1)
-        HudMaterials:RenderLayer(0, Vector(-5+i*17,225))
-        Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-6+i*17,240), true)
+
+
+      for i=1, #deliveranceData.temporary.materials do
+        if HudBackground:IsPlaying("Idle") then
+         HudMaterials:SetFrame("Idle", i-1)
+         HudMaterials:RenderLayer(0, Vector(-5+i*17,225))
+         Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-6+i*17,240), true)
+        end
       end
 
      Completion_Widget:SetFrame("Idle", 0)
@@ -380,18 +417,20 @@ function this:onRender()
       if HudChoose:IsFinished("Select") then
          HudChoose:Play("Idle", false)
       end
-
-      HudChoose:RenderLayer(0, Vector(this.currentSlot*17+1,235))
-      HudChoose:Update()
+      
+      if HudBackground:IsPlaying("Idle") then
+         HudChoose:RenderLayer(0, Vector(this.currentSlot*17+1,235))
+         HudChoose:Update()
+      end
       if not game:IsPaused() and (deliveranceData.temporary.materials[this.currentSlot] == 0 or Input.IsActionTriggered(ButtonAction.ACTION_DROP, player.ControllerIndex)) then
          local selected = false
          for _slot = this.currentSlot + 1, 10 do
             local slot = _slot
-            if slot > 5 then 
+            if slot > 5 then
                slot = slot - 5
             end
 
-            if deliveranceData.temporary.materials[slot] > 0 then 
+            if deliveranceData.temporary.materials[slot] > 0 then
                this.currentSlot = slot
                HudChoose:Play("Select", false)
                selected = true
@@ -631,103 +670,6 @@ else
 
     __infinityTrueCoop[#__infinityTrueCoop + 1] = onTrueCoopInit
 end--]]
-
-local function makeMissingStageAPIFloorEffectFunctions()
-    if not StageAPI then
-        StageAPI = {Loaded = false, ToCall = {}}
-    end
-	
-	StageAPI.E = StageAPI.E or {}
-	StageAPI.E.FloorEffect = StageAPI.E.FloorEffect or {
-		T = EntityType.ENTITY_EFFECT,
-		V = 3917,
-		S = 0
-	}
-	StageAPI.E.FloorEffectCreep = StageAPI.E.FloorEffectCreep or {
-		T = EntityType.ENTITY_EFFECT,
-		V = EffectVariant.CREEP_RED,
-		S = 117
-	}
-
-	function StageAPI.SpawnFloorEffect(pos, velocity, spawner, anm2, loadGraphics, variant)
-		local eff = Isaac.Spawn(StageAPI.E.FloorEffectCreep.T, StageAPI.E.FloorEffectCreep.V, StageAPI.E.FloorEffectCreep.S, pos or vectorZero, velocity or vectorZero, spawner)
-		eff.Variant = variant or StageAPI.E.FloorEffect.V
-		if anm2 then
-			eff:GetSprite():Load(anm2, loadGraphics)
-		end
-
-		return eff
-	end
-end
-
-local burningBasementColor = Color(0.5,0.5,0.5,1,0,0,0)
-local function spawnStartingRoomControls()
-
-	local playerType = Isaac.GetPlayer(0):GetPlayerType()
-	
-	if playerType ~= PlayerType.PLAYER_THEFORGOTTEN
-	and playerType ~= PlayerType.PLAYER_THESOUL
-	and (not REVEL or (REVEL and playerType ~= Isaac.GetPlayerTypeByName("Dante"))) then
-	
-		local animation = "gfx/backdrop/controls.anm2"
-		if playerType == this.playerAwan then
-			animation = "gfx/backdrop/controls_awan.anm2"
-		elseif REVEL then
-			return
-		end
-		
-		if not StageAPI or (StageAPI and not StageAPI.SpawnFloorEffect) then
-			makeMissingStageAPIFloorEffectFunctions()
-		end
-		
-		local room = game:GetRoom()
-		local level = game:GetLevel()
-		
-		local controlsEffect = StageAPI.SpawnFloorEffect(room:GetCenterPos(), vectorZero, nil, animation, true)
-		local controlsSprite = controlsEffect:GetSprite()
-		controlsSprite:Play("Idle")
-
-		if level:GetStageType() == StageType.STAGETYPE_AFTERBIRTH then
-			controlsSprite.Color = burningBasementColor
-		end
-		
-	end
-	
-end
-
-local replacedRev = false
-local function replaceRevelControls()
-	if not replacedRev and REVEL and REVEL.SpawnStartingRoomControls then
-		REVEL.SpawnStartingRoomControlsReal = REVEL.SpawnStartingRoomControls
-		REVEL.SpawnStartingRoomControls = function()
-			local playerType = Isaac.GetPlayer(0):GetPlayerType()
-			if playerType == this.playerAwan then
-				return
-			else
-				REVEL.SpawnStartingRoomControlsReal()
-			end
-		end
-		replacedRev = true
-	end
-end
-replaceRevelControls()
-
-mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, function()
-
-	local game = Game()
-	local level = game:GetLevel()
-
-	replaceRevelControls()
-	
-	if not game:IsGreedMode() and level:GetCurrentRoomIndex() == level:GetStartingRoomIndex() and level:GetStage() == 1 then
-		spawnStartingRoomControls()
-	end
-	
-end)
-
-mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, function(_, isSaveGame)
-	replaceRevelControls()
-end)
 
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, this.Update)

@@ -5,17 +5,16 @@ this.variant = Isaac.GetEntityVariantByName("Cauldron")
 local symbolType = 1
 local droppedTrinket = 1
 
-cauldronRecipeHandler = require 'scripts.cauldronRecipeHandler'
+local cauldronRecipeHandler = require 'scripts.cauldronRecipeHandler'
 function this:behaviour(npc)
  if npc.Variant == this.variant then
   local sprite = npc:GetSprite()
-  local player = Isaac.GetPlayer(0)
-
+  local player = npc:GetPlayerTarget()
   -- В начале нужно инициализировать data.persistent --
   local data = npc:GetData()
   data.persistent = data.persistent or { components = {} }
   data.Position = data.Position or npc.Position
-
+  
   -- Затем, если этот объект не имеет присвоенного индекса, задать его и загрузить данные(если имеются) --
   if not data._index then 
     data._index = npcPersistence.initEntity(npc)
@@ -23,21 +22,21 @@ function this:behaviour(npc)
 
   data.processing = data.processing or false
 
-  if data.persistent.components[1]~=nil then sprite:ReplaceSpritesheet(6, Isaac.GetItemConfig():GetTrinket(data.persistent.components[1]).GfxFileName) else sprite:ReplaceSpritesheet(6, "gfx/items/alchemicCauldronSymbol.png") end
-  if data.persistent.components[2]~=nil then sprite:ReplaceSpritesheet(7, Isaac.GetItemConfig():GetTrinket(data.persistent.components[2]).GfxFileName) else sprite:ReplaceSpritesheet(7, "gfx/items/alchemicCauldronSymbol.png") end
-  if data.persistent.components[3]~=nil then sprite:ReplaceSpritesheet(8, Isaac.GetItemConfig():GetTrinket(data.persistent.components[3]).GfxFileName) else sprite:ReplaceSpritesheet(8, "gfx/items/alchemicCauldronSymbol.png") end
-  if data.persistent.components[4]~=nil then sprite:ReplaceSpritesheet(9, Isaac.GetItemConfig():GetTrinket(data.persistent.components[4]).GfxFileName) else sprite:ReplaceSpritesheet(9, "gfx/items/alchemicCauldronSymbol.png") end
+  if data.persistent.components[1]~= nil then sprite:ReplaceSpritesheet(9, Isaac.GetItemConfig():GetTrinket(data.persistent.components[1]).GfxFileName) else sprite:ReplaceSpritesheet(9, "gfx/items/alchemicCauldronSymbol.png") end
+  if data.persistent.components[2]~= nil then sprite:ReplaceSpritesheet(10, Isaac.GetItemConfig():GetTrinket(data.persistent.components[2]).GfxFileName) else sprite:ReplaceSpritesheet(10, "gfx/items/alchemicCauldronSymbol.png") end
+  if data.persistent.components[3]~= nil then sprite:ReplaceSpritesheet(11, Isaac.GetItemConfig():GetTrinket(data.persistent.components[3]).GfxFileName) else sprite:ReplaceSpritesheet(11, "gfx/items/alchemicCauldronSymbol.png") end
+  if data.persistent.components[4]~= nil then sprite:ReplaceSpritesheet(12, Isaac.GetItemConfig():GetTrinket(data.persistent.components[4]).GfxFileName) else sprite:ReplaceSpritesheet(12, "gfx/items/alchemicCauldronSymbol.png") end
 
-  if data.persistent.components[1]~=nil and data.persistent.components[2]~=nil and data.persistent.components[3]~=nil and data.persistent.components[4]~=nil then
+  if data.persistent.components[1] ~= nil and data.persistent.components[2] ~= nil and data.persistent.components[3] ~= nil and data.persistent.components[4] ~= nil then
     if not data.outcome then 
       data.outcome = cauldronRecipeHandler.queryExactRecipe(data.persistent.components)
     end
 
-    sprite:ReplaceSpritesheet(5, "gfx/items/symbol" .. data.outcome[2] .. ".png") 
-    sprite:ReplaceSpritesheet(1, "gfx/items/alchemicCauldronCloud.png")
+    sprite:ReplaceSpritesheet(13, "gfx/items/symbol" .. data.outcome[2] .. ".png") 
+    --sprite:ReplaceSpritesheet(1, "gfx/items/alchemicCauldronCloud.png")
   else
-    sprite:ReplaceSpritesheet(5, "gfx/items/alchemicCauldronSymbol.png") 
-    sprite:ReplaceSpritesheet(1, "gfx/items/alchemicCauldronSymbol.png")
+    sprite:ReplaceSpritesheet(13, "gfx/items/alchemicCauldronSymbol.png") 
+    --sprite:ReplaceSpritesheet(1, "gfx/items/alchemicCauldronSymbol.png")
   end
   sprite:LoadGraphics()
 
@@ -51,19 +50,19 @@ function this:behaviour(npc)
     npc.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
     npc.State = 2 
     data.processing = false
-    if game.Difficulty==2 or game.Difficulty==3 then
+    --[[if game:IsGreedMode() then
        sprite:ReplaceSpritesheet(0, "gfx/items/alchemicCauldronGreed.png") 
        sprite:ReplaceSpritesheet(2, "gfx/items/alchemicCauldronGreed.png")
        sprite:LoadGraphics()
-    end
+    end-]]
 
   elseif npc.State == 2 then
-    sprite:Play("Idle")
+	  sprite:Play("IdleStage"..#data.persistent.components)
 
       if (npc.Position - player.Position):Length() <= npc.Size + player.Size then
 
               -- При обновлении переменных необходимо вызывать npcPersistence.update(npc) 
-              if data.persistent.components[1]~=nil and data.persistent.components[2]~=nil and data.persistent.components[3]~=nil and data.persistent.components[4]~=nil then
+              if data.persistent.components[1] ~= nil and data.persistent.components[2] ~= nil and data.persistent.components[3] ~= nil and data.persistent.components[4] ~= nil then
                  sfx:Play(SoundEffect.SOUND_COIN_SLOT, 1, 0, false, 1)
                  npc.State = 4
               --elseif player:GetTrinket(0) ~= TrinketType.TRINKET_NULL then
@@ -85,9 +84,9 @@ function this:behaviour(npc)
 
   elseif npc.State == 3 then
     
-    sprite:Play("AddTrinket")
+    sprite:Play("AddTrinketStage"..#data.persistent.components)
 
-    if sprite:IsFinished("AddTrinket") then
+    if sprite:IsFinished("AddTrinketStage"..#data.persistent.components) then
         npc.State = 2
     end
 
@@ -95,8 +94,8 @@ function this:behaviour(npc)
       sfx:Play(212, 1, 0, false, math.random(7, 9) / 10)
     end
 
-    if droppedTrinket~=nil then
-        sprite:ReplaceSpritesheet(10, Isaac.GetItemConfig():GetTrinket(droppedTrinket).GfxFileName) 
+    if droppedTrinket ~= nil then
+        sprite:ReplaceSpritesheet(4, Isaac.GetItemConfig():GetTrinket(droppedTrinket).GfxFileName) 
         sprite:LoadGraphics()
     end
 
@@ -106,7 +105,7 @@ function this:behaviour(npc)
     
     sprite:Play("Process")
 
-    if sprite:IsEventTriggered("SpawnItem") then
+    if sprite:IsEventTriggered("Ground") then
       data.persistent.components={}
       npcPersistence.update(npc)
       
@@ -118,7 +117,7 @@ function this:behaviour(npc)
       data.outcome = nil
     end
 
-    if sprite:IsEventTriggered("CauldronProcess") then
+    if sprite:IsEventTriggered("Hop") then
       sfx:Play(Isaac.GetSoundIdByName("CauldronJump"), 0.8, 0, false, 1.2)
       sfx:Play(212, 1.2, 0, false, math.random(7, 9) / 10)
       Game():ShakeScreen(6)
@@ -175,7 +174,7 @@ end
 function this.Init()
   mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, this.behaviour, this.id)
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, this.onHitNPC)
-  --mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, this.cauldronCmd)
+  mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, this.cauldronCmd)
 end
 
 return this
