@@ -4,7 +4,7 @@ sfx = SFXManager()
 vectorZero = Vector(0,0)
 delivRNG = RNG()
 
-deliveranceVersion = "2.5.7"
+local deliveranceVersion = "2.5.7.1"
 
 utils = include ('scripts.utils')
 include ('scripts.enumerations')

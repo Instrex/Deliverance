@@ -12,11 +12,17 @@ In general, [b]Deliverance [/b]adds:
 [b]900+[/b] new [b]rooms[/b]!
 [b]Secrets![/b]
 
+[h1]Mod Supports:[/h1]
+
+True-Coop!
+
+Encyclopedia [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2376005362]compatibility![/url]
+
 External item descriptions [url=https://steamcommunity.com/sharedfiles/filedetails/?id=836319872]compatibility![/url]
 -
-Russian item descriptions [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1552851879]compatibility![/url]
+Russian item descriptions [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1552851879]compatibility![/url] (for AB+)
 -
-MiniMAPI [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1978904635]compatibility![/url]
+MiniMAPI [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1978904635]compatibility![/url] (for AB+)
 
 [img]https://i.imgur.com/EaCyIkj.png[/img] [b]Also[/b] We've finally finished the [b]tBoI: Deliverance Manual[/b], containing information about all content! [b]We'll be adding new information and update the manual as new updates are released![/b]
 [url=https://docs.google.com/document/d/e/2PACX-1vSZee5gnxBuuNmVaKBklB0OJ-43BUhWKkCSi2qDJXiT-F1ruCfz6EhKjs-hQeTn6Jo1u2w9680h8WOB/pub?embedded=true]ENG[/url]
@@ -35,7 +41,7 @@ Feel free to join our [url=discord.gg/PKgV5nf]discord server![/url]
 To [b]AgentCucco[/b], [b]Budjmt[/b], [b]BogdanRudyka[/b], [b]Minichibis[/b], [b]Der Clown[/b], [b]Eternal Necromancer[/b], [b]Modding of Isaac Community[/b] and [b]You[/b]!
 [img]https://i.imgur.com/cAYjYgW.png[/img]
 </description>
-    <version>2.5.6.2</version>
+    <version>2.5.7.1</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Items"/>
