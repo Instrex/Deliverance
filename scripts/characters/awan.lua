@@ -420,6 +420,8 @@ function this:onRender()
       
       if HudBackground:IsPlaying("Idle") then
          HudChoose:RenderLayer(0, Vector(3+this.currentSlot*16,235))
+		 HudChoose:RenderLayer(1, Vector(3+this.currentSlot*16,235))
+		 HudChoose:RenderLayer(2, Vector(3+this.currentSlot*16,235))
          HudChoose:Update()
       end
       if not game:IsPaused() and (deliveranceData.temporary.materials[this.currentSlot] == 0 or Input.IsActionTriggered(ButtonAction.ACTION_DROP, player.ControllerIndex)) then
