@@ -1,8 +1,8 @@
 <AnimatedActor>
-	<Info CreatedBy="Unknown" CreatedOn="28.03.2021 10:46:54" Version="29" Fps="45"/>
+	<Info CreatedBy="Unknown" CreatedOn="22.07.2021 8:03:00" Version="30" Fps="45"/>
 	<Content>
 		<Spritesheets>
-			<Spritesheet Path="hudBackround.png" Id="0"/>
+			<Spritesheet Path="hudChooseMaterial.png" Id="0"/>
 		</Spritesheets>
 		<Layers>
 			<Layer Name="" Id="0" SpritesheetId="0"/>

@@ -263,7 +263,7 @@ end
 
 local HudMaterials = Sprite() HudMaterials:Load("gfx/ui/hudMaterials_OLD.anm2", true)
 local HudBackground = Sprite() HudBackground:Load("gfx/ui/hudBackround.anm2", true)
-local HudChoose = Sprite() HudChoose:Load("gfx/ui/hudChooseMaterial_OLD.anm2", true)
+local HudChoose = Sprite() HudChoose:Load("gfx/ui/hudChooseMaterial.anm2", true)
 local HudHint = Sprite() HudHint:Load("gfx/ui/hudHint.anm2", true)
 
 local hint = 0
@@ -331,7 +331,7 @@ function this:onRender()
         if HudBackground:IsPlaying("Idle") then
          HudMaterials:SetFrame("Idle", i-1)
          HudMaterials:RenderLayer(0, Vector(-5+i*17,225))
-         Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-6+i*17,240), true)
+         Utils.RenderNumber(deliveranceData.temporary.materials[i], Vector(-2+i*16,240), true)
         end
       end
 
