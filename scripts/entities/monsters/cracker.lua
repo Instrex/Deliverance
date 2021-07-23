@@ -6,9 +6,6 @@ function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
-  local data = npc:GetData()
-  local current_floor = game:GetLevel():GetStage()
-  local brim_type=1;
   local room = game:GetRoom()
 
   -- Begin --
@@ -82,7 +79,7 @@ end
 
 function this:die(npc)
  if npc.Variant == this.variant then
-  blood = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player)
+  Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc)
  end
 end
 

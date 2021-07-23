@@ -85,6 +85,15 @@ function Utils.getCostume(name)
   return Isaac.GetCostumeIdByPath("gfx/characters/costumes/animation_costume_"..name..".anm2")
 end
 
+function Utils.ReplaceChampSpritesheet(ent,layer,path)
+  local sprite = ent:GetSprite()
+  if REPENTANCE and ent:IsChampion() then
+    sprite:ReplaceSpritesheet(layer,path.."_champion.png")
+  else
+    sprite:ReplaceSpritesheet(layer,path..".png")
+  end
+end
+
 function Utils.contains(table, element)
   for _, value in pairs(table) do
     if value == element then

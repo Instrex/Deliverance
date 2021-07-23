@@ -7,7 +7,6 @@ function this:behaviour(npc)
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
-  local room = game:GetRoom()
 
   if data.RealHp == nil then data.RealHp = npc.HitPoints end
 
@@ -86,7 +85,7 @@ function this:behaviour(npc)
        local RCreep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CREEP_RED, 0, npc.Position, vectorZero, nil)
        RCreep.SpriteScale = Vector(2.1,2.1) 
        RCreep:Update()
-       Isaac.Spawn(1000, 16, 5, npc.Position, vectorZero, player)
+       Isaac.Spawn(1000, 16, 5, npc.Position, vectorZero, npc)
        Game():ShakeScreen(16)
        npc:Remove()
     end

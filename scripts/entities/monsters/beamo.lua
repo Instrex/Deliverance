@@ -6,20 +6,19 @@ function this:behaviour(npc)
  if npc.Variant == this.variant then
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
-  local data = npc:GetData()
   local level = game:GetLevel()
   local current_floor = level:GetStage()
   local brim_type=1;
 
   if current_floor == LevelStage.STAGE5 or (current_floor == LevelStage.STAGE5_GREED and (game.Difficulty==2 or game.Difficulty==3)) then
     if level:GetStageType() == StageType.STAGETYPE_WOTL then
-      sprite:ReplaceSpritesheet(0,"gfx/monsters/dreamo.png")
-      sprite:ReplaceSpritesheet(1,"gfx/monsters/dreamo.png")
+      Utils.ReplaceChampSpritesheet(npc,0,"gfx/monsters/dreamo")
+      Utils.ReplaceChampSpritesheet(npc,1,"gfx/monsters/dreamo")
       sprite:LoadGraphics()
       brim_type=3
     else
-      sprite:ReplaceSpritesheet(0,"gfx/monsters/brimo.png")
-      sprite:ReplaceSpritesheet(1,"gfx/monsters/brimo.png")
+      Utils.ReplaceChampSpritesheet(npc,0,"gfx/monsters/brimo")
+      Utils.ReplaceChampSpritesheet(npc,1,"gfx/monsters/brimo")
       sprite:LoadGraphics()
       brim_type=1
     end

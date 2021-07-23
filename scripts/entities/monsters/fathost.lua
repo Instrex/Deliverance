@@ -6,16 +6,15 @@ function this:behaviour(npc)
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
   local data = npc:GetData()
-  local room = game:GetRoom()
 
   npc:AddEntityFlags(EntityFlag.FLAG_NO_KNOCKBACK | EntityFlag.FLAG_NO_PHYSICS_KNOCKBACK)
   npc.Velocity = vectorZero
 
   if npc.Variant == 4000 then
-    sprite:ReplaceSpritesheet(0,"gfx/monsters/fathost.png")
+    Utils.ReplaceChampSpritesheet(npc,0,"gfx/monsters/fathost")
     sprite:LoadGraphics()
   elseif npc.Variant == 4001 then
-    sprite:ReplaceSpritesheet(0,"gfx/monsters/redFathost.png")
+    Utils.ReplaceChampSpritesheet(npc,0,"gfx/monsters/redFathost")
     sprite:LoadGraphics()
   end
 

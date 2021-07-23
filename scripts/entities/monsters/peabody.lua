@@ -10,13 +10,13 @@ function this:behaviour(npc)
   if not target:IsDead() then npc.Velocity = utils.vecToPos(target.Position, npc.Position) * (npc.StateFrame/72) + npc.Velocity * 0.95 end
 
   if npc.Variant == Isaac.GetEntityVariantByName("Peabody") then
-    sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody.png")
+    Utils.ReplaceChampSpritesheet(npc,0,"gfx/monsters/peabody")
     sprite:LoadGraphics()
   elseif npc.Variant == Isaac.GetEntityVariantByName("Peabody X") then
-    sprite:ReplaceSpritesheet(0,"gfx/monsters/peabody_x.png")
+    Utils.ReplaceChampSpritesheet(npc,0,"gfx/monsters/peabody_x")
     sprite:LoadGraphics()
   elseif npc.Variant == Isaac.GetEntityVariantByName("Peamonger") then
-    sprite:ReplaceSpritesheet(0,"gfx/monsters/peamonger.png")
+    Utils.ReplaceChampSpritesheet(npc,0,"gfx/monsters/peamonger")
     sprite:LoadGraphics()
   end
 

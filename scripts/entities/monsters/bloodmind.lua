@@ -7,7 +7,6 @@ function this:behaviour(npc)
     local target = npc:GetPlayerTarget()
     local sprite = npc:GetSprite()
     local data = npc:GetData()
-    local room = game:GetRoom()
 	
 	npc:AddEntityFlags(EntityFlag.FLAG_NO_KNOCKBACK | EntityFlag.FLAG_NO_PHYSICS_KNOCKBACK |EntityFlag.FLAG_NO_STATUS_EFFECTS)
 

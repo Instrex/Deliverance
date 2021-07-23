@@ -1,18 +1,18 @@
 <entities anm2root="gfx/" version="5">
 	<!-- Familiars -->
-    <entity id="3" variant="4000" anm2path="familiar_sistersheart.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Arterial Heart" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+    <entity id="3" variant="4000" anm2path="familiar_sistersheart.anm2" tags="cansacrifice" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Arterial Heart" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="3" variant="4001" anm2path="sage.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Sage" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+    <entity id="3" variant="4001" anm2path="sage.anm2" tags="cansacrifice" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Sage" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="3" variant="4002" anm2path="lilTummy.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Lil Tummy" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+    <entity id="3" variant="4002" anm2path="lilTummy.anm2" tags="cansacrifice" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Lil Tummy" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="3" variant="4003" anm2path="scaredyShroom.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Scaredy-shroom" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+    <entity id="3" variant="4003" anm2path="scaredyShroom.anm2" tags="cansacrifice" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Scaredy-shroom" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
@@ -20,15 +20,15 @@
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="3" variant="4005" anm2path="familiar_bileKnight.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Bile Knight" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+    <entity id="3" variant="4005" anm2path="familiar_bileKnight.anm2" tags="cansacrifice" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Bile Knight" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="3" variant="4006" anm2path="familiar_theThreater.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="The Threater" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+    <entity id="3" variant="4006" anm2path="familiar_theThreater.anm2" tags="cansacrifice" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="The Threater" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 
-    <entity id="3" variant="4007" anm2path="familiar_beanborne.anm2" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Beanborne" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
+    <entity id="3" variant="4007" anm2path="familiar_beanborne.anm2" tags="cansacrifice" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" name="Beanborne" numGridCollisionPoints="0" shadowSize="13" stageHP="0">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
     </entity>
 	

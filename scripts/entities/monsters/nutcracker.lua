@@ -83,7 +83,7 @@ function this:behaviour(npc)
             Isaac.Spawn(1000, 49, 0, Vector(npc.Position.X,npc.Position.Y-16), vectorZero, nil)
             sfx:Play(SoundEffect.SOUND_VAMP_GULP , 1.25, 0, false, 0.8)
             npc.HitPoints = npc.MaxHitPoints
-            sprite:ReplaceSpritesheet(1,"gfx/monsters/gluttyb.png")
+            Utils.ReplaceChampSpritesheet(npc,1,"gfx/monsters/gluttyb")
             sprite:LoadGraphics()
           end
         end

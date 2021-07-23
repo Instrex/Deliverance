@@ -10,8 +10,8 @@ function this:behaviour(npc)
 
   if data.hits == nil then data.hits = 1 end
   if data.creampileSet == nil then data.creampileSet = Utils.choose(0, 1, 2, 3, 4, 5) end
-  if data.cpFirst == nil then data.cpFirst=1 end 
-  if data.cpSecond == nil then data.cpSecond=2 end 
+  if data.cpFirst == nil then data.cpFirst=1 end
+  if data.cpSecond == nil then data.cpSecond=2 end
   if data.cpLast == nil then data.cpLast=3 end
   if data.creampileSet == 0 then data.cpFirst=1 data.cpSecond=2 data.cpLast=3 end
   if data.creampileSet == 1 then data.cpFirst=2 data.cpSecond=3 data.cpLast=1 end
@@ -20,7 +20,7 @@ function this:behaviour(npc)
   if data.creampileSet == 4 then data.cpFirst=2 data.cpSecond=1 data.cpLast=3 end
   if data.creampileSet == 5 then data.cpFirst=3 data.cpSecond=2 data.cpLast=1 end
   if data.thisHead == nil then data.thisHead = data.cpFirst end
-  sprite:ReplaceSpritesheet(0, "gfx/monsters/cream" .. data.cpFirst .. "pile.png") sprite:ReplaceSpritesheet(1, "gfx/monsters/cream" .. data.cpSecond .. "pile.png") sprite:ReplaceSpritesheet(2, "gfx/monsters/cream" .. data.cpLast .. "pile.png")
+  Utils.ReplaceChampSpritesheet(npc,0,"gfx/monsters/cream" .. data.cpFirst .. "pile") Utils.ReplaceChampSpritesheet(npc,1,"gfx/monsters/cream" .. data.cpSecond .. "pile") Utils.ReplaceChampSpritesheet(npc,2,"gfx/monsters/cream" .. data.cpLast .. "pile")
   sprite:LoadGraphics()
 
   npc.Velocity = vectorZero
@@ -102,7 +102,7 @@ function this:behaviour(npc)
 
     if sprite:IsEventTriggered("Death") then
        sfx:Play(SoundEffect.SOUND_MEATY_DEATHS , 1.2, 0, false, 1)
-       local RCreep = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player)
+       local RCreep = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc)
        RCreep.SpriteScale = Vector(0.6,0.6)
     end
   end
@@ -112,7 +112,7 @@ end
 function this:die(npc)
  if npc.Variant == this.variant then
     sfx:Play(SoundEffect.SOUND_MAGGOT_ENTER_GROUND, 1, 0, false, 1)
-    local RCreep = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player)
+    local RCreep = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc)
     RCreep.SpriteScale = Vector(0.85,0.85)
  end
 end

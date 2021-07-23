@@ -5,8 +5,6 @@ function this:behaviour(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Musk") or npc.Variant == Isaac.GetEntityVariantByName("Dusk") then
   local target = npc:GetPlayerTarget()
   local sprite = npc:GetSprite()
-  local data = npc:GetData()
-  local room = game:GetRoom()
 
   npc:AddEntityFlags(EntityFlag.FLAG_NO_KNOCKBACK | EntityFlag.FLAG_NO_PHYSICS_KNOCKBACK |EntityFlag.FLAG_NO_STATUS_EFFECTS)
 
@@ -61,7 +59,6 @@ function this:behaviour(npc)
 
     sprite:Play("Charge")
 
-    local room = game:GetRoom()
     if npc:CollidesWithGrid() then
         for i=10, 20 do
            local params = ProjectileParams() 
@@ -94,7 +91,6 @@ end
 
 function this:onHitNPC(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Musk") or npc.Variant == Isaac.GetEntityVariantByName("Dusk") then
-  local data = npc:GetData()
   if npc.Type == this.id then
     if npc.State == NpcState.STATE_ATTACK2 then
       return false
@@ -107,7 +103,7 @@ function this:die(npc)
  if npc.Variant == Isaac.GetEntityVariantByName("Musk") or npc.Variant == Isaac.GetEntityVariantByName("Dusk") then
     sfx:Play(SoundEffect.SOUND_DEATH_BURST_LARGE , 1, 0, false, 1)
     Game():ShakeScreen(15) 
-    local prj = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, player)
+    local prj = Isaac.Spawn(1000, 77, 0, npc.Position, vectorZero, npc)
     if npc.Variant == 4001 then prj.Color = Color(0, 0, 0, 1, 90/255, 0, 90/255) end
  end
 end
